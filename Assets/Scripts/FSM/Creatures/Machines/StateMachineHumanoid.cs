@@ -19,5 +19,20 @@ namespace FSM.Creatures.Machines
         public ILocomotion Locomotion => _locomotionCharacterController;
 
         #endregion
+
+        #region Unity Callbacks
+
+        protected override void Start()
+        {
+            base.Start();
+        }
+
+        #endregion
+
+        #region Abstract Methods
+
+        public abstract void ToFreeLookState();
+
+        #endregion
     }
 }

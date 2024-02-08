@@ -9,8 +9,14 @@ namespace Player.StateMachines.States
 
         public StatePlayerFreeLook(IStateMachinePlayer stateMachinePlayer)
         {
-            
+            StateMachinePlayer = stateMachinePlayer;
         }
+
+        #endregion
+
+        #region Properties
+
+        private IStateMachinePlayer StateMachinePlayer { get; }
 
         #endregion
 
@@ -18,17 +24,23 @@ namespace Player.StateMachines.States
 
         public override void Enter()
         {
-            
+            var inputProvider = StateMachinePlayer.InputProvider;
+            inputProvider.MapWrapperCamera.EnableMap(true);
         }
 
         public override void Exit()
         {
-            
+            var inputProvider = StateMachinePlayer.InputProvider;
+            inputProvider.MapWrapperCamera.EnableMap(false);
         }
 
         public override void Tick(float deltaTime)
         {
+            var inputProvider = StateMachinePlayer.InputProvider;
+            var lookInputs = inputProvider.MapWrapperCamera.Look;
+            var cameraWrapper = StateMachinePlayer.CameraWrapper;
             
+            cameraWrapper.SetLookInputs(lookInputs);
         }
 
         #endregion

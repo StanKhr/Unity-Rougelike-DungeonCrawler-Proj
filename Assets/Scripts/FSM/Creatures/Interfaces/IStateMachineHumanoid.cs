@@ -9,5 +9,11 @@ namespace FSM.Creatures.Interfaces
         ILocomotion Locomotion { get; }
 
         #endregion
+
+        #region Methods
+
+        void ToFreeLookState();
+
+        #endregion
     }
 }

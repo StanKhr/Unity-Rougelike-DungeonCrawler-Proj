@@ -9,6 +9,7 @@ namespace Player.StateMachines.Interfaces
         #region Properties
 
         IInputProvider InputProvider { get; }
+        ICameraWrapper CameraWrapper { get; }
 
         #endregion
     }

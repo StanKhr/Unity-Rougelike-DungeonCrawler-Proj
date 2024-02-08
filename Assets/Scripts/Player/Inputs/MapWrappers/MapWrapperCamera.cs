@@ -1,23 +1,25 @@
 ﻿using System;
 using Player.Inputs.Interfaces;
 using Scripts.Player.Inputs;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Player.Inputs.MapWrappers
 {
-    public class MapWrapperCamera : MapWrapper, IMapWrapperCamera
+    public class MapWrapperCamera : MapWrapper, IMapWrapperCamera, GameControlsAsset.ICameraMapActions
     {
         #region Constructors
 
         public MapWrapperCamera(GameControlsAsset gameControlsAsset) : base(gameControlsAsset)
         {
-            
+            GameControlsAsset.CameraMap.SetCallbacks(this);
         }
 
         #endregion
 
-        #region Fields
-
+        #region Properties
         
+        public Vector2 Look { get; private set; }
 
         #endregion
         
@@ -32,6 +34,15 @@ namespace Player.Inputs.MapWrappers
             }
             
             GameControlsAsset.CameraMap.Enable();
+        }
+
+        #endregion
+
+        #region Methods
+        
+        public void OnLook(InputAction.CallbackContext context)
+        {
+            Look = context.ReadValue<Vector2>();
         }
 
         #endregion

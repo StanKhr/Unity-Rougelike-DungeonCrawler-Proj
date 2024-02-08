@@ -16,7 +16,6 @@ namespace Player.Inputs
 
         #region Properties
         
-        public bool AimingEnabled { get; set; } = false;
         public float AxisSpeedScale { get; set; } = 1f;
 
         #endregion
@@ -31,10 +30,6 @@ namespace Player.Inputs
 
         private void Update()
         {
-            if (!AimingEnabled)
-            {
-                return;
-            }
             if (AxisSpeedScale <= 0f)
             {
                 return;
