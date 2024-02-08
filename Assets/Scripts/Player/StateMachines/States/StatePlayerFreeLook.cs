@@ -26,12 +26,14 @@ namespace Player.StateMachines.States
         {
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.MapWrapperCamera.EnableMap(true);
+            inputProvider.CursorVisibility.SetVisibility(false);
         }
 
         public override void Exit()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.MapWrapperCamera.EnableMap(false);
+            inputProvider.CursorVisibility.SetVisibility(true);
         }
 
         public override void Tick(float deltaTime)
