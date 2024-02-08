@@ -54,9 +54,9 @@ namespace Scripts.Player.Inputs
                 {
                     ""name"": """",
                     ""id"": ""56f131a1-7276-4146-adec-7d507b2be6f5"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=1000,y=1000)"",
+                    ""processors"": ""ScaleVector2(x=2500,y=2500),DeltaTime"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,

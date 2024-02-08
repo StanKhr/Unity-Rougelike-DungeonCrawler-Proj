@@ -495,7 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8716253938063293545}
   - component: {fileID: 3891861548561481711}
-  - component: {fileID: 1722766374449981315}
+  - component: {fileID: 7019285585152430417}
   m_Layer: 0
   m_Name: Cinemachine VC
   m_TagString: Untagged
@@ -558,7 +558,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 8004213529870186386}
---- !u!114 &1722766374449981315
+--- !u!114 &7019285585152430417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -567,47 +567,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2316571057385300387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d336e5d4b9e919f4cb43fb3cccc837c2, type: 3}
+  m_Script: {fileID: 11500000, guid: f3699f4c5e964044bbc9aa9bca394d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followTransform: {fileID: 0}
-  _cinemachineInputProvider: {fileID: 0}
-  _axisY:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 0
-    m_AccelTime: 0
-    m_DecelTime: 0
-    m_InputAxisName: 
-    m_InputAxisValue: 0
-    m_InvertInput: 0
-    m_MinValue: 0
-    m_MaxValue: 0
-    m_Wrap: 0
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 0
-      m_RecenteringTime: 0
-      m_LegacyHeadingDefinition: 0
-      m_LegacyVelocityFilterStrength: 0
-  _axisX:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 0
-    m_AccelTime: 0
-    m_DecelTime: 0
-    m_InputAxisName: 
-    m_InputAxisValue: 0
-    m_InvertInput: 0
-    m_MinValue: 0
-    m_MaxValue: 0
-    m_Wrap: 0
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 0
-      m_RecenteringTime: 0
-      m_LegacyHeadingDefinition: 0
-      m_LegacyVelocityFilterStrength: 0
+  _scaleX: 1
+  _scaleY: 1
+  _speed: 4
 --- !u!1 &2476970165319655692
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,8 +2675,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4599139410470894892}
+  - component: {fileID: 7503451069327625212}
   m_Layer: 0
-  m_Name: Cameras
+  m_Name: CameraWrapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2734,6 +2700,19 @@ Transform:
   - {fileID: 3405871714611362217}
   m_Father: {fileID: 2440888649355307301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7503451069327625212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434262201591340265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae9d8114ad424081475f773e35f7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cinemachineExtensionFirstPersonInputs: {fileID: 7019285585152430417}
 --- !u!1 &8605929701902369586
 GameObject:
   m_ObjectHideFlags: 0
@@ -2744,8 +2723,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8004213529870186386}
   - component: {fileID: 2204580684916046017}
-  - component: {fileID: 1273134011149567011}
-  - component: {fileID: 1818611160797572961}
+  - component: {fileID: 3217086102079557376}
+  - component: {fileID: 8867806632540310604}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -2780,7 +2759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1273134011149567011
+--- !u!114 &3217086102079557376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2793,7 +2772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Damping: 0
---- !u!114 &1818611160797572961
+--- !u!114 &8867806632540310604
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2812,7 +2791,7 @@ MonoBehaviour:
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse Y
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: -70
@@ -2836,7 +2815,7 @@ MonoBehaviour:
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -180
@@ -2866,6 +2845,7 @@ GameObject:
   - component: {fileID: 5744193000391611105}
   - component: {fileID: 7052727607782508006}
   - component: {fileID: 1980535591607134388}
+  - component: {fileID: 7414024493704204777}
   m_Layer: 0
   m_Name: PlayableEntity
   m_TagString: Untagged
@@ -2930,6 +2910,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _locomotionCharacterController: {fileID: 8803455249318915709}
   _inputProvider: {fileID: 3648680424501871758}
+  _cameraWrapper: {fileID: 7503451069327625212}
+--- !u!114 &7414024493704204777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8701690933215408748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33e608da10e4f66857e8752a1db9a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8837447627285347243
 GameObject:
   m_ObjectHideFlags: 0

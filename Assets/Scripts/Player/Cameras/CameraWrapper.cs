@@ -7,7 +7,8 @@ namespace Player.Inputs
     {
         #region Editor Fields
 
-        [field: SerializeField] public CameraInputAiming CameraInputAiming { get; private set; }
+        // [field: SerializeField] public CameraInputAiming CameraInputAiming { get; private set; }
+        [field: SerializeField] public CinemachineExtensionFirstPersonInputs _cinemachineExtensionFirstPersonInputs;
 
         #endregion
 
@@ -15,7 +16,7 @@ namespace Player.Inputs
 
         public void SetLookInputs(Vector2 inputs)
         {
-            CameraInputAiming.SetAxisStateValue(inputs);
+            _cinemachineExtensionFirstPersonInputs.ReceiveInputs(inputs);
             
             Debug.Log($"Camera inputs: {inputs.ToString()}");
         }
