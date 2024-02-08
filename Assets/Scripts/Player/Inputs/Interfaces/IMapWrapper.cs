@@ -1,6 +1,6 @@
 ﻿namespace Player.Inputs.Interfaces
 {
-    public interface IInputMapWrapper
+    public interface IMapWrapper
     {
         #region Methods
 

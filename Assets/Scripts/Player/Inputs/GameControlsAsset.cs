@@ -63,6 +63,89 @@ namespace Scripts.Player.Inputs
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MovementMap"",
+            ""id"": ""f2c0fd46-e128-4d29-b79e-86c742ffa048"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""c863b89c-4546-4ddf-8983-4688f7b3afdd"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""a11dcf64-03e8-4b27-83a2-a66c4c9d14f0"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""a9913ca6-10e7-45b6-a6dc-f268caedabb3"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""c7ab9f72-32ae-4efd-a430-e2fd405e9472"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""c1d51807-92eb-4558-bb76-5962212550fb"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""a50fdc25-5807-4b05-9c41-5fa1cc62e6d9"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d09c5e4-28d3-4fbc-b0e3-84960f11dbd1"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -98,6 +181,9 @@ namespace Scripts.Player.Inputs
             // CameraMap
             m_CameraMap = asset.FindActionMap("CameraMap", throwIfNotFound: true);
             m_CameraMap_Look = m_CameraMap.FindAction("Look", throwIfNotFound: true);
+            // MovementMap
+            m_MovementMap = asset.FindActionMap("MovementMap", throwIfNotFound: true);
+            m_MovementMap_Move = m_MovementMap.FindAction("Move", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -201,6 +287,52 @@ namespace Scripts.Player.Inputs
             }
         }
         public CameraMapActions @CameraMap => new CameraMapActions(this);
+
+        // MovementMap
+        private readonly InputActionMap m_MovementMap;
+        private List<IMovementMapActions> m_MovementMapActionsCallbackInterfaces = new List<IMovementMapActions>();
+        private readonly InputAction m_MovementMap_Move;
+        public struct MovementMapActions
+        {
+            private @GameControlsAsset m_Wrapper;
+            public MovementMapActions(@GameControlsAsset wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Move => m_Wrapper.m_MovementMap_Move;
+            public InputActionMap Get() { return m_Wrapper.m_MovementMap; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(MovementMapActions set) { return set.Get(); }
+            public void AddCallbacks(IMovementMapActions instance)
+            {
+                if (instance == null || m_Wrapper.m_MovementMapActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_MovementMapActionsCallbackInterfaces.Add(instance);
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+            }
+
+            private void UnregisterCallbacks(IMovementMapActions instance)
+            {
+                @Move.started -= instance.OnMove;
+                @Move.performed -= instance.OnMove;
+                @Move.canceled -= instance.OnMove;
+            }
+
+            public void RemoveCallbacks(IMovementMapActions instance)
+            {
+                if (m_Wrapper.m_MovementMapActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IMovementMapActions instance)
+            {
+                foreach (var item in m_Wrapper.m_MovementMapActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_MovementMapActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public MovementMapActions @MovementMap => new MovementMapActions(this);
         private int m_PCSchemeIndex = -1;
         public InputControlScheme PCScheme
         {
@@ -222,6 +354,10 @@ namespace Scripts.Player.Inputs
         public interface ICameraMapActions
         {
             void OnLook(InputAction.CallbackContext context);
+        }
+        public interface IMovementMapActions
+        {
+            void OnMove(InputAction.CallbackContext context);
         }
     }
 }

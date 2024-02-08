@@ -5,6 +5,7 @@
         #region Properties
 
         IMapWrapperCamera MapWrapperCamera { get; }
+        IMapWrapperMovement MapWrapperMovement { get; }
         ICursorVisibility CursorVisibility { get; }
 
         #endregion

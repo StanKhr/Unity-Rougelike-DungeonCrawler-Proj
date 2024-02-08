@@ -1,5 +1,6 @@
 ﻿using FSM.Main;
 using Player.StateMachines.Interfaces;
+using UnityEngine;
 
 namespace Player.StateMachines.States
 {
@@ -26,6 +27,7 @@ namespace Player.StateMachines.States
         {
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.MapWrapperCamera.EnableMap(true);
+            inputProvider.MapWrapperMovement.EnableMap(true);
             inputProvider.CursorVisibility.SetVisibility(false);
         }
 
@@ -33,16 +35,43 @@ namespace Player.StateMachines.States
         {
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.MapWrapperCamera.EnableMap(false);
+            inputProvider.MapWrapperMovement.EnableMap(false);
             inputProvider.CursorVisibility.SetVisibility(true);
         }
 
         public override void Tick(float deltaTime)
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            var lookInputs = inputProvider.MapWrapperCamera.Look;
+            var lookInputs = inputProvider.MapWrapperCamera.LookInputs;
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
             
             cameraWrapper.SetLookInputs(lookInputs);
+
+            var locomotion = StateMachinePlayer.Locomotion;
+            var moveDirection = CalculateCameraDirection();
+            locomotion.SetMoveDirection(moveDirection);
+            
+            locomotion.TickMovement(deltaTime);
+        }
+
+        private Vector3 CalculateCameraDirection()
+        {
+            var cameraWrapper = StateMachinePlayer.CameraWrapper;
+            var inputProvider = StateMachinePlayer.InputProvider;
+            
+            var forward = cameraWrapper.CameraForward;
+            var right = cameraWrapper.CameraRight;
+
+            forward.y = 0;
+            right.y = 0;
+            
+            forward.Normalize();
+            right.Normalize();
+
+            var x = inputProvider.MapWrapperMovement.MoveInputs.x;
+            var y = inputProvider.MapWrapperMovement.MoveInputs.y;
+            
+            return forward * y + right * x;
         }
 
         #endregion

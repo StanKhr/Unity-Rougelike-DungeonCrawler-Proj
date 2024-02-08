@@ -1,5 +1,6 @@
 ﻿using FSM.Creatures.Machines;
 using FSM.Main;
+using Player.Cameras.Interfaces;
 using Player.Inputs;
 using Player.Inputs.Interfaces;
 using Player.StateMachines.Interfaces;
