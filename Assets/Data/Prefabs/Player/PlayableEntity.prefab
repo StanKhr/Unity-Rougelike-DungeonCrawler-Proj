@@ -49,12 +49,12 @@ MonoBehaviour:
     <Speed>k__BackingField: 5
     <AccelerationRate>k__BackingField: 250
     <JumpPower>k__BackingField: 5
+    <GravityScale>k__BackingField: 20
   _groundScanner:
     _groundScanDummy: {fileID: 2125940605710718606}
     _walkableLayers:
       serializedVersion: 2
       m_Bits: 64
-    _rayLength: 0.1
     _boxCastSize: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!1 &3891110031755999248
 GameObject:

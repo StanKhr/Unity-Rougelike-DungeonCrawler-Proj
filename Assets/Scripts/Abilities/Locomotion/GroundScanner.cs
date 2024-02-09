@@ -20,10 +20,6 @@ namespace Abilities.Locomotion
 
         #endregion
 
-        #region Properties
-
-        #endregion
-
         #region Unity Callbacks
 
 #if UNITY_EDITOR

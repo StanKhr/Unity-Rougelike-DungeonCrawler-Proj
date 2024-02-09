@@ -29,6 +29,7 @@ namespace Player.StateMachines.States
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.MapWrapperCamera.EnableMap(true);
             inputProvider.MapWrapperMovement.EnableMap(true);
+            inputProvider.MapWrapperMovement.OnJump += JumpCallback;
             inputProvider.CursorVisibility.SetVisibility(false);
         }
 
@@ -37,6 +38,7 @@ namespace Player.StateMachines.States
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.MapWrapperCamera.EnableMap(false);
             inputProvider.MapWrapperMovement.EnableMap(false);
+            inputProvider.MapWrapperMovement.OnJump -= JumpCallback;
             inputProvider.CursorVisibility.SetVisibility(true);
         }
 
@@ -44,6 +46,12 @@ namespace Player.StateMachines.States
         {
             UpdateCameraLook(deltaTime);
             UpdateLocomotion(deltaTime);
+        }
+
+        private void JumpCallback()
+        {
+            var locomotion = StateMachinePlayer.Locomotion;
+            locomotion.ApplyJump();
         }
 
         private void UpdateCameraLook(float deltaTime)

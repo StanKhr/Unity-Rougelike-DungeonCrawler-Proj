@@ -8,6 +8,7 @@ namespace Abilities.Locomotion
     {
         #region Constants
 
+        private const float GravityMaxForce = -100;
         private const float JumpConstScale = -3f;
 
         #endregion
@@ -22,6 +23,7 @@ namespace Abilities.Locomotion
 
         #region Fields
 
+        private bool _grounded;
         private float _acceleration;
         private float _gravity;
         private Vector3 _targetDirection;
@@ -33,10 +35,23 @@ namespace Abilities.Locomotion
 
         public Vector3 Velocity => _characterController.velocity;
 
+        private bool Grounded
+        {
+            get => _grounded;
+            set
+            {
+                if (Grounded != value)
+                {
+                    Gravity = Mathf.Max(Gravity, 0f);
+                }
+
+                _grounded = value;
+            }
+        }
         private float Gravity
         {
             get => _gravity;
-            set { _gravity = value; }
+            set => _gravity = Mathf.Max(GravityMaxForce, value);
         }
 
         #endregion
@@ -56,6 +71,11 @@ namespace Abilities.Locomotion
 
         public void ApplyJump()
         {
+            if (!Grounded)
+            {
+                return;
+            }
+            
             Gravity = Mathf.Sqrt(_locomotionData.JumpPower * JumpConstScale * Physics.gravity.y);
         }
 
@@ -66,21 +86,21 @@ namespace Abilities.Locomotion
 
         public void TickMovement(float deltaTime)
         {
-            var grounded = _groundScanner.ScanForGround(out _);
-            LogWriter.DevelopmentLog($"Grounded: {grounded.ToString()}");
+            Grounded = _groundScanner.ScanForGround(out _);
             
-            if (grounded)
+            if (Grounded && Gravity <= 0f)
             {
-                
+                Gravity = Physics.gravity.y;
             }
             else
             {
-                
+                Gravity -= deltaTime * _locomotionData.GravityScale;
             }
             
             _moveDirection = Vector3.MoveTowards(_moveDirection, _targetDirection,
                 deltaTime * _locomotionData.AccelerationRate);
             _moveDirection *= _locomotionData.Speed * deltaTime;
+            _moveDirection += new Vector3(0f, Gravity * deltaTime, 0f);
 
             _characterController.Move(_moveDirection);
         }
