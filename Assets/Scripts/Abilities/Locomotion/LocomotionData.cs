@@ -10,6 +10,7 @@ namespace Abilities.Locomotion
 
         [field: SerializeField] public float Speed { get; private set; }
         [field: SerializeField, Min(0)] public float AccelerationRate { get; private set; }
+        [field: SerializeField] public float JumpPower { get; private set; }
 
         #endregion
     }
