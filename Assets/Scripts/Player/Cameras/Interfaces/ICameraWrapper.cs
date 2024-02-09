@@ -1,9 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Player.Cameras.Interfaces
 {
     public interface ICameraWrapper
     {
+        #region Events
+
+        event Action OnFootStepped;
+
+        #endregion
+        
         #region Properties
 
         Vector3 CameraForward { get; }

@@ -3188,6 +3188,14 @@ PrefabInstance:
       propertyPath: _inputProvider
       value: 
       objectReference: {fileID: 3648680424501871758}
+    - target: {fileID: 4644038001631276686, guid: 782408980134efb4da21bbed16055e12, type: 3}
+      propertyPath: _locomotionData.<JumpPower>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644038001631276686, guid: 782408980134efb4da21bbed16055e12, type: 3}
+      propertyPath: _locomotionData.<GravityScale>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4799805662674334367, guid: 782408980134efb4da21bbed16055e12, type: 3}
       propertyPath: m_Name
       value: PlayableEntity

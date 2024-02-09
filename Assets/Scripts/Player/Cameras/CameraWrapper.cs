@@ -1,4 +1,5 @@
-﻿using Cinemachine;
+﻿using System;
+using Cinemachine;
 using Player.Cameras.Interfaces;
 using Player.Inputs;
 using UnityEngine;
@@ -10,6 +11,12 @@ namespace Player.Cameras
         #region Constants
 
         private const float HeadBobDelayTime = 0.45f;
+
+        #endregion
+
+        #region Events
+        
+        public event Action OnFootStepped;
 
         #endregion
 
@@ -51,10 +58,9 @@ namespace Player.Cameras
             {
                 return;
             }
-
-            // var velocity = _cinemachineImpulseSource.m_DefaultVelocity;
-            // _cinemachineImpulseSource.GenerateImpulseWithVelocity(velocity);
+            
             _cinemachineImpulseSource.GenerateImpulse();
+            OnFootStepped?.Invoke();
         }
         public void SetLookInputs(Vector2 inputs)
         {
