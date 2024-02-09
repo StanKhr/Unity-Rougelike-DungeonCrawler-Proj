@@ -6,6 +6,7 @@ namespace Abilities.Interfaces
     {
         #region Properties
 
+        bool Grounded { get; }
         Vector3 Velocity { get; }
 
         #endregion
@@ -13,7 +14,7 @@ namespace Abilities.Interfaces
         #region Methods
 
         void ApplyJump();
-        void SetTargetDirection(Vector3 targetDirection);
+        void SetTargetDirection(Vector3 newTargetDirection);
         void TickMovement(float deltaTime);
 
         #endregion

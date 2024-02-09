@@ -35,10 +35,10 @@ namespace Abilities.Locomotion
 
         public Vector3 Velocity => _characterController.velocity;
 
-        private bool Grounded
+        public bool Grounded
         {
             get => _grounded;
-            set
+            private set
             {
                 if (Grounded != value)
                 {
@@ -79,9 +79,14 @@ namespace Abilities.Locomotion
             Gravity = Mathf.Sqrt(_locomotionData.JumpPower * JumpConstScale * Physics.gravity.y);
         }
 
-        public void SetTargetDirection(Vector3 targetDirection)
+        public void SetTargetDirection(Vector3 newTargetDirection)
         {
-            _targetDirection = targetDirection;
+            if (!Grounded)
+            {
+                return;
+            }
+            
+            _targetDirection = newTargetDirection;
         }
 
         public void TickMovement(float deltaTime)
@@ -97,8 +102,7 @@ namespace Abilities.Locomotion
                 Gravity -= deltaTime * _locomotionData.GravityScale;
             }
             
-            _moveDirection = Vector3.MoveTowards(_moveDirection, _targetDirection,
-                deltaTime * _locomotionData.AccelerationRate);
+            _moveDirection = _targetDirection;
             _moveDirection *= _locomotionData.Speed * deltaTime;
             _moveDirection += new Vector3(0f, Gravity * deltaTime, 0f);
 

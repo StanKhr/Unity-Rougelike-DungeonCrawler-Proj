@@ -63,6 +63,12 @@ namespace Player.StateMachines.States
             cameraWrapper.SetLookInputs(lookInputs);
             
             var locomotion = StateMachinePlayer.Locomotion;
+            if (!locomotion.Grounded)
+            {
+                cameraWrapper.TickHeadBob(0f, deltaTime);
+                return;
+            }
+            
             cameraWrapper.TickHeadBob(locomotion.Velocity.magnitude, deltaTime);
         }
 
