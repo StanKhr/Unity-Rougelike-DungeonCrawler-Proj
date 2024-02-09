@@ -40,13 +40,7 @@ namespace Audio
 
         private void FootSteppedCallback()
         {
-            var clip = _clipSelector.Select();
-            if (!clip)
-            {
-                return;
-            }
-            
-            _audioSource.PlayOneShot(clip);
+            _clipSelector.TryOneShotAudioSource(_audioSource);
         }
 
         #endregion

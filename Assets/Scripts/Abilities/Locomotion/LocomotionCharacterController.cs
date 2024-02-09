@@ -1,4 +1,5 @@
-﻿using Abilities.Interfaces;
+﻿using System;
+using Abilities.Interfaces;
 using Miscellaneous;
 using UnityEngine;
 
@@ -10,6 +11,13 @@ namespace Abilities.Locomotion
 
         private const float GravityMaxForce = -100;
         private const float JumpConstScale = -3f;
+
+        #endregion
+
+        #region Events
+        
+        public event Action OnJumped;
+        public event Action OnGroundLanded;
 
         #endregion
 
@@ -45,6 +53,11 @@ namespace Abilities.Locomotion
                     Gravity = Mathf.Max(Gravity, 0f);
                 }
 
+                if (!Grounded && value)
+                {
+                    OnGroundLanded?.Invoke();
+                }
+
                 _grounded = value;
             }
         }
@@ -77,6 +90,7 @@ namespace Abilities.Locomotion
             }
             
             Gravity = Mathf.Sqrt(_locomotionData.JumpPower * JumpConstScale * Physics.gravity.y);
+            OnJumped?.Invoke();
         }
 
         public void SetTargetDirection(Vector3 newTargetDirection)
