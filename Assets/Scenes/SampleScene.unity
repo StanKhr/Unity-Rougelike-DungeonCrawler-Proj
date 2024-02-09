@@ -1295,6 +1295,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3594637217357306146, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
   m_PrefabInstance: {fileID: 811401878}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &933826766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2316571057385300387, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+  m_PrefabInstance: {fileID: 4748526705780721163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &933826770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933826766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 2
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.3
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: -0.05, z: 0}
+--- !u!114 &933826771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933826766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &1051713623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3033,7 +3114,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3405871714611362217, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891861548561481711, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891861548561481711, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+      propertyPath: m_Lens.FarClipPlane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891861548561481711, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4113308100337566235, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3071,13 +3164,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7019285585152430417, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
-      propertyPath: _speed
-      value: 6
+    - target: {fileID: 6807409757900211605, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+      propertyPath: field of view
+      value: 75
       objectReference: {fileID: 0}
-    - target: {fileID: 7019285585152430417, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
-      propertyPath: _scaleY
-      value: 0
+    - target: {fileID: 6807409757900211605, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807409757900211605, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7214225857262142535, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3099,9 +3196,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7503451069327625212, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+      propertyPath: _cinemachineImpulseSource
+      value: 
+      objectReference: {fileID: 933826770}
     - target: {fileID: 8716253938063293545, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803455249318915709, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+      propertyPath: _locomotionData.<AccelerationRate>k__BackingField
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 8837447627285347243, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
       propertyPath: m_Name
@@ -3110,7 +3215,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2316571057385300387, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 933826771}
+    - targetCorrespondingSourceObject: {fileID: 2316571057385300387, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 933826770}
   m_SourcePrefab: {fileID: 100100000, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
 --- !u!1001 &5298870044636904348
 PrefabInstance:

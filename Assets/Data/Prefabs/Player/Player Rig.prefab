@@ -512,7 +512,7 @@ Transform:
   m_GameObject: {fileID: 2316571057385300387}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: 1}
+  m_LocalPosition: {x: 0, y: 1.6, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1256,6 +1256,7 @@ MonoBehaviour:
   _characterController: {fileID: 7052727607782508006}
   _locomotionData:
     <Speed>k__BackingField: 5
+    <AccelerationRate>k__BackingField: 0
 --- !u!1 &4372180892401850588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,7 +2051,7 @@ Transform:
   m_GameObject: {fileID: 6242391721125187609}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: 1}
+  m_LocalPosition: {x: 0, y: 1.6, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2624,7 +2625,7 @@ Transform:
   m_GameObject: {fileID: 8165866128268662915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2713,6 +2714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cinemachineExtensionFirstPersonInputs: {fileID: 7019285585152430417}
+  _cinemachineImpulseSource: {fileID: 0}
 --- !u!1 &8605929701902369586
 GameObject:
   m_ObjectHideFlags: 0

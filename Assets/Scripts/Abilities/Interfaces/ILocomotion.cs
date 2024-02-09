@@ -4,9 +4,15 @@ namespace Abilities.Interfaces
 {
     public interface ILocomotion
     {
+        #region Properties
+
+        Vector3 Velocity { get; }
+
+        #endregion
+        
         #region Methods
 
-        void SetMoveDirection(Vector3 direction);
+        void SetTargetDirection(Vector3 targetDirection);
         void TickMovement(float deltaTime);
 
         #endregion

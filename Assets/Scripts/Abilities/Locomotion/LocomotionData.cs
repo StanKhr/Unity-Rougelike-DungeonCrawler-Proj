@@ -9,6 +9,7 @@ namespace Abilities.Locomotion
         #region Editor Fields
 
         [field: SerializeField] public float Speed { get; private set; }
+        [field: SerializeField, Min(0)] public float AccelerationRate { get; private set; }
 
         #endregion
     }

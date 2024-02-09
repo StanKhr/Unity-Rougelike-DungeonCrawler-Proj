@@ -13,6 +13,7 @@ namespace Player.Cameras.Interfaces
         
         #region Methods
 
+        void TickHeadBob(float magnitude, float deltaTime);
         void SetLookInputs(Vector2 inputs);
 
         #endregion

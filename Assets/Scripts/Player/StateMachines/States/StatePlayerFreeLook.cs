@@ -41,16 +41,28 @@ namespace Player.StateMachines.States
 
         public override void Tick(float deltaTime)
         {
+            UpdateCameraLook(deltaTime);
+            UpdateLocomotion(deltaTime);
+        }
+
+        private void UpdateCameraLook(float deltaTime)
+        {
             var inputProvider = StateMachinePlayer.InputProvider;
             var lookInputs = inputProvider.MapWrapperCamera.LookInputs;
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
             
             cameraWrapper.SetLookInputs(lookInputs);
+            
+            var locomotion = StateMachinePlayer.Locomotion;
+            cameraWrapper.TickHeadBob(locomotion.Velocity.magnitude, deltaTime);
+        }
 
+        private void UpdateLocomotion(float deltaTime)
+        {
             var locomotion = StateMachinePlayer.Locomotion;
             var moveDirection = CalculateCameraDirection();
-            locomotion.SetMoveDirection(moveDirection);
             
+            locomotion.SetTargetDirection(moveDirection);
             locomotion.TickMovement(deltaTime);
         }
 
@@ -71,7 +83,7 @@ namespace Player.StateMachines.States
             var x = inputProvider.MapWrapperMovement.MoveInputs.x;
             var y = inputProvider.MapWrapperMovement.MoveInputs.y;
             
-            return forward * y + right * x;
+            return (forward * y + right * x).normalized;
         }
 
         #endregion
