@@ -12,6 +12,7 @@ namespace Abilities.Interfaces
         
         #region Methods
 
+        void ApplyJump();
         void SetTargetDirection(Vector3 targetDirection);
         void TickMovement(float deltaTime);
 

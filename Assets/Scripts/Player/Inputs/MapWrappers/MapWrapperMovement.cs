@@ -1,4 +1,6 @@
-﻿using Player.Inputs.Interfaces;
+﻿using System;
+using Miscellaneous;
+using Player.Inputs.Interfaces;
 using Scripts.Player.Inputs;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,8 +18,13 @@ namespace Player.Inputs.MapWrappers
 
         #endregion
 
-        #region Properties
+        #region Events
         
+        public event Action OnJump;
+
+        #endregion
+
+        #region Properties
         public Vector2 MoveInputs { get; private set; }
 
         #endregion
@@ -35,9 +42,19 @@ namespace Player.Inputs.MapWrappers
             GameControlsAsset.MovementMap.Enable();
         }
 
-        public void OnMove(InputAction.CallbackContext context)
+        void GameControlsAsset.IMovementMapActions.OnMove(InputAction.CallbackContext context)
         {
             MoveInputs = context.ReadValue<Vector2>();
+        }
+
+        void GameControlsAsset.IMovementMapActions.OnJump(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+            {
+                return;
+            }
+            
+            OnJump?.Invoke();
         }
 
         #endregion

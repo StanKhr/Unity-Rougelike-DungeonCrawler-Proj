@@ -35,6 +35,11 @@ namespace Abilities.Locomotion
 
         #region Methods
 
+        public void ApplyJump()
+        {
+            
+        }
+
         public void SetTargetDirection(Vector3 targetDirection)
         {
             _targetDirection = targetDirection;

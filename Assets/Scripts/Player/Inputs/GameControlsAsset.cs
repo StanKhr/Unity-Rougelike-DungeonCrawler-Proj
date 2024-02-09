@@ -76,6 +76,15 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""c2852d39-11f0-4305-a322-e0372b48d2b7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -144,6 +153,28 @@ namespace Scripts.Player.Inputs
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47772146-8735-48c9-8d65-1f3b19fed4eb"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7afad844-0a4f-4e05-9b26-3470065e655e"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -184,6 +215,7 @@ namespace Scripts.Player.Inputs
             // MovementMap
             m_MovementMap = asset.FindActionMap("MovementMap", throwIfNotFound: true);
             m_MovementMap_Move = m_MovementMap.FindAction("Move", throwIfNotFound: true);
+            m_MovementMap_Jump = m_MovementMap.FindAction("Jump", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -292,11 +324,13 @@ namespace Scripts.Player.Inputs
         private readonly InputActionMap m_MovementMap;
         private List<IMovementMapActions> m_MovementMapActionsCallbackInterfaces = new List<IMovementMapActions>();
         private readonly InputAction m_MovementMap_Move;
+        private readonly InputAction m_MovementMap_Jump;
         public struct MovementMapActions
         {
             private @GameControlsAsset m_Wrapper;
             public MovementMapActions(@GameControlsAsset wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_MovementMap_Move;
+            public InputAction @Jump => m_Wrapper.m_MovementMap_Jump;
             public InputActionMap Get() { return m_Wrapper.m_MovementMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -309,6 +343,9 @@ namespace Scripts.Player.Inputs
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
 
             private void UnregisterCallbacks(IMovementMapActions instance)
@@ -316,6 +353,9 @@ namespace Scripts.Player.Inputs
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
+                @Jump.started -= instance.OnJump;
+                @Jump.performed -= instance.OnJump;
+                @Jump.canceled -= instance.OnJump;
             }
 
             public void RemoveCallbacks(IMovementMapActions instance)
@@ -358,6 +398,7 @@ namespace Scripts.Player.Inputs
         public interface IMovementMapActions
         {
             void OnMove(InputAction.CallbackContext context);
+            void OnJump(InputAction.CallbackContext context);
         }
     }
 }
