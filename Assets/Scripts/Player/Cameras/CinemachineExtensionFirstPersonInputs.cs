@@ -1,7 +1,7 @@
 ﻿using Cinemachine;
 using UnityEngine;
 
-namespace Player.Inputs
+namespace Player.Cameras
 {
     public class CinemachineExtensionFirstPersonInputs : CinemachineExtension
     {

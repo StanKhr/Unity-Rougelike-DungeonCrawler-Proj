@@ -1,17 +1,15 @@
-﻿using System;
-using Audio.ClipSelectors;
+﻿using Audio.ClipSelectors;
 using Player.Cameras;
 using Player.Cameras.Interfaces;
 using UnityEngine;
 
-namespace Audio
+namespace Audio.Triggers
 {
-    public class FootStepsAudio : MonoBehaviour
+    public class AudioTriggerFootSteps : AudioTrigger
     {
         #region Editor Fields
 
         [SerializeField] private CameraWrapper _cameraWrapper;
-        [SerializeField] private AudioSource _audioSource;
         [SerializeField] private ClipSelector _clipSelector;
 
         #endregion
@@ -40,7 +38,7 @@ namespace Audio
 
         private void FootSteppedCallback()
         {
-            _clipSelector.TryOneShotAudioSource(_audioSource);
+            _clipSelector.TryOneShotAudioSource(AudioSource);
         }
 
         #endregion

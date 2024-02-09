@@ -1,17 +1,15 @@
-﻿using System;
-using Abilities.Interfaces;
+﻿using Abilities.Interfaces;
 using Abilities.Locomotion;
 using Audio.ClipSelectors;
 using UnityEngine;
 
-namespace Audio.Players
+namespace Audio.Triggers
 {
-    public class JumpAudio : MonoBehaviour
+    public class AudioTriggerJump : AudioTrigger
     {
         #region Editor Fields
 
         [SerializeField] private LocomotionCharacterController _locomotion;
-        [SerializeField] private AudioSource _audioSource;
         [SerializeField] private ClipSelector _clipSelectorJump;
         [SerializeField] private ClipSelector _clipSelectorLanding;
 
@@ -43,12 +41,12 @@ namespace Audio.Players
 
         private void JumpCallback()
         {
-            _clipSelectorJump.TryOneShotAudioSource(_audioSource);
+            _clipSelectorJump.TryOneShotAudioSource(AudioSource);
         }
 
         private void GroundLandedCallback()
         {
-            _clipSelectorLanding.TryOneShotAudioSource(_audioSource);
+            _clipSelectorLanding.TryOneShotAudioSource(AudioSource);
         }
 
         #endregion
