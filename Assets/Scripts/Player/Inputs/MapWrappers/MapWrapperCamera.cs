@@ -19,7 +19,7 @@ namespace Player.Inputs.MapWrappers
 
         #region Properties
         
-        public Vector2 Look { get; private set; }
+        public Vector2 LookInputs { get; private set; }
 
         #endregion
         
@@ -42,7 +42,7 @@ namespace Player.Inputs.MapWrappers
         
         public void OnLook(InputAction.CallbackContext context)
         {
-            Look = context.ReadValue<Vector2>();
+            LookInputs = context.ReadValue<Vector2>();
         }
 
         #endregion

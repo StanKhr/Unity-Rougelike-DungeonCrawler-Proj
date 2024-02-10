@@ -2,11 +2,11 @@
 
 namespace Player.Inputs.Interfaces
 {
-    public interface IMapWrapperCamera : IInputMapWrapper
+    public interface IMapWrapperCamera : IMapWrapper
     {
         #region Properties
 
-        Vector2 Look { get; }
+        Vector2 LookInputs { get; }
 
         #endregion
     }

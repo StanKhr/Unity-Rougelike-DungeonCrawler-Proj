@@ -1,5 +1,6 @@
 ﻿using Abilities.Interfaces;
 using FSM.Creatures.Interfaces;
+using Player.Cameras.Interfaces;
 using Player.Inputs.Interfaces;
 
 namespace Player.StateMachines.Interfaces

@@ -1,24 +1,70 @@
-﻿using Player.Inputs.Interfaces;
+﻿using System;
+using Cinemachine;
+using Player.Cameras.Interfaces;
+using Player.Inputs;
 using UnityEngine;
 
-namespace Player.Inputs
+namespace Player.Cameras
 {
     public class CameraWrapper : MonoBehaviour, ICameraWrapper
     {
-        #region Editor Fields
+        #region Constants
 
-        // [field: SerializeField] public CameraInputAiming CameraInputAiming { get; private set; }
-        [field: SerializeField] public CinemachineExtensionFirstPersonInputs _cinemachineExtensionFirstPersonInputs;
+        private const float HeadBobDelayTime = 0.45f;
 
         #endregion
 
-        #region MyRegion
+        #region Events
+        
+        public event Action OnFootStepped;
 
+        #endregion
+
+        #region Editor Fields
+
+        [field: SerializeField] public CinemachineExtensionFirstPersonInputs _cinemachineExtensionFirstPersonInputs;
+        [field: SerializeField] public CinemachineImpulseSource _cinemachineImpulseSource;
+
+        #endregion
+
+        #region Fields
+
+        private float _headBobTimer;
+        private Camera _mainCamera;
+
+        #endregion
+
+        #region Properties
+
+        private Camera MainCamera => _mainCamera ??= Camera.main;
+        public Vector3 CameraForward => MainCamera.transform.forward;
+        public Vector3 CameraRight => MainCamera.transform.right;
+
+        #endregion
+
+        #region Methods
+
+        public void TickHeadBob(float magnitude, float deltaTime)
+        {
+            if (_headBobTimer > 0f)
+            {
+                _headBobTimer -= deltaTime;
+                return;
+            }
+
+            _headBobTimer = HeadBobDelayTime;
+
+            if (magnitude <= 0f)
+            {
+                return;
+            }
+            
+            _cinemachineImpulseSource.GenerateImpulse();
+            OnFootStepped?.Invoke();
+        }
         public void SetLookInputs(Vector2 inputs)
         {
             _cinemachineExtensionFirstPersonInputs.ReceiveInputs(inputs);
-            
-            Debug.Log($"Camera inputs: {inputs.ToString()}");
         }
 
         #endregion
