@@ -8,6 +8,7 @@ namespace Miscellaneous
 
         public delegate void GameObjectEvents(GameObject context);
         public delegate void ColliderEvents(Collider context);
+        public delegate void FloatEvents(float context);
 
         #endregion
     }

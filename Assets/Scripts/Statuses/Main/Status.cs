@@ -47,7 +47,7 @@ namespace Statuses.Main
             }
         }
 
-        public float CurrentValue
+        public virtual float CurrentValue
         {
             get => _currentValue;
             protected set
