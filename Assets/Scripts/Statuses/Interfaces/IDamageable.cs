@@ -1,6 +1,6 @@
-﻿using DynamicValues.Datas;
+﻿using Statuses.Datas;
 
-namespace DynamicValues.Interfaces
+namespace Statuses.Interfaces
 {
     public interface IDamageable
     {

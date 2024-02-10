@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8883950249384872050}
   - component: {fileID: 4644038001631276686}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: References
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,6 @@ MonoBehaviour:
   _characterController: {fileID: 6610891149360071957}
   _locomotionData:
     <Speed>k__BackingField: 5
-    <AccelerationRate>k__BackingField: 250
     <JumpPower>k__BackingField: 5
     <GravityScale>k__BackingField: 20
   _groundScanner:
@@ -65,7 +64,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125940605710718606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundScan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +98,7 @@ GameObject:
   - component: {fileID: 6610891149360071957}
   - component: {fileID: 2387627697339951175}
   - component: {fileID: 6682550078090957082}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayableEntity
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -186,7 +185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7005291100331951964}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CameraPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

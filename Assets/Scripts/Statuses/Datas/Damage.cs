@@ -1,6 +1,6 @@
-﻿using DynamicValues.Enums;
+﻿using Statuses.Enums;
 
-namespace DynamicValues.Datas
+namespace Statuses.Datas
 {
     public struct Damage
     {

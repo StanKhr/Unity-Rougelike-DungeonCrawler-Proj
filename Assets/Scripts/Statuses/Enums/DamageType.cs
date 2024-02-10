@@ -1,4 +1,4 @@
-﻿namespace DynamicValues.Enums
+﻿namespace Statuses.Enums
 {
     public enum DamageType : int
     {
