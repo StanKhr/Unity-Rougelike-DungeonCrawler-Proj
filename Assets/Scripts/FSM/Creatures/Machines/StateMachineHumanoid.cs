@@ -2,6 +2,8 @@
 using Abilities.Locomotion;
 using FSM.Creatures.Interfaces;
 using FSM.Main;
+using Statuses.Interfaces;
+using Statuses.Main;
 using UnityEngine;
 
 namespace FSM.Creatures.Machines
@@ -11,12 +13,15 @@ namespace FSM.Creatures.Machines
         #region Editor Fields
 
         [SerializeField] private LocomotionCharacterController _locomotionCharacterController;
+        [SerializeField] private Health _health;
 
         #endregion
 
         #region Properties
 
         public ILocomotion Locomotion => _locomotionCharacterController;
+        public IHealth Health => _health;
+        public IDamageable Damageable => _health;
 
         #endregion
 

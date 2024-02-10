@@ -1,7 +1,10 @@
-﻿using Statuses.Enums;
+﻿using System;
+using Statuses.Enums;
+using UnityEngine;
 
 namespace Statuses.Datas
 {
+    [Serializable]
     public struct Damage
     {
         #region Constructors
@@ -16,8 +19,8 @@ namespace Statuses.Datas
 
         #region Properties
 
-        public float Value { get; set; }
-        public DamageType DamageType { get; set; }
+        [field: SerializeField] public float Value { get; set; }
+        [field: SerializeField] public DamageType DamageType { get; set; }
 
         #endregion
     }

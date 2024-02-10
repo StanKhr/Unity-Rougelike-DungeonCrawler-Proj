@@ -6,7 +6,7 @@ namespace Statuses.Interfaces
     {
         #region Methods
 
-        void TakeDamage(Damage damage);
+        void ApplyDamage(Damage damage);
 
         #endregion
     }

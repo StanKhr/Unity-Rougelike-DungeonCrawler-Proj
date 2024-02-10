@@ -8,9 +8,9 @@ namespace Statuses.Main
     {
         #region Methods
 
-        public void TakeDamage(Damage damage)
+        public void ApplyDamage(Damage damage)
         {
-            
+            CurrentValue -= damage.Value;
         }
 
         #endregion
