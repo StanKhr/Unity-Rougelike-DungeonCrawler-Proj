@@ -40,7 +40,7 @@ namespace Statuses.Main
             protected set
             {
                 var percent = (this as IStatus).Percent;
-                _maxValue = value;
+                _maxValue = Mathf.Max(value, 0f);
                 CurrentValue = MaxValue * percent;
                 
                 OnMaxValueChanged?.Invoke();

@@ -1,6 +1,7 @@
 ﻿using System;
 using Abilities.Interfaces;
 using Abilities.Triggers;
+using Props.Interfaces;
 using Statuses.Datas;
 using Statuses.Interfaces;
 using UnityEngine;
@@ -11,14 +12,14 @@ namespace Props
     {
         #region Editor Fields
 
-        [SerializeField] private ColliderTrigger _colliderTrigger;
+        [SerializeField] private GroundButton _groundButton;
         [SerializeField] private Damage _damage;
 
         #endregion
 
         #region Properties
 
-        private IColliderTrigger ColliderTrigger => _colliderTrigger;
+        private IInteractable GroundButton => _groundButton;
 
         #endregion
 
@@ -26,12 +27,12 @@ namespace Props
 
         private void OnEnable()
         {
-            ColliderTrigger.OnEntered += EnteredCallback;
+            GroundButton.OnInteractionStarted += EnteredCallback;
         }
 
         private void OnDisable()
         {
-            ColliderTrigger.OnEntered -= EnteredCallback;
+            GroundButton.OnInteractionStarted -= EnteredCallback;
         }
 
         #endregion
@@ -39,9 +40,9 @@ namespace Props
         #region Methods
 
 
-        private void EnteredCallback(Collider obj)
+        private void EnteredCallback(GameObject context)
         {
-            if (!obj.TryGetComponent<IDamageable>(out var damageable))
+            if (!context.TryGetComponent<IDamageable>(out var damageable))
             {
                 return;
             }

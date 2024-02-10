@@ -64,11 +64,6 @@ namespace UI.Presenters
 
         private async void OnEnable()
         {
-            if (Status == null)
-            {
-                return;
-            }
-
             await UniTask.Yield();
             
             Status.OnCurrentValueChanged += CurrentValueChangedCallback;
@@ -79,11 +74,6 @@ namespace UI.Presenters
 
         private void OnDisable()
         {
-            if (Status == null)
-            {
-                return;
-            }
-
             Status.OnCurrentValueChanged -= CurrentValueChangedCallback;
             Status.OnMaxValueChanged -= MaxValueChangedCallback;
         }

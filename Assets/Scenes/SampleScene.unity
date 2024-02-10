@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 267828787}
   - component: {fileID: 267828789}
   - component: {fileID: 267828788}
+  - component: {fileID: 267828791}
   - component: {fileID: 267828790}
   m_Layer: 8
   m_Name: GroundTrap
@@ -588,10 +589,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d253386ce0a493184776dcffcf7d9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colliderTrigger: {fileID: 267828789}
+  _groundButton: {fileID: 267828791}
   _damage:
     <Value>k__BackingField: 20
     <DamageType>k__BackingField: 0
+--- !u!114 &267828791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267828785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622ef079129647f6b27070141d93dbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderTrigger: {fileID: 267828789}
 --- !u!1001 &327261778
 PrefabInstance:
   m_ObjectHideFlags: 0

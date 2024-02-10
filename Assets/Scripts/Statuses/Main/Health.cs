@@ -8,6 +8,14 @@ namespace Statuses.Main
     {
         #region Methods
 
+#if UNITY_EDITOR
+        [ContextMenu("Test Add Health (20)")]
+        private void TestAddHealth()
+        {
+            CurrentValue += 20;
+        }
+#endif
+        
         public void ApplyDamage(Damage damage)
         {
             CurrentValue -= damage.Value;
