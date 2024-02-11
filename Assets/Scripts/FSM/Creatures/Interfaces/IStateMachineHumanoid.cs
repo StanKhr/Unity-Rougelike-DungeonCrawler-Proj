@@ -1,4 +1,5 @@
 ﻿using Abilities.Interfaces;
+using Statuses.Interfaces;
 
 namespace FSM.Creatures.Interfaces
 {
@@ -7,6 +8,8 @@ namespace FSM.Creatures.Interfaces
         #region Properties
 
         ILocomotion Locomotion { get; }
+        IHealth Health { get; }
+        IDamageable Damageable { get; }
 
         #endregion
 

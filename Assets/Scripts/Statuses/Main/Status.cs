@@ -37,20 +37,20 @@ namespace Statuses.Main
         public float MaxValue
         {
             get => _maxValue;
-            private set
+            protected set
             {
                 var percent = (this as IStatus).Percent;
-                _maxValue = value;
+                _maxValue = Mathf.Max(value, 0f);
                 CurrentValue = MaxValue * percent;
                 
                 OnMaxValueChanged?.Invoke();
             }
         }
 
-        public float CurrentValue
+        public virtual float CurrentValue
         {
             get => _currentValue;
-            private set
+            protected set
             {
                 _currentValue = Mathf.Clamp(value, MinValue, MaxValue);
                 
@@ -65,6 +65,7 @@ namespace Statuses.Main
         private void Awake()
         {
             SetMaxValue(_baseValue);
+            CurrentValue = MaxValue;
         }
 
         #endregion
