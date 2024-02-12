@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous;
 using UnityEngine;
 
 namespace Abilities.Interfaces
@@ -7,8 +8,8 @@ namespace Abilities.Interfaces
     {
         #region Events
 
-        event Action<Collider> OnEntered;
-        event Action<Collider> OnLeft;
+        event DelegateHolder.ColliderEvents OnEntered;
+        event DelegateHolder.ColliderEvents OnLeft;
 
         #endregion
     }
