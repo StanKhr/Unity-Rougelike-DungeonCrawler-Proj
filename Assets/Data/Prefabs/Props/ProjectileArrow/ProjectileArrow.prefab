@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 1426345023138248491}
   - component: {fileID: 2108784745814474283}
   - component: {fileID: 7958510333785005800}
+  - component: {fileID: 6182532324642867980}
   m_Layer: 9
   m_Name: ProjectileArrow
   m_TagString: Untagged
@@ -274,9 +275,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2
-  m_Height: 2
+  m_Height: 1.5
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: -0.3}
 --- !u!114 &1426345023138248491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +316,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 8396440386405401715}
   _colliderTrigger: {fileID: 1426345023138248491}
-  _speed: 300
+  _speed: 400
+--- !u!114 &6182532324642867980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749179636832731721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37591de663514ccdbb78b7c423ca3096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileRigidbody: {fileID: 7958510333785005800}
+  _damage:
+    <Value>k__BackingField: 15
+    <DamageType>k__BackingField: 0
 --- !u!1 &8800816364650517466
 GameObject:
   m_ObjectHideFlags: 0

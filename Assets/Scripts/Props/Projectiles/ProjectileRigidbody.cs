@@ -52,10 +52,28 @@ namespace Props.Projectiles
             Launch(_rigidbody.position, -Vector3.forward);
         }
 
+        public void Launch()
+        {
+            Launch(_rigidbody.position, _rigidbody.transform.forward);
+        }
+
+        public void Launch(Vector3 direction)
+        {
+            Launch(_rigidbody.position, direction);
+        }
+
         public void Launch(Vector3 position, Vector3 direction)
         {
-            _rigidbody.position = position;
-            _rigidbody.rotation = Quaternion.LookRotation(direction, Vector3.up);
+            if (_rigidbody.position != position)
+            {
+                _rigidbody.position = position;
+            }
+
+            var rotation = Quaternion.LookRotation(direction, Vector3.up);
+            if (_rigidbody.rotation != rotation)
+            {
+                _rigidbody.rotation = rotation;
+            }
             
             _rigidbody.AddForce(direction.normalized * _speed, ForceMode.Acceleration);
         }

@@ -2,7 +2,7 @@
 
 namespace UI.Utility
 {
-    public static class ViewsExtender
+    public static class ViewsExtensions
     {
         #region Methods
 
