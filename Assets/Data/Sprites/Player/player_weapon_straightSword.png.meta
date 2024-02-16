@@ -128,7 +128,7 @@ TextureImporter:
         serializedVersion: 2
         x: 26
         y: 0
-        width: 40
+        width: 41
         height: 74
       alignment: 8
       pivot: {x: 1, y: 0}
@@ -149,8 +149,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 25
-        height: 25
+        width: 26
+        height: 26
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,9 +168,9 @@ TextureImporter:
       name: player_hand_interact_left
       rect:
         serializedVersion: 2
-        x: 69
+        x: 71
         y: 0
-        width: 22
+        width: 24
         height: 37
       alignment: 6
       pivot: {x: 0, y: 0}

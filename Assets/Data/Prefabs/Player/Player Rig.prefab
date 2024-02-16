@@ -1696,8 +1696,9 @@ GameObject:
   - component: {fileID: 154832638833026126}
   - component: {fileID: 1242882306790596625}
   - component: {fileID: 5462921319378803167}
+  - component: {fileID: 730894566715172717}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TextGPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1819,6 +1820,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &730894566715172717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3655467993347582025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0494137b69bf484799feb3f3cfd97123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerGps: {fileID: 3396238974399714328}
+  _textMeshProUGUI: {fileID: 5462921319378803167}
 --- !u!1 &4019728030646582875
 GameObject:
   m_ObjectHideFlags: 0
@@ -4824,6 +4839,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47c57475005d4d9190e8faac59fe9196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3396238974399714328 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1548980193278334187, guid: 782408980134efb4da21bbed16055e12, type: 3}
+  m_PrefabInstance: {fileID: 4206019128908447987}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c148f7b6c546d993a1dabe4be44353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &5744193000391611105 stripped
