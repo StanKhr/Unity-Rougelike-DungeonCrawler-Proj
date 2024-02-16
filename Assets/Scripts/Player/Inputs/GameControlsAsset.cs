@@ -56,7 +56,7 @@ namespace Scripts.Player.Inputs
                     ""id"": ""56f131a1-7276-4146-adec-7d507b2be6f5"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=2500,y=2500),DeltaTime"",
+                    ""processors"": ""ScaleVector2(x=100,y=100),DeltaTime"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -177,6 +177,34 @@ namespace Scripts.Player.Inputs
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""AbilitiesMap"",
+            ""id"": ""f2611154-399e-4351-99d6-3feb379b9b12"",
+            ""actions"": [
+                {
+                    ""name"": ""Test"",
+                    ""type"": ""Button"",
+                    ""id"": ""95caf3e0-119d-4154-b9e9-1b3c78597406"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""45bb819c-3830-46e3-b3fb-60c11ef6aa8c"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Test"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -216,6 +244,9 @@ namespace Scripts.Player.Inputs
             m_MovementMap = asset.FindActionMap("MovementMap", throwIfNotFound: true);
             m_MovementMap_Move = m_MovementMap.FindAction("Move", throwIfNotFound: true);
             m_MovementMap_Jump = m_MovementMap.FindAction("Jump", throwIfNotFound: true);
+            // AbilitiesMap
+            m_AbilitiesMap = asset.FindActionMap("AbilitiesMap", throwIfNotFound: true);
+            m_AbilitiesMap_Test = m_AbilitiesMap.FindAction("Test", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -373,6 +404,52 @@ namespace Scripts.Player.Inputs
             }
         }
         public MovementMapActions @MovementMap => new MovementMapActions(this);
+
+        // AbilitiesMap
+        private readonly InputActionMap m_AbilitiesMap;
+        private List<IAbilitiesMapActions> m_AbilitiesMapActionsCallbackInterfaces = new List<IAbilitiesMapActions>();
+        private readonly InputAction m_AbilitiesMap_Test;
+        public struct AbilitiesMapActions
+        {
+            private @GameControlsAsset m_Wrapper;
+            public AbilitiesMapActions(@GameControlsAsset wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Test => m_Wrapper.m_AbilitiesMap_Test;
+            public InputActionMap Get() { return m_Wrapper.m_AbilitiesMap; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(AbilitiesMapActions set) { return set.Get(); }
+            public void AddCallbacks(IAbilitiesMapActions instance)
+            {
+                if (instance == null || m_Wrapper.m_AbilitiesMapActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_AbilitiesMapActionsCallbackInterfaces.Add(instance);
+                @Test.started += instance.OnTest;
+                @Test.performed += instance.OnTest;
+                @Test.canceled += instance.OnTest;
+            }
+
+            private void UnregisterCallbacks(IAbilitiesMapActions instance)
+            {
+                @Test.started -= instance.OnTest;
+                @Test.performed -= instance.OnTest;
+                @Test.canceled -= instance.OnTest;
+            }
+
+            public void RemoveCallbacks(IAbilitiesMapActions instance)
+            {
+                if (m_Wrapper.m_AbilitiesMapActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IAbilitiesMapActions instance)
+            {
+                foreach (var item in m_Wrapper.m_AbilitiesMapActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_AbilitiesMapActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public AbilitiesMapActions @AbilitiesMap => new AbilitiesMapActions(this);
         private int m_PCSchemeIndex = -1;
         public InputControlScheme PCScheme
         {
@@ -399,6 +476,10 @@ namespace Scripts.Player.Inputs
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+        }
+        public interface IAbilitiesMapActions
+        {
+            void OnTest(InputAction.CallbackContext context);
         }
     }
 }

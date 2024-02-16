@@ -35,10 +35,6 @@ namespace Player.Inputs.MapWrappers
             
             GameControlsAsset.CameraMap.Enable();
         }
-
-        #endregion
-
-        #region Methods
         
         public void OnLook(InputAction.CallbackContext context)
         {

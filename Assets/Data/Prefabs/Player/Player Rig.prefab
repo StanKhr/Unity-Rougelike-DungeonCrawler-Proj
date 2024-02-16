@@ -892,7 +892,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8716253938063293545}
   - component: {fileID: 3891861548561481711}
-  - component: {fileID: 7019285585152430417}
   - component: {fileID: 2303922016997361826}
   - component: {fileID: 8268693446731087482}
   - component: {fileID: 3638788919930414831}
@@ -958,21 +957,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 8004213529870186386}
---- !u!114 &7019285585152430417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2316571057385300387}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3699f4c5e964044bbc9aa9bca394d9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scaleX: 1
-  _scaleY: 1
-  _speed: 6
 --- !u!114 &2303922016997361826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3088,6 +3072,7 @@ GameObject:
   - component: {fileID: 239337813571978507}
   - component: {fileID: 3971787739762373564}
   - component: {fileID: 8532380348470716387}
+  - component: {fileID: 4099798653576351727}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3247,6 +3232,19 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4099798653576351727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6242391721125187609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6048a4f75a91c1747a3e97cead72358d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: 19e5bbf524946cd499e8579a508ebb63, type: 2}
 --- !u!1 &6547245046344008971
 GameObject:
   m_ObjectHideFlags: 0
@@ -4103,7 +4101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cinemachineFreeLook: {fileID: 3891861548561481711}
   _cinemachineDeath: {fileID: 9046882563381258237}
-  _cinemachineExtensionFirstPersonInputs: {fileID: 7019285585152430417}
   _cinemachineImpulseSource: {fileID: 8268693446731087482}
 --- !u!1 &8498322046641280710
 GameObject:
