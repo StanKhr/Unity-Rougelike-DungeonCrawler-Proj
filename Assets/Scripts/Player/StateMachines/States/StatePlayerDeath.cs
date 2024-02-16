@@ -27,7 +27,6 @@ namespace Player.StateMachines.States
         public override void Enter()
         {
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
-            cameraWrapper.SetLookInputs(Vector2.zero);
             cameraWrapper.SetActiveCamera(ActiveCameraType.Death);
         }
 

@@ -60,11 +60,7 @@ namespace Player.StateMachines.States
 
         private void UpdateCameraLook(float deltaTime)
         {
-            var inputProvider = StateMachinePlayer.InputProvider;
-            var lookInputs = inputProvider.MapWrapperCamera.LookInputs;
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
-            
-            cameraWrapper.SetLookInputs(lookInputs);
             
             var locomotion = StateMachinePlayer.Locomotion;
             if (!locomotion.Grounded)

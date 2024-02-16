@@ -23,7 +23,6 @@ namespace Player.Cameras.Interfaces
 
         void SetActiveCamera(ActiveCameraType activeCameraType);
         void TickHeadBob(float magnitude, float deltaTime);
-        void SetLookInputs(Vector2 inputs);
 
         #endregion
     }

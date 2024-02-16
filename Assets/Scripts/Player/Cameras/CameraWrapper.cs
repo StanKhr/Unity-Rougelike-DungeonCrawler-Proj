@@ -30,7 +30,6 @@ namespace Player.Cameras
         [SerializeField] private CinemachineVirtualCamera _cinemachineDeath;
         
         [Header("References")]
-        [field: SerializeField] public CinemachineExtensionFirstPersonInputs _cinemachineExtensionFirstPersonInputs;
         [field: SerializeField] public CinemachineImpulseSource _cinemachineImpulseSource;
 
         #endregion
@@ -105,10 +104,6 @@ namespace Player.Cameras
             
             _cinemachineImpulseSource.GenerateImpulse();
             OnFootStepped?.Invoke();
-        }
-        public void SetLookInputs(Vector2 inputs)
-        {
-            _cinemachineExtensionFirstPersonInputs.ReceiveInputs(inputs);
         }
 
         #endregion
