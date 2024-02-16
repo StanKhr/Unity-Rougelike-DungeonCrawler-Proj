@@ -3244,7 +3244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6048a4f75a91c1747a3e97cead72358d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _material: {fileID: 2100000, guid: 19e5bbf524946cd499e8579a508ebb63, type: 2}
 --- !u!1 &6547245046344008971
 GameObject:
   m_ObjectHideFlags: 0
@@ -4255,8 +4254,8 @@ MonoBehaviour:
     m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
-    m_MinValue: -89
-    m_MaxValue: 89
+    m_MinValue: -45
+    m_MaxValue: 45
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0

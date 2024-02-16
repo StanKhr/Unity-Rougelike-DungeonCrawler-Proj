@@ -15,6 +15,7 @@ namespace FSM.Creatures.Interfaces
 
         #region Methods
 
+        void Resurrect();
         void ToFreeLookState();
         void ToDeathState();
 

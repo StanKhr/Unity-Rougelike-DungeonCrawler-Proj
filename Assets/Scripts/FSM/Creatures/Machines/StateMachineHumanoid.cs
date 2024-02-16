@@ -59,6 +59,16 @@ namespace FSM.Creatures.Machines
 
         #endregion
 
+        #region Methods
+        
+        public void Resurrect()
+        {
+            Health.SetValue(Health.MaxValue);
+            ToFreeLookState();
+        }
+
+        #endregion
+
         #region Abstract Methods
 
         public abstract void ToFreeLookState();
