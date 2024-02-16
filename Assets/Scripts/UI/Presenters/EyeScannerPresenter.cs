@@ -49,8 +49,8 @@ namespace UI.Presenters
 
         private void FillPopup(GameObject scannedObject)
         {
-            _context.gameObject.SetActive(scannedObject);
             _text.SetTextSmart(scannedObject ? scannedObject.name : string.Empty);
+            _context.gameObject.SetActive(scannedObject);
         }
 
         #endregion

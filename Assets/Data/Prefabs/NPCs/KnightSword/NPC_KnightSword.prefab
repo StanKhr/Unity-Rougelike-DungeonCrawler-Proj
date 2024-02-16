@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 1874072077404878237}
   - component: {fileID: 62193539630532152}
   - component: {fileID: 6331427975620954505}
+  - component: {fileID: 1699242613050725822}
+  - component: {fileID: 4235102361156619401}
   m_Layer: 7
   m_Name: NPC_KnightSword
   m_TagString: Untagged
@@ -87,7 +89,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2.5
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -114,6 +116,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1699242613050725822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853018127330601841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3f29bb08dd498594b36b3ec0ebe259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseValue: 100
+--- !u!114 &4235102361156619401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853018127330601841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b2784220744f878df8e7454b67b64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseValue: 10
 --- !u!1 &6854518714594591606
 GameObject:
   m_ObjectHideFlags: 0
