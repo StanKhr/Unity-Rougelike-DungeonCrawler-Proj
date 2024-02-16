@@ -20,12 +20,19 @@ namespace Props
         #region Editor Fields
 
         [SerializeField] private ColliderTrigger _colliderTrigger;
-
+        [SerializeField] private bool _singleUse;
+ 
         #endregion
 
         #region Properties
 
         private IColliderTrigger ColliderTrigger => _colliderTrigger;
+
+        #endregion
+
+        #region Fields
+
+        private bool _wasUsed;
 
         #endregion
 
@@ -49,6 +56,12 @@ namespace Props
         
         private void EnteredCallback(Collider obj)
         {
+            if (_singleUse && _wasUsed)
+            {
+                return;
+            }
+
+            _wasUsed = true;
             OnInteractionStarted?.Invoke(obj.gameObject);
         }
 

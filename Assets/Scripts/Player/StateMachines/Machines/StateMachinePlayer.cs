@@ -43,6 +43,11 @@ namespace Player.StateMachines.Machines
             SwitchState(new StatePlayerFreeLook(this));
         }
 
+        public override void ToDeathState()
+        {
+            SwitchState(new StatePlayerDeath(this));
+        }
+
         #endregion
     }
 }

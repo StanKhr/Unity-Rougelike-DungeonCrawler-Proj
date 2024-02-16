@@ -1,5 +1,6 @@
 ﻿using FSM.Main;
 using Miscellaneous;
+using Player.Cameras.Enums;
 using Player.StateMachines.Interfaces;
 using UnityEngine;
 
@@ -31,6 +32,9 @@ namespace Player.StateMachines.States
             inputProvider.MapWrapperMovement.EnableMap(true);
             inputProvider.MapWrapperMovement.OnJump += JumpCallback;
             inputProvider.CursorVisibility.SetVisibility(false);
+            
+            var cameraWrapper = StateMachinePlayer.CameraWrapper;
+            cameraWrapper.SetActiveCamera(ActiveCameraType.FreeLook);
         }
 
         public override void Exit()
