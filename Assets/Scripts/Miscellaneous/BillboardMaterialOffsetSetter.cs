@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Miscellaneous
 {
+    [Obsolete]
     public class BillboardMaterialOffsetSetter : MonoBehaviour
     {
         #region Constants
