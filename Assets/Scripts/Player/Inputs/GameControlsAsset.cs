@@ -56,7 +56,7 @@ namespace Scripts.Player.Inputs
                     ""id"": ""56f131a1-7276-4146-adec-7d507b2be6f5"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=100,y=100),DeltaTime"",
+                    ""processors"": ""DeltaTime,ScaleVector2(x=2000,y=2000)"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,

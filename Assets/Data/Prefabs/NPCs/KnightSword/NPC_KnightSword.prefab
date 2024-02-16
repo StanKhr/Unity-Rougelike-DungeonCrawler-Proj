@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1874072077404878237}
   - component: {fileID: 62193539630532152}
   - component: {fileID: 6331427975620954505}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NPC_KnightSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}

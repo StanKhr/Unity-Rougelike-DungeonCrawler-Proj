@@ -27,11 +27,11 @@ namespace UI.Presenters
         {
             StringBuilder.Clear();
             StringBuilder.Append("x: ");
-            StringBuilder.Append(_playerGps.X.ToString("F0"));
+            StringBuilder.Append(_playerGps.X.ToString("00"));
             StringBuilder.Append(" y: ");
-            StringBuilder.Append(_playerGps.Y.ToString("F0"));
+            StringBuilder.Append(_playerGps.Y.ToString("00"));
             StringBuilder.Append(" z: ");
-            StringBuilder.Append(_playerGps.Z.ToString("F0"));
+            StringBuilder.Append(_playerGps.Z.ToString("00"));
 
             _textMeshProUGUI.text = StringBuilder.ToString();
         }
