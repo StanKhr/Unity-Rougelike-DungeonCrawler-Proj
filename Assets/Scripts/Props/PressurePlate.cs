@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Props
 {
-    public class GroundButton : MonoBehaviour, IInteractable
+    public class PressurePlate : MonoBehaviour, IInteractable
     {
         #region Events
         

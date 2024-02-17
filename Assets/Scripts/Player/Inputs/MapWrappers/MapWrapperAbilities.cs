@@ -19,6 +19,7 @@ namespace Player.Inputs.MapWrappers
         #region Events
         
         public event Action OnTestInputPressed;
+        public event Action OnInteracted;
 
         #endregion
 
@@ -33,6 +34,16 @@ namespace Player.Inputs.MapWrappers
             }
             
             GameControlsAsset.AbilitiesMap.Enable();
+        }
+
+        void GameControlsAsset.IAbilitiesMapActions.OnInteract(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+            {
+                return;
+            }
+            
+            OnInteracted?.Invoke();
         }
 
         public void OnTest(InputAction.CallbackContext context)

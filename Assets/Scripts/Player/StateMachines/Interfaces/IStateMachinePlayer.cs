@@ -2,6 +2,7 @@
 using FSM.Creatures.Interfaces;
 using Player.Cameras.Interfaces;
 using Player.Inputs.Interfaces;
+using Player.Interfaces;
 
 namespace Player.StateMachines.Interfaces
 {
@@ -11,6 +12,7 @@ namespace Player.StateMachines.Interfaces
 
         IInputProvider InputProvider { get; }
         ICameraWrapper CameraWrapper { get; }
+        IEyeScanner EyeScanner { get; }
 
         #endregion
     }

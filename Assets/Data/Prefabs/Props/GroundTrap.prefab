@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d253386ce0a493184776dcffcf7d9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundButton: {fileID: 6908151008580224977}
+  _pressurePlate: {fileID: 8052172971962607570}
   _damage:
     <Value>k__BackingField: 20
     <DamageType>k__BackingField: 0
@@ -59,7 +59,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 261850602091089210, guid: 2999f4801c1ceda4c9b634a0aee48294, type: 3}
       propertyPath: m_Name
-      value: GroundButton
+      value: PressurePlate
       objectReference: {fileID: 0}
     - target: {fileID: 4142285510295993981, guid: 2999f4801c1ceda4c9b634a0aee48294, type: 3}
       propertyPath: m_LocalPosition.x
@@ -115,9 +115,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4142285510295993981, guid: 2999f4801c1ceda4c9b634a0aee48294, type: 3}
   m_PrefabInstance: {fileID: 7906559268274343124}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6908151008580224977 stripped
+--- !u!114 &8052172971962607570 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3631893057663585029, guid: 2999f4801c1ceda4c9b634a0aee48294, type: 3}
+  m_CorrespondingSourceObject: {fileID: 145994684467358470, guid: 2999f4801c1ceda4c9b634a0aee48294, type: 3}
   m_PrefabInstance: {fileID: 7906559268274343124}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

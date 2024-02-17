@@ -7,6 +7,7 @@ namespace Player.Inputs.Interfaces
         #region Events
 
         event Action OnTestInputPressed;
+        event Action OnInteracted;
 
         #endregion
     }

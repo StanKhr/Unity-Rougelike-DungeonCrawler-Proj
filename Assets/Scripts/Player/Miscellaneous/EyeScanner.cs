@@ -1,10 +1,11 @@
 ﻿using System;
 using Miscellaneous;
+using Player.Interfaces;
 using UnityEngine;
 
 namespace Player.Miscellaneous
 {
-    public class EyeScanner : MonoBehaviour
+    public class EyeScanner : MonoBehaviour, IEyeScanner
     {
         #region Events
 
@@ -28,10 +29,10 @@ namespace Player.Miscellaneous
 
         #region Properties
 
-        private GameObject Target
+        public GameObject Target
         {
             get => _target;
-            set
+            private set
             {
                 if (Target == value)
                 {

@@ -29,8 +29,12 @@ namespace Player.StateMachines.States
         {
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.MapWrapperCamera.EnableMap(true);
+            
             inputProvider.MapWrapperMovement.EnableMap(true);
             inputProvider.MapWrapperMovement.OnJump += JumpCallback;
+            
+            inputProvider.MapWrapperAbilities.EnableMap(true);
+            inputProvider.MapWrapperAbilities.OnInteracted += InteractedCallback;
             inputProvider.CursorVisibility.SetVisibility(false);
             
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
@@ -41,8 +45,12 @@ namespace Player.StateMachines.States
         {
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.MapWrapperCamera.EnableMap(false);
+            
             inputProvider.MapWrapperMovement.EnableMap(false);
             inputProvider.MapWrapperMovement.OnJump -= JumpCallback;
+            
+            inputProvider.MapWrapperAbilities.EnableMap(false);
+            inputProvider.MapWrapperAbilities.OnInteracted -= InteractedCallback;
             inputProvider.CursorVisibility.SetVisibility(true);
         }
 
@@ -50,6 +58,12 @@ namespace Player.StateMachines.States
         {
             UpdateCameraLook(deltaTime);
             UpdateLocomotion(deltaTime);
+        }
+
+        private void InteractedCallback()
+        {
+            var eyeScanner = StateMachinePlayer.EyeScanner;
+            LogWriter.DevelopmentLog($"Trying to interact with: {eyeScanner.Target}");
         }
 
         private void JumpCallback()

@@ -67,6 +67,11 @@ MonoBehaviour:
     m_Key: OBJ_arrow
     m_Metadata:
       m_Items: []
+  - m_Id: 12
+    m_Key: OBJ_groundButton
+    m_Metadata:
+      m_Items:
+      - rid: 8722672420781031428
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
@@ -110,3 +115,7 @@ MonoBehaviour:
       type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_CommentText: Verteidigung
+    - rid: 8722672420781031428
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: die

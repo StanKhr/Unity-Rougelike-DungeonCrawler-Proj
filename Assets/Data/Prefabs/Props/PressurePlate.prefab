@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 4142285510295993981}
   - component: {fileID: 2197360281847757856}
   - component: {fileID: 1793663458633161054}
-  - component: {fileID: 8666507107346029080}
-  - component: {fileID: 3631893057663585029}
   - component: {fileID: 4088854244418456065}
   - component: {fileID: 1021450196443293225}
+  - component: {fileID: 731765493605652878}
+  - component: {fileID: 145994684467358470}
   m_Layer: 8
-  m_Name: GroundButton
+  m_Name: PressurePlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,32 +72,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b42f6b744c4b409985db730ed0804d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8666507107346029080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261850602091089210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4792c69461343bb9638c6bc794142be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3631893057663585029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261850602091089210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622ef079129647f6b27070141d93dbc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colliderTrigger: {fileID: 1793663458633161054}
-  _singleUse: 0
 --- !u!114 &4088854244418456065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +100,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: 0cf9c050b4cac0b4ab31989a428ba914, type: 3}
+--- !u!114 &731765493605652878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261850602091089210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68f118b733449b28bcfaa528e73c839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizedString:
+    m_TableReference:
+      m_TableCollectionName: GUID:77543326267eca4498b80a366ea8594e
+    m_TableEntryReference:
+      m_KeyId: 12
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &145994684467358470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261850602091089210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622ef079129647f6b27070141d93dbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderTrigger: {fileID: 1793663458633161054}
+  _singleUse: 0
 --- !u!1 &1791741265052123369
 GameObject:
   m_ObjectHideFlags: 0

@@ -190,6 +190,15 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""bd019f92-0d7d-4e24-b376-4df943a47c68"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -201,6 +210,28 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""groups"": ""PC"",
                     ""action"": ""Test"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4c2ac91-843f-4534-a885-599e4dbc0948"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9051be3c-8ca1-49e6-ae7e-1822a9eab45f"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -247,6 +278,7 @@ namespace Scripts.Player.Inputs
             // AbilitiesMap
             m_AbilitiesMap = asset.FindActionMap("AbilitiesMap", throwIfNotFound: true);
             m_AbilitiesMap_Test = m_AbilitiesMap.FindAction("Test", throwIfNotFound: true);
+            m_AbilitiesMap_Interact = m_AbilitiesMap.FindAction("Interact", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -409,11 +441,13 @@ namespace Scripts.Player.Inputs
         private readonly InputActionMap m_AbilitiesMap;
         private List<IAbilitiesMapActions> m_AbilitiesMapActionsCallbackInterfaces = new List<IAbilitiesMapActions>();
         private readonly InputAction m_AbilitiesMap_Test;
+        private readonly InputAction m_AbilitiesMap_Interact;
         public struct AbilitiesMapActions
         {
             private @GameControlsAsset m_Wrapper;
             public AbilitiesMapActions(@GameControlsAsset wrapper) { m_Wrapper = wrapper; }
             public InputAction @Test => m_Wrapper.m_AbilitiesMap_Test;
+            public InputAction @Interact => m_Wrapper.m_AbilitiesMap_Interact;
             public InputActionMap Get() { return m_Wrapper.m_AbilitiesMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -426,6 +460,9 @@ namespace Scripts.Player.Inputs
                 @Test.started += instance.OnTest;
                 @Test.performed += instance.OnTest;
                 @Test.canceled += instance.OnTest;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
 
             private void UnregisterCallbacks(IAbilitiesMapActions instance)
@@ -433,6 +470,9 @@ namespace Scripts.Player.Inputs
                 @Test.started -= instance.OnTest;
                 @Test.performed -= instance.OnTest;
                 @Test.canceled -= instance.OnTest;
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
             }
 
             public void RemoveCallbacks(IAbilitiesMapActions instance)
@@ -480,6 +520,7 @@ namespace Scripts.Player.Inputs
         public interface IAbilitiesMapActions
         {
             void OnTest(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
         }
     }
 }

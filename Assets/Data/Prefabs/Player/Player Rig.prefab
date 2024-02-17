@@ -3421,7 +3421,7 @@ MonoBehaviour:
   _rayMaxDistance: 10
   _scannedLayers:
     serializedVersion: 2
-    m_Bits: 2753
+    m_Bits: 3009
 --- !u!1 &6547245046344008971
 GameObject:
   m_ObjectHideFlags: 0
@@ -4657,6 +4657,14 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2589817241990409658, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589817241990409658, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:77543326267eca4498b80a366ea8594e
+      objectReference: {fileID: 0}
     - target: {fileID: 3422952116655812106, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
@@ -4816,6 +4824,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2440888649355307301}
     m_Modifications:
     - target: {fileID: 2387627697339951175, guid: 782408980134efb4da21bbed16055e12, type: 3}
+      propertyPath: _eyeScanner
+      value: 
+      objectReference: {fileID: 734389047049311856}
+    - target: {fileID: 2387627697339951175, guid: 782408980134efb4da21bbed16055e12, type: 3}
       propertyPath: _cameraWrapper
       value: 
       objectReference: {fileID: 7503451069327625212}
@@ -4875,7 +4887,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6682550078090957082, guid: 782408980134efb4da21bbed16055e12, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4970,6 +4983,14 @@ PrefabInstance:
     - target: {fileID: 1067188639308347564, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589817241990409658, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589817241990409658, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:77543326267eca4498b80a366ea8594e
       objectReference: {fileID: 0}
     - target: {fileID: 3422952116655812106, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
       propertyPath: m_RaycastTarget
@@ -5148,6 +5169,14 @@ PrefabInstance:
     - target: {fileID: 1067188639308347564, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589817241990409658, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589817241990409658, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:77543326267eca4498b80a366ea8594e
       objectReference: {fileID: 0}
     - target: {fileID: 3422952116655812106, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
       propertyPath: m_RaycastTarget

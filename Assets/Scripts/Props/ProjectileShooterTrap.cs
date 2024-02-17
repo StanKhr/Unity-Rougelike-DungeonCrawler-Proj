@@ -10,14 +10,14 @@ namespace Props
         #region Editor Fields
 
         [SerializeField] private ProjectileRigidbody _projectile;
-        [SerializeField] private GroundButton _groundButton;
+        [SerializeField] private PressurePlate _pressurePlate;
         [SerializeField] private Transform _launchDummy;
 
         #endregion
 
         #region Properties
 
-        private IInteractable Interactable => _groundButton;
+        private IInteractable Interactable => _pressurePlate;
 
         #endregion
 

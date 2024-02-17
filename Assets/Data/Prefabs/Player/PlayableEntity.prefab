@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2045104704807305905}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7954160871361138970}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: AudioSources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1069766463981018020}
   - component: {fileID: 6010024798877288919}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 980811275861396023}
   - component: {fileID: 6550413042602277668}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2313101870215566791}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: HandLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125940605710718606}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: GroundScan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,13 +362,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.7
+  m_Height: 1.86
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.03
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.85, z: 0}
+  m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!114 &6768869772791888163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +447,7 @@ MonoBehaviour:
   _health: {fileID: 2200731330181941279}
   _inputProvider: {fileID: 0}
   _cameraWrapper: {fileID: 0}
+  _eyeScanner: {fileID: 0}
 --- !u!114 &6682550078090957082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7005291100331951964}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: CameraPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3518387138142196716}
   - component: {fileID: 2580270606072978410}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +621,7 @@ GameObject:
   - component: {fileID: 7127019220734218279}
   - component: {fileID: 3240495459890219159}
   - component: {fileID: 1142971804926124217}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: JumpFall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +699,7 @@ GameObject:
   - component: {fileID: 1481138189475518463}
   - component: {fileID: 5187243426625711570}
   - component: {fileID: 3103305396652381858}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: FootSteps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +761,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5004778033917090742}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -795,7 +796,7 @@ GameObject:
   - component: {fileID: 3509413017557765824}
   - component: {fileID: 2526243660601472392}
   - component: {fileID: 573257273036041456}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: 2D Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -921,7 +922,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8782624850786566108}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: HandRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 195382702001154533}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -988,7 +989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6355398284528767371}
   - component: {fileID: 7624205430124472985}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1037,7 +1038,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2167402796581087621}
   - component: {fileID: 6141010839929952566}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: AudioSourceEffects2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1182,7 +1183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6654548275207414697}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: Forward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1215,7 +1216,7 @@ GameObject:
   - component: {fileID: 3699580498660196406}
   - component: {fileID: 5509376063740643759}
   - component: {fileID: 176579050955669246}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: DamageFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,7 +1279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7161546547801001634}
   - component: {fileID: 7553281617566343327}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
