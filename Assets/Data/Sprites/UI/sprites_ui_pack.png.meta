@@ -248,6 +248,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: sprites_ui_pack_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066abfec4224876448769b04a99e9bb3
+      internalID: -1811612630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -265,6 +286,7 @@ TextureImporter:
       sprites_ui_pack_3: -776132675
       sprites_ui_pack_4: -740709686
       sprites_ui_pack_5: -1336540835
+      sprites_ui_pack_6: -1811612630
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

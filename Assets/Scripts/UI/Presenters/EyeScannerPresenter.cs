@@ -2,6 +2,7 @@
 using Miscellaneous;
 using Player.Miscellaneous;
 using TMPro;
+using UI.Enums;
 using UI.Interfaces;
 using UI.Utility;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace UI.Presenters
         [Header("Views")]
         [SerializeField] private RectTransform _popupContainer;
         [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] private CrosshairState _crosshairState;
 
         #endregion
 
@@ -56,6 +58,8 @@ namespace UI.Presenters
             
             _text.SetTextSmart(descriptionExists ? scanDescription.Name : string.Empty);
             _popupContainer.gameObject.SetActive(descriptionExists);
+            
+            _crosshairState.SelectCrosshair(descriptionExists ? CrosshairType.Highlighted : CrosshairType.Default);
         }
 
         #endregion
