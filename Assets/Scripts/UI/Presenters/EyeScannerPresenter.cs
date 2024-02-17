@@ -1,6 +1,7 @@
 ﻿using System;
 using Player.Miscellaneous;
 using TMPro;
+using UI.Interfaces;
 using UI.Utility;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace UI.Presenters
         [SerializeField] private EyeScanner _eyeScanner;
 
         [Header("Views")]
-        [SerializeField] private RectTransform _context;
+        [SerializeField] private RectTransform _popupContainer;
         [SerializeField] private TextMeshProUGUI _text;
 
         #endregion
@@ -39,7 +40,8 @@ namespace UI.Presenters
         
         private void TargetFoundCallback(GameObject context)
         {
-            FillPopup(context);
+            context.TryGetComponent<IScanDescription>(out var scanDescription);
+            FillPopup(scanDescription);
         }
 
         private void TargetLostCallback()
@@ -47,10 +49,12 @@ namespace UI.Presenters
             FillPopup(null);
         }
 
-        private void FillPopup(GameObject scannedObject)
+        private void FillPopup(IScanDescription scanDescription)
         {
-            _text.SetTextSmart(scannedObject ? scannedObject.name : string.Empty);
-            _context.gameObject.SetActive(scannedObject);
+            var descriptionExists = scanDescription != null;
+            
+            _text.SetTextSmart(descriptionExists ? scanDescription.Name : string.Empty);
+            _popupContainer.gameObject.SetActive(descriptionExists);
         }
 
         #endregion

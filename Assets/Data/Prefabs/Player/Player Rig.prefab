@@ -3307,7 +3307,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3063
+    m_Bits: 7159
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3418,7 +3418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067dc563b21245fea6adf5cc3c8013f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rayMaxDistance: 16
+  _rayMaxDistance: 10
   _scannedLayers:
     serializedVersion: 2
     m_Bits: 2753
@@ -3927,7 +3927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eyeScanner: {fileID: 734389047049311856}
-  _context: {fileID: 4437997022296770982}
+  _popupContainer: {fileID: 4437997022296770982}
   _text: {fileID: 4273357791321976789}
 --- !u!1 &7652998493975242507
 GameObject:
