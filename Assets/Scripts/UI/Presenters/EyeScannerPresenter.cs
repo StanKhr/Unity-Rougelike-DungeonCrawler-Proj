@@ -60,6 +60,13 @@ namespace UI.Presenters
             _popupContainer.gameObject.SetActive(descriptionExists);
             
             _crosshairState.SelectCrosshair(descriptionExists ? CrosshairType.Highlighted : CrosshairType.Default);
+            if (descriptionExists)
+            {
+                _crosshairState.SetColor(scanDescription.Color);
+                return;
+            }
+            
+            _crosshairState.ResetColor();
         }
 
         #endregion

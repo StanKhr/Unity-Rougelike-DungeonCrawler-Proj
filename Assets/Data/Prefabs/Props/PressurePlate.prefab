@@ -121,6 +121,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  _color: {r: 1, g: 1, b: 1, a: 1}
   references:
     version: 2
     RefIds: []

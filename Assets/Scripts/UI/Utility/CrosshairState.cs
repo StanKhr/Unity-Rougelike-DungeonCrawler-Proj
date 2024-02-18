@@ -1,47 +1,78 @@
 ﻿using System;
 using UI.Enums;
+using UI.Interfaces;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Utility
 {
     public class CrosshairState : MonoBehaviour
     {
+        #region Constants
+
+        private static readonly Color ColorBase = new Color(1f, 1f, 1f, 1f);
+
+        #endregion
+        
         #region Editor Fields
 
-        [SerializeField] private RectTransform _default;
-        [SerializeField] private RectTransform _highlighted;
+        [SerializeField] private Image _default;
+        [SerializeField] private Image _highlighted;
 
         #endregion
 
         #region Fields
 
-        private RectTransform _activeCrosshair;
+        private Image _activeCrosshair;
+        private Color _color;
 
         #endregion
 
         #region Properties
 
-        private RectTransform ActiveCrosshair
+        private Image ActiveCrosshair
         {
             get => _activeCrosshair;
             set
             {
-                if (_activeCrosshair == value)
+                if (ActiveCrosshair == value)
                 {
                     return;
                 }
                 
-                if (_activeCrosshair)
+                if (ActiveCrosshair)
                 {
-                    _activeCrosshair.gameObject.SetActive(false);
+                    ActiveCrosshair.gameObject.SetActive(false);
                 }
 
                 _activeCrosshair = value;
 
-                if (_activeCrosshair)
+                if (ActiveCrosshair)
                 {
-                    _activeCrosshair.gameObject.SetActive(true);
+                    ActiveCrosshair.gameObject.SetActive(true);
+                    ActiveCrosshair.color = Color;
                 }
+            }
+        }
+
+        private Color Color
+        {
+            get => _color;
+            set
+            {
+                if (Color == value)
+                {
+                    return;
+                }
+
+                _color = value;
+
+                if (!ActiveCrosshair)
+                {
+                    return;
+                }
+
+                ActiveCrosshair.color = Color;
             }
         }
 
@@ -75,6 +106,16 @@ namespace UI.Utility
                     ActiveCrosshair = null;
                     break;
             }
+        }
+
+        public void SetColor(Color color)
+        {
+            Color = color;
+        }
+
+        public void ResetColor()
+        {
+            Color = ColorBase;
         }
 
         #endregion
