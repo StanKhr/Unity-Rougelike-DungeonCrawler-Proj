@@ -18,9 +18,9 @@ namespace Abilities.Triggers
             }
 
             colliderTrigger.OnEntered += context =>
-                LogWriter.DevelopmentLog($"{context.name} enters trigger", LogType.Log, gameObject);
+                LogWriter.DevelopmentLog($"{context.name} enters trigger owned by {name}", LogType.Log, gameObject);
             colliderTrigger.OnLeft += context =>
-                LogWriter.DevelopmentLog($"{context.name} leaves trigger", LogType.Log, gameObject);
+                LogWriter.DevelopmentLog($"{context.name} leaves trigger owned by {name}", LogType.Log, gameObject);
         }
 #endif
 

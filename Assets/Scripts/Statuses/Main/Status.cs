@@ -21,7 +21,7 @@ namespace Statuses.Main
         
         #region Editor Fields
 
-        [SerializeField] private float _baseValue = 100;
+        [SerializeField] private float _baseValue;
 
         #endregion
 

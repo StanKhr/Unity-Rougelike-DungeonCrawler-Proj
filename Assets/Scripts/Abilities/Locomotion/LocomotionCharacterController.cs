@@ -11,6 +11,7 @@ namespace Abilities.Locomotion
 
         private const float GravityMaxForce = -100;
         private const float JumpConstScale = -3f;
+        private const float CoyoteTime = 0.3f;
 
         #endregion
 

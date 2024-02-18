@@ -1,5 +1,6 @@
 ﻿using System;
 using Abilities.Interfaces;
+using Miscellaneous;
 using UnityEngine;
 
 namespace Abilities.Triggers
@@ -8,8 +9,8 @@ namespace Abilities.Triggers
     {
         #region Events
         
-        public event Action<Collider> OnEntered;
-        public event Action<Collider> OnLeft;
+        public event DelegateHolder.ColliderEvents OnEntered;
+        public event DelegateHolder.ColliderEvents OnLeft;
 
         #endregion
         

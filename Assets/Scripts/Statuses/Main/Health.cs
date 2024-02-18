@@ -20,13 +20,15 @@ namespace Statuses.Main
             get => base.CurrentValue;
             protected set
             {
-                if (CurrentValue > 0f && value < CurrentValue)
+                var current = CurrentValue;
+
+                base.CurrentValue = value;
+                
+                if (current > 0f && value < current)
                 {
                     var damageAmount = CurrentValue - value;
                     OnDamaged?.Invoke(damageAmount);
                 }
-
-                base.CurrentValue = value;
             }
         }
 

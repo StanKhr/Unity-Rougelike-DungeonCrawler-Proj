@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-Russian (ru)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-Russian (ru)
+  m_Data:
+    m_SerializedData: []
+  m_GUID: e3b0dd7b275ec014b914f0d1941f07c1
+  m_SerializeEntries:
+  - m_GUID: 31364c8e9268c3349b9b317ba49daf34
+    m_Address: Objects_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6fedef96ddc0f0644b4e8319244c4050
+    m_Address: Labels_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 10b4bd8c01013f040baffbbc16cff091, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: be62994b26c2d8140af0d6c6b0bd55d6, type: 2}
+    - {fileID: 11400000, guid: 112d6bedf0d0f004da415c7e4b962c3c, type: 2}

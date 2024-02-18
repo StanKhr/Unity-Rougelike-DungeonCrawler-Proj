@@ -1,5 +1,6 @@
 ﻿using Abilities.Interfaces;
 using Statuses.Interfaces;
+using UnityEngine;
 
 namespace FSM.Creatures.Interfaces
 {
@@ -7,6 +8,7 @@ namespace FSM.Creatures.Interfaces
     {
         #region Properties
 
+        GameObject GameObject { get; }
         ILocomotion Locomotion { get; }
         IHealth Health { get; }
         IDamageable Damageable { get; }
@@ -15,7 +17,9 @@ namespace FSM.Creatures.Interfaces
 
         #region Methods
 
+        void Resurrect();
         void ToFreeLookState();
+        void ToDeathState();
 
         #endregion
     }

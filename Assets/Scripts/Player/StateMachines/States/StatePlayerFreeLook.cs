@@ -1,6 +1,8 @@
 ﻿using FSM.Main;
 using Miscellaneous;
+using Player.Cameras.Enums;
 using Player.StateMachines.Interfaces;
+using Props.Interfaces;
 using UnityEngine;
 
 namespace Player.StateMachines.States
@@ -28,17 +30,28 @@ namespace Player.StateMachines.States
         {
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.MapWrapperCamera.EnableMap(true);
+            
             inputProvider.MapWrapperMovement.EnableMap(true);
             inputProvider.MapWrapperMovement.OnJump += JumpCallback;
+            
+            inputProvider.MapWrapperAbilities.EnableMap(true);
+            inputProvider.MapWrapperAbilities.OnInteracted += InteractedCallback;
             inputProvider.CursorVisibility.SetVisibility(false);
+            
+            var cameraWrapper = StateMachinePlayer.CameraWrapper;
+            cameraWrapper.SetActiveCamera(ActiveCameraType.FreeLook);
         }
 
         public override void Exit()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.MapWrapperCamera.EnableMap(false);
+            
             inputProvider.MapWrapperMovement.EnableMap(false);
             inputProvider.MapWrapperMovement.OnJump -= JumpCallback;
+            
+            inputProvider.MapWrapperAbilities.EnableMap(false);
+            inputProvider.MapWrapperAbilities.OnInteracted -= InteractedCallback;
             inputProvider.CursorVisibility.SetVisibility(true);
         }
 
@@ -46,6 +59,23 @@ namespace Player.StateMachines.States
         {
             UpdateCameraLook(deltaTime);
             UpdateLocomotion(deltaTime);
+        }
+
+        private void InteractedCallback()
+        {
+            var eyeScanner = StateMachinePlayer.EyeScanner;
+            if (!eyeScanner.Target)
+            {
+                return;
+            }
+
+            if (!eyeScanner.Target.TryGetComponent<IUsable>(out var usable))
+            {
+                return;
+            }
+
+            usable.TryUse(StateMachinePlayer.GameObject);
+            // LogWriter.DevelopmentLog($"Trying to interact with: {eyeScanner.Target}");
         }
 
         private void JumpCallback()
@@ -56,11 +86,7 @@ namespace Player.StateMachines.States
 
         private void UpdateCameraLook(float deltaTime)
         {
-            var inputProvider = StateMachinePlayer.InputProvider;
-            var lookInputs = inputProvider.MapWrapperCamera.LookInputs;
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
-            
-            cameraWrapper.SetLookInputs(lookInputs);
             
             var locomotion = StateMachinePlayer.Locomotion;
             if (!locomotion.Grounded)

@@ -12,14 +12,14 @@ namespace Props
     {
         #region Editor Fields
 
-        [SerializeField] private GroundButton _groundButton;
+        [SerializeField] private PressurePlate _pressurePlate;
         [SerializeField] private Damage _damage;
 
         #endregion
 
         #region Properties
 
-        private IInteractable GroundButton => _groundButton;
+        private IInteractable PressurePlate => _pressurePlate;
 
         #endregion
 
@@ -27,12 +27,12 @@ namespace Props
 
         private void OnEnable()
         {
-            GroundButton.OnInteractionStarted += EnteredCallback;
+            PressurePlate.OnInteractionStarted += EnteredCallback;
         }
 
         private void OnDisable()
         {
-            GroundButton.OnInteractionStarted -= EnteredCallback;
+            PressurePlate.OnInteractionStarted -= EnteredCallback;
         }
 
         #endregion

@@ -2,7 +2,9 @@
 {
     public enum DamageType : int
     {
-        Physical = 0,
+        MeleeSlash = 0,
+        MeleeBonk,
+        Arrow,
         Fire,
         Poison,
         Explosion,

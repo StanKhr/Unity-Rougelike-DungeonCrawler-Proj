@@ -14,9 +14,9 @@ TagManager:
   - Walkable
   - Unit
   - Trigger
-  - 
-  - 
-  - 
+  - Projectile
+  - 2D
+  - Interactable
   - 
   - 
   - 

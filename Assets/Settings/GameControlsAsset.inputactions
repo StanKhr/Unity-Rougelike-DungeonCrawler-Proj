@@ -32,7 +32,7 @@
                     "id": "56f131a1-7276-4146-adec-7d507b2be6f5",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "ScaleVector2(x=2500,y=2500),DeltaTime",
+                    "processors": "DeltaTime,ScaleVector2(x=3000,y=3000)",
                     "groups": "Gamepad",
                     "action": "Look",
                     "isComposite": false,
@@ -149,6 +149,65 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "AbilitiesMap",
+            "id": "f2611154-399e-4351-99d6-3feb379b9b12",
+            "actions": [
+                {
+                    "name": "Test",
+                    "type": "Button",
+                    "id": "95caf3e0-119d-4154-b9e9-1b3c78597406",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "bd019f92-0d7d-4e24-b376-4df943a47c68",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "45bb819c-3830-46e3-b3fb-60c11ef6aa8c",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Test",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4c2ac91-843f-4534-a885-599e4dbc0948",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9051be3c-8ca1-49e6-ae7e-1822a9eab45f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

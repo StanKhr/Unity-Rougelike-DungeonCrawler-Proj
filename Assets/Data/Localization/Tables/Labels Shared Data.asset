@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Labels Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Labels
+  m_TableCollectionNameGuidString: 109a4cbef6266054a8d04f0e40dd8117
+  m_Entries:
+  - m_Id: 1
+    m_Key: NAME_darkKnight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2
+    m_Key: NAME_toxicSnake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3
+    m_Key: NAME_mimicChest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4
+    m_Key: NAME_skeletonWarrior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5
+    m_Key: NAME_skeletonArcher
+    m_Metadata:
+      m_Items:
+      - rid: 8722672420731224074
+  - m_Id: 6
+    m_Key: NAME_skeleton
+    m_Metadata:
+      m_Items:
+      - rid: 8722672420731224075
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8722672420731224073
+  references:
+    version: 2
+    RefIds:
+    - rid: 8722672420731224073
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1708135436678
+    - rid: 8722672420731224074
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: der
+    - rid: 8722672420731224075
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: der
