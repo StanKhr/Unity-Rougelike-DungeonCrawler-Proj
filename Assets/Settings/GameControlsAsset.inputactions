@@ -32,7 +32,7 @@
                     "id": "56f131a1-7276-4146-adec-7d507b2be6f5",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "DeltaTime,ScaleVector2(x=2000,y=2000)",
+                    "processors": "DeltaTime,ScaleVector2(x=3000,y=3000)",
                     "groups": "Gamepad",
                     "action": "Look",
                     "isComposite": false,

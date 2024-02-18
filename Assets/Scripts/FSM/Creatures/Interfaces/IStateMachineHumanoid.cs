@@ -1,5 +1,6 @@
 ﻿using Abilities.Interfaces;
 using Statuses.Interfaces;
+using UnityEngine;
 
 namespace FSM.Creatures.Interfaces
 {
@@ -7,6 +8,7 @@ namespace FSM.Creatures.Interfaces
     {
         #region Properties
 
+        GameObject GameObject { get; }
         ILocomotion Locomotion { get; }
         IHealth Health { get; }
         IDamageable Damageable { get; }

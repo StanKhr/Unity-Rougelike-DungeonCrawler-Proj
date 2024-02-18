@@ -2,6 +2,7 @@
 using Miscellaneous;
 using Player.Cameras.Enums;
 using Player.StateMachines.Interfaces;
+using Props.Interfaces;
 using UnityEngine;
 
 namespace Player.StateMachines.States
@@ -63,7 +64,18 @@ namespace Player.StateMachines.States
         private void InteractedCallback()
         {
             var eyeScanner = StateMachinePlayer.EyeScanner;
-            LogWriter.DevelopmentLog($"Trying to interact with: {eyeScanner.Target}");
+            if (!eyeScanner.Target)
+            {
+                return;
+            }
+
+            if (!eyeScanner.Target.TryGetComponent<IUsable>(out var usable))
+            {
+                return;
+            }
+
+            usable.TryUse(StateMachinePlayer.GameObject);
+            // LogWriter.DevelopmentLog($"Trying to interact with: {eyeScanner.Target}");
         }
 
         private void JumpCallback()

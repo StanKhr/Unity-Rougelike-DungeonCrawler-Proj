@@ -20,6 +20,7 @@ namespace FSM.Creatures.Machines
 
         #region Properties
 
+        public GameObject GameObject => gameObject;
         public ILocomotion Locomotion => _locomotionCharacterController;
         public IHealth Health => _health;
         public IDamageable Damageable => _health;
