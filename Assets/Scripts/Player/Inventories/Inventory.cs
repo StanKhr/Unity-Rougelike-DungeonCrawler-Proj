@@ -2,6 +2,7 @@
 using System.Linq;
 using Miscellaneous;
 using Player.Interfaces;
+using Player.Inventories.Datas;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
 using UnityEngine;
@@ -12,13 +13,17 @@ namespace Player.Inventories
     {
         #region Constants
 
-        private const int InventorySize = 24;
-
         #endregion
 
         #region Fields
 
-        private readonly InventorySlot[] _slots = new InventorySlot[InventorySize];
+        private readonly SlotsData _slots = new SlotsData();
+
+        #endregion
+
+        #region Properties
+
+        public SlotsData Slots => _slots;
 
         #endregion
 
@@ -34,13 +39,12 @@ namespace Player.Inventories
             var testGuid = "6d37904db7290ee428c658a90968e6e5";
             var item = ItemDatabase.Instance.GetFromGuid(testGuid);
             TryAdd(item as IItem);
-            
-            _slots.ToList().ForEach(slot => LogWriter.DevelopmentLog($"Slot's item: {slot.Item}"));
         }
 
         #endregion
 
         #region Public Methods
+
 
         public bool HasItemOfType(IItem item, out int slotIndex)
         {
@@ -70,31 +74,28 @@ namespace Player.Inventories
             {
                 if (_slots[i].IsEmpty)
                 {
-                    SetSlot(i, item);
+                    _slots.SetSlot(i, item);
                     return true;
                 }
             }
             return false;
         }
 
-        #endregion
-
-        #region Methods
-        
-        private void SetSlot(int index, IItem item)
+        public bool TryDrop(IItem item)
         {
-            if (!ValidateSlotIndex(index))
+            if (!HasItemOfType(item, out var slotIndex))
             {
-                LogWriter.DevelopmentLog($"Slot index is invalid: {index.ToString()}", LogType.Warning, gameObject);
-                return;
+                return false;
             }
             
-            _slots[index] = new InventorySlot(item);
+            _slots.SetSlot(slotIndex, null);
+
+            return true;
         }
 
-        private bool ValidateSlotIndex(int index)
+        public bool TryDrop(int slotIndex)
         {
-            return index is >= 0 and < InventorySize;
+            return false;
         }
 
         #endregion

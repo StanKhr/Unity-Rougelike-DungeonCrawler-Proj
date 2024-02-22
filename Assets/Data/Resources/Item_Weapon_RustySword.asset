@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1a7d99af3e441c9298b308c15b3203, type: 3}
   m_Name: Item_Weapon_RustySword
   m_EditorClassIdentifier: 
-  _guid: e3fa3f6c7afe32643ab97c53fe54acaf
+  _guid: 6d37904db7290ee428c658a90968e6e5
   _icon: {fileID: 1713590855, guid: 30f3128a4ad7f5e46bc99229df0b16df, type: 3}
+  _weaponHandSprite: {fileID: 0}
