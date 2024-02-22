@@ -5,6 +5,8 @@ using Player.Cameras.Interfaces;
 using Player.Inputs;
 using Player.Inputs.Interfaces;
 using Player.Interfaces;
+using Player.Inventories;
+using Player.Inventories.Interfaces;
 using Player.Miscellaneous;
 using Player.StateMachines.Interfaces;
 using Player.StateMachines.States;
@@ -19,6 +21,7 @@ namespace Player.StateMachines.Machines
         [SerializeField] private InputProvider _inputProvider;
         [SerializeField] private CameraWrapper _cameraWrapper;
         [SerializeField] private EyeScanner _eyeScanner;
+        [SerializeField] private Inventory _inventory;
 
         #endregion
         
@@ -27,6 +30,7 @@ namespace Player.StateMachines.Machines
         public IInputProvider InputProvider => _inputProvider;
         public ICameraWrapper CameraWrapper => _cameraWrapper;
         public IEyeScanner EyeScanner => _eyeScanner;
+        public IInventory Inventory => _inventory;
 
         #endregion
 

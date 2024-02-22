@@ -13,6 +13,12 @@ namespace UI.Utility
         [SerializeField] private RectTransform _selection;
 
         #endregion
+
+        #region Unity Callbacks
+
+        
+
+        #endregion
         
         #region Methods
         

@@ -24,14 +24,14 @@ namespace UI.Presenters
 
         #region Unity Callbacks
 
-        private void OnEnable()
+        private void Start()
         {
             FillPopup(null);
             _eyeScanner.OnTargetFound += TargetFoundCallback;
             _eyeScanner.OnTargetLost += TargetLostCallback;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _eyeScanner.OnTargetFound -= TargetFoundCallback;
             _eyeScanner.OnTargetLost -= TargetLostCallback;
