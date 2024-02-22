@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _guid: 6d37904db7290ee428c658a90968e6e5
   _icon: {fileID: 1713590855, guid: 30f3128a4ad7f5e46bc99229df0b16df, type: 3}
-  _weaponHandSprite: {fileID: 0}
+  <WeaponHandSprite>k__BackingField: {fileID: -1388549182, guid: cd4769eb3ba62c54b8e782695d0362fb, type: 3}

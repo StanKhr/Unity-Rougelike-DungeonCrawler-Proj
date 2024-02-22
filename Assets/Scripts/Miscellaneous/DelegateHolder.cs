@@ -12,6 +12,7 @@ namespace Miscellaneous
         public delegate void FloatEvents(float context);
         public delegate void IntEvents(int context);
         public delegate void ItemEvents(IItem context);
+        public delegate void WeaponEvents(IWeapon context);
 
         #endregion
     }

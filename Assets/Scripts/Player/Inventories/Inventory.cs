@@ -2,6 +2,7 @@
 using Player.Inventories.Datas;
 using Player.Inventories.Interfaces;
 using Props.Interfaces;
+using UnityEditor;
 using UnityEngine;
 
 namespace Player.Inventories
@@ -30,16 +31,24 @@ namespace Player.Inventories
 
         #region Unity Callbacks
 
-        private void Start()
-        {
-            TestMethod();
-        }
-
-        private void TestMethod()
+        [ContextMenu("Test add sword")]
+        private void TestAddEquipSword()
         {
             var testGuid = "6d37904db7290ee428c658a90968e6e5";
             var item = ItemDatabase.Instance.GetFromGuid(testGuid);
             TryAdd(item as IItem);
+        }
+
+        [ContextMenu("Test use sword")]
+        private void TestUnequipSword()
+        {
+            var testGuid = "6d37904db7290ee428c658a90968e6e5";
+            var item = ItemDatabase.Instance.GetFromGuid(testGuid);
+            
+            if (HasItemOfType(item, out int slotIndex))
+            {
+                TryUse(slotIndex);
+            }
         }
 
         #endregion
