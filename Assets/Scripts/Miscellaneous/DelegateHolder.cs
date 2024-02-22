@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Player.Inventories.Interfaces;
+using UnityEngine;
 
 namespace Miscellaneous
 {
@@ -10,6 +11,7 @@ namespace Miscellaneous
         public delegate void ColliderEvents(Collider context);
         public delegate void FloatEvents(float context);
         public delegate void IntEvents(int context);
+        public delegate void ItemEvents(IItem context);
 
         #endregion
     }

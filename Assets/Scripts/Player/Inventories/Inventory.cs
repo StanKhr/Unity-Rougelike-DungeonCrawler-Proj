@@ -1,17 +1,19 @@
-﻿using System;
-using System.Linq;
-using Miscellaneous;
-using Player.Interfaces;
+﻿using Miscellaneous;
 using Player.Inventories.Datas;
 using Player.Inventories.Interfaces;
-using Player.Inventories.Items;
+using Props.Interfaces;
 using UnityEngine;
 
 namespace Player.Inventories
 {
     public class Inventory : MonoBehaviour, IInventory
     {
-        #region Constants
+        #region Events
+        
+        public event DelegateHolder.ItemEvents OnItemAdded;
+        public event DelegateHolder.ItemEvents OnItemDropped;
+        public event DelegateHolder.ItemEvents OnItemUsed;
+        public event DelegateHolder.ItemEvents OnItemEquipped;
 
         #endregion
 
@@ -22,7 +24,6 @@ namespace Player.Inventories
         #endregion
 
         #region Properties
-
         public SlotsData Slots => _slots;
 
         #endregion
@@ -87,15 +88,40 @@ namespace Player.Inventories
             {
                 return false;
             }
-            
-            _slots.SetSlot(slotIndex, null);
 
-            return true;
+            return TryDrop(slotIndex);
         }
 
         public bool TryDrop(int slotIndex)
         {
-            return false;
+            if (_slots[slotIndex].IsEmpty)
+            {
+                return false;
+            }
+
+            var item = _slots[slotIndex].Item;
+            if (!_slots.SetSlot(slotIndex, null))
+            {
+                return false;
+            }
+            
+            OnItemDropped?.Invoke(item);
+            return true;
+        }
+
+        public bool TryUse(int slotIndex)
+        {
+            if (_slots[slotIndex].IsEmpty)
+            {
+                return false;
+            }
+            
+            if (_slots[slotIndex].Item is not IUsable usable)
+            {
+                return false;
+            }
+
+            return usable.TryUse(gameObject);
         }
 
         #endregion

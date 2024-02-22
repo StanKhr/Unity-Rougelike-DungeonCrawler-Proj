@@ -10,11 +10,11 @@ namespace Player.Inventories.Datas
         #region Constants
 
         private const int InventorySize = 24;
-        
+
         #endregion
 
         #region Events
-        
+
         public event DelegateHolder.IntEvents OnSlotUpdated;
 
         #endregion
@@ -29,14 +29,22 @@ namespace Player.Inventories.Datas
 
         public InventorySlot this[int index]
         {
-            get => _slots[index];
+            get
+            {
+                if (!ValidateIndex(index))
+                {
+                    return InventorySlot.CreateEmptySlot();
+                }
+
+                return _slots[index];
+            }
             private set
             {
                 if (_slots[index] == value)
                 {
                     return;
                 }
-                
+
                 _slots[index] = value;
                 OnSlotUpdated?.Invoke(index);
             }
@@ -59,7 +67,7 @@ namespace Player.Inventories.Datas
 
         public bool SetSlot(int index, IItem item)
         {
-            if (index < 0 || index >= _slots.Length)
+            if (!ValidateIndex(index))
             {
                 return false;
             }
@@ -69,6 +77,11 @@ namespace Player.Inventories.Datas
             return true;
         }
 
-        #endregion
+        private bool ValidateIndex(int index)
+        {
+            return index is >= 0 and < InventorySize;
+        }
     }
+
+    #endregion
 }

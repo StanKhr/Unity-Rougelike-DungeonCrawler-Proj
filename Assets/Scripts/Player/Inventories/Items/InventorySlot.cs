@@ -30,6 +30,21 @@ namespace Player.Inventories.Items
         #endregion
 
         #region Operators
+        
+        public bool Equals(InventorySlot other)
+        {
+            return Equals(Item, other.Item);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is InventorySlot other && Equals(other);
+        }
+
+        public override int GetHashCode()
+        {
+            return (Item != null ? Item.GetHashCode() : 0);
+        }
 
         public static bool operator ==(InventorySlot a, InventorySlot b)
         {

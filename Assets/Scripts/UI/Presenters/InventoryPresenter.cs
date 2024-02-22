@@ -1,6 +1,7 @@
 ﻿using System;
 using Miscellaneous;
 using Player.Inventories;
+using Player.Inventories.Interfaces;
 using UnityEngine;
 
 namespace UI.Presenters
@@ -13,18 +14,26 @@ namespace UI.Presenters
 
         #endregion
 
+        #region Properties
+
+        private IInventory Inventory => _inventory;
+
+        #endregion
+
         #region Unity Callbacks
 
         private void Start()
         {
             InitializeSlots();
             
-            _inventory.Slots.OnSlotUpdated += SlotUpdatedCallback;
+            Inventory.Slots.OnSlotUpdated += SlotUpdatedCallback;
+            Inventory.OnItemDropped += ItemDroppedCallback;
         }
 
         private void OnDestroy()
         {
-            _inventory.Slots.OnSlotUpdated -= SlotUpdatedCallback;
+            Inventory.Slots.OnSlotUpdated -= SlotUpdatedCallback;
+            Inventory.OnItemDropped -= ItemDroppedCallback;
         }
 
         #endregion
@@ -34,7 +43,7 @@ namespace UI.Presenters
         private void InitializeSlots()
         {
             // update all slot views according to inventory
-            var slots = _inventory.Slots;
+            var slots = Inventory.Slots;
             
             for (int i = 0; i < slots.Length; i++)
             {
@@ -46,6 +55,11 @@ namespace UI.Presenters
         {
             // update related slot view
             LogWriter.DevelopmentLog($"Inventory slot updated: {context.ToString()}");
+        }
+
+        private void ItemDroppedCallback(IItem context)
+        {
+            LogWriter.DevelopmentLog($"Item: {context} was dropped from the inventory!");
         }
 
         #endregion
