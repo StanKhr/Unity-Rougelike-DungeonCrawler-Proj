@@ -385,9 +385,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 6610891149360071957}
   _locomotionData:
-    <Speed>k__BackingField: 5
+    <Speed>k__BackingField: 100
     <JumpPower>k__BackingField: 1
     <GravityScale>k__BackingField: 10
+    <AccelerationGround>k__BackingField: 1
+    <AccelerationAir>k__BackingField: 1
   _groundScanner:
     _groundScanDummy: {fileID: 2125940605710718606}
     _walkableLayers:
