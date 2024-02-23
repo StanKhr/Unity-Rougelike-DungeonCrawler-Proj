@@ -18,17 +18,19 @@ namespace UI.StateMachines.States
         
         public override void Enter()
         {
-            LogWriter.DevelopmentLog($"Entered gameplay state");
+            var inputProvider = StateMachineUI.InputProvider;
+            
+            inputProvider.MapWrapperCamera.EnableMap(true);
+            inputProvider.MapWrapperMovement.EnableMap(true);
+            
         }
 
         public override void Exit()
         {
+            var inputProvider = StateMachineUI.InputProvider;
             
-        }
-
-        public override void Tick(float deltaTime)
-        {
-            
+            inputProvider.MapWrapperCamera.EnableMap(false);
+            inputProvider.MapWrapperMovement.EnableMap(false);
         }
 
         #endregion

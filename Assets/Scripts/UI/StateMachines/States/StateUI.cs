@@ -16,7 +16,17 @@ namespace UI.StateMachines.States
 
         #region Properties
 
-        private IStateMachineUI StateMachineUI { get; }
+        protected IStateMachineUI StateMachineUI { get; }
+        public override bool TickEnabled => false;
+
+        #endregion
+
+        #region Methods
+
+        public override void Tick(float deltaTime)
+        {
+            
+        }
 
         #endregion
     }

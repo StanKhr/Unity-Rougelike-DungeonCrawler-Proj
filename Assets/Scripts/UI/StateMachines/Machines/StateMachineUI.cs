@@ -1,4 +1,7 @@
 ﻿using FSM.Main;
+using Player.Inputs;
+using Player.Inputs.Interfaces;
+using UI.Presenters;
 using UI.StateMachines.Interfaces;
 using UI.StateMachines.States;
 using UnityEngine;
@@ -9,13 +12,15 @@ namespace UI.StateMachines.Machines
     {
         #region Editor Fields
 
-        [SerializeField] private RectTransform _inventoryPresenter;
+        [SerializeField] private InputProvider _inputProvider;
+        [SerializeField] private InventoryPresenter _inventoryPresenter;
 
         #endregion
 
         #region Properties
-        
-        
+
+        public IInputProvider InputProvider => _inputProvider;
+        public InventoryPresenter InventoryPresenter => _inventoryPresenter;
 
         #endregion
 

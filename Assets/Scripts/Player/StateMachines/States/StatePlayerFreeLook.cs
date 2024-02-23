@@ -29,9 +29,6 @@ namespace Player.StateMachines.States
         public override void Enter()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            inputProvider.MapWrapperCamera.EnableMap(true);
-            
-            inputProvider.MapWrapperMovement.EnableMap(true);
             inputProvider.MapWrapperMovement.OnJump += JumpCallback;
             
             inputProvider.MapWrapperAbilities.EnableMap(true);
