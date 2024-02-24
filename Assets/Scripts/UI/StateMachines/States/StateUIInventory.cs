@@ -21,6 +21,7 @@ namespace UI.StateMachines.States
             inventoryPresenter.ActivateObjectSelf(true);
             
             SetInventoryCallback(InventoryInputCallback, true);
+            SetPauseMenuCallback(InventoryInputCallback, true);
         }
 
         public override void Exit()
@@ -29,6 +30,7 @@ namespace UI.StateMachines.States
             inventoryPresenter.ActivateObjectSelf(false);
             
             SetInventoryCallback(InventoryInputCallback, false);
+            SetPauseMenuCallback(InventoryInputCallback, false);
         }
 
         private void InventoryInputCallback()

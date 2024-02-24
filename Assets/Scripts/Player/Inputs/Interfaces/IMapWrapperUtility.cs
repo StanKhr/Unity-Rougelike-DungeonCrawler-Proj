@@ -7,6 +7,7 @@ namespace Player.Inputs.Interfaces
         #region Events
 
         event Action OnInventory;
+        event Action OnPauseMenu;
 
         #endregion
     }

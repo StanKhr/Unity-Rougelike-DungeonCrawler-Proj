@@ -342,6 +342,15 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""30ffcaee-e2d8-4f99-a0ed-946c74a5336d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -353,6 +362,28 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""groups"": ""PC"",
                     ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a27f58e0-3f86-4c7f-9301-3120f7cc33dc"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57e698b9-e992-4f5b-9497-8c6d832c6eaa"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -406,6 +437,7 @@ namespace Scripts.Player.Inputs
             // UtilityMap
             m_UtilityMap = asset.FindActionMap("UtilityMap", throwIfNotFound: true);
             m_UtilityMap_OpenInventory = m_UtilityMap.FindAction("OpenInventory", throwIfNotFound: true);
+            m_UtilityMap_PauseMenu = m_UtilityMap.FindAction("PauseMenu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -646,11 +678,13 @@ namespace Scripts.Player.Inputs
         private readonly InputActionMap m_UtilityMap;
         private List<IUtilityMapActions> m_UtilityMapActionsCallbackInterfaces = new List<IUtilityMapActions>();
         private readonly InputAction m_UtilityMap_OpenInventory;
+        private readonly InputAction m_UtilityMap_PauseMenu;
         public struct UtilityMapActions
         {
             private @GameControlsAsset m_Wrapper;
             public UtilityMapActions(@GameControlsAsset wrapper) { m_Wrapper = wrapper; }
             public InputAction @OpenInventory => m_Wrapper.m_UtilityMap_OpenInventory;
+            public InputAction @PauseMenu => m_Wrapper.m_UtilityMap_PauseMenu;
             public InputActionMap Get() { return m_Wrapper.m_UtilityMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -663,6 +697,9 @@ namespace Scripts.Player.Inputs
                 @OpenInventory.started += instance.OnOpenInventory;
                 @OpenInventory.performed += instance.OnOpenInventory;
                 @OpenInventory.canceled += instance.OnOpenInventory;
+                @PauseMenu.started += instance.OnPauseMenu;
+                @PauseMenu.performed += instance.OnPauseMenu;
+                @PauseMenu.canceled += instance.OnPauseMenu;
             }
 
             private void UnregisterCallbacks(IUtilityMapActions instance)
@@ -670,6 +707,9 @@ namespace Scripts.Player.Inputs
                 @OpenInventory.started -= instance.OnOpenInventory;
                 @OpenInventory.performed -= instance.OnOpenInventory;
                 @OpenInventory.canceled -= instance.OnOpenInventory;
+                @PauseMenu.started -= instance.OnPauseMenu;
+                @PauseMenu.performed -= instance.OnPauseMenu;
+                @PauseMenu.canceled -= instance.OnPauseMenu;
             }
 
             public void RemoveCallbacks(IUtilityMapActions instance)
@@ -725,6 +765,7 @@ namespace Scripts.Player.Inputs
         public interface IUtilityMapActions
         {
             void OnOpenInventory(InputAction.CallbackContext context);
+            void OnPauseMenu(InputAction.CallbackContext context);
         }
     }
 }

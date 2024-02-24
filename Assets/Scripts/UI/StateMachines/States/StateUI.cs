@@ -1,5 +1,7 @@
 ﻿using System;
 using FSM.Main;
+using Player.Inputs;
+using Player.Inputs.Interfaces;
 using UI.StateMachines.Interfaces;
 
 namespace UI.StateMachines.States
@@ -18,6 +20,7 @@ namespace UI.StateMachines.States
         #region Properties
 
         protected IStateMachineUI StateMachineUI { get; }
+        private IInputProvider InputProvider => StateMachineUI.InputProvider;
         public override bool TickEnabled => false;
 
         #endregion
@@ -31,21 +34,30 @@ namespace UI.StateMachines.States
 
         protected void EnableGameplayInputs(bool enable)
         {
-            var inputProvider = StateMachineUI.InputProvider;
-            
-            inputProvider.Camera.EnableMap(enable);
-            inputProvider.Movement.EnableMap(enable);
+            InputProvider.Camera.EnableMap(enable);
+            InputProvider.Movement.EnableMap(enable);
         }
+        
         protected void SetInventoryCallback(Action callback, bool subscribe)
         {
-            var inputProvider = StateMachineUI.InputProvider;
             if (subscribe)
             {
-                inputProvider.Utility.OnInventory += callback;
+                InputProvider.Utility.OnInventory += callback;
                 return;
             }
             
-            inputProvider.Utility.OnInventory -= callback;
+            InputProvider.Utility.OnInventory -= callback;
+        }
+
+        protected void SetPauseMenuCallback(Action callback, bool subscribe)
+        {
+            if (subscribe)
+            {
+                InputProvider.Utility.OnPauseMenu += callback;
+                return;
+            }
+            
+            InputProvider.Utility.OnPauseMenu -= callback;
         }
 
         #endregion

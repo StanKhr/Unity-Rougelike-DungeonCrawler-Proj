@@ -20,6 +20,7 @@ namespace Player.Inputs.MapWrappers
         #region Events
 
         public event Action OnInventory;
+        public event Action OnPauseMenu;
 
         #endregion
 
@@ -44,6 +45,16 @@ namespace Player.Inputs.MapWrappers
             }
             
             OnInventory?.Invoke();
+        }
+
+        void GameControlsAsset.IUtilityMapActions.OnPauseMenu(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+            {
+                return;
+            }
+            
+            OnPauseMenu?.Invoke();
         }
 
         #endregion
