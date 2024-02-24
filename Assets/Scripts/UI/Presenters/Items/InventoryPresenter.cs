@@ -50,6 +50,25 @@ namespace UI.Presenters.Items
 
         #endregion
 
+        #region Public Methods
+        
+        public void DropItem()
+        {
+            if (!_selectedSlotPresenter)
+            {
+                return;
+            }
+
+            if (!Inventory.TryDrop(_selectedSlotPresenter.SlotIndex))
+            {
+                return;
+            }
+            
+            UpdateDescriptionPopup(_selectedSlotPresenter);
+        }
+
+        #endregion
+
         #region Methods
 
         private void InitializeSlots()
@@ -66,8 +85,6 @@ namespace UI.Presenters.Items
         
         private void SlotUpdatedCallback(int context)
         {
-            // update related slot view
-
             var slot = Inventory.Slots[context];
             FillSlotPresenter(context, slot);
         }
@@ -86,8 +103,7 @@ namespace UI.Presenters.Items
         private void SlotSelectedCallback(InventorySlotPresenter context)
         {
             _selectedSlotPresenter = context;
-            var slot = Inventory.Slots[context.SlotIndex];
-            _itemDescriptionPopup.FillDescription(slot.Item);
+            UpdateDescriptionPopup(context);
         }
 
         private void SlotUsedCallback(InventorySlotPresenter context)
@@ -95,14 +111,10 @@ namespace UI.Presenters.Items
             Inventory.TryUse(context.SlotIndex);
         }
 
-        public void DropItem()
+        private void UpdateDescriptionPopup(InventorySlotPresenter slotPresenter)
         {
-            if (!_selectedSlotPresenter)
-            {
-                return;
-            }
-            
-            Inventory.TryDrop(_selectedSlotPresenter.SlotIndex);
+            var slot = Inventory.Slots[slotPresenter.SlotIndex];
+            _itemDescriptionPopup.FillDescription(slot.Item);
         }
 
         #endregion
