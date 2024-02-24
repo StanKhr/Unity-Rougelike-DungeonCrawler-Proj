@@ -1,6 +1,7 @@
 ﻿using Player.Interfaces;
 using Player.Inventories.Interfaces;
 using Props.Interfaces;
+using UI.Utility;
 using UnityEngine;
 
 namespace Player.Inventories.Items
@@ -11,6 +12,14 @@ namespace Player.Inventories.Items
         #region Editor Fields
 
         [field: SerializeField] public Sprite WeaponHandSprite { get; private set; }
+        [field: SerializeField] public float AttackValue { get; private set; }
+        [field: SerializeField] public float SpeedValue { get; private set; }
+
+        #endregion
+
+        #region Properties
+
+        public override string Description => ItemDescriptionBuilder.Instance.Build(base.Description, this);
 
         #endregion
         

@@ -7,6 +7,8 @@ namespace Player.Inventories.Interfaces
         #region Properties
 
         Sprite WeaponHandSprite { get; }
+        float AttackValue { get; }
+        float SpeedValue { get; }
 
         #endregion
     }

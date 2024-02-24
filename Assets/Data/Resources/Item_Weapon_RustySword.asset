@@ -14,4 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _guid: 6d37904db7290ee428c658a90968e6e5
   _icon: {fileID: 1713590855, guid: 30f3128a4ad7f5e46bc99229df0b16df, type: 3}
+  _name:
+    m_TableReference:
+      m_TableCollectionName: GUID:0b16142d2ef10d84497e540277a52ce6
+    m_TableEntryReference:
+      m_KeyId: 1
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:0b16142d2ef10d84497e540277a52ce6
+    m_TableEntryReference:
+      m_KeyId: 2
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   <WeaponHandSprite>k__BackingField: {fileID: -1388549182, guid: cd4769eb3ba62c54b8e782695d0362fb, type: 3}
+  <AttackValue>k__BackingField: 5
+  <SpeedValue>k__BackingField: 30
+  references:
+    version: 2
+    RefIds: []

@@ -8,6 +8,7 @@ namespace Player.Inventories.Interfaces
 
         string Guid { get; }
         Sprite Icon { get; }
+        string Description { get; }
 
         #endregion
     }

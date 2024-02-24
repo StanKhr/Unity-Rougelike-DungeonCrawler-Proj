@@ -47,6 +47,11 @@ namespace Player.Inventories.Datas
 
                 _slots[index] = value;
                 OnSlotUpdated?.Invoke(index);
+
+                if (value.Item != null)
+                {
+                    LogWriter.DevelopmentLog($"Slot updated: {value.Item}; {value.Item.Description}");
+                }
             }
         }
 
