@@ -42,6 +42,11 @@ namespace UI.StateMachines.Machines
             SwitchState(new StateUIGameplay(this));
         }
 
+        public void ToInventoryState()
+        {
+            SwitchState(new StateUIInventory(this));
+        }
+
         #endregion
     }
 }

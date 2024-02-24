@@ -29,10 +29,10 @@ namespace Player.StateMachines.States
         public override void Enter()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            inputProvider.MapWrapperMovement.OnJump += JumpCallback;
+            inputProvider.Movement.OnJump += JumpCallback;
             
-            inputProvider.MapWrapperAbilities.EnableMap(true);
-            inputProvider.MapWrapperAbilities.OnInteracted += InteractedCallback;
+            inputProvider.Abilities.EnableMap(true);
+            inputProvider.Abilities.OnInteracted += InteractedCallback;
             inputProvider.CursorVisibility.SetVisibility(false);
             
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
@@ -42,13 +42,13 @@ namespace Player.StateMachines.States
         public override void Exit()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            inputProvider.MapWrapperCamera.EnableMap(false);
+            inputProvider.Camera.EnableMap(false);
             
-            inputProvider.MapWrapperMovement.EnableMap(false);
-            inputProvider.MapWrapperMovement.OnJump -= JumpCallback;
+            inputProvider.Movement.EnableMap(false);
+            inputProvider.Movement.OnJump -= JumpCallback;
             
-            inputProvider.MapWrapperAbilities.EnableMap(false);
-            inputProvider.MapWrapperAbilities.OnInteracted -= InteractedCallback;
+            inputProvider.Abilities.EnableMap(false);
+            inputProvider.Abilities.OnInteracted -= InteractedCallback;
             inputProvider.CursorVisibility.SetVisibility(true);
         }
 
@@ -82,9 +82,9 @@ namespace Player.StateMachines.States
         private void UpdateLocomotion(float deltaTime)
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            var walking = inputProvider.MapWrapperMovement.Walking;
-            var crouching = inputProvider.MapWrapperMovement.Crouching;
-            var sprinting = inputProvider.MapWrapperMovement.Sprinting;
+            var walking = inputProvider.Movement.Walking;
+            var crouching = inputProvider.Movement.Crouching;
+            var sprinting = inputProvider.Movement.Sprinting;
             
             var locomotion = StateMachinePlayer.Locomotion;
             locomotion.Walking = walking;
@@ -114,8 +114,8 @@ namespace Player.StateMachines.States
             forward.Normalize();
             right.Normalize();
 
-            var x = inputProvider.MapWrapperMovement.MoveInputs.x;
-            var y = inputProvider.MapWrapperMovement.MoveInputs.y;
+            var x = inputProvider.Movement.MoveInputs.x;
+            var y = inputProvider.Movement.MoveInputs.y;
             
             return (forward * y + right * x).normalized;
         }

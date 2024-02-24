@@ -16,6 +16,7 @@ namespace UI.StateMachines.Interfaces
         #region Methods
 
         void ToGameplayState();
+        void ToInventoryState();
 
         #endregion
     }

@@ -305,6 +305,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UtilityMap",
+            "id": "a02b093d-934a-4754-bfca-99cd0ac8942d",
+            "actions": [
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "24681a29-5487-43c0-8779-8869f1367730",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0f9bb9e6-9345-4ca3-874a-5d66b3200375",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

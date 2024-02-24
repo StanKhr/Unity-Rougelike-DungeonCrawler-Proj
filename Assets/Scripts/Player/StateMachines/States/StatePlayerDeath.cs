@@ -30,15 +30,15 @@ namespace Player.StateMachines.States
             cameraWrapper.SetActiveCamera(ActiveCameraType.Death);
 
             var inputProvider = StateMachinePlayer.InputProvider;
-            inputProvider.MapWrapperAbilities.EnableMap(true);
-            inputProvider.MapWrapperAbilities.OnTestInputPressed += TestInputPressedCallback;
+            inputProvider.Abilities.EnableMap(true);
+            inputProvider.Abilities.OnTestInputPressed += TestInputPressedCallback;
         }
 
         public override void Exit()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            inputProvider.MapWrapperAbilities.EnableMap(false);
-            inputProvider.MapWrapperAbilities.OnTestInputPressed -= TestInputPressedCallback;
+            inputProvider.Abilities.EnableMap(false);
+            inputProvider.Abilities.OnTestInputPressed -= TestInputPressedCallback;
         }
 
         public override void Tick(float deltaTime)

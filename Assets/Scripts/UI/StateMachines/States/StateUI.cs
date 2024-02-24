@@ -1,4 +1,5 @@
-﻿using FSM.Main;
+﻿using System;
+using FSM.Main;
 using UI.StateMachines.Interfaces;
 
 namespace UI.StateMachines.States
@@ -26,6 +27,25 @@ namespace UI.StateMachines.States
         public override void Tick(float deltaTime)
         {
             
+        }
+
+        protected void EnableGameplayInputs(bool enable)
+        {
+            var inputProvider = StateMachineUI.InputProvider;
+            
+            inputProvider.Camera.EnableMap(enable);
+            inputProvider.Movement.EnableMap(enable);
+        }
+        protected void SetInventoryCallback(Action callback, bool subscribe)
+        {
+            var inputProvider = StateMachineUI.InputProvider;
+            if (subscribe)
+            {
+                inputProvider.Utility.OnInventory += callback;
+                return;
+            }
+            
+            inputProvider.Utility.OnInventory -= callback;
         }
 
         #endregion

@@ -329,6 +329,34 @@ namespace Scripts.Player.Inputs
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UtilityMap"",
+            ""id"": ""a02b093d-934a-4754-bfca-99cd0ac8942d"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""24681a29-5487-43c0-8779-8869f1367730"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0f9bb9e6-9345-4ca3-874a-5d66b3200375"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -375,6 +403,9 @@ namespace Scripts.Player.Inputs
             m_AbilitiesMap = asset.FindActionMap("AbilitiesMap", throwIfNotFound: true);
             m_AbilitiesMap_Test = m_AbilitiesMap.FindAction("Test", throwIfNotFound: true);
             m_AbilitiesMap_Interact = m_AbilitiesMap.FindAction("Interact", throwIfNotFound: true);
+            // UtilityMap
+            m_UtilityMap = asset.FindActionMap("UtilityMap", throwIfNotFound: true);
+            m_UtilityMap_OpenInventory = m_UtilityMap.FindAction("OpenInventory", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -610,6 +641,52 @@ namespace Scripts.Player.Inputs
             }
         }
         public AbilitiesMapActions @AbilitiesMap => new AbilitiesMapActions(this);
+
+        // UtilityMap
+        private readonly InputActionMap m_UtilityMap;
+        private List<IUtilityMapActions> m_UtilityMapActionsCallbackInterfaces = new List<IUtilityMapActions>();
+        private readonly InputAction m_UtilityMap_OpenInventory;
+        public struct UtilityMapActions
+        {
+            private @GameControlsAsset m_Wrapper;
+            public UtilityMapActions(@GameControlsAsset wrapper) { m_Wrapper = wrapper; }
+            public InputAction @OpenInventory => m_Wrapper.m_UtilityMap_OpenInventory;
+            public InputActionMap Get() { return m_Wrapper.m_UtilityMap; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UtilityMapActions set) { return set.Get(); }
+            public void AddCallbacks(IUtilityMapActions instance)
+            {
+                if (instance == null || m_Wrapper.m_UtilityMapActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_UtilityMapActionsCallbackInterfaces.Add(instance);
+                @OpenInventory.started += instance.OnOpenInventory;
+                @OpenInventory.performed += instance.OnOpenInventory;
+                @OpenInventory.canceled += instance.OnOpenInventory;
+            }
+
+            private void UnregisterCallbacks(IUtilityMapActions instance)
+            {
+                @OpenInventory.started -= instance.OnOpenInventory;
+                @OpenInventory.performed -= instance.OnOpenInventory;
+                @OpenInventory.canceled -= instance.OnOpenInventory;
+            }
+
+            public void RemoveCallbacks(IUtilityMapActions instance)
+            {
+                if (m_Wrapper.m_UtilityMapActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IUtilityMapActions instance)
+            {
+                foreach (var item in m_Wrapper.m_UtilityMapActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_UtilityMapActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public UtilityMapActions @UtilityMap => new UtilityMapActions(this);
         private int m_PCSchemeIndex = -1;
         public InputControlScheme PCScheme
         {
@@ -644,6 +721,10 @@ namespace Scripts.Player.Inputs
         {
             void OnTest(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
+        }
+        public interface IUtilityMapActions
+        {
+            void OnOpenInventory(InputAction.CallbackContext context);
         }
     }
 }

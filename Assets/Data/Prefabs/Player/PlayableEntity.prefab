@@ -387,7 +387,7 @@ MonoBehaviour:
   _characterController: {fileID: 6610891149360071957}
   _locomotionData:
     <RunSpeed>k__BackingField: 7
-    <SprintMultiplier>k__BackingField: 1.8
+    <SprintMultiplier>k__BackingField: 1.6
     <CrouchMultiplier>k__BackingField: 0.6
     <WalkMultiplier>k__BackingField: 0.4
     <MotionChangeRateGround>k__BackingField: 6

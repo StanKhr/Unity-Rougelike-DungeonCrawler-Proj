@@ -26,7 +26,7 @@ namespace Player.Miscellaneous
 
         private void Update()
         {
-            var lookAxis = InputProvider.MapWrapperCamera.LookInputs;
+            var lookAxis = InputProvider.Camera.LookInputs;
 
             lookAxis.x = Mathf.Clamp(lookAxis.x, -_maxHorizontal, _maxHorizontal);
             lookAxis.y = Mathf.Clamp(lookAxis.y, -_maxVertical, _maxVertical);

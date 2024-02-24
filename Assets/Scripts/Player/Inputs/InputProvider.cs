@@ -17,9 +17,10 @@ namespace Player.Inputs
         #region Fields
 
         private GameControlsAsset _gameControlsAsset;
-        private MapWrapperCamera _mapWrapperCamera;
-        private MapWrapperMovement _mapWrapperMovement;
-        private MapWrapperAbilities _mapWrapperAbilities;
+        private MapWrapperCamera _camera;
+        private MapWrapperMovement _movement;
+        private MapWrapperAbilities _abilities;
+        private MapWrapperUtility _utility;
         private CursorVisibility _cursorVisibility;
 
         #endregion
@@ -27,11 +28,13 @@ namespace Player.Inputs
         #region Properties
 
         private GameControlsAsset GameControlsAsset => _gameControlsAsset ??= new GameControlsAsset();
-        public IMapWrapperCamera MapWrapperCamera => _mapWrapperCamera ??= new MapWrapperCamera(GameControlsAsset);
-        public IMapWrapperMovement MapWrapperMovement =>
-            _mapWrapperMovement ??= new MapWrapperMovement(GameControlsAsset);
-        public IMapWrapperAbilities MapWrapperAbilities =>
-            _mapWrapperAbilities ??= new MapWrapperAbilities(GameControlsAsset);
+        public IMapWrapperCamera Camera => _camera ??= new MapWrapperCamera(GameControlsAsset);
+        public IMapWrapperMovement Movement =>
+            _movement ??= new MapWrapperMovement(GameControlsAsset);
+        public IMapWrapperAbilities Abilities =>
+            _abilities ??= new MapWrapperAbilities(GameControlsAsset);
+
+        public IMapWrapperUtility Utility => _utility ??= new MapWrapperUtility(GameControlsAsset);
         public ICursorVisibility CursorVisibility => _cursorVisibility ??= new CursorVisibility();
 
         #endregion

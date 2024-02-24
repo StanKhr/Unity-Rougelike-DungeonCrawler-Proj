@@ -18,19 +18,19 @@ namespace UI.StateMachines.States
         
         public override void Enter()
         {
-            var inputProvider = StateMachineUI.InputProvider;
-            
-            inputProvider.MapWrapperCamera.EnableMap(true);
-            inputProvider.MapWrapperMovement.EnableMap(true);
-            
+            EnableGameplayInputs(true);
+            SetInventoryCallback(InventoryInputCallback, true);
         }
 
         public override void Exit()
         {
-            var inputProvider = StateMachineUI.InputProvider;
-            
-            inputProvider.MapWrapperCamera.EnableMap(false);
-            inputProvider.MapWrapperMovement.EnableMap(false);
+            EnableGameplayInputs(false);
+            SetInventoryCallback(InventoryInputCallback, false);
+        }
+
+        private void InventoryInputCallback()
+        {
+            StateMachineUI.ToInventoryState();
         }
 
         #endregion
