@@ -13,6 +13,7 @@ namespace Player.StateMachines.Interfaces
         IInputProvider InputProvider { get; }
         ICameraWrapper CameraWrapper { get; }
         IEyeScanner EyeScanner { get; }
+        IFootStepsTracker FootStepsTracker { get; }
 
         #endregion
     }

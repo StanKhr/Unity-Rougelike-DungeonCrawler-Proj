@@ -85,6 +85,33 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f2b256c-1b96-43fc-bd75-a07c7d76d424"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""818c783b-680a-4496-8366-5d1e4a7058a5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Walk"",
+                    ""type"": ""Button"",
+                    ""id"": ""f89ef67c-e8a3-4e8b-b39b-a5f77a46d22b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -173,6 +200,72 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab0a870d-53af-4b0f-9e7a-6c4f22f1511e"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3c4e346-dd95-44da-9530-8b9ec4c00623"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13b66186-bc73-4391-8798-2ba3cf6438cb"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ae09671-a360-40d2-8744-2073f849024c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc52bc08-7bf6-4526-acf5-174d2fc8eb68"",
+                    ""path"": ""<Keyboard>/capsLock"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Walk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""59188e91-adef-44ce-bed9-195d7adff6ac"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Walk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -275,6 +368,9 @@ namespace Scripts.Player.Inputs
             m_MovementMap = asset.FindActionMap("MovementMap", throwIfNotFound: true);
             m_MovementMap_Move = m_MovementMap.FindAction("Move", throwIfNotFound: true);
             m_MovementMap_Jump = m_MovementMap.FindAction("Jump", throwIfNotFound: true);
+            m_MovementMap_Crouch = m_MovementMap.FindAction("Crouch", throwIfNotFound: true);
+            m_MovementMap_Sprint = m_MovementMap.FindAction("Sprint", throwIfNotFound: true);
+            m_MovementMap_Walk = m_MovementMap.FindAction("Walk", throwIfNotFound: true);
             // AbilitiesMap
             m_AbilitiesMap = asset.FindActionMap("AbilitiesMap", throwIfNotFound: true);
             m_AbilitiesMap_Test = m_AbilitiesMap.FindAction("Test", throwIfNotFound: true);
@@ -388,12 +484,18 @@ namespace Scripts.Player.Inputs
         private List<IMovementMapActions> m_MovementMapActionsCallbackInterfaces = new List<IMovementMapActions>();
         private readonly InputAction m_MovementMap_Move;
         private readonly InputAction m_MovementMap_Jump;
+        private readonly InputAction m_MovementMap_Crouch;
+        private readonly InputAction m_MovementMap_Sprint;
+        private readonly InputAction m_MovementMap_Walk;
         public struct MovementMapActions
         {
             private @GameControlsAsset m_Wrapper;
             public MovementMapActions(@GameControlsAsset wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_MovementMap_Move;
             public InputAction @Jump => m_Wrapper.m_MovementMap_Jump;
+            public InputAction @Crouch => m_Wrapper.m_MovementMap_Crouch;
+            public InputAction @Sprint => m_Wrapper.m_MovementMap_Sprint;
+            public InputAction @Walk => m_Wrapper.m_MovementMap_Walk;
             public InputActionMap Get() { return m_Wrapper.m_MovementMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -409,6 +511,15 @@ namespace Scripts.Player.Inputs
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Crouch.started += instance.OnCrouch;
+                @Crouch.performed += instance.OnCrouch;
+                @Crouch.canceled += instance.OnCrouch;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
+                @Walk.started += instance.OnWalk;
+                @Walk.performed += instance.OnWalk;
+                @Walk.canceled += instance.OnWalk;
             }
 
             private void UnregisterCallbacks(IMovementMapActions instance)
@@ -419,6 +530,15 @@ namespace Scripts.Player.Inputs
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
+                @Crouch.started -= instance.OnCrouch;
+                @Crouch.performed -= instance.OnCrouch;
+                @Crouch.canceled -= instance.OnCrouch;
+                @Sprint.started -= instance.OnSprint;
+                @Sprint.performed -= instance.OnSprint;
+                @Sprint.canceled -= instance.OnSprint;
+                @Walk.started -= instance.OnWalk;
+                @Walk.performed -= instance.OnWalk;
+                @Walk.canceled -= instance.OnWalk;
             }
 
             public void RemoveCallbacks(IMovementMapActions instance)
@@ -516,6 +636,9 @@ namespace Scripts.Player.Inputs
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnCrouch(InputAction.CallbackContext context);
+            void OnSprint(InputAction.CallbackContext context);
+            void OnWalk(InputAction.CallbackContext context);
         }
         public interface IAbilitiesMapActions
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Miscellaneous;
 using Player.Inputs.Interfaces;
 using Scripts.Player.Inputs;
@@ -17,6 +18,12 @@ namespace Player.Inputs.MapWrappers
         }
 
         #endregion
+        
+        #region Constants
+
+        private const float GamepadMoveWalkMaxVelocity = 0.5f;
+
+        #endregion
 
         #region Events
         
@@ -26,6 +33,9 @@ namespace Player.Inputs.MapWrappers
 
         #region Properties
         public Vector2 MoveInputs { get; private set; }
+        public bool Sprinting { get; private set; }
+        public bool Crouching { get; private set; }
+        public bool Walking { get; private set; }
 
         #endregion
 
@@ -45,6 +55,8 @@ namespace Player.Inputs.MapWrappers
         void GameControlsAsset.IMovementMapActions.OnMove(InputAction.CallbackContext context)
         {
             MoveInputs = context.ReadValue<Vector2>();
+
+            // Walking = MoveInputs.sqrMagnitude <= GamepadMoveWalkMaxVelocity;
         }
 
         void GameControlsAsset.IMovementMapActions.OnJump(InputAction.CallbackContext context)
@@ -55,6 +67,48 @@ namespace Player.Inputs.MapWrappers
             }
             
             OnJump?.Invoke();
+        }
+
+        void GameControlsAsset.IMovementMapActions.OnCrouch(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                Crouching = true;
+                return;
+            }
+
+            if (context.canceled)
+            {
+                Crouching = false;
+            }
+        }
+
+        void GameControlsAsset.IMovementMapActions.OnSprint(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                Sprinting = true;
+                return;
+            }
+
+            if (context.canceled)
+            {
+                Sprinting = false;
+            }
+        }
+
+        public void OnWalk(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                Walking = true;
+                return;
+            }
+
+            if (context.canceled)
+            {
+                Walking = false;
+            }
         }
 
         #endregion

@@ -1,16 +1,16 @@
-﻿using Audio.ClipSelectors;
-using Player.Cameras;
+﻿using System;
+using Cinemachine;
 using Player.Cameras.Interfaces;
 using UnityEngine;
 
-namespace Audio.Triggers
+namespace Player.Cameras
 {
-    public class AudioTriggerFootSteps : AudioTrigger
+    public class HeadBob : MonoBehaviour
     {
         #region Editor Fields
 
         [SerializeField] private FootStepsTracker _footStepsTracker;
-        [SerializeField] private ClipSelector _clipSelector;
+        [SerializeField] private CinemachineImpulseSource _cinemachineImpulseSource;
 
         #endregion
 
@@ -22,12 +22,12 @@ namespace Audio.Triggers
 
         #region Unity Callbacks
 
-        private void OnEnable()
+        private void Start()
         {
             FootStepsTracker.OnStepMade += StepMadeCallback;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             FootStepsTracker.OnStepMade -= StepMadeCallback;
         }
@@ -36,9 +36,10 @@ namespace Audio.Triggers
 
         #region Methods
 
+
         private void StepMadeCallback()
         {
-            _clipSelector.TryOneShotAudioSource(AudioSource);
+            _cinemachineImpulseSource.GenerateImpulse();
         }
 
         #endregion

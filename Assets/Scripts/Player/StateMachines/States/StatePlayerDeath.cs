@@ -45,8 +45,8 @@ namespace Player.StateMachines.States
         {
             var locomotion = StateMachinePlayer.Locomotion;
             
-            locomotion.SetTargetDirection(Vector3.zero);
-            locomotion.TickMovement(deltaTime);
+            locomotion.SetTargetMotion(Vector3.zero);
+            locomotion.TickMotion(deltaTime);
         }
 
         private void TestInputPressedCallback()

@@ -22,6 +22,7 @@ namespace Player.StateMachines.Machines
         [SerializeField] private CameraWrapper _cameraWrapper;
         [SerializeField] private EyeScanner _eyeScanner;
         [SerializeField] private Inventory _inventory;
+        [SerializeField] private FootStepsTracker _footStepsTracker;
 
         #endregion
         
@@ -30,6 +31,7 @@ namespace Player.StateMachines.Machines
         public IInputProvider InputProvider => _inputProvider;
         public ICameraWrapper CameraWrapper => _cameraWrapper;
         public IEyeScanner EyeScanner => _eyeScanner;
+        public IFootStepsTracker FootStepsTracker => _footStepsTracker;
         public IInventory Inventory => _inventory;
 
         #endregion
