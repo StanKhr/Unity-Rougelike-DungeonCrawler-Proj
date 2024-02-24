@@ -18,7 +18,7 @@ namespace UI.StateMachines.States
         public override void Enter()
         {
             var inventoryPresenter = StateMachineUI.InventoryPresenter;
-            inventoryPresenter.ActivateObjectSelf(true);
+            inventoryPresenter.gameObject.SetActiveSmart(true);
             
             SetInventoryCallback(InventoryInputCallback, true);
             SetPauseMenuCallback(InventoryInputCallback, true);
@@ -27,7 +27,7 @@ namespace UI.StateMachines.States
         public override void Exit()
         {
             var inventoryPresenter = StateMachineUI.InventoryPresenter;
-            inventoryPresenter.ActivateObjectSelf(false);
+            inventoryPresenter.gameObject.SetActiveSmart(false);
             
             SetInventoryCallback(InventoryInputCallback, false);
             SetPauseMenuCallback(InventoryInputCallback, false);

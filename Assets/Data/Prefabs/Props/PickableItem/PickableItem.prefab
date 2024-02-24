@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 327040741761626477}
+  - component: {fileID: 5067665766726704525}
   - component: {fileID: 1490039252261905792}
   - component: {fileID: 7474100358732333166}
   - component: {fileID: 4106804869915387519}
   - component: {fileID: 1479313490756464134}
-  - component: {fileID: 5067665766726704525}
   - component: {fileID: 8637181950590147689}
   m_Layer: 11
   m_Name: PickableItem
@@ -38,6 +38,27 @@ Transform:
   - {fileID: 6452841742103926537}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &5067665766726704525
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476333365877369250}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d12186babc30c1846b793bd0f6074d3b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!135 &1490039252261905792
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -109,27 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ac7f5f50da4777b24525cff7bc5eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &5067665766726704525
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476333365877369250}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d12186babc30c1846b793bd0f6074d3b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &8637181950590147689
 MonoBehaviour:
   m_ObjectHideFlags: 0

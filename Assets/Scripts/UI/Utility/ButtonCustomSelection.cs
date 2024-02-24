@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace UI.Utility
 {
@@ -13,7 +15,15 @@ namespace UI.Utility
 
         #region Unity Callbacks
 
-        
+        private void OnEnable()
+        {
+            if (EventSystem.current.currentSelectedGameObject != gameObject)
+            {
+                return;
+            }
+            
+            ActivateSelection(true);
+        }
 
         #endregion
         
@@ -21,22 +31,22 @@ namespace UI.Utility
         
         public void OnSelect(BaseEventData eventData)
         {
-            if (!Application.isPlaying)
-            {
-                return;
-            }
-            
-            _selection.gameObject.SetActive(true);
+            ActivateSelection(true);
         }
 
         public void OnDeselect(BaseEventData eventData)
+        {
+            ActivateSelection(false);
+        }
+
+        private void ActivateSelection(bool activate)
         {
             if (!Application.isPlaying)
             {
                 return;
             }
-
-            _selection.gameObject.SetActive(false);
+            
+            _selection.gameObject.SetActiveSmart(activate);
         }
 
         #endregion
