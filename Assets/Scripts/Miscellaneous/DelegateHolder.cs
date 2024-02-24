@@ -1,4 +1,6 @@
 ﻿using Player.Inventories.Interfaces;
+using Player.Inventories.Items;
+using UI.Presenters.Inventory;
 using UnityEngine;
 
 namespace Miscellaneous
@@ -13,6 +15,7 @@ namespace Miscellaneous
         public delegate void IntEvents(int context);
         public delegate void ItemEvents(IItem context);
         public delegate void WeaponEvents(IWeapon context);
+        public delegate void InventorySlotPresenterEvents(InventorySlotPresenter context);
 
         #endregion
     }

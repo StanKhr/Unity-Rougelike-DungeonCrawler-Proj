@@ -26,6 +26,7 @@ namespace Player.Inventories.Interfaces
         bool TryAdd(IItem item);
         bool TryDrop(IItem item);
         bool TryDrop(int slotIndex);
+        bool TryUse(int slotIndex);
 
         #endregion
     }

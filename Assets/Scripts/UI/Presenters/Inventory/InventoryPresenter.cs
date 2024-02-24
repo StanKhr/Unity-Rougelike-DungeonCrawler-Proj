@@ -31,12 +31,14 @@ namespace UI.Presenters.Inventory
         {
             InitializeSlots();
             
+            InventorySlotPresenter.OnUsed += SlotUsedCallback;
             Inventory.Slots.OnSlotUpdated += SlotUpdatedCallback;
             // Inventory.OnItemDropped += ItemDroppedCallback;
         }
 
         private void OnDestroy()
         {
+            InventorySlotPresenter.OnUsed -= SlotUsedCallback;
             Inventory.Slots.OnSlotUpdated -= SlotUpdatedCallback;
             // Inventory.OnItemDropped -= ItemDroppedCallback;
         }
@@ -51,6 +53,7 @@ namespace UI.Presenters.Inventory
 
             for (int i = 0; i < _slots.Length; i++)
             {
+                _slots[i].SlotIndex = i;
                 var slot = Inventory.Slots[i];
                 FillSlotPresenter(i, slot);
             }
@@ -73,6 +76,11 @@ namespace UI.Presenters.Inventory
             }
             
             _slots[slotIndex].TryUpdateCorrespondingSlot(slot);
+        }
+
+        private void SlotUsedCallback(InventorySlotPresenter context)
+        {
+            Inventory.TryUse(context.SlotIndex);
         }
 
         // private void ItemDroppedCallback(IItem context)
