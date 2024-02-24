@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous.Interfaces;
 using Player.Inventories.Interfaces;
 using Props.Common;
 using UnityEngine;
@@ -11,12 +12,20 @@ namespace Player.Inventories.Items
 
         [SerializeField] private Inventory _inventory;
         [SerializeField] private PickableItem _pickableItemPrefab;
+        [SerializeField] private float _throwForce = 100;
 
         #endregion
 
+        #region Fields
+
+        private Camera _camera;
+
+        #endregion
+        
         #region Properties
 
         private IInventory Inventory => _inventory;
+        private Camera MainCamera => _camera ??= Camera.main;
 
         #endregion
 
@@ -41,6 +50,17 @@ namespace Player.Inventories.Items
             var position = transform.position;
             var instance = Instantiate(_pickableItemPrefab, position, Quaternion.identity);
             instance.OverrideItem(context);
+
+            if (!instance.TryGetComponent<IForceApplier>(out var forceApplier))
+            {
+                return;
+            }
+
+            var cameraForward = MainCamera.transform.forward;
+            cameraForward.y = 0f;
+            cameraForward.Normalize();
+            
+            forceApplier.ApplyForce(cameraForward * _throwForce);
         }
 
         #endregion

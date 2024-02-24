@@ -81,6 +81,17 @@ namespace UI.Presenters.Items
                 var slot = Inventory.Slots[i];
                 FillSlotPresenter(i, slot);
             }
+
+            if (_slots.Length <= 0)
+            {
+                return;
+            }
+            
+            if (!_selectedSlotPresenter)
+            {
+                _selectedSlotPresenter = _slots[0];
+                UpdateDescriptionPopup(_selectedSlotPresenter);
+            }
         }
         
         private void SlotUpdatedCallback(int context)

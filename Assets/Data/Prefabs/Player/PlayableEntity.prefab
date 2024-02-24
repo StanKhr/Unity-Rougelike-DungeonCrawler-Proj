@@ -561,7 +561,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventory: {fileID: 5841977719361329515}
-  _pickableItemPrefab: {fileID: 4106804869915387519, guid: a6022a5d77fc7d84eb4d2ba4a1385d04, type: 3}
+  _pickableItemPrefab: {fileID: 464602092708049239, guid: 6effa272138d93c4282f0517e9868aa8, type: 3}
+  _throwForce: 300
 --- !u!1 &5407754322543843440
 GameObject:
   m_ObjectHideFlags: 0
