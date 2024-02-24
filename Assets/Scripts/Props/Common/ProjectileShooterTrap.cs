@@ -2,7 +2,7 @@
 using Props.Projectiles;
 using UnityEngine;
 
-namespace Props
+namespace Props.Common
 {
     public class ProjectileShooterTrap : MonoBehaviour
     {

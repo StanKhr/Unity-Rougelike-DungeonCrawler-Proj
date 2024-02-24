@@ -3,7 +3,7 @@ using System.Linq;
 using Miscellaneous;
 using UnityEngine;
 
-namespace Player.Inventories
+namespace Player.Miscellaneous
 {
     public abstract class ScriptableDatabase<T> where T : ScriptableObject 
     {

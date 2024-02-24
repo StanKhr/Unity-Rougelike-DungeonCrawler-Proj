@@ -2,7 +2,7 @@
 using Statuses.Main;
 using UnityEngine;
 
-namespace UI.Presenters
+namespace Miscellaneous
 {
     public abstract class DamageFeedback : MonoBehaviour
     {

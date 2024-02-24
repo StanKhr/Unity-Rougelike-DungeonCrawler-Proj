@@ -4,7 +4,7 @@ using Player.Inventories.Items;
 using Props.Interfaces;
 using UnityEngine;
 
-namespace Props
+namespace Props.Common
 {
     public class PickableItem : MonoBehaviour, IInteractable, IUsable
     {
@@ -25,9 +25,22 @@ namespace Props
 
         public bool TryUse(GameObject user)
         {
+            if (!gameObject.activeSelf)
+            {
+                return false;
+            }
+            
             if (!_itemToPickup)
             {
                 return false;
+            }
+
+            if (TryGetComponent<IUseCondition>(out var useCondition))
+            {
+                if (!useCondition.Check(this, user))
+                {
+                    return false;
+                }
             }
             
             if (!user.TryGetComponent<IInventory>(out var inventory))

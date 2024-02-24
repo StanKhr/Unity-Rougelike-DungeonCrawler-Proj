@@ -3,7 +3,7 @@ using Abilities.Interfaces;
 using Player.Cameras.Interfaces;
 using UnityEngine;
 
-namespace Player.Cameras
+namespace Player.Miscellaneous
 {
     public class FootStepsTracker : MonoBehaviour, IFootStepsTracker
     {

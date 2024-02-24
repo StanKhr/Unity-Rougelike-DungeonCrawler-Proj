@@ -2,11 +2,11 @@
 
 namespace Props.Interfaces
 {
-    public interface IUsable
+    public interface IUseCondition
     {
         #region Methods
-        
-        bool TryUse(GameObject user);
+
+        bool Check(IUsable usable, GameObject user);
 
         #endregion
     }

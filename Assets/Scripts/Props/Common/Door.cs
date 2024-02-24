@@ -2,7 +2,7 @@
 using Props.Interfaces;
 using UnityEngine;
 
-namespace Props
+namespace Props.Common
 {
     public class Door : MonoBehaviour, IInteractable, IUsable
     {
@@ -22,7 +22,6 @@ namespace Props
 
         #region Editor Fields
 
-        [SerializeField] private float _useDistance = 2f;
         [SerializeField] private Animator _animator;
 
         #endregion
@@ -34,7 +33,7 @@ namespace Props
         #endregion
 
         #region Properties
-
+        
         private bool Opened
         {
             get => _opened;
@@ -65,10 +64,12 @@ namespace Props
 
         public bool TryUse(GameObject user)
         {
-            var distance = Vector3.Distance(user.transform.position, transform.position);
-            if (distance > _useDistance)
+            if (TryGetComponent<IUseCondition>(out var useCondition))
             {
-                return false;
+                if (!useCondition.Check(this, user))
+                {
+                    return false;
+                }
             }
             
             Opened = !Opened;

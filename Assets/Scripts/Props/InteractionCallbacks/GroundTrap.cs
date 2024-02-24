@@ -1,4 +1,5 @@
-﻿using Props.Interfaces;
+﻿using Props.Common;
+using Props.Interfaces;
 using Statuses.Datas;
 using Statuses.Interfaces;
 using UnityEngine;

@@ -4,7 +4,7 @@ using Miscellaneous;
 using Props.Interfaces;
 using UnityEngine;
 
-namespace Props
+namespace Props.Common
 {
     public class PressurePlate : MonoBehaviour, IInteractable
     {
