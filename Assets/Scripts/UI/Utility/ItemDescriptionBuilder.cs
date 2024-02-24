@@ -19,6 +19,7 @@ namespace UI.Utility
         private const string VariableStrength = "str";
         private const string VariableDexterity = "dex";
         private const string VariableIntellect = "int";
+        private const string AttributeNoneString = "-";
 
         #endregion
         
@@ -73,10 +74,9 @@ namespace UI.Utility
             StringBuilder.Append(speedMessage);
             StringBuilder.Append("\n");
 
-            var attributeType = typeof(AttributeScaleType);
-            var strName = Enum.GetName(attributeType, weapon.ScaleStrength);
-            var dexName = Enum.GetName(attributeType, weapon.ScaleDexterity);
-            var intName = Enum.GetName(attributeType, weapon.ScaleIntellect);
+            var strName = GetAttributeScaleName(weapon.ScaleStrength);
+            var dexName = GetAttributeScaleName(weapon.ScaleDexterity);
+            var intName = GetAttributeScaleName(weapon.ScaleIntellect);
 
             var strVariable = (StringVariable) _attributesScaleLocale[VariableStrength];
             var dexVariable = (StringVariable) _attributesScaleLocale[VariableDexterity];
@@ -89,6 +89,17 @@ namespace UI.Utility
             StringBuilder.Append(_attributesScaleLocale.GetLocalizedString());
             
             return StringBuilder.ToString();
+        }
+
+        private string GetAttributeScaleName(AttributeScaleType attributeScaleType)
+        {
+            if (attributeScaleType == AttributeScaleType.None)
+            {
+                return AttributeNoneString;
+            }
+            
+            var attributeType = typeof(AttributeScaleType);
+            return Enum.GetName(attributeType, attributeScaleType);
         }
 
         #endregion

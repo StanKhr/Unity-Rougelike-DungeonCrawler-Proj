@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UI Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: UI
+  m_TableCollectionNameGuidString: 95fa3f8fe8988a844861787fe429db57
+  m_Entries:
+  - m_Id: 1
+    m_Key: UI_message_youTake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2
+    m_Key: UI_message_youSee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3
+    m_Key: UI_message_youTakeDamageFrom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4
+    m_Key: UI_message_youReceiveItem
+    m_Metadata:
+      m_Items:
+      - rid: 8722672589656817676
+  - m_Id: 5
+    m_Key: UI_gear_weaponValue
+    m_Metadata:
+      m_Items:
+      - rid: 8722672589656817677
+  - m_Id: 6
+    m_Key: UI_gear_leftHandValue
+    m_Metadata:
+      m_Items:
+      - rid: 8722672589656817678
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8722672589656817675
+  references:
+    version: 2
+    RefIds:
+    - rid: 8722672589656817675
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1708805812785
+    - rid: 8722672589656817676
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: 'You receive an item: Steel Sword (1)'
+    - rid: 8722672589656817677
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: die
+    - rid: 8722672589656817678
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: die
