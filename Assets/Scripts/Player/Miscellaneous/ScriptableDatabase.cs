@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Miscellaneous;
-using Player.Inventories.Interfaces;
 using UnityEngine;
 
 namespace Player.Inventories

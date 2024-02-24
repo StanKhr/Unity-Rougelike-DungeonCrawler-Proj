@@ -1,6 +1,4 @@
-﻿using System;
-using Miscellaneous;
-using Player.Interfaces;
+﻿using Player.Interfaces;
 using Player.Inventories;
 using Player.Inventories.Interfaces;
 using UnityEngine;

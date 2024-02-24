@@ -1,5 +1,4 @@
-﻿using Abilities.Interfaces;
-using FSM.Creatures.Interfaces;
+﻿using FSM.Creatures.Interfaces;
 using Player.Cameras.Interfaces;
 using Player.Inputs.Interfaces;
 using Player.Interfaces;

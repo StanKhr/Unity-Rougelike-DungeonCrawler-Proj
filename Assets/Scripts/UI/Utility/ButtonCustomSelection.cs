@@ -1,8 +1,5 @@
-﻿using System;
-using Miscellaneous;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace UI.Utility
 {
@@ -24,11 +21,21 @@ namespace UI.Utility
         
         public void OnSelect(BaseEventData eventData)
         {
+            if (!Application.isPlaying)
+            {
+                return;
+            }
+            
             _selection.gameObject.SetActive(true);
         }
 
         public void OnDeselect(BaseEventData eventData)
         {
+            if (!Application.isPlaying)
+            {
+                return;
+            }
+
             _selection.gameObject.SetActive(false);
         }
 

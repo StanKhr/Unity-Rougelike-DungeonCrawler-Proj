@@ -1,7 +1,4 @@
-﻿using System;
-using Abilities.Interfaces;
-using Abilities.Triggers;
-using Props.Interfaces;
+﻿using Props.Interfaces;
 using Statuses.Datas;
 using Statuses.Interfaces;
 using UnityEngine;

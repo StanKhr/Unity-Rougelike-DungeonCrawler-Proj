@@ -2,7 +2,6 @@
 using Player.Inventories.Datas;
 using Player.Inventories.Interfaces;
 using Props.Interfaces;
-using UnityEditor;
 using UnityEngine;
 
 namespace Player.Inventories

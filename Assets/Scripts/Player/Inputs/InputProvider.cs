@@ -1,5 +1,4 @@
-﻿using System;
-using Player.Inputs.Interfaces;
+﻿using Player.Inputs.Interfaces;
 using Player.Inputs.MapWrappers;
 using Scripts.Player.Inputs;
 using UnityEngine;

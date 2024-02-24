@@ -1,5 +1,4 @@
-﻿using System;
-using Abilities.Interfaces;
+﻿using Abilities.Interfaces;
 using Abilities.Locomotion;
 using FSM.Creatures.Interfaces;
 using FSM.Main;

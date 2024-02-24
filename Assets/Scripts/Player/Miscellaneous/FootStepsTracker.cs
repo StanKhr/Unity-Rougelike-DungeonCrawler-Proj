@@ -1,7 +1,5 @@
 ﻿using System;
 using Abilities.Interfaces;
-using Abilities.Locomotion;
-using Cinemachine;
 using Player.Cameras.Interfaces;
 using UnityEngine;
 

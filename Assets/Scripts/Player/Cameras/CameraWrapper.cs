@@ -2,7 +2,6 @@
 using Cinemachine;
 using Player.Cameras.Enums;
 using Player.Cameras.Interfaces;
-using Player.Inputs;
 using UnityEngine;
 
 namespace Player.Cameras

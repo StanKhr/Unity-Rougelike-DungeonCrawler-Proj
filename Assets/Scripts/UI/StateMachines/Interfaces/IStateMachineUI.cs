@@ -1,6 +1,5 @@
-﻿using Player.Inputs;
-using Player.Inputs.Interfaces;
-using UI.Presenters;
+﻿using Player.Inputs.Interfaces;
+using UI.Presenters.Inventory;
 
 namespace UI.StateMachines.Interfaces
 {

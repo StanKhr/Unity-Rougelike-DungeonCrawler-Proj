@@ -1,8 +1,6 @@
-﻿using System;
-using Abilities.Triggers;
+﻿using Abilities.Triggers;
 using Miscellaneous;
 using Props.Interfaces;
-using Statuses.Datas;
 using UnityEngine;
 
 namespace Props.Projectiles

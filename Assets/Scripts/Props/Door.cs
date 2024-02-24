@@ -1,5 +1,4 @@
-﻿using System;
-using Miscellaneous;
+﻿using Miscellaneous;
 using Props.Interfaces;
 using UnityEngine;
 

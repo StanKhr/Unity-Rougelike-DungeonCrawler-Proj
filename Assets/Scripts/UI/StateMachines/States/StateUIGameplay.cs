@@ -1,5 +1,4 @@
-﻿using Miscellaneous;
-using UI.StateMachines.Interfaces;
+﻿using UI.StateMachines.Interfaces;
 
 namespace UI.StateMachines.States
 {

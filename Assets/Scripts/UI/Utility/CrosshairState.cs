@@ -1,6 +1,4 @@
-﻿using System;
-using UI.Enums;
-using UI.Interfaces;
+﻿using UI.Enums;
 using UnityEngine;
 using UnityEngine.UI;
 

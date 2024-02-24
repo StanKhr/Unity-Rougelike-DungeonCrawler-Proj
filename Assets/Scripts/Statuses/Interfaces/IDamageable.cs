@@ -1,5 +1,4 @@
-﻿using System;
-using Miscellaneous;
+﻿using Miscellaneous;
 using Statuses.Datas;
 
 namespace Statuses.Interfaces

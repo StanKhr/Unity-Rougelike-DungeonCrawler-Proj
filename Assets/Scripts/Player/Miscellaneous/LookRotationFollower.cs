@@ -1,5 +1,4 @@
-﻿using System;
-using Player.Inputs;
+﻿using Player.Inputs;
 using Player.Inputs.Interfaces;
 using UnityEngine;
 

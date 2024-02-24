@@ -1,5 +1,4 @@
-﻿using System;
-using Player.Cameras.Enums;
+﻿using Player.Cameras.Enums;
 using UnityEngine;
 
 namespace Player.Cameras.Interfaces

@@ -1,5 +1,4 @@
-﻿using System;
-using Props.Interfaces;
+﻿using Props.Interfaces;
 using Statuses.Datas;
 using Statuses.Interfaces;
 using UnityEngine;
