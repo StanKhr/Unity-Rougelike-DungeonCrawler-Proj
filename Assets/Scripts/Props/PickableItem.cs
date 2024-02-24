@@ -25,6 +25,11 @@ namespace Props
 
         public bool TryUse(GameObject user)
         {
+            if (!_itemToPickup)
+            {
+                return false;
+            }
+            
             if (!user.TryGetComponent<IInventory>(out var inventory))
             {
                 return false;
