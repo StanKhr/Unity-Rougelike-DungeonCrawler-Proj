@@ -3,9 +3,9 @@ using Statuses.Datas;
 using Statuses.Interfaces;
 using UnityEngine;
 
-namespace Props
+namespace Props.InteractionCallbacks
 {
-    public class GroundTrap : MonoBehaviour
+    public class GroundTrap : InteractableCallbacksBase
     {
         #region Editor Fields
 
@@ -16,28 +16,15 @@ namespace Props
 
         #region Properties
 
-        private IInteractable PressurePlate => _pressurePlate;
+        protected override bool UseInteractionStarted => true;
+        protected override IInteractable Interactable => _pressurePlate;
 
-        #endregion
-
-        #region Unity Callbacks
-
-        private void OnEnable()
-        {
-            PressurePlate.OnInteractionStarted += EnteredCallback;
-        }
-
-        private void OnDisable()
-        {
-            PressurePlate.OnInteractionStarted -= EnteredCallback;
-        }
 
         #endregion
 
         #region Methods
 
-
-        private void EnteredCallback(GameObject context)
+        protected override void InteractionStartedCallback(GameObject context)
         {
             if (!context.TryGetComponent<IDamageable>(out var damageable))
             {
@@ -46,7 +33,7 @@ namespace Props
             
             damageable.ApplyDamage(_damage);
         }
-
+        
         #endregion
     }
 }
