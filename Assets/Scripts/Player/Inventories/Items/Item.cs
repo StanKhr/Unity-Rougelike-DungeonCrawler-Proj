@@ -34,14 +34,16 @@ namespace Player.Inventories.Items
 
         public string Guid => _guid;
         public Sprite Icon => _icon;
-        public virtual string Description
+        public string Name => !_name.IsEmpty ? _name.GetLocalizedString() : DefaultEmptyString;
+        public string FlavorText => !_description.IsEmpty ? _description.GetLocalizedString() : DefaultEmptyString;
+        public virtual string CombinedDescription
         {
             get
             {
                 StringBuilder.Clear();
-                StringBuilder.Append(!_name.IsEmpty ? _name.GetLocalizedString() : DefaultEmptyString);
+                StringBuilder.Append(Name);
                 StringBuilder.Append("\n");
-                StringBuilder.Append(!_description.IsEmpty ? _description.GetLocalizedString() : DefaultEmptyString);
+                StringBuilder.Append(FlavorText);
 
                 return StringBuilder.ToString();
             }

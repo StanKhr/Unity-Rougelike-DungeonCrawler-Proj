@@ -72,6 +72,30 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 8722672420781031428
+  - m_Id: 13
+    m_Key: ATTRIBUTE_strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Key: ATTRIBUTE_dexterity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Key: ATTRIBUTE_intellect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Key: ATTRIBUTE_str
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Key: ATTRIBUTE_dex
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Key: ATTRIBUTE_int
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

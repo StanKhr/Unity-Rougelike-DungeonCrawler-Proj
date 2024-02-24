@@ -37,10 +37,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 8722672576366379015
+  - m_Id: 5
+    m_Localized: 'STR: {str}\nDEX: {dex}\nINT: {int}'
+    m_Metadata:
+      m_Items:
+      - rid: 8722672576366379015
   references:
     version: 2
     RefIds:
     - rid: 8722672576366379015
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 03000000000000000400000000000000
+        m_Entries: 030000000000000004000000000000000500000000000000

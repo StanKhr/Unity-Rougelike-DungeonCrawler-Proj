@@ -31,6 +31,10 @@ MonoBehaviour:
     m_Key: WEAPON_speedStat_value
     m_Metadata:
       m_Items: []
+  - m_Id: 5
+    m_Key: WEAPON_attributeScaling_values
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

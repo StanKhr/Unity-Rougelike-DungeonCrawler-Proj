@@ -50,7 +50,7 @@ namespace Player.Inventories.Datas
 
                 if (value.Item != null)
                 {
-                    LogWriter.DevelopmentLog($"Slot updated: {value.Item}; {value.Item.Description}");
+                    LogWriter.DevelopmentLog($"Slot updated: {value.Item}\n{value.Item.CombinedDescription}");
                 }
             }
         }

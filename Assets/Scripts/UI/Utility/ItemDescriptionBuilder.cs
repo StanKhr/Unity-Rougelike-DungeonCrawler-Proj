@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
+using Player.Inventories.Enums;
 using Player.Inventories.Interfaces;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -12,7 +14,10 @@ namespace UI.Utility
         #region Constants
 
         private const string ErrorMessage = "NoSpecificDescriptionFound";
-        private const string VariableName = "value";
+        private const string VariableValue = "value";
+        private const string VariableStrength = "str";
+        private const string VariableDexterity = "dex";
+        private const string VariableIntellect = "int";
 
         #endregion
         
@@ -21,6 +26,7 @@ namespace UI.Utility
         [Header("Weapon Locales")]
         [SerializeField] private LocalizedString _attackValueLocale; 
         [SerializeField] private LocalizedString _speedValueLocale; 
+        [SerializeField] private LocalizedString _attributesScaleLocale; 
 
         #endregion
 
@@ -32,33 +38,55 @@ namespace UI.Utility
         
         #region Methods
 
-        public string Build(string baseDescription, IItem item)
+        public string Build(IItem item)
         {
             if (item is IWeapon weapon)
             {
-                StringBuilder.Clear();
-                StringBuilder.Append(baseDescription);
-                StringBuilder.Append("\n\n");
-
-                var attackValue = Mathf.RoundToInt(weapon.AttackValue);
-                var attackVariable = (IntVariable)_attackValueLocale[VariableName];
-                attackVariable.Value = attackValue;
-                
-                var attackMessage = _attackValueLocale.GetLocalizedString();
-                StringBuilder.Append(attackMessage);
-                StringBuilder.Append("\n");
-
-                var speedValue = Mathf.RoundToInt(weapon.SpeedValue);
-                var speedVariable = (IntVariable)_speedValueLocale[VariableName];
-                speedVariable.Value = speedValue;
-                
-                var speedMessage = _speedValueLocale.GetLocalizedString();
-                StringBuilder.Append(speedMessage);
-                StringBuilder.Append("\n");
-                return StringBuilder.ToString();
+                return BuildWeaponDescription(weapon);
             }
             
             return $"{ErrorMessage}: {item.GetType().Name}";
+        }
+
+        private string BuildWeaponDescription(IWeapon weapon)
+        {
+            StringBuilder.Clear();
+            StringBuilder.Append(weapon.Name);
+            StringBuilder.Append("\n");
+            StringBuilder.Append(weapon.FlavorText);
+            StringBuilder.Append("\n\n");
+
+            var attackValue = Mathf.RoundToInt(weapon.AttackValue);
+            var attackVariable = (IntVariable)_attackValueLocale[VariableValue];
+            attackVariable.Value = attackValue;
+                
+            var attackMessage = _attackValueLocale.GetLocalizedString();
+            StringBuilder.Append(attackMessage);
+            StringBuilder.Append("\n");
+
+            var speedValue = Mathf.RoundToInt(weapon.SpeedValue);
+            var speedVariable = (IntVariable)_speedValueLocale[VariableValue];
+            speedVariable.Value = speedValue;
+                
+            var speedMessage = _speedValueLocale.GetLocalizedString();
+            StringBuilder.Append(speedMessage);
+            StringBuilder.Append("\n");
+
+            var strName = Enum.GetName(typeof(AttributeScaleType), weapon.ScaleStrength);
+            var dexName = Enum.GetName(typeof(AttributeScaleType), weapon.ScaleDexterity);
+            var intName = Enum.GetName(typeof(AttributeScaleType), weapon.ScaleIntellect);
+
+            var strVariable = (StringVariable) _attributesScaleLocale[VariableStrength];
+            var dexVariable = (StringVariable) _attributesScaleLocale[VariableDexterity];
+            var intVariable = (StringVariable) _attributesScaleLocale[VariableIntellect];
+
+            strVariable.Value = strName;
+            dexVariable.Value = dexName;
+            intVariable.Value = intName;
+
+            StringBuilder.Append(_attributesScaleLocale.GetLocalizedString());
+            
+            return StringBuilder.ToString();
         }
 
         #endregion
