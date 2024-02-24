@@ -1,5 +1,5 @@
 ﻿using Player.Inputs.Interfaces;
-using UI.Presenters.Inventory;
+using UI.Presenters.Items;
 
 namespace UI.StateMachines.Interfaces
 {

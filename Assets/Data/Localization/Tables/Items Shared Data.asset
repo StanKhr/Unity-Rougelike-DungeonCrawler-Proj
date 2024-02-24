@@ -24,11 +24,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3
-    m_Key: WEAPON_atkStat_value
+    m_Key: WEAPON_damage_value
     m_Metadata:
       m_Items: []
   - m_Id: 4
-    m_Key: WEAPON_speedStat_value
+    m_Key: WEAPON_speed_value
     m_Metadata:
       m_Items: []
   - m_Id: 5

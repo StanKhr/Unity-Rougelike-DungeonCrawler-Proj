@@ -1,6 +1,6 @@
 ﻿using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
-using UI.Presenters.Inventory;
+using UI.Presenters.Items;
 using UnityEngine;
 
 namespace Miscellaneous

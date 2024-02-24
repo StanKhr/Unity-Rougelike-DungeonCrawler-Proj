@@ -1,15 +1,17 @@
 ﻿using Miscellaneous;
+using Player.Inventories;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
 using UnityEngine;
 
-namespace UI.Presenters.Inventory
+namespace UI.Presenters.Items
 {
     public class InventoryPresenter : MonoBehaviour
     {
         #region Editor Fields
 
-        [SerializeField] private Player.Inventories.Inventory _inventory;
+        [SerializeField] private Inventory _inventory;
+        [SerializeField] private ItemDescriptionPopup _itemDescriptionPopup;
 
         #endregion
 
@@ -31,6 +33,7 @@ namespace UI.Presenters.Inventory
         {
             InitializeSlots();
             
+            InventorySlotPresenter.OnSelected += SlotSelectedCallback;
             InventorySlotPresenter.OnUsed += SlotUsedCallback;
             Inventory.Slots.OnSlotUpdated += SlotUpdatedCallback;
             // Inventory.OnItemDropped += ItemDroppedCallback;
@@ -38,6 +41,7 @@ namespace UI.Presenters.Inventory
 
         private void OnDestroy()
         {
+            InventorySlotPresenter.OnSelected -= SlotSelectedCallback;
             InventorySlotPresenter.OnUsed -= SlotUsedCallback;
             Inventory.Slots.OnSlotUpdated -= SlotUpdatedCallback;
             // Inventory.OnItemDropped -= ItemDroppedCallback;
@@ -78,15 +82,16 @@ namespace UI.Presenters.Inventory
             _slots[slotIndex].TryUpdateCorrespondingSlot(slot);
         }
 
+        private void SlotSelectedCallback(InventorySlotPresenter context)
+        {
+            var slot = Inventory.Slots[context.SlotIndex];
+            _itemDescriptionPopup.FillDescription(slot.Item);
+        }
+
         private void SlotUsedCallback(InventorySlotPresenter context)
         {
             Inventory.TryUse(context.SlotIndex);
         }
-
-        // private void ItemDroppedCallback(IItem context)
-        // {
-        //     LogWriter.DevelopmentLog($"Item: {context} was dropped from the inventory!");
-        // }
 
         #endregion
     }

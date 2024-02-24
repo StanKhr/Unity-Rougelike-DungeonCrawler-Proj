@@ -8,7 +8,7 @@ namespace Player.Inventories.Interfaces
         #region Properties
 
         Sprite WeaponHandSprite { get; }
-        float AttackValue { get; }
+        float DamageValue { get; }
         float SpeedValue { get; }
         AttributeScaleType ScaleStrength { get; }
         AttributeScaleType ScaleDexterity { get; }

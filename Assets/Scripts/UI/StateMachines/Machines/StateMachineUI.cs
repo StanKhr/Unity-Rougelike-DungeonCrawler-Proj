@@ -1,7 +1,7 @@
 ﻿using FSM.Main;
 using Player.Inputs;
 using Player.Inputs.Interfaces;
-using UI.Presenters.Inventory;
+using UI.Presenters.Items;
 using UI.StateMachines.Interfaces;
 using UI.StateMachines.States;
 using UnityEngine;

@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UI.Presenters.Inventory
+namespace UI.Presenters.Items
 {
-    public class InventorySlotPresenter : MonoBehaviour, ISubmitHandler
+    public class InventorySlotPresenter : MonoBehaviour, ISelectHandler, ISubmitHandler
     {
         #region Constants
 
@@ -16,6 +16,7 @@ namespace UI.Presenters.Inventory
         
         #region Events
 
+        public static event DelegateHolder.InventorySlotPresenterEvents OnSelected;
         public static event DelegateHolder.InventorySlotPresenterEvents OnUsed;
 
         #endregion
@@ -42,6 +43,20 @@ namespace UI.Presenters.Inventory
         #region Properties
 
         public int SlotIndex { get; set; } = DefaultSlotIndex;
+
+        #endregion
+
+        #region Unity Callbacks
+
+        private void OnEnable()
+        {
+            if (EventSystem.current.currentSelectedGameObject != gameObject)
+            {
+                return;
+            }
+            
+            OnSelected?.Invoke(this);
+        }
 
         #endregion
 
@@ -76,6 +91,11 @@ namespace UI.Presenters.Inventory
         public void OnSubmit(BaseEventData eventData)
         {
             OnUsed?.Invoke(this);
+        }
+
+        public void OnSelect(BaseEventData eventData)
+        {
+            OnSelected?.Invoke(this);
         }
 
         #endregion

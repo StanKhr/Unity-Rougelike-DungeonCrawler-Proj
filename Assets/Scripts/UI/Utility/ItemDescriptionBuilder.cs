@@ -6,10 +6,11 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;
 using UnityEngine.ResourceManagement.Util;
+using Utility.Miscellaneous;
 
 namespace UI.Utility
 {
-    public class ItemDescriptionBuilder : ComponentSingleton<ItemDescriptionBuilder>
+    public class ItemDescriptionBuilder : Singleton<ItemDescriptionBuilder>
     {
         #region Constants
 
@@ -24,7 +25,7 @@ namespace UI.Utility
         #region Editor Fields
 
         [Header("Weapon Locales")]
-        [SerializeField] private LocalizedString _attackValueLocale; 
+        [SerializeField] private LocalizedString _damageValueLocale; 
         [SerializeField] private LocalizedString _speedValueLocale; 
         [SerializeField] private LocalizedString _attributesScaleLocale; 
 
@@ -56,11 +57,11 @@ namespace UI.Utility
             StringBuilder.Append(weapon.FlavorText);
             StringBuilder.Append("\n\n");
 
-            var attackValue = Mathf.RoundToInt(weapon.AttackValue);
-            var attackVariable = (IntVariable)_attackValueLocale[VariableValue];
-            attackVariable.Value = attackValue;
+            var damageValue = Mathf.RoundToInt(weapon.DamageValue);
+            var damageVariable = (IntVariable)_damageValueLocale[VariableValue];
+            damageVariable.Value = damageValue;
                 
-            var attackMessage = _attackValueLocale.GetLocalizedString();
+            var attackMessage = _damageValueLocale.GetLocalizedString();
             StringBuilder.Append(attackMessage);
             StringBuilder.Append("\n");
 
@@ -72,9 +73,10 @@ namespace UI.Utility
             StringBuilder.Append(speedMessage);
             StringBuilder.Append("\n");
 
-            var strName = Enum.GetName(typeof(AttributeScaleType), weapon.ScaleStrength);
-            var dexName = Enum.GetName(typeof(AttributeScaleType), weapon.ScaleDexterity);
-            var intName = Enum.GetName(typeof(AttributeScaleType), weapon.ScaleIntellect);
+            var attributeType = typeof(AttributeScaleType);
+            var strName = Enum.GetName(attributeType, weapon.ScaleStrength);
+            var dexName = Enum.GetName(attributeType, weapon.ScaleDexterity);
+            var intName = Enum.GetName(attributeType, weapon.ScaleIntellect);
 
             var strVariable = (StringVariable) _attributesScaleLocale[VariableStrength];
             var dexVariable = (StringVariable) _attributesScaleLocale[VariableDexterity];

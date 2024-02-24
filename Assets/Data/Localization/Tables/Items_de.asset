@@ -28,12 +28,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3
-    m_Localized: 'AGF: {value}'
+    m_Localized: '{value} Schaden'
     m_Metadata:
       m_Items:
       - rid: 8722672576366379016
   - m_Id: 4
-    m_Localized: 'Geschwindigkeit: {value}'
+    m_Localized: '{value} Geschwindigkeit'
     m_Metadata:
       m_Items:
       - rid: 8722672576366379016
