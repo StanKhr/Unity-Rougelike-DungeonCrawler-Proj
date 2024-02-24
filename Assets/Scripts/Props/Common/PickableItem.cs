@@ -1,7 +1,10 @@
-﻿using Miscellaneous;
+﻿using System;
+using Miscellaneous;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
 using Props.Interfaces;
+using UI.Interfaces;
+using UI.Utility;
 using UnityEngine;
 
 namespace Props.Common
@@ -18,11 +21,51 @@ namespace Props.Common
         #region Editor Fields
 
         [SerializeField] private Item _itemToPickup;
+        [SerializeField] private SpriteRenderer _worldSprite;
+        [SerializeField] private ScanDescription _scanDescription;
+
+        #endregion
+
+        #region Properties
+
+        private IItem Item { get; set; }
+        private IScanDescription ScanDescription => _scanDescription;
+
+        #endregion
+
+        #region Unity Callbacks
+
+        private void OnEnable()
+        {
+            if (!_itemToPickup)
+            {
+                return;
+            }
+            
+            if (ScanDescription.LocalizedStringExists)
+            {
+                return;
+            }
+            
+            OverrideItem(_itemToPickup, false);
+        }
 
         #endregion
         
         #region Methods
 
+        public void OverrideItem(IItem item, bool activateGameObject = true)
+        {
+            Item = item;
+            _worldSprite.sprite = Item.Icon;
+            ScanDescription.OverrideLocalizedString(Item.Name);
+
+            if (activateGameObject)
+            {
+                gameObject.SetActiveSmart(true);
+            }
+        }
+        
         public bool TryUse(GameObject user)
         {
             if (!gameObject.activeSelf)
@@ -30,7 +73,7 @@ namespace Props.Common
                 return false;
             }
             
-            if (!_itemToPickup)
+            if (Item == null)
             {
                 return false;
             }
@@ -48,7 +91,7 @@ namespace Props.Common
                 return false;
             }
 
-            var itemAdded = inventory.TryAdd(_itemToPickup);
+            var itemAdded = inventory.TryAdd(Item);
 
             if (itemAdded)
             {

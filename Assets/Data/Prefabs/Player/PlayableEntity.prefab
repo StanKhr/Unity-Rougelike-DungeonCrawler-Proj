@@ -319,6 +319,7 @@ GameObject:
   - component: {fileID: 509330952836004890}
   - component: {fileID: 862768012932906142}
   - component: {fileID: 7315915114580270916}
+  - component: {fileID: 6470148962846245056}
   m_Layer: 7
   m_Name: PlayableEntity
   m_TagString: Untagged
@@ -546,6 +547,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minStepMagnitude: 3
+--- !u!114 &6470148962846245056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799805662674334367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fda439391fc4ec4b8ea73580eaac959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventory: {fileID: 5841977719361329515}
+  _pickableItemPrefab: {fileID: 4106804869915387519, guid: a6022a5d77fc7d84eb4d2ba4a1385d04, type: 3}
 --- !u!1 &5407754322543843440
 GameObject:
   m_ObjectHideFlags: 0

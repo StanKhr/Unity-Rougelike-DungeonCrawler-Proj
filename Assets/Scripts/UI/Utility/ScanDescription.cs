@@ -15,8 +15,18 @@ namespace UI.Utility
 
         #region Properties
 
-        public string Name => !_localizedString.IsEmpty ? _localizedString.GetLocalizedString() : $"??{name}";
+        public bool LocalizedStringExists => !_localizedString.IsEmpty;
+        public string Name => LocalizedStringExists ? _localizedString.GetLocalizedString() : $"??{name}";
         public Color Color => _color;
+
+        #endregion
+
+        #region Methods
+        
+        public void OverrideLocalizedString(LocalizedString localizedString)
+        {
+            _localizedString = localizedString;
+        }
 
         #endregion
     }

@@ -20,8 +20,9 @@ namespace UI.StateMachines.States
             var inventoryPresenter = StateMachineUI.InventoryPresenter;
             inventoryPresenter.gameObject.SetActiveSmart(true);
             
-            SetInventoryCallback(InventoryInputCallback, true);
-            SetPauseMenuCallback(InventoryInputCallback, true);
+            SetInventoryCallback(CloseInventory, true);
+            SetPauseMenuCallback(CloseInventory, true);
+            SetDiscardButtonCallback(DropItem, true);
         }
 
         public override void Exit()
@@ -29,13 +30,20 @@ namespace UI.StateMachines.States
             var inventoryPresenter = StateMachineUI.InventoryPresenter;
             inventoryPresenter.gameObject.SetActiveSmart(false);
             
-            SetInventoryCallback(InventoryInputCallback, false);
-            SetPauseMenuCallback(InventoryInputCallback, false);
+            SetInventoryCallback(CloseInventory, false);
+            SetPauseMenuCallback(CloseInventory, false);
+            SetDiscardButtonCallback(DropItem, false);
         }
 
-        private void InventoryInputCallback()
+        private void CloseInventory()
         {
             StateMachineUI.ToGameplayState();
+        }
+
+        private void DropItem()
+        {
+            var inventoryPresenter = StateMachineUI.InventoryPresenter;
+            inventoryPresenter.DropItem();
         }
 
         #endregion

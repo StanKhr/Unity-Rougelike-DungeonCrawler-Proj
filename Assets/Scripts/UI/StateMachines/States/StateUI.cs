@@ -60,6 +60,17 @@ namespace UI.StateMachines.States
             InputProvider.Utility.OnPauseMenu -= callback;
         }
 
+        protected void SetDiscardButtonCallback(Action callback, bool subscribe)
+        {
+            if (subscribe)
+            {
+                InputProvider.Utility.OnDiscardPressed += callback;
+                return;
+            }
+            
+            InputProvider.Utility.OnDiscardPressed -= callback;
+        }
+
         #endregion
     }
 }

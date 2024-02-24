@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Localization;
 
 namespace UI.Interfaces
 {
@@ -6,9 +7,16 @@ namespace UI.Interfaces
     {
         #region Properties
 
+        bool LocalizedStringExists { get; }
         string Name { get; }
         Color Color { get; }
         
+        #endregion
+
+        #region Methods
+
+        void OverrideLocalizedString(LocalizedString localizedString);
+
         #endregion
     }
 }

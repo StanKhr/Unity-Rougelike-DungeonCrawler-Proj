@@ -18,6 +18,7 @@ namespace UI.Presenters.Items
         #region Fields
 
         private InventorySlotPresenter[] _slots;
+        private InventorySlotPresenter _selectedSlotPresenter;
 
         #endregion
 
@@ -84,6 +85,7 @@ namespace UI.Presenters.Items
 
         private void SlotSelectedCallback(InventorySlotPresenter context)
         {
+            _selectedSlotPresenter = context;
             var slot = Inventory.Slots[context.SlotIndex];
             _itemDescriptionPopup.FillDescription(slot.Item);
         }
@@ -91,6 +93,16 @@ namespace UI.Presenters.Items
         private void SlotUsedCallback(InventorySlotPresenter context)
         {
             Inventory.TryUse(context.SlotIndex);
+        }
+
+        public void DropItem()
+        {
+            if (!_selectedSlotPresenter)
+            {
+                return;
+            }
+            
+            Inventory.TryDrop(_selectedSlotPresenter.SlotIndex);
         }
 
         #endregion

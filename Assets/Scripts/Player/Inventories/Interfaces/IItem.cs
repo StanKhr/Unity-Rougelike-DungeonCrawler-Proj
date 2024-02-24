@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Player.Inventories.Interfaces
 {
@@ -8,8 +9,8 @@ namespace Player.Inventories.Interfaces
 
         string Guid { get; }
         Sprite Icon { get; }
-        string Name { get; }
-        string FlavorText { get; }
+        LocalizedString Name { get; }
+        LocalizedString FlavorText { get; }
         string CombinedDescription { get; }
 
         #endregion

@@ -52,9 +52,9 @@ namespace UI.Utility
         private string BuildWeaponDescription(IWeapon weapon)
         {
             StringBuilder.Clear();
-            StringBuilder.Append(weapon.Name);
+            StringBuilder.Append(weapon.Name.GetLocalizedString());
             StringBuilder.Append("\n");
-            StringBuilder.Append(weapon.FlavorText);
+            StringBuilder.Append(weapon.FlavorText.GetLocalizedString());
             StringBuilder.Append("\n\n");
 
             var damageValue = Mathf.RoundToInt(weapon.DamageValue);

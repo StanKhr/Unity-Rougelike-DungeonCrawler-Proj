@@ -351,6 +351,15 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Discard"",
+                    ""type"": ""Button"",
+                    ""id"": ""01256a9a-44e3-45d8-a182-405d56b9ae24"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -384,6 +393,28 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ff21e0b-9882-43a6-aceb-9b82bfa865ea"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Discard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7305a1fc-d448-4b3e-9302-71615991eaac"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Discard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -438,6 +469,7 @@ namespace Scripts.Player.Inputs
             m_UtilityMap = asset.FindActionMap("UtilityMap", throwIfNotFound: true);
             m_UtilityMap_OpenInventory = m_UtilityMap.FindAction("OpenInventory", throwIfNotFound: true);
             m_UtilityMap_PauseMenu = m_UtilityMap.FindAction("PauseMenu", throwIfNotFound: true);
+            m_UtilityMap_Discard = m_UtilityMap.FindAction("Discard", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -679,12 +711,14 @@ namespace Scripts.Player.Inputs
         private List<IUtilityMapActions> m_UtilityMapActionsCallbackInterfaces = new List<IUtilityMapActions>();
         private readonly InputAction m_UtilityMap_OpenInventory;
         private readonly InputAction m_UtilityMap_PauseMenu;
+        private readonly InputAction m_UtilityMap_Discard;
         public struct UtilityMapActions
         {
             private @GameControlsAsset m_Wrapper;
             public UtilityMapActions(@GameControlsAsset wrapper) { m_Wrapper = wrapper; }
             public InputAction @OpenInventory => m_Wrapper.m_UtilityMap_OpenInventory;
             public InputAction @PauseMenu => m_Wrapper.m_UtilityMap_PauseMenu;
+            public InputAction @Discard => m_Wrapper.m_UtilityMap_Discard;
             public InputActionMap Get() { return m_Wrapper.m_UtilityMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -700,6 +734,9 @@ namespace Scripts.Player.Inputs
                 @PauseMenu.started += instance.OnPauseMenu;
                 @PauseMenu.performed += instance.OnPauseMenu;
                 @PauseMenu.canceled += instance.OnPauseMenu;
+                @Discard.started += instance.OnDiscard;
+                @Discard.performed += instance.OnDiscard;
+                @Discard.canceled += instance.OnDiscard;
             }
 
             private void UnregisterCallbacks(IUtilityMapActions instance)
@@ -710,6 +747,9 @@ namespace Scripts.Player.Inputs
                 @PauseMenu.started -= instance.OnPauseMenu;
                 @PauseMenu.performed -= instance.OnPauseMenu;
                 @PauseMenu.canceled -= instance.OnPauseMenu;
+                @Discard.started -= instance.OnDiscard;
+                @Discard.performed -= instance.OnDiscard;
+                @Discard.canceled -= instance.OnDiscard;
             }
 
             public void RemoveCallbacks(IUtilityMapActions instance)
@@ -766,6 +806,7 @@ namespace Scripts.Player.Inputs
         {
             void OnOpenInventory(InputAction.CallbackContext context);
             void OnPauseMenu(InputAction.CallbackContext context);
+            void OnDiscard(InputAction.CallbackContext context);
         }
     }
 }

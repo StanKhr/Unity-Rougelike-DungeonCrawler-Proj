@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemToPickup: {fileID: 0}
+  _worldSprite: {fileID: 5060232387086112175}
+  _scanDescription: {fileID: 7474100358732333166}
 --- !u!114 &1479313490756464134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +218,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b9c452370767974a8732b0d1dd566a2, type: 3}
+  m_Sprite: {fileID: -545734900, guid: 1e8fd0af5c17614468a45a2130bdf05a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
