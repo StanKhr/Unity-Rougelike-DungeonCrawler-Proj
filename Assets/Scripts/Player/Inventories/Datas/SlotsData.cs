@@ -65,6 +65,11 @@ namespace Player.Inventories.Datas
             return _slots.GetEnumerator();
         }
 
+        public bool ClearSlot(int index)
+        {
+            return SetSlot(index, null);
+        }
+
         public bool SetSlot(int index, IItem item)
         {
             if (!ValidateIndex(index))

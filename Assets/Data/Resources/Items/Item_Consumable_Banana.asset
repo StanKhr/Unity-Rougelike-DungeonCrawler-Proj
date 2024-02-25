@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589766ae734242669e0ccd28fad4c71c, type: 3}
+  m_Name: Item_Consumable_Banana
+  m_EditorClassIdentifier: 
+  _guid: 96e5e4a43e100f843bb079a0765bd0ca
+  _icon: {fileID: -814641293, guid: 9b2abd160dd333f4ab2279aee03262ac, type: 3}
+  _name:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _flavorText:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _consumableEffectScriptable: {fileID: 11400000, guid: 6dcf67307a209024a9ae9a5e37f6b448, type: 2}
+  references:
+    version: 2
+    RefIds: []

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Text;
+using Miscellaneous;
 using Player.Inventories.Enums;
 using Player.Inventories.Interfaces;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;
 using UnityEngine.ResourceManagement.Util;
-using Utility.Miscellaneous;
 
 namespace UI.Utility
 {

@@ -1,8 +1,9 @@
-﻿using Props.Interfaces;
+﻿using Props.Common;
+using Props.Interfaces;
 using Props.Projectiles;
 using UnityEngine;
 
-namespace Props.Common
+namespace Props.InteractionCallbacks
 {
     public class ProjectileShooterTrap : MonoBehaviour
     {

@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Player.Inventories.Items
 {
-    [CreateAssetMenu (fileName = "Item_Weapon_NEW", menuName = "RPG / Items / Weapon Item")]
+    [CreateAssetMenu (fileName = "Item_Weapon_NEW", menuName = "RPG / Items / Weapon")]
     public class ItemWeapon : Item, IUsable, IWeapon
     {
         #region Constants

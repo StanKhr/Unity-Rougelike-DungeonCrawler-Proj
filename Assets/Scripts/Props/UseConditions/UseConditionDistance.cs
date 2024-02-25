@@ -1,7 +1,7 @@
 ﻿using Props.Interfaces;
 using UnityEngine;
 
-namespace Props.Extensions
+namespace Props.UseConditions
 {
     public class UseConditionDistance : MonoBehaviour, IUseCondition
     {

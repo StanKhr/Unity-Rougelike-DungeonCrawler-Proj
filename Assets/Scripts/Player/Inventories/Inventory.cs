@@ -108,7 +108,7 @@ namespace Player.Inventories
             }
 
             var item = _slots[slotIndex].Item;
-            if (!_slots.SetSlot(slotIndex, null))
+            if (!_slots.ClearSlot(slotIndex))
             {
                 return false;
             }

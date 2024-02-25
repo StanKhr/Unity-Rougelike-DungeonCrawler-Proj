@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3933032474151097346}
   - component: {fileID: 5797162692846404156}
   - component: {fileID: 4270219999014195258}
+  - component: {fileID: 3072713143366159533}
+  - component: {fileID: 9050366903210909766}
   - component: {fileID: 839952826245673942}
   m_Layer: 11
   m_Name: Chest
@@ -78,6 +80,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3072713143366159533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995770745722199101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c1f16b0b6a43eba81533f597c8c9ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 0}
+--- !u!114 &9050366903210909766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995770745722199101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc07c1297e2450285db76cd601a0df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _useDistance: 3
 --- !u!114 &839952826245673942
 MonoBehaviour:
   m_ObjectHideFlags: 0
