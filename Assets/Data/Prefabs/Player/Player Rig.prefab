@@ -2643,7 +2643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce100f2996e40cd9d7f533e4280a974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 8182f241715fc594c8d49b6ae1b4d1db, type: 3}
+  _clip: {fileID: 8300000, guid: f4e36aae81a48cc4e8a93e493226fe4e, type: 3}
 --- !u!114 &9210349748360337827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5831,8 +5831,8 @@ MonoBehaviour:
     m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
-    m_MinValue: -60
-    m_MaxValue: 60
+    m_MinValue: -45
+    m_MaxValue: 45
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0

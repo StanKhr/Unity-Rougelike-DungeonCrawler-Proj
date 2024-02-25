@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Props.Common
 {
-    public class Door : MonoBehaviour, IInteractable, IUsable
+    public class Door : Usable, IInteractable, IUsable
     {
         #region Constants
 
@@ -62,15 +62,8 @@ namespace Props.Common
 
         #region Methods
 
-        public bool TryUse(GameObject user)
+        protected override bool PerformUseLogic(GameObject user)
         {
-            if (TryGetComponent<IUseCondition>(out var useCondition))
-            {
-                if (!useCondition.Check(this, user))
-                {
-                    return false;
-                }
-            }
             
             Opened = !Opened;
             return true;

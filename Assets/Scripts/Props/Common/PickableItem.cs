@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Props.Common
 {
-    public class PickableItem : MonoBehaviour, IInteractable, IUsable
+    public class PickableItem : Usable, IInteractable, IUsable
     {
         #region Events
         
@@ -65,8 +65,8 @@ namespace Props.Common
                 gameObject.SetActiveSmart(true);
             }
         }
-        
-        public bool TryUse(GameObject user)
+
+        protected override bool PerformUseLogic(GameObject user)
         {
             if (!gameObject.activeSelf)
             {
@@ -76,14 +76,6 @@ namespace Props.Common
             if (Item == null)
             {
                 return false;
-            }
-
-            if (TryGetComponent<IUseCondition>(out var useCondition))
-            {
-                if (!useCondition.Check(this, user))
-                {
-                    return false;
-                }
             }
             
             if (!user.TryGetComponent<IInventory>(out var inventory))
