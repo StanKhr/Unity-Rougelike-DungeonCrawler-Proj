@@ -10,7 +10,6 @@ namespace Player.Inventories.Interfaces
         event DelegateHolder.ItemEvents OnItemAdded;
         event DelegateHolder.ItemEvents OnItemDropped;
         event DelegateHolder.ItemEvents OnItemUsed;
-        event DelegateHolder.ItemEvents OnItemEquipped;
 
         #endregion
         

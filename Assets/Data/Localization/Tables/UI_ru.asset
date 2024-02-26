@@ -20,23 +20,27 @@ MonoBehaviour:
     - rid: 8722672589656817685
   m_TableData:
   - m_Id: 1
-    m_Localized: "\u0412\u044B \u0431\u0435\u0440\u0435\u0442\u0435: {target}"
+    m_Localized: "\u0412\u044B \u0431\u0435\u0440\u0435\u0442\u0435: {value}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8722672589656817685
   - m_Id: 2
-    m_Localized: "\u0412\u044B \u0432\u0438\u0434\u0438\u0442\u0435: {target}"
+    m_Localized: "\u0412\u044B \u0432\u0438\u0434\u0438\u0442\u0435: {value}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8722672589656817685
   - m_Id: 3
-    m_Localized: "\u0412\u044B \u043F\u043E\u043B\u0443\u0447\u0430\u0435\u0442\u0435
-      {value} \u0443\u0440\u043E\u043D\u0430 \u043E\u0442: {attacker}"
+    m_Localized: "\u041F\u0440\u0435\u0434\u043C\u0435\u0442 \u0431\u044B\u043B \u0431\u0440\u043E\u0448\u0435\u043D:
+      {value}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8722672589656817685
   - m_Id: 4
-    m_Localized: "\u0412\u044B \u043F\u043E\u043B\u0443\u0447\u0430\u0435\u0442\u0435
-      \u043F\u0440\u0435\u0434\u043C\u0435\u0442: {item} ({amount})"
+    m_Localized: "\u041F\u0440\u0435\u0434\u043C\u0435\u0442 \u0431\u044B\u043B \u043F\u043E\u043B\u0443\u0447\u0435\u043D:
+      {value}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8722672589656817685
   - m_Id: 5
     m_Localized: "\u041E\u0440\u0443\u0436\u0438\u0435: {value}"
     m_Metadata:
@@ -45,11 +49,18 @@ MonoBehaviour:
   - m_Id: 6
     m_Localized: "\u041B\u0435\u0432\u0430\u044F \u0420\u0443\u043A\u0430: {value}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8722672589656817685
+  - m_Id: 696506968432640
+    m_Localized: "\u0412\u044B \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u0442\u0435:
+      {value}"
+    m_Metadata:
+      m_Items:
+      - rid: 8722672589656817685
   references:
     version: 2
     RefIds:
     - rid: 8722672589656817685
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0500000000000000
+        m_Entries: 050000000000000000e06f2a7879020006000000000000000400000000000000030000000000000002000000000000000100000000000000

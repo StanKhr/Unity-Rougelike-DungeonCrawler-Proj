@@ -20,21 +20,25 @@ MonoBehaviour:
     - rid: 8722672589656817683
   m_TableData:
   - m_Id: 1
-    m_Localized: 'You take: {target}'
+    m_Localized: 'You take: {value}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8722672589656817683
   - m_Id: 2
-    m_Localized: 'You see: {target}'
+    m_Localized: 'You see: {value}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8722672589656817683
   - m_Id: 3
-    m_Localized: 'You take {value} damage from: {attacker}'
+    m_Localized: 'Item was dropped: {value}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8722672589656817683
   - m_Id: 4
-    m_Localized: 'You receive an item: {item} ({amount})'
+    m_Localized: 'Item was received: {value}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8722672589656817683
   - m_Id: 5
     m_Localized: 'Weapon: {value}'
     m_Metadata:
@@ -43,11 +47,17 @@ MonoBehaviour:
   - m_Id: 6
     m_Localized: 'Left Hand: {value}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8722672589656817683
+  - m_Id: 696506968432640
+    m_Localized: 'You use: {value}'
+    m_Metadata:
+      m_Items:
+      - rid: 8722672589656817683
   references:
     version: 2
     RefIds:
     - rid: 8722672589656817683
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0500000000000000
+        m_Entries: 05000000000000000100000000000000020000000000000003000000000000000400000000000000060000000000000000e06f2a78790200

@@ -13,7 +13,6 @@ namespace Player.Inventories
         public event DelegateHolder.ItemEvents OnItemAdded;
         public event DelegateHolder.ItemEvents OnItemDropped;
         public event DelegateHolder.ItemEvents OnItemUsed;
-        public event DelegateHolder.ItemEvents OnItemEquipped;
 
         #endregion
 
@@ -84,6 +83,8 @@ namespace Player.Inventories
                 if (_slots[i].IsEmpty)
                 {
                     _slots.SetSlot(i, item);
+                    OnItemAdded?.Invoke(item);
+                    
                     return true;
                 }
             }
@@ -114,6 +115,7 @@ namespace Player.Inventories
             }
             
             OnItemDropped?.Invoke(item);
+            
             return true;
         }
 
@@ -129,7 +131,16 @@ namespace Player.Inventories
                 return false;
             }
 
-            return usable.TryUse(gameObject);
+            var usedSuccessfully = usable.TryUse(gameObject);
+
+            if (!usedSuccessfully)
+            {
+                return false;
+            }
+            
+            OnItemUsed?.Invoke(_slots[slotIndex].Item);
+
+            return true;
         }
 
         #endregion

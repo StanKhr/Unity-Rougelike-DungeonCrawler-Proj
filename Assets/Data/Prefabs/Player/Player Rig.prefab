@@ -1278,8 +1278,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2743046669766998923}
+  - component: {fileID: 5291715524453930421}
   m_Layer: 5
-  m_Name: MessageLog
+  m_Name: GameStoryPresenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1307,6 +1308,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 32}
   m_SizeDelta: {x: -64, y: 191.85}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &5291715524453930421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134241172637201504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09b40baab624e4abfe51c0ccd9a4c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameStory: {fileID: 6162563256254554484}
+  _storyText: {fileID: 7905201691802665467}
 --- !u!1 &2316571057385300387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,6 +1909,7 @@ Transform:
   m_Children:
   - {fileID: 4932818307983685668}
   - {fileID: 4054970661692118803}
+  - {fileID: 3310903148438655886}
   m_Father: {fileID: 2440888649355307301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3220566459513670852
@@ -2491,6 +2507,71 @@ MonoBehaviour:
   blendDistance: 0
   weight: 0
   sharedProfile: {fileID: 11400000, guid: 4fd7c780f7c9b524a9f7481e4056152c, type: 2}
+--- !u!1 &4224743407617133959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2691635501510012708}
+  - component: {fileID: 8946919275598242010}
+  m_Layer: 0
+  m_Name: InventoryUpdates
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2691635501510012708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224743407617133959}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3310903148438655886}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8946919275598242010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224743407617133959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19b65fa04e948a385fb1eb779bda439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventory: {fileID: 7731580866523126168}
+  _localizedStringItemAdded:
+    m_TableReference:
+      m_TableCollectionName: GUID:95fa3f8fe8988a844861787fe429db57
+    m_TableEntryReference:
+      m_KeyId: 4
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: value
+      variable:
+        rid: 8722672637122707464
+  _notificationClip: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 8722672637122707464
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 
 --- !u!1 &4372180892401850588
 GameObject:
   m_ObjectHideFlags: 0
@@ -3357,6 +3438,51 @@ MonoBehaviour:
   _rectTransform: {fileID: 2905135864198481440}
   _textMeshPro: {fileID: 2521104727126730957}
   _extraSize: {x: 0, y: 0}
+--- !u!1 &5527928847842680419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3310903148438655886}
+  - component: {fileID: 6162563256254554484}
+  m_Layer: 0
+  m_Name: GameStory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3310903148438655886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5527928847842680419}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2691635501510012708}
+  m_Father: {fileID: 4053477788910944646}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6162563256254554484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5527928847842680419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c9817a95dd4a5490ced3da42922f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5731313262400125460
 GameObject:
   m_ObjectHideFlags: 0
@@ -6089,7 +6215,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '[18:25] You see: Wooden Chest.\n[18:25] You see: Wooden Chest.\n[18:25]
     You see: Wooden Chest.\n[18:25] You see: Wooden Chest.\n[18:25] You see: Wooden
-    Chest.\n[18:25] You see: Wooden Chest.\n[18:25] You see: Wooden Chest.\n'
+    Chest.\n[18:25] You see: Wooden Chest.\n[18:25] You see: Wooden Chest.\nxD'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91c080b112117344081202ba619a8283, type: 2}
   m_sharedMaterial: {fileID: -2012722307492041894, guid: 91c080b112117344081202ba619a8283, type: 2}

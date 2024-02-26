@@ -1,4 +1,5 @@
-﻿using Player.Inventories.Interfaces;
+﻿using Player.GameStories.Datas;
+using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
 using UI.Presenters.Items;
 using UnityEngine;
@@ -16,7 +17,10 @@ namespace Miscellaneous
         public delegate void ItemEvents(IItem context);
         public delegate void WeaponEvents(IWeapon context);
         public delegate void InventorySlotPresenterEvents(InventorySlotPresenter context);
+        public delegate void StringEvents(string context);
+        public delegate void StoryEventDataEvents(StoryEventData context);
 
         #endregion
+
     }
 }
