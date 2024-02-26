@@ -58,7 +58,7 @@ namespace Props.Common
         {
             Item = item;
             _worldSprite.sprite = Item.Icon;
-            ScanDescription.OverrideLocalizedString(Item.Name);
+            ScanDescription.OverrideLocalizedString(Item.LocalizedStringName);
 
             if (activateGameObject)
             {

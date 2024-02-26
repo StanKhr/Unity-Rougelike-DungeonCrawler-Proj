@@ -1306,7 +1306,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 32}
-  m_SizeDelta: {x: -64, y: 191.85}
+  m_SizeDelta: {x: -64, y: 264.28}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &5291715524453930421
 MonoBehaviour:
@@ -2564,11 +2564,42 @@ MonoBehaviour:
     - name: value
       variable:
         rid: 8722672637122707464
-  _notificationClip: {fileID: 0}
+  _localizedStringItemDropped:
+    m_TableReference:
+      m_TableCollectionName: GUID:95fa3f8fe8988a844861787fe429db57
+    m_TableEntryReference:
+      m_KeyId: 3
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: value
+      variable:
+        rid: 8722672640518782976
+  _localizedStringItemUsed:
+    m_TableReference:
+      m_TableCollectionName: GUID:95fa3f8fe8988a844861787fe429db57
+    m_TableEntryReference:
+      m_KeyId: 2
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: value
+      variable:
+        rid: 8722672640518782977
   references:
     version: 2
     RefIds:
     - rid: 8722672637122707464
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 
+    - rid: 8722672640518782976
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 
+    - rid: 8722672640518782977
       type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
       data:
         m_Value: 
@@ -2902,7 +2933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1994057455768396217
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2918,10 +2949,10 @@ RectTransform:
   - {fileID: 3176483756867120319}
   m_Father: {fileID: 858946195115359618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 64}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 255.93524, y: -64}
+  m_SizeDelta: {x: 511.87048, y: 64}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4819332441515160775
 CanvasRenderer:

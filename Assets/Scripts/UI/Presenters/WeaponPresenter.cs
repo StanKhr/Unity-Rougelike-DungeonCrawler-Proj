@@ -52,7 +52,7 @@ namespace UI.Presenters
         
         private void WeaponEquippedCallback(IWeapon context)
         {
-            SetValue(context.Name.GetLocalizedString());
+            SetValue(context.Name);
         }
 
         private void WeaponRemovedCallback(IWeapon context)

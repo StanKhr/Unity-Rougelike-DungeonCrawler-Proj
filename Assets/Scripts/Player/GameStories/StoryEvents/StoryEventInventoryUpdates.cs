@@ -20,8 +20,9 @@ namespace Player.GameStories.StoryEvents
 
         [SerializeField] private Inventory _inventory;
 
-        [SerializeField, Header("Item Added")] private LocalizedString _localizedStringItemAdded;
-        [SerializeField] private AudioClip _notificationClip;
+        [SerializeField] private LocalizedString _localizedStringItemAdded;
+        [SerializeField] private LocalizedString _localizedStringItemDropped;
+        [SerializeField] private LocalizedString _localizedStringItemUsed;
 
         #endregion
 
@@ -36,11 +37,15 @@ namespace Player.GameStories.StoryEvents
         private void Start()
         {
             Inventory.OnItemAdded += ItemAddedCallback;
+            Inventory.OnItemDropped += ItemDroppedCallback;
+            Inventory.OnItemUsed += ItemUsedCallback;
         }
 
         private void OnDestroy()
         {
             Inventory.OnItemAdded -= ItemAddedCallback;
+            Inventory.OnItemDropped -= ItemDroppedCallback;
+            Inventory.OnItemUsed -= ItemUsedCallback;
         }
 
         #endregion
@@ -49,10 +54,30 @@ namespace Player.GameStories.StoryEvents
 
         private void ItemAddedCallback(IItem context)
         {
-            var variable = (StringVariable) _localizedStringItemAdded[VariableName];
-            variable.Value = context.Name.GetLocalizedString();
+            CreateEvent(context, _localizedStringItemAdded);
+        }
 
-            var storyEventData = new StoryEventData(_localizedStringItemAdded.GetLocalizedString(), _notificationClip);
+        private void ItemDroppedCallback(IItem context)
+        {
+            CreateEvent(context, _localizedStringItemDropped);
+        }
+
+        private void ItemUsedCallback(IItem context)
+        {
+            CreateEvent(context, _localizedStringItemUsed);
+        }
+
+        private void CreateEvent(IItem item, LocalizedString localizedString)
+        {
+            var variable = (StringVariable) localizedString[VariableName];
+            variable.Value = item.Name;
+
+            var storyEventData = new StoryEventData(localizedString.GetLocalizedString());
+            CallEvent(storyEventData);
+        }
+
+        private void CallEvent(StoryEventData storyEventData)
+        {
             (this as IStoryEvent).TriggerEvent(storyEventData);
         }
 

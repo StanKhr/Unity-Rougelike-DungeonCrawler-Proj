@@ -9,9 +9,10 @@ namespace Player.Inventories.Interfaces
 
         string Guid { get; }
         Sprite Icon { get; }
-        LocalizedString Name { get; }
-        LocalizedString FlavorText { get; }
+        string Name { get; }
+        string FlavorText { get; }
         string CombinedDescription { get; }
+        LocalizedString LocalizedStringName { get; }
 
         #endregion
     }

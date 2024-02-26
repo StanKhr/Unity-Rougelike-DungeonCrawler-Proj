@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Globalization;
+using UnityEngine;
 
 namespace Player.GameStories.Datas
 {
@@ -6,10 +8,11 @@ namespace Player.GameStories.Datas
     {
         #region Constructors
 
-        public StoryEventData(string storyLine, AudioClip notifyAudio)
+        public StoryEventData(string storyLine)
         {
             StoryLine = storyLine;
-            NotifyAudio = notifyAudio;
+            // EventTime = DateTime.Now.ToString("HH:mm:ss");
+            EventTime = DateTime.Now.ToString("HH:mm");
         }
 
         #endregion
@@ -17,7 +20,7 @@ namespace Player.GameStories.Datas
         #region Properties
         
         public string StoryLine { get; }
-        public AudioClip NotifyAudio { get; }
+        public string EventTime { get; }
         
         #endregion
     }

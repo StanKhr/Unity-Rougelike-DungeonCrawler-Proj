@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using Miscellaneous;
 using Player.GameStories.Datas;
@@ -25,7 +26,7 @@ namespace Player.GameStories
 
         #region Fields
         
-        private readonly List<string> _storyLines = new(MaxStoryLines);
+        private readonly List<StoryEventData> _storyLines = new(MaxStoryLines);
         private readonly StringBuilder _stringBuilder = new();
 
         #endregion
@@ -48,7 +49,7 @@ namespace Player.GameStories
         
         private void StoryEventTriggeredCallback(StoryEventData context)
         {
-            _storyLines.Add(context.StoryLine);
+            _storyLines.Add(context);
             while (_storyLines.Count > MaxStoryLines)
             {
                 _storyLines.RemoveAt(_storyLines.Count - 1);
@@ -64,7 +65,10 @@ namespace Player.GameStories
 
             for (int i = 0; i < _storyLines.Count; i++)
             {
-                _stringBuilder.Append(_storyLines[i]);
+                _stringBuilder.Append("[");
+                _stringBuilder.Append(_storyLines[i].EventTime);
+                _stringBuilder.Append("] ");
+                _stringBuilder.Append(_storyLines[i].StoryLine);
                 _stringBuilder.Append(NextLineSkip);
             }
             

@@ -34,20 +34,22 @@ namespace Player.Inventories.Items
 
         public string Guid => _guid;
         public Sprite Icon => _icon;
-        public LocalizedString Name => _name;
-        public LocalizedString FlavorText => _flavorText;
+        public string Name => !_name.IsEmpty ? _name.GetLocalizedString() : DefaultEmptyString;
+        public string FlavorText => !_flavorText.IsEmpty ? _flavorText.GetLocalizedString() : DefaultEmptyString;
         public virtual string CombinedDescription
         {
             get
             {
                 StringBuilder.Clear();
-                StringBuilder.Append(!Name.IsEmpty ? Name.GetLocalizedString() : DefaultEmptyString);
+                StringBuilder.Append(Name);
                 StringBuilder.Append("\n");
-                StringBuilder.Append(!FlavorText.IsEmpty ? FlavorText.GetLocalizedString() : DefaultEmptyString);
+                StringBuilder.Append(FlavorText);
 
                 return StringBuilder.ToString();
             }
         }
+
+        public LocalizedString LocalizedStringName => _name;
 
         #endregion
     }

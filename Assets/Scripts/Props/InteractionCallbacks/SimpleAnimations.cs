@@ -7,9 +7,11 @@ namespace Props.InteractionCallbacks
     {
         #region Constants
 
+        private const float AnimationSpeedBase = 1.0f;
         private const float AnimationTransitionTime = 0.2f;
         private static readonly int StartHash = Animator.StringToHash("Start");
         private static readonly int EndHash = Animator.StringToHash("End");
+        private static readonly int SpeedHash = Animator.StringToHash("Speed");
 
         #endregion
 
@@ -17,6 +19,8 @@ namespace Props.InteractionCallbacks
 
         [SerializeField] private bool _useStartCallback = true;
         [SerializeField] private bool _useEndCallback = true;
+        [SerializeField] private float _animStartSpeed = AnimationSpeedBase;
+        [SerializeField] private float _animEndSpeed = AnimationSpeedBase;
         [SerializeField] private Animator _animator;
 
         #endregion
@@ -32,11 +36,13 @@ namespace Props.InteractionCallbacks
 
         protected override void InteractionStartedCallback(GameObject context)
         {
+            _animator.SetFloat(SpeedHash, _animStartSpeed);
             _animator.CrossFade(StartHash, AnimationTransitionTime);
         }
 
         protected override void InteractionEndedCallback(GameObject context)
         {
+            _animator.SetFloat(SpeedHash, _animEndSpeed);
             _animator.CrossFade(EndHash, AnimationTransitionTime);
         }
 
