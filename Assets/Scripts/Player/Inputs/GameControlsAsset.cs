@@ -85,6 +85,33 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f2b256c-1b96-43fc-bd75-a07c7d76d424"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""818c783b-680a-4496-8366-5d1e4a7058a5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Walk"",
+                    ""type"": ""Button"",
+                    ""id"": ""f89ef67c-e8a3-4e8b-b39b-a5f77a46d22b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -175,6 +202,72 @@ namespace Scripts.Player.Inputs
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab0a870d-53af-4b0f-9e7a-6c4f22f1511e"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3c4e346-dd95-44da-9530-8b9ec4c00623"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13b66186-bc73-4391-8798-2ba3cf6438cb"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ae09671-a360-40d2-8744-2073f849024c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc52bc08-7bf6-4526-acf5-174d2fc8eb68"",
+                    ""path"": ""<Keyboard>/capsLock"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Walk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""59188e91-adef-44ce-bed9-195d7adff6ac"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Walk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -236,6 +329,96 @@ namespace Scripts.Player.Inputs
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UtilityMap"",
+            ""id"": ""a02b093d-934a-4754-bfca-99cd0ac8942d"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""24681a29-5487-43c0-8779-8869f1367730"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""30ffcaee-e2d8-4f99-a0ed-946c74a5336d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Discard"",
+                    ""type"": ""Button"",
+                    ""id"": ""01256a9a-44e3-45d8-a182-405d56b9ae24"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0f9bb9e6-9345-4ca3-874a-5d66b3200375"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a27f58e0-3f86-4c7f-9301-3120f7cc33dc"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57e698b9-e992-4f5b-9497-8c6d832c6eaa"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ff21e0b-9882-43a6-aceb-9b82bfa865ea"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Discard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7305a1fc-d448-4b3e-9302-71615991eaac"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Discard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -275,10 +458,18 @@ namespace Scripts.Player.Inputs
             m_MovementMap = asset.FindActionMap("MovementMap", throwIfNotFound: true);
             m_MovementMap_Move = m_MovementMap.FindAction("Move", throwIfNotFound: true);
             m_MovementMap_Jump = m_MovementMap.FindAction("Jump", throwIfNotFound: true);
+            m_MovementMap_Crouch = m_MovementMap.FindAction("Crouch", throwIfNotFound: true);
+            m_MovementMap_Sprint = m_MovementMap.FindAction("Sprint", throwIfNotFound: true);
+            m_MovementMap_Walk = m_MovementMap.FindAction("Walk", throwIfNotFound: true);
             // AbilitiesMap
             m_AbilitiesMap = asset.FindActionMap("AbilitiesMap", throwIfNotFound: true);
             m_AbilitiesMap_Test = m_AbilitiesMap.FindAction("Test", throwIfNotFound: true);
             m_AbilitiesMap_Interact = m_AbilitiesMap.FindAction("Interact", throwIfNotFound: true);
+            // UtilityMap
+            m_UtilityMap = asset.FindActionMap("UtilityMap", throwIfNotFound: true);
+            m_UtilityMap_OpenInventory = m_UtilityMap.FindAction("OpenInventory", throwIfNotFound: true);
+            m_UtilityMap_PauseMenu = m_UtilityMap.FindAction("PauseMenu", throwIfNotFound: true);
+            m_UtilityMap_Discard = m_UtilityMap.FindAction("Discard", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -388,12 +579,18 @@ namespace Scripts.Player.Inputs
         private List<IMovementMapActions> m_MovementMapActionsCallbackInterfaces = new List<IMovementMapActions>();
         private readonly InputAction m_MovementMap_Move;
         private readonly InputAction m_MovementMap_Jump;
+        private readonly InputAction m_MovementMap_Crouch;
+        private readonly InputAction m_MovementMap_Sprint;
+        private readonly InputAction m_MovementMap_Walk;
         public struct MovementMapActions
         {
             private @GameControlsAsset m_Wrapper;
             public MovementMapActions(@GameControlsAsset wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_MovementMap_Move;
             public InputAction @Jump => m_Wrapper.m_MovementMap_Jump;
+            public InputAction @Crouch => m_Wrapper.m_MovementMap_Crouch;
+            public InputAction @Sprint => m_Wrapper.m_MovementMap_Sprint;
+            public InputAction @Walk => m_Wrapper.m_MovementMap_Walk;
             public InputActionMap Get() { return m_Wrapper.m_MovementMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -409,6 +606,15 @@ namespace Scripts.Player.Inputs
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Crouch.started += instance.OnCrouch;
+                @Crouch.performed += instance.OnCrouch;
+                @Crouch.canceled += instance.OnCrouch;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
+                @Walk.started += instance.OnWalk;
+                @Walk.performed += instance.OnWalk;
+                @Walk.canceled += instance.OnWalk;
             }
 
             private void UnregisterCallbacks(IMovementMapActions instance)
@@ -419,6 +625,15 @@ namespace Scripts.Player.Inputs
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
+                @Crouch.started -= instance.OnCrouch;
+                @Crouch.performed -= instance.OnCrouch;
+                @Crouch.canceled -= instance.OnCrouch;
+                @Sprint.started -= instance.OnSprint;
+                @Sprint.performed -= instance.OnSprint;
+                @Sprint.canceled -= instance.OnSprint;
+                @Walk.started -= instance.OnWalk;
+                @Walk.performed -= instance.OnWalk;
+                @Walk.canceled -= instance.OnWalk;
             }
 
             public void RemoveCallbacks(IMovementMapActions instance)
@@ -490,6 +705,68 @@ namespace Scripts.Player.Inputs
             }
         }
         public AbilitiesMapActions @AbilitiesMap => new AbilitiesMapActions(this);
+
+        // UtilityMap
+        private readonly InputActionMap m_UtilityMap;
+        private List<IUtilityMapActions> m_UtilityMapActionsCallbackInterfaces = new List<IUtilityMapActions>();
+        private readonly InputAction m_UtilityMap_OpenInventory;
+        private readonly InputAction m_UtilityMap_PauseMenu;
+        private readonly InputAction m_UtilityMap_Discard;
+        public struct UtilityMapActions
+        {
+            private @GameControlsAsset m_Wrapper;
+            public UtilityMapActions(@GameControlsAsset wrapper) { m_Wrapper = wrapper; }
+            public InputAction @OpenInventory => m_Wrapper.m_UtilityMap_OpenInventory;
+            public InputAction @PauseMenu => m_Wrapper.m_UtilityMap_PauseMenu;
+            public InputAction @Discard => m_Wrapper.m_UtilityMap_Discard;
+            public InputActionMap Get() { return m_Wrapper.m_UtilityMap; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UtilityMapActions set) { return set.Get(); }
+            public void AddCallbacks(IUtilityMapActions instance)
+            {
+                if (instance == null || m_Wrapper.m_UtilityMapActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_UtilityMapActionsCallbackInterfaces.Add(instance);
+                @OpenInventory.started += instance.OnOpenInventory;
+                @OpenInventory.performed += instance.OnOpenInventory;
+                @OpenInventory.canceled += instance.OnOpenInventory;
+                @PauseMenu.started += instance.OnPauseMenu;
+                @PauseMenu.performed += instance.OnPauseMenu;
+                @PauseMenu.canceled += instance.OnPauseMenu;
+                @Discard.started += instance.OnDiscard;
+                @Discard.performed += instance.OnDiscard;
+                @Discard.canceled += instance.OnDiscard;
+            }
+
+            private void UnregisterCallbacks(IUtilityMapActions instance)
+            {
+                @OpenInventory.started -= instance.OnOpenInventory;
+                @OpenInventory.performed -= instance.OnOpenInventory;
+                @OpenInventory.canceled -= instance.OnOpenInventory;
+                @PauseMenu.started -= instance.OnPauseMenu;
+                @PauseMenu.performed -= instance.OnPauseMenu;
+                @PauseMenu.canceled -= instance.OnPauseMenu;
+                @Discard.started -= instance.OnDiscard;
+                @Discard.performed -= instance.OnDiscard;
+                @Discard.canceled -= instance.OnDiscard;
+            }
+
+            public void RemoveCallbacks(IUtilityMapActions instance)
+            {
+                if (m_Wrapper.m_UtilityMapActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IUtilityMapActions instance)
+            {
+                foreach (var item in m_Wrapper.m_UtilityMapActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_UtilityMapActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public UtilityMapActions @UtilityMap => new UtilityMapActions(this);
         private int m_PCSchemeIndex = -1;
         public InputControlScheme PCScheme
         {
@@ -516,11 +793,20 @@ namespace Scripts.Player.Inputs
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnCrouch(InputAction.CallbackContext context);
+            void OnSprint(InputAction.CallbackContext context);
+            void OnWalk(InputAction.CallbackContext context);
         }
         public interface IAbilitiesMapActions
         {
             void OnTest(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
+        }
+        public interface IUtilityMapActions
+        {
+            void OnOpenInventory(InputAction.CallbackContext context);
+            void OnPauseMenu(InputAction.CallbackContext context);
+            void OnDiscard(InputAction.CallbackContext context);
         }
     }
 }

@@ -66,6 +66,38 @@ MonoBehaviour:
     m_Localized: Pressure Plate
     m_Metadata:
       m_Items: []
+  - m_Id: 13
+    m_Localized: Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Localized: Dexterity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Localized: Intellect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Localized: STR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Localized: DEX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Localized: INT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19
+    m_Localized: Empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20
+    m_Localized: Nothing
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

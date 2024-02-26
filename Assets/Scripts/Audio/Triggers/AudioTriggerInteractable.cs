@@ -1,14 +1,15 @@
-﻿using System;
-using Audio.ClipSelectors;
+﻿using Audio.ClipSelectors;
+using Props.InteractionCallbacks;
 using Props.Interfaces;
 using UnityEngine;
 
 namespace Audio.Triggers
 {
-    public class AudioTriggerInteractable : AudioTrigger
+    public class AudioTriggerInteractable : InteractableCallbacksComponent
     {
         #region Editor Fields
 
+        [field: SerializeField] protected AudioSource AudioSource { get; private set; }
         [SerializeField] private ClipSelector _clipSelectorInteractionStarted;
         [SerializeField] private ClipSelector _clipSelectorInteractionEnded;
 
@@ -19,32 +20,17 @@ namespace Audio.Triggers
         private IInteractable _interactable;
 
         #endregion
-        
+
         #region Properties
 
-        private IInteractable Interactable => _interactable ??= GetComponent<IInteractable>();
-
-        #endregion
-
-        #region Unity Callbacks
-
-        private void OnEnable()
-        {
-            Interactable.OnInteractionStarted += InteractionStartedCallback;
-            Interactable.OnInteractionEnded += InteractionEndedCallback;
-        }
-
-        private void OnDisable()
-        {
-            Interactable.OnInteractionStarted -= InteractionStartedCallback;
-            Interactable.OnInteractionEnded -= InteractionEndedCallback;
-        }
+        protected override bool UseStartCallback => _clipSelectorInteractionStarted;
+        protected override bool UseEndCallback => _clipSelectorInteractionEnded;
 
         #endregion
 
         #region Methods
-        
-        private void InteractionStartedCallback(GameObject context)
+
+        protected override void InteractionStartedCallback(GameObject context)
         {
             if (!_clipSelectorInteractionStarted)
             {
@@ -54,7 +40,7 @@ namespace Audio.Triggers
             _clipSelectorInteractionStarted.TryOneShotAudioSource(AudioSource);
         }
 
-        private void InteractionEndedCallback(GameObject context)
+        protected override void InteractionEndedCallback(GameObject context)
         {
             if (!_clipSelectorInteractionEnded)
             {

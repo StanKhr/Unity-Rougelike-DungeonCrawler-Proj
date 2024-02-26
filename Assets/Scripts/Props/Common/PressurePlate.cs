@@ -1,12 +1,10 @@
-﻿using System;
-using Abilities.Interfaces;
+﻿using Abilities.Interfaces;
 using Abilities.Triggers;
 using Miscellaneous;
 using Props.Interfaces;
-using Statuses.Interfaces;
 using UnityEngine;
 
-namespace Props
+namespace Props.Common
 {
     public class PressurePlate : MonoBehaviour, IInteractable
     {

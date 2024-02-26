@@ -66,6 +66,38 @@ MonoBehaviour:
     m_Localized: Druckplatte
     m_Metadata:
       m_Items: []
+  - m_Id: 13
+    m_Localized: "St\xE4rke"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Localized: Geschicklichkeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Localized: Intellekt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Localized: STR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Localized: GES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Localized: INT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19
+    m_Localized: Leere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20
+    m_Localized: Nichts
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

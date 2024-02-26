@@ -1,11 +1,18 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
+using Miscellaneous;
 using UnityEngine;
 
 namespace UI.Presenters
 {
     public class DamageFeedbackScreenBlood : DamageFeedback
     {
+        #region Constants
+
+        private const float OneSecondValue = 1f;
+
+        #endregion
+        
         #region Editor Fields
 
         [Header("Views")]
@@ -70,7 +77,7 @@ namespace UI.Presenters
                 }
             }
 
-            var time = 1f;
+            var time = OneSecondValue;
             while (time > 0f)
             {
                 var removeValue = Time.deltaTime * _effectDecaySpeed;

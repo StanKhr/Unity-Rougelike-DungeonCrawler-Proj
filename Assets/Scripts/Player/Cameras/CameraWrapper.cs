@@ -2,7 +2,6 @@
 using Cinemachine;
 using Player.Cameras.Enums;
 using Player.Cameras.Interfaces;
-using Player.Inputs;
 using UnityEngine;
 
 namespace Player.Cameras
@@ -11,7 +10,6 @@ namespace Player.Cameras
     {
         #region Constants
 
-        private const float HeadBobDelayTime = 0.45f;
         private const int PriorityLow = 1;
         private const int PriorityHigh = 10;
 
@@ -28,9 +26,6 @@ namespace Player.Cameras
         [Header("Cinemachine Cameras")]
         [SerializeField] private CinemachineVirtualCamera _cinemachineFreeLook;
         [SerializeField] private CinemachineVirtualCamera _cinemachineDeath;
-        
-        [Header("References")]
-        [field: SerializeField] public CinemachineImpulseSource _cinemachineImpulseSource;
 
         #endregion
 
@@ -85,25 +80,6 @@ namespace Player.Cameras
                     ActiveCamera = null;
                     break;
             }
-        }
-
-        public void TickHeadBob(float magnitude, float deltaTime)
-        {
-            if (_headBobTimer > 0f)
-            {
-                _headBobTimer -= deltaTime;
-                return;
-            }
-
-            _headBobTimer = HeadBobDelayTime;
-
-            if (magnitude <= 0f)
-            {
-                return;
-            }
-            
-            _cinemachineImpulseSource.GenerateImpulse();
-            OnFootStepped?.Invoke();
         }
 
         #endregion

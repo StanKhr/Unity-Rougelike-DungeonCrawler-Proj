@@ -1,5 +1,4 @@
 ﻿using FSM.Main;
-using Miscellaneous;
 using Player.Cameras.Enums;
 using Player.StateMachines.Interfaces;
 using Props.Interfaces;
@@ -29,13 +28,10 @@ namespace Player.StateMachines.States
         public override void Enter()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            inputProvider.MapWrapperCamera.EnableMap(true);
+            inputProvider.Movement.OnJump += JumpCallback;
             
-            inputProvider.MapWrapperMovement.EnableMap(true);
-            inputProvider.MapWrapperMovement.OnJump += JumpCallback;
-            
-            inputProvider.MapWrapperAbilities.EnableMap(true);
-            inputProvider.MapWrapperAbilities.OnInteracted += InteractedCallback;
+            inputProvider.Abilities.EnableMap(true);
+            inputProvider.Abilities.OnInteracted += InteractedCallback;
             inputProvider.CursorVisibility.SetVisibility(false);
             
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
@@ -45,19 +41,18 @@ namespace Player.StateMachines.States
         public override void Exit()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            inputProvider.MapWrapperCamera.EnableMap(false);
+            inputProvider.Camera.EnableMap(false);
             
-            inputProvider.MapWrapperMovement.EnableMap(false);
-            inputProvider.MapWrapperMovement.OnJump -= JumpCallback;
+            inputProvider.Movement.EnableMap(false);
+            inputProvider.Movement.OnJump -= JumpCallback;
             
-            inputProvider.MapWrapperAbilities.EnableMap(false);
-            inputProvider.MapWrapperAbilities.OnInteracted -= InteractedCallback;
+            inputProvider.Abilities.EnableMap(false);
+            inputProvider.Abilities.OnInteracted -= InteractedCallback;
             inputProvider.CursorVisibility.SetVisibility(true);
         }
 
         public override void Tick(float deltaTime)
         {
-            UpdateCameraLook(deltaTime);
             UpdateLocomotion(deltaTime);
         }
 
@@ -75,7 +70,6 @@ namespace Player.StateMachines.States
             }
 
             usable.TryUse(StateMachinePlayer.GameObject);
-            // LogWriter.DevelopmentLog($"Trying to interact with: {eyeScanner.Target}");
         }
 
         private void JumpCallback()
@@ -84,27 +78,25 @@ namespace Player.StateMachines.States
             locomotion.ApplyJump();
         }
 
-        private void UpdateCameraLook(float deltaTime)
-        {
-            var cameraWrapper = StateMachinePlayer.CameraWrapper;
-            
-            var locomotion = StateMachinePlayer.Locomotion;
-            if (!locomotion.Grounded)
-            {
-                cameraWrapper.TickHeadBob(0f, deltaTime);
-                return;
-            }
-            
-            cameraWrapper.TickHeadBob(locomotion.Velocity.magnitude, deltaTime);
-        }
-
         private void UpdateLocomotion(float deltaTime)
         {
+            var inputProvider = StateMachinePlayer.InputProvider;
+            var walking = inputProvider.Movement.Walking;
+            var crouching = inputProvider.Movement.Crouching;
+            var sprinting = inputProvider.Movement.Sprinting;
+            
             var locomotion = StateMachinePlayer.Locomotion;
+            locomotion.Walking = walking;
+            locomotion.Crouching = crouching;
+            locomotion.Sprinting = sprinting;
+            
             var moveDirection = CalculateCameraDirection();
             
-            locomotion.SetTargetDirection(moveDirection);
-            locomotion.TickMovement(deltaTime);
+            locomotion.SetTargetMotion(moveDirection);
+            locomotion.TickMotion(deltaTime);
+
+            var footStepsTracker = StateMachinePlayer.FootStepsTracker;
+            footStepsTracker.Tick(locomotion, deltaTime);
         }
 
         private Vector3 CalculateCameraDirection()
@@ -121,8 +113,8 @@ namespace Player.StateMachines.States
             forward.Normalize();
             right.Normalize();
 
-            var x = inputProvider.MapWrapperMovement.MoveInputs.x;
-            var y = inputProvider.MapWrapperMovement.MoveInputs.y;
+            var x = inputProvider.Movement.MoveInputs.x;
+            var y = inputProvider.Movement.MoveInputs.y;
             
             return (forward * y + right * x).normalized;
         }

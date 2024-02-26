@@ -1,5 +1,4 @@
-﻿using System;
-using Miscellaneous;
+﻿using Miscellaneous;
 
 namespace Props.Interfaces
 {

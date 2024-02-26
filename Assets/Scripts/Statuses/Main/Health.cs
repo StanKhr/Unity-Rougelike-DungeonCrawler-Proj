@@ -32,6 +32,8 @@ namespace Statuses.Main
             }
         }
 
+        public bool Alive => CurrentValue > 0f;
+
         #endregion
         
         #region Methods
@@ -46,12 +48,24 @@ namespace Statuses.Main
         
         public void ApplyDamage(Damage damage)
         {
-            if (CurrentValue == 0f)
+            if (!Alive)
             {
                 return;
             }
             
             CurrentValue -= damage.Value;
+        }
+        
+        public bool TryHeal(float healValue)
+        {
+            if (!Alive)
+            {
+                return false;
+            }
+
+            CurrentValue += healValue;
+
+            return true;
         }
 
         #endregion

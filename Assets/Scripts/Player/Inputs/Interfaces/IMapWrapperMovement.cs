@@ -14,6 +14,9 @@ namespace Player.Inputs.Interfaces
         #region Properties
 
         Vector2 MoveInputs { get; }
+        bool Sprinting { get; }
+        bool Crouching { get; }
+        bool Walking { get; }
 
         #endregion
     }

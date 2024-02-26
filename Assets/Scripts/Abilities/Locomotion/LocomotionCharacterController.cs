@@ -11,14 +11,14 @@ namespace Abilities.Locomotion
 
         private const float GravityMaxForce = -100;
         private const float JumpConstScale = -3f;
-        private const float CoyoteTime = 0.3f;
 
         #endregion
 
         #region Events
-        
+
         public event Action OnJumped;
         public event Action OnGroundLanded;
+        public event DelegateHolder.FloatEvents OnFallDamageTriggered;
 
         #endregion
 
@@ -33,30 +33,38 @@ namespace Abilities.Locomotion
         #region Fields
 
         private bool _grounded;
-        private float _acceleration;
         private float _gravity;
-        private Vector3 _targetDirection;
-        private Vector3 _moveDirection;
-
+        private Vector3 _targetMotion;
+        private Vector3 _currentMotion;
+        
         #endregion
 
         #region Properties
 
-        public Vector3 Velocity => _characterController.velocity;
-
+        public bool Walking { get; set; }
+        public bool Sprinting { get; set; }
+        public bool Crouching { get; set; }
+        public Vector3 BodyVelocity => _characterController.velocity;
         public bool Grounded
         {
             get => _grounded;
             private set
             {
-                if (Grounded != value)
-                {
-                    Gravity = Mathf.Max(Gravity, 0f);
-                }
+                var triggerFallDamage = !Grounded && value;
 
                 if (!Grounded && value)
                 {
                     OnGroundLanded?.Invoke();
+                }
+
+                if (triggerFallDamage && Gravity <= _locomotionData.FallDamageGravityThreshold)
+                {
+                    OnFallDamageTriggered?.Invoke(Gravity);
+                }
+                
+                if (Grounded != value)
+                {
+                    Gravity = Mathf.Max(Gravity, 0f);
                 }
 
                 _grounded = value;
@@ -89,39 +97,51 @@ namespace Abilities.Locomotion
             {
                 return;
             }
-            
+
+            if (_locomotionData.JumpPower <= 0f)
+            {
+                return;
+            }
+
             Gravity = Mathf.Sqrt(_locomotionData.JumpPower * JumpConstScale * Physics.gravity.y);
             OnJumped?.Invoke();
         }
 
-        public void SetTargetDirection(Vector3 newTargetDirection)
+        public void SetTargetMotion(Vector3 newTargetDirection)
         {
-            if (!Grounded)
-            {
-                return;
-            }
-            
-            _targetDirection = newTargetDirection;
+            _targetMotion = newTargetDirection;
         }
 
-        public void TickMovement(float deltaTime)
+        public void TickMotion(float deltaTime)
+        {
+            TickGravity(deltaTime);
+            
+            var speed = _locomotionData.GetSpeed(this);
+            var motionChangeRate = _locomotionData.GetMotionChangeRate(this);
+
+            var changeMotion = Mathf.Abs(_targetMotion.sqrMagnitude) > 0f;
+            if (Grounded || changeMotion)
+            {
+                _currentMotion = Vector3.Lerp(_currentMotion, _targetMotion * speed, deltaTime * motionChangeRate);
+            }
+            
+            var finalMotion = _currentMotion * deltaTime;
+            
+            finalMotion += new Vector3(0f, Gravity * deltaTime, 0f);
+
+            _characterController.Move(finalMotion);
+        }
+
+        private void TickGravity(float deltaTime)
         {
             Grounded = _groundScanner.ScanForGround(out _);
-            
             if (Grounded && Gravity <= 0f)
             {
                 Gravity = Physics.gravity.y;
-            }
-            else
-            {
-                Gravity -= deltaTime * _locomotionData.GravityScale;
+                return;
             }
             
-            _moveDirection = _targetDirection;
-            _moveDirection *= _locomotionData.Speed * deltaTime;
-            _moveDirection += new Vector3(0f, Gravity * deltaTime, 0f);
-
-            _characterController.Move(_moveDirection);
+            Gravity -= deltaTime * _locomotionData.GravityScale;
         }
 
         #endregion

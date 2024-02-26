@@ -1,6 +1,4 @@
-﻿using System;
-using Miscellaneous;
-using Player.Miscellaneous;
+﻿using Player.Miscellaneous;
 using TMPro;
 using UI.Enums;
 using UI.Interfaces;
@@ -24,14 +22,14 @@ namespace UI.Presenters
 
         #region Unity Callbacks
 
-        private void OnEnable()
+        private void Start()
         {
             FillPopup(null);
             _eyeScanner.OnTargetFound += TargetFoundCallback;
             _eyeScanner.OnTargetLost += TargetLostCallback;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _eyeScanner.OnTargetFound -= TargetFoundCallback;
             _eyeScanner.OnTargetLost -= TargetLostCallback;

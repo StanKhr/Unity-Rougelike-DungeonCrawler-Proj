@@ -1,7 +1,7 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using Player.Miscellaneous;
 using TMPro;
+using UI.Utility;
 using UnityEngine;
 
 namespace UI.Presenters
@@ -32,8 +32,8 @@ namespace UI.Presenters
             StringBuilder.Append(_playerGps.Y.ToString("00"));
             StringBuilder.Append(" z: ");
             StringBuilder.Append(_playerGps.Z.ToString("00"));
-
-            _textMeshProUGUI.text = StringBuilder.ToString();
+            
+            _textMeshProUGUI.SetTextSmart(StringBuilder.ToString());
         }
 
         #endregion

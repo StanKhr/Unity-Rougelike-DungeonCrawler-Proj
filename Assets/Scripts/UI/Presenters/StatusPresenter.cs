@@ -1,5 +1,4 @@
 ﻿using System;
-using Cysharp.Threading.Tasks;
 using Statuses.Interfaces;
 using Statuses.Main;
 using TMPro;
@@ -62,17 +61,15 @@ namespace UI.Presenters
 
         #region Unity Callbacks
 
-        private async void OnEnable()
+        private void Start()
         {
-            await UniTask.Yield();
-            
             Status.OnCurrentValueChanged += CurrentValueChangedCallback;
             Status.OnMaxValueChanged += MaxValueChangedCallback;
 
             SetDefaultValues();
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             Status.OnCurrentValueChanged -= CurrentValueChangedCallback;
             Status.OnMaxValueChanged -= MaxValueChangedCallback;

@@ -4,9 +4,10 @@
     {
         #region Properties
 
-        IMapWrapperCamera MapWrapperCamera { get; }
-        IMapWrapperMovement MapWrapperMovement { get; }
-        IMapWrapperAbilities MapWrapperAbilities { get; }
+        IMapWrapperCamera Camera { get; }
+        IMapWrapperMovement Movement { get; }
+        IMapWrapperAbilities Abilities { get; }
+        IMapWrapperUtility Utility { get; }
         ICursorVisibility CursorVisibility { get; }
 
         #endregion

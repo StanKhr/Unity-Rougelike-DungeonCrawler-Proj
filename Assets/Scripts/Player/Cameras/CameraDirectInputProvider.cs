@@ -25,8 +25,8 @@ namespace Player.Cameras
         {
             return axis switch
             {
-                0 => InputProvider.MapWrapperCamera.LookInputs.x,
-                1 => InputProvider.MapWrapperCamera.LookInputs.y,
+                0 => InputProvider.Camera.LookInputs.x,
+                1 => InputProvider.Camera.LookInputs.y,
                 _ => 0f
 
             };
