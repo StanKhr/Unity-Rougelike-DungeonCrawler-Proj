@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Player.Inventories.ConsumableEffects
 {

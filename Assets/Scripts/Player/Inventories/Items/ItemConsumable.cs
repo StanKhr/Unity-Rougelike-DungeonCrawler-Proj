@@ -1,6 +1,7 @@
 ﻿using Player.Inventories.ConsumableEffects;
 using Player.Inventories.Interfaces;
 using Props.Interfaces;
+using UI.Utility;
 using UnityEngine;
 
 namespace Player.Inventories.Items
@@ -17,6 +18,20 @@ namespace Player.Inventories.Items
         #region Properties
 
         private IConsumableEffect ConsumableEffect => _consumableEffectScriptable;
+
+        public override string CombinedDescription
+        {
+            get
+            {
+                var basic = base.CombinedDescription;
+                StringBuilder.Clear();
+                StringBuilder.Append(basic);
+                StringBuilder.Append("\n\n");
+                StringBuilder.Append(ConsumableEffect.GetDescription());
+
+                return StringBuilder.ToString();
+            }
+        }
 
         #endregion
         

@@ -42,10 +42,29 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 8722672576366379016
+  - m_Id: 6
+    m_Localized: Banane
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7
+    m_Localized: "K\xFCrzlich gereifte Banane der Sorte Mortreon. Die Lieblingsobst
+      der Bewohner der Insel Schkarster."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Localized: Stellt {value} Lebenspunkte wieder her, wenn verwendet.
+    m_Metadata:
+      m_Items:
+      - rid: 8722672576366379016
+  - m_Id: 9
+    m_Localized: Stellt {value}% deiner maximalen Lebenspunkte wieder her, wenn verwendet.
+    m_Metadata:
+      m_Items:
+      - rid: 8722672576366379016
   references:
     version: 2
     RefIds:
     - rid: 8722672576366379016
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 030000000000000004000000000000000500000000000000
+        m_Entries: 03000000000000000400000000000000050000000000000009000000000000000800000000000000

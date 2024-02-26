@@ -12,4 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72a9f26e0924279995a9a95d19414e1, type: 3}
   m_Name: ConsumableEffect_HealConstant_5
   m_EditorClassIdentifier: 
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:0b16142d2ef10d84497e540277a52ce6
+    m_TableEntryReference:
+      m_KeyId: 8
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: value
+      variable:
+        rid: 8722672640518782981
   _healValue: 5
+  references:
+    version: 2
+    RefIds:
+    - rid: 8722672640518782981
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 

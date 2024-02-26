@@ -35,6 +35,22 @@ MonoBehaviour:
     m_Key: WEAPON_attributeScaling_values
     m_Metadata:
       m_Items: []
+  - m_Id: 6
+    m_Key: ITEM_name_banana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7
+    m_Key: ITEM_desc_banana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Key: CONSUMABLE_heal_const_value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9
+    m_Key: CONSUMABLE_heal_percentage_value
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

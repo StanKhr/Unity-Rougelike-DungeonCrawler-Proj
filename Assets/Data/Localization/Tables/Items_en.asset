@@ -42,10 +42,29 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 8722672576366379015
+  - m_Id: 6
+    m_Localized: Banana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7
+    m_Localized: Freshy ripened banana of the Mortreon variety. The favorite fruit
+      of the inhabitants of Schkarster Island.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Localized: Restores {value} points of your health when used.
+    m_Metadata:
+      m_Items:
+      - rid: 8722672576366379015
+  - m_Id: 9
+    m_Localized: Restores {value}% of your max health when used.
+    m_Metadata:
+      m_Items:
+      - rid: 8722672576366379015
   references:
     version: 2
     RefIds:
     - rid: 8722672576366379015
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 030000000000000004000000000000000500000000000000
+        m_Entries: 03000000000000000400000000000000050000000000000008000000000000000900000000000000

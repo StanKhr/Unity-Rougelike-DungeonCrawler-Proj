@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Player.Inventories.Interfaces
 {
@@ -7,6 +8,7 @@ namespace Player.Inventories.Interfaces
         #region Methods
 
         bool TryConsume(GameObject user);
+        string GetDescription();
 
         #endregion
     }

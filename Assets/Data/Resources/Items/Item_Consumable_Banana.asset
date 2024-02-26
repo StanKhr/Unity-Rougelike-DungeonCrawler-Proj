@@ -16,18 +16,18 @@ MonoBehaviour:
   _icon: {fileID: -814641293, guid: 9b2abd160dd333f4ab2279aee03262ac, type: 3}
   _name:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:0b16142d2ef10d84497e540277a52ce6
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 6
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
   _flavorText:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:0b16142d2ef10d84497e540277a52ce6
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 7
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

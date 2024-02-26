@@ -26,7 +26,7 @@ namespace Player.Inventories.Items
 
         #region Fields
 
-        private static readonly StringBuilder StringBuilder = new();
+        protected static readonly StringBuilder StringBuilder = new();
 
         #endregion
 
