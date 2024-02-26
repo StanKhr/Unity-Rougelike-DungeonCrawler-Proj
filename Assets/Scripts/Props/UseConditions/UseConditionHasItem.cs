@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Props.UseConditions
 {
-    public class UseConditionHasItem : MonoBehaviour, IUseCondition
+    public class UseConditionHasItem : UseCondition, IUseCondition
     {
         #region Editor Fields
 
@@ -22,7 +22,7 @@ namespace Props.UseConditions
         
         #region Methods
 
-        public bool Check(IUsable usable, GameObject user)
+        public override bool Check(IUsable usable, GameObject user)
         {
             if (!_expectedItem)
             {

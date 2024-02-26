@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Props.UseConditions
 {
-    public class UseConditionDistance : MonoBehaviour, IUseCondition
+    public class UseConditionDistance : UseCondition, IUseCondition
     {
         #region Editor Fields
         
@@ -13,7 +13,7 @@ namespace Props.UseConditions
         
         #region Methods
 
-        public bool Check(IUsable usable, GameObject user)
+        public override bool Check(IUsable usable, GameObject user)
         {
             var distance = Vector3.Distance(user.transform.position, transform.position);
             return distance <= _useDistance;
