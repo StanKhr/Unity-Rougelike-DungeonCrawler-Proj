@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Props.Common
 {
-    public class PickableItem : Usable, IInteractable, IUsable
+    public class PickableItem : Usable, IInteractable
     {
         #region Events
         

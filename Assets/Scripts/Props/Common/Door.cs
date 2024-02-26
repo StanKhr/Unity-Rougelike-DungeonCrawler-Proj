@@ -4,25 +4,12 @@ using UnityEngine;
 
 namespace Props.Common
 {
-    public class Door : Usable, IInteractable, IUsable
+    public class Door : Usable, IInteractable
     {
-        #region Constants
-
-        private static readonly int OpenHash = Animator.StringToHash("Open");
-        private static readonly int CloseHash = Animator.StringToHash("Close");
-
-        #endregion
-        
         #region Events
         
         public event DelegateHolder.GameObjectEvents OnInteractionStarted;
         public event DelegateHolder.GameObjectEvents OnInteractionEnded;
-
-        #endregion
-
-        #region Editor Fields
-
-        [SerializeField] private Animator _animator;
 
         #endregion
 
@@ -48,12 +35,10 @@ namespace Props.Common
 
                 if (Opened)
                 {
-                    _animator.Play(OpenHash);
                     OnInteractionStarted?.Invoke(null);
                     return;
                 }
                 
-                _animator.Play(CloseHash);
                 OnInteractionEnded?.Invoke(null);
             }
         }
@@ -64,7 +49,6 @@ namespace Props.Common
 
         protected override bool PerformUseLogic(GameObject user)
         {
-            
             Opened = !Opened;
             return true;
         }

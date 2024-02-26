@@ -17,7 +17,7 @@ namespace Props.InteractionCallbacks
 
         #region Properties
 
-        protected override bool UseInteractionStarted => true;
+        protected override bool UseStartCallback => true;
         protected override IInteractable Interactable => _pressurePlate;
 
 

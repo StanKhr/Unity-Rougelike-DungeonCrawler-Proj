@@ -7,8 +7,8 @@ namespace Props.InteractionCallbacks
     {
         #region Properties
 
-        protected virtual bool UseInteractionStarted => false;
-        protected virtual bool UseInteractionEnded => false;
+        protected virtual bool UseStartCallback => false;
+        protected virtual bool UseEndCallback => false;
         protected abstract IInteractable Interactable { get; }
 
         #endregion
@@ -17,12 +17,12 @@ namespace Props.InteractionCallbacks
 
         protected virtual void OnEnable()
         {
-            if (UseInteractionStarted)
+            if (UseStartCallback)
             {
                 Interactable.OnInteractionStarted += InteractionStartedCallback;
             }
 
-            if (UseInteractionEnded)
+            if (UseEndCallback)
             {
                 Interactable.OnInteractionEnded += InteractionEndedCallback;
             }
@@ -30,12 +30,12 @@ namespace Props.InteractionCallbacks
 
         protected virtual void OnDisable()
         {
-            if (UseInteractionStarted)
+            if (UseStartCallback)
             {
                 Interactable.OnInteractionStarted -= InteractionStartedCallback;
             }
 
-            if (UseInteractionEnded)
+            if (UseEndCallback)
             {
                 Interactable.OnInteractionEnded -= InteractionEndedCallback;
             }
