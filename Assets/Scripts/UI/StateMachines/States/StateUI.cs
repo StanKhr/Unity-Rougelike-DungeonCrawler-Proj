@@ -41,6 +41,7 @@ namespace UI.StateMachines.States
         {
             InputProvider.Camera.EnableMap(enable);
             InputProvider.Movement.EnableMap(enable);
+            InputProvider.Abilities.EnableMap(enable);
         }
         
         protected void SetInventoryCallback(Action callback, bool subscribe)

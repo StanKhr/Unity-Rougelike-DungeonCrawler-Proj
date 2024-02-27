@@ -9,7 +9,13 @@ namespace Player.Inputs.Interfaces
 
         event Action OnTestInputPressed;
         event Action OnInteracted;
-        event DelegateHolder.BoolEvents OnWeaponAttackInputStateChanged;
+        event Action OnAttackInputPressed;
+
+        #endregion
+
+        #region Properties
+
+        bool AttackInputHolding { get; }
 
         #endregion
     }

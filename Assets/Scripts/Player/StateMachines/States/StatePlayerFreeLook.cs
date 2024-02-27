@@ -28,29 +28,25 @@ namespace Player.StateMachines.States
         public override void Enter()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            inputProvider.Camera.EnableMap(true);
             
             inputProvider.Movement.OnJump += JumpCallback;
-            
-            inputProvider.Abilities.EnableMap(true);
             inputProvider.Abilities.OnInteracted += InteractedCallback;
-            inputProvider.Abilities.OnWeaponAttackInputStateChanged += WeaponAttackInputStateChangedCallback;
+            inputProvider.Abilities.OnAttackInputPressed += AttackInputPressedCallback;
             
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
             cameraWrapper.SetActiveCamera(ActiveCameraType.FreeLook);
+            
+            var playerAnimations = StateMachinePlayer.PlayerAnimations;
+            playerAnimations.PlayHandsIdleLoop();
         }
 
         public override void Exit()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            inputProvider.Camera.EnableMap(false);
             
-            inputProvider.Movement.EnableMap(false);
             inputProvider.Movement.OnJump -= JumpCallback;
-            
-            inputProvider.Abilities.EnableMap(false);
             inputProvider.Abilities.OnInteracted -= InteractedCallback;
-            inputProvider.Abilities.OnWeaponAttackInputStateChanged -= WeaponAttackInputStateChangedCallback;
+            inputProvider.Abilities.OnAttackInputPressed -= AttackInputPressedCallback;
         }
 
         public override void Tick(float deltaTime)
@@ -58,13 +54,8 @@ namespace Player.StateMachines.States
             UpdateLocomotion(deltaTime);
         }
 
-        private void WeaponAttackInputStateChangedCallback(bool context)
+        private void AttackInputPressedCallback()
         {
-            if (!context)
-            {
-                return;
-            }
-
             var gear = StateMachinePlayer.Gear;
             if (!gear.WeaponEquipped)
             {

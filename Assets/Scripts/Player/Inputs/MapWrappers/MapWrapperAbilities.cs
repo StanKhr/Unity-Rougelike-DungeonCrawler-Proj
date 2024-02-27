@@ -21,7 +21,13 @@ namespace Player.Inputs.MapWrappers
         
         public event Action OnTestInputPressed;
         public event Action OnInteracted;
-        public event DelegateHolder.BoolEvents OnWeaponAttackInputStateChanged;
+        public event Action OnAttackInputPressed;
+
+        #endregion
+
+        #region Properties
+
+        public bool AttackInputHolding { get; private set; }
 
         #endregion
 
@@ -50,17 +56,14 @@ namespace Player.Inputs.MapWrappers
 
         void GameControlsAsset.IAbilitiesMapActions.OnWeaponAttack(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            AttackInputHolding = context.ReadValue<float>() > 0f;
+            
+            if (!context.performed)
             {
-                OnWeaponAttackInputStateChanged?.Invoke(true);
                 return;
             }
-
-            if (context.canceled)
-            {
-                OnWeaponAttackInputStateChanged?.Invoke(false);
-                return;
-            }
+            
+            OnAttackInputPressed?.Invoke();
         }
 
         public void OnTest(InputAction.CallbackContext context)

@@ -4,7 +4,7 @@
     {
         #region Methods
 
-        void ResetHandsAnimation();
+        void PlayHandsIdleLoop();
         void PlayWeaponAttackCharge(float weaponAttackSpeed);
         void PlayWeaponAttackRelease();
 

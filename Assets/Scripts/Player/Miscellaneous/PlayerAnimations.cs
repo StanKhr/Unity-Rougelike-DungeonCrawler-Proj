@@ -25,7 +25,7 @@ namespace Player.Miscellaneous
         
         #region Methods
 
-        public void ResetHandsAnimation()
+        public void PlayHandsIdleLoop()
         {
             CrossFadeAnimation(HandsBaseLoopHash);
         }
