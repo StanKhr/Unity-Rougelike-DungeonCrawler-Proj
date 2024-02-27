@@ -32,6 +32,11 @@ namespace UI.StateMachines.States
             
         }
 
+        protected void EnableCursor(bool enable)
+        {
+            InputProvider.CursorVisibility.SetVisibility(enable);
+        }
+
         protected void EnableGameplayInputs(bool enable)
         {
             InputProvider.Camera.EnableMap(enable);

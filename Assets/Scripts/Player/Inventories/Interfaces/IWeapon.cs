@@ -15,5 +15,12 @@ namespace Player.Inventories.Interfaces
         AttributeScaleType ScaleIntellect { get; }
 
         #endregion
+
+        #region Methods
+
+        float GetScaleMultiplier(AttributeScaleType attributeScaleType);
+        float CalculateChargeTimeSeconds();
+
+        #endregion
     }
 }

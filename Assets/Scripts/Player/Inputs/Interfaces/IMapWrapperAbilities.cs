@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous;
 
 namespace Player.Inputs.Interfaces
 {
@@ -8,6 +9,7 @@ namespace Player.Inputs.Interfaces
 
         event Action OnTestInputPressed;
         event Action OnInteracted;
+        event DelegateHolder.BoolEvents OnWeaponAttackInputStateChanged;
 
         #endregion
     }

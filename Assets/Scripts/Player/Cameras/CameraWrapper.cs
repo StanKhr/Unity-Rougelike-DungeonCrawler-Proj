@@ -15,12 +15,6 @@ namespace Player.Cameras
 
         #endregion
 
-        #region Events
-        
-        public event Action OnFootStepped;
-
-        #endregion
-
         #region Editor Fields
 
         [Header("Cinemachine Cameras")]

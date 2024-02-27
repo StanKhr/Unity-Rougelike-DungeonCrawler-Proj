@@ -71,12 +71,12 @@ namespace Player.Inventories.Items
             return true;
         }
 
-        public static float GetScaleMultiplier(AttributeScaleType attributeScaleType)
+        public float GetScaleMultiplier(AttributeScaleType attributeScaleType)
         {
             return AttributeScaleModifiers.GetValueOrDefault(attributeScaleType, 0f);
         }
 
-        public float CalculateSpeedSeconds()
+        public float CalculateChargeTimeSeconds()
         {
             return SpeedSecondValue / SpeedValue;
         }
