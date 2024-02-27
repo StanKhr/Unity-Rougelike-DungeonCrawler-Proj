@@ -19,6 +19,7 @@ namespace Miscellaneous
         public delegate void InventorySlotPresenterEvents(InventorySlotPresenter context);
         public delegate void StringEvents(string context);
         public delegate void StoryEventDataEvents(StoryEventData context);
+        public delegate void BoolEvents(bool context);
 
         #endregion
 

@@ -13,6 +13,12 @@ namespace Player.Inventories.Items
     public class ItemWeapon : Item, IUsable, IWeapon
     {
         #region Constants
+
+        private const float SpeedSecondValue = 60;
+
+        #endregion
+        
+        #region Constants
         
         // attribute scale type and corresponding modifier value
         private static readonly Dictionary<AttributeScaleType, float> AttributeScaleModifiers = new()
@@ -68,6 +74,11 @@ namespace Player.Inventories.Items
         public static float GetScaleMultiplier(AttributeScaleType attributeScaleType)
         {
             return AttributeScaleModifiers.GetValueOrDefault(attributeScaleType, 0f);
+        }
+
+        public float CalculateSpeedSeconds()
+        {
+            return SpeedSecondValue / SpeedValue;
         }
 
         #endregion
