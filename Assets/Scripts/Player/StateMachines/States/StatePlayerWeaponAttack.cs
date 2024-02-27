@@ -10,6 +10,7 @@ namespace Player.StateMachines.States
     {
         #region Constants
 
+        private const float MinChargeTime = 0.1f;
         private const float ReleaseAnimationTimeSeconds = 0.5f;
 
         #endregion
@@ -84,7 +85,7 @@ namespace Player.StateMachines.States
                 
                 LogWriter.DevelopmentLog($"Holding input: {holdingInput.ToString()}");
                 
-                if (!holdingInput)
+                if (!holdingInput && Timer >= MinChargeTime)
                 {
                     _released = true;
                 }
