@@ -452,7 +452,7 @@ namespace Scripts.Player.Inputs
                 {
                     ""name"": """",
                     ""id"": ""7305a1fc-d448-4b3e-9302-71615991eaac"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",

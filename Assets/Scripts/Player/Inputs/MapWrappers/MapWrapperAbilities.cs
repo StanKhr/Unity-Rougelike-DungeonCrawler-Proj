@@ -21,7 +21,6 @@ namespace Player.Inputs.MapWrappers
         
         public event Action OnTestInputPressed;
         public event Action OnInteracted;
-        public event Action OnAttackInputPressed;
 
         #endregion
 
@@ -57,13 +56,6 @@ namespace Player.Inputs.MapWrappers
         void GameControlsAsset.IAbilitiesMapActions.OnWeaponAttack(InputAction.CallbackContext context)
         {
             AttackInputHolding = context.ReadValue<float>() > 0f;
-            
-            if (!context.performed)
-            {
-                return;
-            }
-            
-            OnAttackInputPressed?.Invoke();
         }
 
         public void OnTest(InputAction.CallbackContext context)

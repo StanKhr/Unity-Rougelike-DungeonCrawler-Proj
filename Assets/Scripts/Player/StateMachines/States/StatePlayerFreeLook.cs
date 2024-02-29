@@ -31,7 +31,6 @@ namespace Player.StateMachines.States
             
             inputProvider.Movement.OnJump += JumpCallback;
             inputProvider.Abilities.OnInteracted += InteractedCallback;
-            inputProvider.Abilities.OnAttackInputPressed += AttackInputPressedCallback;
             
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
             cameraWrapper.SetActiveCamera(ActiveCameraType.FreeLook);
@@ -46,16 +45,22 @@ namespace Player.StateMachines.States
             
             inputProvider.Movement.OnJump -= JumpCallback;
             inputProvider.Abilities.OnInteracted -= InteractedCallback;
-            inputProvider.Abilities.OnAttackInputPressed -= AttackInputPressedCallback;
         }
 
         public override void Tick(float deltaTime)
         {
             UpdateLocomotion(deltaTime);
+            CheckAttackInput();
         }
 
-        private void AttackInputPressedCallback()
+        private void CheckAttackInput()
         {
+            var inputProvider = StateMachinePlayer.InputProvider;
+            if (!inputProvider.Abilities.AttackInputHolding)
+            {
+                return;
+            }
+            
             var gear = StateMachinePlayer.Gear;
             if (!gear.WeaponEquipped)
             {

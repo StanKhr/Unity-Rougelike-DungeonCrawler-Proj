@@ -9,7 +9,6 @@ namespace Player.Inputs.Interfaces
 
         event Action OnTestInputPressed;
         event Action OnInteracted;
-        event Action OnAttackInputPressed;
 
         #endregion
 

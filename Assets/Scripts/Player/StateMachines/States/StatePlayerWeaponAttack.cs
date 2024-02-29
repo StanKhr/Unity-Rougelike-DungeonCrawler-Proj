@@ -53,11 +53,15 @@ namespace Player.StateMachines.States
         {
             var playerAnimations = StateMachinePlayer.PlayerAnimations;
             playerAnimations.PlayWeaponAttackCharge(ChargeTimeSeconds);
+
+            var playerAttack = StateMachinePlayer.AttackDamageApplier;
+            playerAttack.ChargeAttack(StateMachinePlayer, Weapon, ChargeTimeSeconds);
         }
 
         public override void Exit()
         {
-            
+            var playerAttack = StateMachinePlayer.AttackDamageApplier;
+            playerAttack.EndAttack();
         }
 
         public override void Tick(float deltaTime)
@@ -83,8 +87,6 @@ namespace Player.StateMachines.States
                 var inputProvider = StateMachinePlayer.InputProvider;
                 var holdingInput = inputProvider.Abilities.AttackInputHolding;
                 
-                LogWriter.DevelopmentLog($"Holding input: {holdingInput.ToString()}");
-                
                 if (!holdingInput && Timer >= MinChargeTime)
                 {
                     _released = true;
@@ -96,12 +98,10 @@ namespace Player.StateMachines.States
             var playerAnimations = StateMachinePlayer.PlayerAnimations;
             playerAnimations.PlayWeaponAttackRelease();
 
-            _damageApplied = true;
+            var playerAttack = StateMachinePlayer.AttackDamageApplier;
+            playerAttack.ReleaseAttack(StateMachinePlayer, Weapon, Timer);
 
-            var damageValue = CalculateDamageValue(Timer);
-            
-            LogWriter.DevelopmentLog($"Damage: {damageValue.ToString("F")}; charge time: {Timer.ToString("F")}");
-            
+            _damageApplied = true;
             Timer = ReleaseAnimationTimeSeconds;
         }
 
@@ -117,11 +117,6 @@ namespace Player.StateMachines.States
 
             var footStepsTracker = StateMachinePlayer.FootStepsTracker;
             footStepsTracker.Tick(locomotion, deltaTime);
-        }
-
-        private float CalculateDamageValue(float chargeTime)
-        {
-            return Weapon.DamageValue * (chargeTime / ChargeTimeSeconds);
         }
 
         #endregion
