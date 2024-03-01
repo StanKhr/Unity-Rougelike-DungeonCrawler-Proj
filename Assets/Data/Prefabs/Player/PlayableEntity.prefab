@@ -427,7 +427,6 @@ GameObject:
   - component: {fileID: 7315915114580270916}
   - component: {fileID: 6470148962846245056}
   - component: {fileID: 7345476285307767408}
-  - component: {fileID: 9100416289625787701}
   m_Layer: 7
   m_Name: PlayableEntity
   m_TagString: Untagged
@@ -591,7 +590,7 @@ MonoBehaviour:
   _footStepsTracker: {fileID: 7315915114580270916}
   _gear: {fileID: 509330952836004890}
   _playerAnimations: {fileID: 7345476285307767408}
-  _playerMeleeAttack: {fileID: 9100416289625787701}
+  _playerMeleeAttack: {fileID: 0}
 --- !u!114 &1548980193278334187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,20 +686,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 3928323119986198838}
---- !u!114 &9100416289625787701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4799805662674334367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcd50cec5881464fab93ebfbb3f2d939, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackTransformDummy: {fileID: 0}
-  _attackRadius: 0.5
 --- !u!1 &5407754322543843440
 GameObject:
   m_ObjectHideFlags: 0

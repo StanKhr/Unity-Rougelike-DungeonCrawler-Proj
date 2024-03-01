@@ -4,6 +4,7 @@ using Player.Interfaces;
 using Player.Inventories.Enums;
 using Player.Inventories.Interfaces;
 using Props.Interfaces;
+using Statuses.Enums;
 using UI.Utility;
 using UnityEngine;
 
@@ -44,6 +45,7 @@ namespace Player.Inventories.Items
         [field: SerializeField] public AttributeScaleType ScaleStrength { get; private set; }
         [field: SerializeField] public AttributeScaleType ScaleDexterity { get; private set; }
         [field: SerializeField] public AttributeScaleType ScaleIntellect { get; private set; }
+        [field: SerializeField] public DamageType DamageType { get; private set; } = DamageType.MeleeSlash;
 
         #endregion
         

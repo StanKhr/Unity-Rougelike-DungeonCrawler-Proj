@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb82a57994a40688fc9c9173adf799c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerMeleeAttack: {fileID: 4906078586999721414}
+  _playerMeleeAttack: {fileID: 3665877201946409283}
   _sliderContainer: {fileID: 78388776140669446}
   _sliderFillImage: {fileID: 9066024930775386425}
   _critTagRect: {fileID: 2321409566327636135}
@@ -6310,7 +6310,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6871843238280400394}
-  m_Layer: 7
+  - component: {fileID: 3665877201946409283}
+  - component: {fileID: 321786643662095100}
+  - component: {fileID: 2419885469798841501}
+  m_Layer: 8
   m_Name: AttackDummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6332,6 +6335,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3405871714611362217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3665877201946409283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543367348431222981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd50cec5881464fab93ebfbb3f2d939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ownerHealth: {fileID: 2653844354053392620}
+  _attackCollider: {fileID: 321786643662095100}
+--- !u!135 &321786643662095100
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543367348431222981}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2419885469798841501
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543367348431222981}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &8605929701902369586
 GameObject:
   m_ObjectHideFlags: 0
@@ -8337,6 +8402,10 @@ PrefabInstance:
       propertyPath: _inputProvider
       value: 
       objectReference: {fileID: 3648680424501871758}
+    - target: {fileID: 2387627697339951175, guid: 782408980134efb4da21bbed16055e12, type: 3}
+      propertyPath: _playerMeleeAttack
+      value: 
+      objectReference: {fileID: 3665877201946409283}
     - target: {fileID: 4799805662674334367, guid: 782408980134efb4da21bbed16055e12, type: 3}
       propertyPath: m_Name
       value: PlayableEntity
@@ -8445,17 +8514,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d2363f7fb5d40e29bb728e90b912915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4906078586999721414 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9100416289625787701, guid: 782408980134efb4da21bbed16055e12, type: 3}
-  m_PrefabInstance: {fileID: 4206019128908447987}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcd50cec5881464fab93ebfbb3f2d939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &5744193000391611105 stripped

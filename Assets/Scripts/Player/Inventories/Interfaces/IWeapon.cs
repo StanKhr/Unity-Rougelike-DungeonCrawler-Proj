@@ -1,4 +1,5 @@
 ﻿using Player.Inventories.Enums;
+using Statuses.Enums;
 using UnityEngine;
 
 namespace Player.Inventories.Interfaces
@@ -14,6 +15,7 @@ namespace Player.Inventories.Interfaces
         AttributeScaleType ScaleStrength { get; }
         AttributeScaleType ScaleDexterity { get; }
         AttributeScaleType ScaleIntellect { get; }
+        DamageType DamageType { get; }
 
         #endregion
 

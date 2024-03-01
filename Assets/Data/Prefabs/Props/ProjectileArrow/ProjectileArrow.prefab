@@ -321,6 +321,7 @@ MonoBehaviour:
   _damage:
     <Value>k__BackingField: 15
     <DamageType>k__BackingField: 0
+    <Source>k__BackingField: {fileID: 6749179636832731721}
 --- !u!1 &7065929321240555712
 GameObject:
   m_ObjectHideFlags: 0

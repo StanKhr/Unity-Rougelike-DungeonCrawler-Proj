@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using Miscellaneous;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
+using Statuses.Datas;
+using Statuses.Interfaces;
+using Statuses.Main;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -29,8 +33,8 @@ namespace Player.Attacks
 
         #region Editor Fields
 
-        [SerializeField] private Transform _attackTransformDummy;
-        [SerializeField] private float _attackRadius;
+        [SerializeField] private Health _ownerHealth;
+        [SerializeField] private SphereCollider _attackCollider;
 
         #endregion
 
@@ -44,10 +48,13 @@ namespace Player.Attacks
         private float _critChargePercent;
         private bool _applyCriticalDamage;
         private float _calculatedDamage;
+        private readonly List<Collider> _affectedTargets = new();
 
         #endregion
 
         #region Properties
+
+        private IDamageable OwnerDamageable => _ownerHealth;
         public bool ChargingAttack
         {
             get => _chargingAttack;
@@ -90,13 +97,49 @@ namespace Player.Attacks
 
         private void OnDrawGizmos()
         {
-            if (!_attackTransformDummy)
+            if (!_attackCollider)
+            {
+                return;
+            }
+            
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, _attackCollider.radius);
+        }
+
+        private void Start()
+        {
+            _attackCollider.enabled = false;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (_affectedTargets.Contains(other))
+            {
+                return;
+            }
+            
+            LogWriter.DevelopmentLog($"Trying to damage: {other.name}");
+            
+            _affectedTargets.Add(other);
+
+            if (!other.gameObject.TryGetComponent<IDamageable>(out var damageable))
             {
                 return;
             }
 
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(_attackTransformDummy.position, _attackRadius);
+            if (damageable == OwnerDamageable)
+            {
+                return;
+            }
+
+            var damage = new Damage()
+            {
+                Value = _calculatedDamage,
+                DamageType = UsedWeapon.DamageType,
+                Source = _ownerHealth.gameObject
+            };
+            
+            damageable.ApplyDamage(damage);
         }
 
         #endregion
@@ -155,6 +198,9 @@ namespace Player.Attacks
             _calculatedDamage = CalculateDamageValue(UsedWeapon, ChargeTimer, _applyCriticalDamage);
             
             OnAttackReleased?.Invoke(UsedWeapon);
+
+            _affectedTargets.Clear();
+            _attackCollider.enabled = true;
         }
 
         public void InterruptAttack()
@@ -163,6 +209,8 @@ namespace Player.Attacks
             _attackDuration = 0f;
             
             OnAttackEnded?.Invoke();
+            
+            _attackCollider.enabled = false;
         }
 
         private static bool CheckCritCharge(float chargeTime, float critChargePercent)
