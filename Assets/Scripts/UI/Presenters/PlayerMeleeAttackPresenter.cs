@@ -9,8 +9,16 @@ using UnityEngine.UI;
 
 namespace UI.Presenters
 {
-    public class AttackDamageApplierPresenter : MonoBehaviour
+    public class PlayerMeleeAttackPresenter : MonoBehaviour
     {
+        #region Constants
+
+        private const float CritRectScale = 0.1f;
+        private const float CritTagMinPositionPercent = 0.1f;
+        private const float CritTagMaxPositionPercent = 0.9f;
+
+        #endregion
+        
         #region Editor Fields
 
         [SerializeField] private PlayerMeleeAttack _playerMeleeAttack;
@@ -18,6 +26,7 @@ namespace UI.Presenters
         [Header("Views")]
         [SerializeField] private RectTransform _sliderContainer;
         [SerializeField] private Image _sliderFillImage;
+        [SerializeField] private RectTransform _critTagRect;
 
         #endregion
 
@@ -72,13 +81,19 @@ namespace UI.Presenters
             _sliderContainer.gameObject.SetActiveSmart(false);
         }
 
-        private void AttackChargeStartedCallback(IWeapon context)
+        private void AttackChargeStartedCallback(MeleeAttackData context)
         {
             _sliderFillImage.fillAmount = 0f;
 
             var sliderSize = _sliderContainer.sizeDelta;
-            sliderSize.x = _defaultWidth * context.CalculateChargeTimeSeconds();
+            sliderSize.x = _defaultWidth * context.Weapon.CalculateChargeTimeSeconds();
             _sliderContainer.sizeDelta = sliderSize;
+
+            var critSize = _critTagRect.sizeDelta;
+            critSize.x = sliderSize.x * CritRectScale;
+            _critTagRect.sizeDelta = critSize;
+            
+            SetCritTagPosition(context.CritChangePercentage);
             
             _sliderContainer.gameObject.SetActiveSmart(true);
         }
@@ -91,6 +106,17 @@ namespace UI.Presenters
         private void AttackReleasedCallback(IWeapon context)
         {
             _sliderContainer.gameObject.SetActiveSmart(false);
+        }
+
+        private void SetCritTagPosition(float slidePercent)
+        {
+            var halvedWidth = _sliderContainer.sizeDelta.x * 0.5f;
+
+            var convertedHorizontalPosition = Mathf.Lerp(-halvedWidth, halvedWidth, slidePercent);
+
+            var critTagPosition = _critTagRect.anchoredPosition;
+            critTagPosition.x = convertedHorizontalPosition;
+            _critTagRect.anchoredPosition = critTagPosition;
         }
 
         #endregion

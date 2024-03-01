@@ -1,4 +1,5 @@
-﻿using Player.GameStories.Datas;
+﻿using Player.Attacks;
+using Player.GameStories.Datas;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
 using UI.Presenters.Items;
@@ -20,6 +21,7 @@ namespace Miscellaneous
         public delegate void StringEvents(string context);
         public delegate void StoryEventDataEvents(StoryEventData context);
         public delegate void BoolEvents(bool context);
+        public delegate void MeleeAttackDataEvents(MeleeAttackData context);
 
         #endregion
 

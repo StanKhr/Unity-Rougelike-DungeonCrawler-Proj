@@ -221,6 +221,7 @@ MonoBehaviour:
   _playerMeleeAttack: {fileID: 4906078586999721414}
   _sliderContainer: {fileID: 78388776140669446}
   _sliderFillImage: {fileID: 9066024930775386425}
+  _critTagRect: {fileID: 2321409566327636135}
 --- !u!1 &445453450280370917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,7 +1111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000045776367, y: 0}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &851191143977682728
@@ -3842,7 +3843,7 @@ GameObject:
   - component: {fileID: 2632482189808129758}
   - component: {fileID: 3733146100926238847}
   m_Layer: 5
-  m_Name: CritImage
+  m_Name: CritTag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3864,8 +3865,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 41.200054, y: 0}
-  m_SizeDelta: {x: 16, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2632482189808129758
 CanvasRenderer:

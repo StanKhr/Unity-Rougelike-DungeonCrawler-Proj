@@ -3,6 +3,7 @@ using Miscellaneous;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Player.Attacks
 {
@@ -11,12 +12,14 @@ namespace Player.Attacks
         #region Constant
         
         private const float MinChargeTime = 0.1f;
+        private const float CritMinPercent = 0.5f;
+        private const float CritMaxPercent = 0.9f;
 
         #endregion
         
         #region Events
         
-        public event DelegateHolder.WeaponEvents OnAttackChargeStarted;
+        public event DelegateHolder.MeleeAttackDataEvents OnAttackChargeStarted;
         public event DelegateHolder.WeaponEvents OnAttackReleased;
         public event Action OnAttackEnded;
         
@@ -105,8 +108,11 @@ namespace Player.Attacks
             UsedWeapon = weapon;
             
             ChargingAttack = true;
+
+            var critChancePercent = Random.Range(CritMinPercent, CritMaxPercent);
+            var attackData = new MeleeAttackData(UsedWeapon, critChancePercent);
             
-            OnAttackChargeStarted?.Invoke(UsedWeapon);
+            OnAttackChargeStarted?.Invoke(attackData);
         }
 
         public void Tick(float deltaTime)

@@ -1,5 +1,6 @@
 ﻿using FSM.Main;
 using Miscellaneous;
+using Player.Attacks;
 using Player.Inventories.Interfaces;
 using Player.StateMachines.Interfaces;
 using UnityEngine;
@@ -88,7 +89,7 @@ namespace Player.StateMachines.States
             StateMachinePlayer.ToFreeLookState();
         }
 
-        private void AttackChargeStartedCallback(IWeapon weapon)
+        private void AttackChargeStartedCallback(MeleeAttackData context)
         {
             var playerAnimations = StateMachinePlayer.PlayerAnimations;
             playerAnimations.PlayWeaponAttackCharge(Weapon.CalculateChargeTimeSeconds());
