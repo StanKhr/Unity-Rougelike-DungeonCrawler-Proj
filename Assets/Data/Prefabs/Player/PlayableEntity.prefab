@@ -591,7 +591,7 @@ MonoBehaviour:
   _footStepsTracker: {fileID: 7315915114580270916}
   _gear: {fileID: 509330952836004890}
   _playerAnimations: {fileID: 7345476285307767408}
-  _attackDamageApplier: {fileID: 9100416289625787701}
+  _playerMeleeAttack: {fileID: 9100416289625787701}
 --- !u!114 &1548980193278334187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,6 +699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd50cec5881464fab93ebfbb3f2d939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackTransformDummy: {fileID: 0}
+  _attackRadius: 0.5
 --- !u!1 &5407754322543843440
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,6 @@ namespace Player.StateMachines.States
     {
         #region Constants
 
-        private const float MinChargeTime = 0.1f;
-        private const float ReleaseAnimationTimeSeconds = 0.5f;
 
         #endregion
         
@@ -21,16 +19,7 @@ namespace Player.StateMachines.States
         {
             StateMachinePlayer = stateMachinePlayer;
             Weapon = weapon;
-            ChargeTimeSeconds = Weapon.CalculateChargeTimeSeconds();
         }
-
-        #endregion
-
-        #region Fields
-
-        private float _timer;
-        private bool _released;
-        private bool _damageApplied;
 
         #endregion
 
@@ -38,76 +27,80 @@ namespace Player.StateMachines.States
 
         private IStateMachinePlayer StateMachinePlayer { get; }
         private IWeapon Weapon { get; }
-        private float ChargeTimeSeconds { get; }
-        private float Timer
-        {
-            get => _timer;
-            set => _timer = Mathf.Clamp(value, 0f, ChargeTimeSeconds);
-        }
-
+        
         #endregion
 
         #region Methods
 
         public override void Enter()
         {
-            var playerAnimations = StateMachinePlayer.PlayerAnimations;
-            playerAnimations.PlayWeaponAttackCharge(ChargeTimeSeconds);
+            var playerAttack = StateMachinePlayer.PlayerMeleeAttack;
+            playerAttack.OnAttackChargingStarted += AttackChargingStartedCallback;
+            playerAttack.OnAttackInterrupted += AttackInterruptedCallback;
+            playerAttack.OnAttackReleased += AttackReleasedCallback;
+            
+            playerAttack.ChargeAttack(Weapon);
 
-            var playerAttack = StateMachinePlayer.AttackDamageApplier;
-            playerAttack.ChargeAttack(StateMachinePlayer, Weapon, ChargeTimeSeconds);
         }
 
         public override void Exit()
         {
-            var playerAttack = StateMachinePlayer.AttackDamageApplier;
-            playerAttack.EndAttack();
+            var playerAttack = StateMachinePlayer.PlayerMeleeAttack;
+            playerAttack.InterruptAttack();
         }
 
         public override void Tick(float deltaTime)
         {
             UpdateLocomotion(deltaTime);
-            
-            if (_damageApplied)
-            {
-                if (Timer <= 0f)
-                {
-                    StateMachinePlayer.ToFreeLookState();
-                    return;
-                }
 
-                Timer -= deltaTime;
+            var playerMeleeAttack = StateMachinePlayer.PlayerMeleeAttack;
+
+            if (!playerMeleeAttack.ChargingAttack)
+            {
                 return;
             }
             
-            if (!_released)
-            {
-                Timer += deltaTime;
+            playerMeleeAttack.TickCharge(deltaTime);
+            
+            var inputProvider = StateMachinePlayer.InputProvider;
+            var holdingInput = inputProvider.Abilities.AttackInputHolding;
 
-                var inputProvider = StateMachinePlayer.InputProvider;
-                var holdingInput = inputProvider.Abilities.AttackInputHolding;
-                
-                if (!holdingInput && Timer >= MinChargeTime)
-                {
-                    _released = true;
-                }
-                
+            if (holdingInput)
+            {
                 return;
             }
 
+            playerMeleeAttack.ReleaseAttack();
+        }
+
+        private void AttackReleasedCallback(IWeapon weapon)
+        {
             var playerAnimations = StateMachinePlayer.PlayerAnimations;
             playerAnimations.PlayWeaponAttackRelease();
+        }
 
-            var playerAttack = StateMachinePlayer.AttackDamageApplier;
-            playerAttack.ReleaseAttack(StateMachinePlayer, Weapon, Timer);
+        private void AttackInterruptedCallback()
+        {
+            StateMachinePlayer.ToFreeLookState();
+        }
 
-            _damageApplied = true;
-            Timer = ReleaseAnimationTimeSeconds;
+        private void AttackChargingStartedCallback(IWeapon weapon)
+        {
+            var playerAnimations = StateMachinePlayer.PlayerAnimations;
+            playerAnimations.PlayWeaponAttackCharge(Weapon.CalculateChargeTimeSeconds());
         }
 
         private void UpdateLocomotion(float deltaTime)
         {
             var locomotion = StateMachinePlayer.Locomotion;
+            if (!locomotion.Grounded)
+            {
+                var playerMeleeAttack = StateMachinePlayer.PlayerMeleeAttack;
+                playerMeleeAttack.InterruptAttack();
+                
+                return;
+            }
+            
             locomotion.Walking = true;
             
             var moveDirection = StateMachinePlayer.CalculateCameraDirection();

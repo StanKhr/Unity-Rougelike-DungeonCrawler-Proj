@@ -9,13 +9,13 @@ namespace UI.Presenters
     {
         #region Editor Fields
 
-        [SerializeField] private AttackDamageApplier _attackDamageApplier;
+        [SerializeField] private PlayerMeleeAttack _playerMeleeAttack;
 
         #endregion
 
         #region Properties
 
-        private IAttackDamageApplier AttackDamageApplier => _attackDamageApplier;
+        private IPlayerMeleeAttack PlayerMeleeAttack => _playerMeleeAttack;
 
         #endregion
 
@@ -23,12 +23,12 @@ namespace UI.Presenters
 
         private void Start()
         {
-            AttackDamageApplier.OnAttackChargeStarted += AttackChargeStarted;
+            
         }
 
-        private void AttackChargeStarted(float context)
+        private void PlayerMeleeAttackChargeStarted(float context)
         {
-            AttackDamageApplier.OnAttackChargeStarted -= AttackChargeStarted;
+            
         }
 
         private void OnDestroy()

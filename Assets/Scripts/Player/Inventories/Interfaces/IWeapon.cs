@@ -10,6 +10,7 @@ namespace Player.Inventories.Interfaces
         Sprite WeaponHandSprite { get; }
         float DamageValue { get; }
         float SpeedValue { get; }
+        float AttackDuration { get; }
         AttributeScaleType ScaleStrength { get; }
         AttributeScaleType ScaleDexterity { get; }
         AttributeScaleType ScaleIntellect { get; }
