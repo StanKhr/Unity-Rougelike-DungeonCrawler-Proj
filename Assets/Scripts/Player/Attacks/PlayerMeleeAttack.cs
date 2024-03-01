@@ -2,7 +2,6 @@
 using Miscellaneous;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
-using Player.StateMachines.Interfaces;
 using UnityEngine;
 
 namespace Player.Attacks
@@ -12,7 +11,6 @@ namespace Player.Attacks
         #region Constant
         
         private const float MinChargeTime = 0.1f;
-        private const float ReleaseAnimationTimeSeconds = 0.5f;
 
         #endregion
         
@@ -20,7 +18,7 @@ namespace Player.Attacks
         
         public event DelegateHolder.WeaponEvents OnAttackChargingStarted;
         public event DelegateHolder.WeaponEvents OnAttackReleased;
-        public event Action OnAttackInterrupted;
+        public event Action OnAttackEnded;
         
         #endregion
 
@@ -37,11 +35,28 @@ namespace Player.Attacks
         private float _maxChargeTimeSeconds;
         private float _chargeTimer;
         private bool _chargingAttack;
+        private float _attackDuration;
 
         #endregion
 
         #region Properties
 
+        private IWeapon UsedWeapon
+        {
+            get => _usedWeapon;
+            set
+            {
+                _usedWeapon = value;
+                if (UsedWeapon == null)
+                {
+                    return;
+                }
+                
+                _maxChargeTimeSeconds = UsedWeapon.CalculateChargeTimeSeconds();
+                _attackDuration = UsedWeapon.AttackDuration;
+                ChargeTimer = 0f;
+            }
+        }
         public bool ChargingAttack
         {
             get => _chargingAttack;
@@ -87,23 +102,29 @@ namespace Player.Attacks
                 return;
             }
 
-            _usedWeapon = weapon;
-            _maxChargeTimeSeconds = _usedWeapon.CalculateChargeTimeSeconds();
-            ChargeTimer = 0f;
+            UsedWeapon = weapon;
             
             ChargingAttack = true;
             
-            OnAttackChargingStarted?.Invoke(_usedWeapon);
+            OnAttackChargingStarted?.Invoke(UsedWeapon);
         }
 
-        public void TickCharge(float deltaTime)
+        public void Tick(float deltaTime)
         {
-            if (!ChargingAttack)
+            if (ChargingAttack)
             {
+                ChargeTimer += deltaTime;
+                return;
+            }
+
+            if (_attackDuration > 0f)
+            {
+                _attackDuration -= deltaTime;
+                // try apply damage
                 return;
             }
             
-            ChargeTimer += deltaTime;
+            InterruptAttack();
         }
 
         public void ReleaseAttack()
@@ -112,22 +133,23 @@ namespace Player.Attacks
             {
                 return;
             }
+
+            if (ChargeTimer < MinChargeTime)
+            {
+                return;
+            }
             
             ChargingAttack = false;
-                
-            OnAttackReleased?.Invoke(_usedWeapon);
+            
+            OnAttackReleased?.Invoke(UsedWeapon);
         }
 
         public void InterruptAttack()
         {
-            if (!ChargingAttack)
-            {
-                return;
-            }
-
             ChargingAttack = false;
+            _attackDuration = 0f;
             
-            OnAttackInterrupted?.Invoke();
+            OnAttackEnded?.Invoke();
         }
 
         private static float CalculateDamageValue(IWeapon weapon, float chargeTime)

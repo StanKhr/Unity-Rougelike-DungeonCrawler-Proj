@@ -36,16 +36,20 @@ namespace Player.StateMachines.States
         {
             var playerAttack = StateMachinePlayer.PlayerMeleeAttack;
             playerAttack.OnAttackChargingStarted += AttackChargingStartedCallback;
-            playerAttack.OnAttackInterrupted += AttackInterruptedCallback;
+            playerAttack.OnAttackEnded += AttackEndedCallback;
             playerAttack.OnAttackReleased += AttackReleasedCallback;
             
             playerAttack.ChargeAttack(Weapon);
-
         }
 
         public override void Exit()
         {
             var playerAttack = StateMachinePlayer.PlayerMeleeAttack;
+            
+            playerAttack.OnAttackChargingStarted -= AttackChargingStartedCallback;
+            playerAttack.OnAttackEnded -= AttackEndedCallback;
+            playerAttack.OnAttackReleased -= AttackReleasedCallback;
+            
             playerAttack.InterruptAttack();
         }
 
@@ -54,13 +58,13 @@ namespace Player.StateMachines.States
             UpdateLocomotion(deltaTime);
 
             var playerMeleeAttack = StateMachinePlayer.PlayerMeleeAttack;
+            
+            playerMeleeAttack.Tick(deltaTime);
 
             if (!playerMeleeAttack.ChargingAttack)
             {
                 return;
             }
-            
-            playerMeleeAttack.TickCharge(deltaTime);
             
             var inputProvider = StateMachinePlayer.InputProvider;
             var holdingInput = inputProvider.Abilities.AttackInputHolding;
@@ -79,7 +83,7 @@ namespace Player.StateMachines.States
             playerAnimations.PlayWeaponAttackRelease();
         }
 
-        private void AttackInterruptedCallback()
+        private void AttackEndedCallback()
         {
             StateMachinePlayer.ToFreeLookState();
         }
@@ -93,13 +97,13 @@ namespace Player.StateMachines.States
         private void UpdateLocomotion(float deltaTime)
         {
             var locomotion = StateMachinePlayer.Locomotion;
-            if (!locomotion.Grounded)
-            {
-                var playerMeleeAttack = StateMachinePlayer.PlayerMeleeAttack;
-                playerMeleeAttack.InterruptAttack();
-                
-                return;
-            }
+            // if (!locomotion.Grounded)
+            // {
+            //     var playerMeleeAttack = StateMachinePlayer.PlayerMeleeAttack;
+            //     playerMeleeAttack.InterruptAttack();
+            //     
+            //     return;
+            // }
             
             locomotion.Walking = true;
             

@@ -11,7 +11,7 @@ namespace Player.Interfaces
 
         event DelegateHolder.WeaponEvents OnAttackChargingStarted;
         event DelegateHolder.WeaponEvents OnAttackReleased;
-        event Action OnAttackInterrupted; 
+        event Action OnAttackEnded; 
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace Player.Interfaces
         #region Methods
 
         void ChargeAttack(IWeapon weapon);
-        void TickCharge(float deltaTime);
+        void Tick(float deltaTime);
         void ReleaseAttack();
         void InterruptAttack();
 
