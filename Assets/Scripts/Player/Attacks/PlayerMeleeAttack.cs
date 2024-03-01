@@ -12,8 +12,10 @@ namespace Player.Attacks
         #region Constant
         
         private const float MinChargeTime = 0.1f;
-        private const float CritMinPercent = 0.5f;
+        private const float CritMinPercent = 0.6f;
         private const float CritMaxPercent = 0.9f;
+        private const float CritPercentageBounds = 0.05f;
+        private const float CritDamagePercent = 1.2f;
 
         #endregion
         
@@ -39,6 +41,9 @@ namespace Player.Attacks
         private float _chargeTimer;
         private bool _chargingAttack;
         private float _attackDuration;
+        private float _critChargePercent;
+        private bool _applyCriticalDamage;
+        private float _calculatedDamage;
 
         #endregion
 
@@ -109,8 +114,8 @@ namespace Player.Attacks
             
             ChargingAttack = true;
 
-            var critChancePercent = Random.Range(CritMinPercent, CritMaxPercent);
-            var attackData = new MeleeAttackData(UsedWeapon, critChancePercent);
+            _critChargePercent = Random.Range(CritMinPercent, CritMaxPercent);
+            var attackData = new MeleeAttackData(UsedWeapon, _critChargePercent);
             
             OnAttackChargeStarted?.Invoke(attackData);
         }
@@ -146,6 +151,8 @@ namespace Player.Attacks
             }
             
             ChargingAttack = false;
+            _applyCriticalDamage = CheckCritCharge(ChargeTimer, _critChargePercent);
+            _calculatedDamage = CalculateDamageValue(UsedWeapon, ChargeTimer, _applyCriticalDamage);
             
             OnAttackReleased?.Invoke(UsedWeapon);
         }
@@ -158,9 +165,19 @@ namespace Player.Attacks
             OnAttackEnded?.Invoke();
         }
 
-        private static float CalculateDamageValue(IWeapon weapon, float chargeTime)
+        private static bool CheckCritCharge(float chargeTime, float critChargePercent)
+        {
+            return Math.Abs(chargeTime - critChargePercent) < CritPercentageBounds;
+        }
+
+        private static float CalculateDamageValue(IWeapon weapon, float chargeTime, bool critApplied)
         {
             var chargeTimeSeconds = weapon.CalculateChargeTimeSeconds();
+            if (critApplied)
+            {
+                return weapon.DamageValue * CritDamagePercent;
+            }
+            
             return weapon.DamageValue * (chargeTime / chargeTimeSeconds);
         }
 
