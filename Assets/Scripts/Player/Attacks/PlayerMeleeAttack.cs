@@ -16,7 +16,7 @@ namespace Player.Attacks
         
         #region Events
         
-        public event DelegateHolder.WeaponEvents OnAttackChargingStarted;
+        public event DelegateHolder.WeaponEvents OnAttackChargeStarted;
         public event DelegateHolder.WeaponEvents OnAttackReleased;
         public event Action OnAttackEnded;
         
@@ -40,7 +40,20 @@ namespace Player.Attacks
         #endregion
 
         #region Properties
-
+        public bool ChargingAttack
+        {
+            get => _chargingAttack;
+            private set
+            {
+                if (ChargingAttack == value)
+                {
+                    return;
+                }
+                
+                _chargingAttack = value;
+            }
+        }
+        public float ChargePercent => ChargeTimer / _maxChargeTimeSeconds;
         private IWeapon UsedWeapon
         {
             get => _usedWeapon;
@@ -55,19 +68,6 @@ namespace Player.Attacks
                 _maxChargeTimeSeconds = UsedWeapon.CalculateChargeTimeSeconds();
                 _attackDuration = UsedWeapon.AttackDuration;
                 ChargeTimer = 0f;
-            }
-        }
-        public bool ChargingAttack
-        {
-            get => _chargingAttack;
-            private set
-            {
-                if (ChargingAttack == value)
-                {
-                    return;
-                }
-                
-                _chargingAttack = value;
             }
         }
         private float ChargeTimer
@@ -106,7 +106,7 @@ namespace Player.Attacks
             
             ChargingAttack = true;
             
-            OnAttackChargingStarted?.Invoke(UsedWeapon);
+            OnAttackChargeStarted?.Invoke(UsedWeapon);
         }
 
         public void Tick(float deltaTime)

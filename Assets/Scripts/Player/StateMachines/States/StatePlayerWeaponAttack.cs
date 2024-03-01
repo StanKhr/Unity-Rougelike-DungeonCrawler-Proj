@@ -35,7 +35,7 @@ namespace Player.StateMachines.States
         public override void Enter()
         {
             var playerAttack = StateMachinePlayer.PlayerMeleeAttack;
-            playerAttack.OnAttackChargingStarted += AttackChargingStartedCallback;
+            playerAttack.OnAttackChargeStarted += AttackChargeStartedCallback;
             playerAttack.OnAttackEnded += AttackEndedCallback;
             playerAttack.OnAttackReleased += AttackReleasedCallback;
             
@@ -46,7 +46,7 @@ namespace Player.StateMachines.States
         {
             var playerAttack = StateMachinePlayer.PlayerMeleeAttack;
             
-            playerAttack.OnAttackChargingStarted -= AttackChargingStartedCallback;
+            playerAttack.OnAttackChargeStarted -= AttackChargeStartedCallback;
             playerAttack.OnAttackEnded -= AttackEndedCallback;
             playerAttack.OnAttackReleased -= AttackReleasedCallback;
             
@@ -88,7 +88,7 @@ namespace Player.StateMachines.States
             StateMachinePlayer.ToFreeLookState();
         }
 
-        private void AttackChargingStartedCallback(IWeapon weapon)
+        private void AttackChargeStartedCallback(IWeapon weapon)
         {
             var playerAnimations = StateMachinePlayer.PlayerAnimations;
             playerAnimations.PlayWeaponAttackCharge(Weapon.CalculateChargeTimeSeconds());

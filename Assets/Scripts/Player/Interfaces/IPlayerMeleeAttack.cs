@@ -9,7 +9,7 @@ namespace Player.Interfaces
     {
         #region Events
 
-        event DelegateHolder.WeaponEvents OnAttackChargingStarted;
+        event DelegateHolder.WeaponEvents OnAttackChargeStarted;
         event DelegateHolder.WeaponEvents OnAttackReleased;
         event Action OnAttackEnded; 
 
@@ -18,6 +18,7 @@ namespace Player.Interfaces
         #region Properties
 
         bool ChargingAttack { get; }
+        float ChargePercent { get; }
 
         #endregion
         
