@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 1699242613050725822}
-  _animator: {fileID: 0}
+  _animator: {fileID: 6331427975620954505}
 --- !u!1 &6854518714594591606
 GameObject:
   m_ObjectHideFlags: 0

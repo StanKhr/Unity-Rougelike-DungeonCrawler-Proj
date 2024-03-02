@@ -100,7 +100,7 @@ Material:
     - _AO: 1
     - _AlphaClip: 1
     - _AlphaToMask: 1
-    - _BillboardEnabled: 0
+    - _BillboardEnabled: 1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -117,6 +117,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _InverseTexture: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
