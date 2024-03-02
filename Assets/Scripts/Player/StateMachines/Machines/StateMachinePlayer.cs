@@ -25,7 +25,7 @@ namespace Player.StateMachines.Machines
         [SerializeField] private FootStepsTracker _footStepsTracker;
         [SerializeField] private Gear _gear;
         [SerializeField] private PlayerAnimations _playerAnimations;
-        [SerializeField] private PlayerMeleeAttack _playerMeleeAttack;
+        [SerializeField] private PlayerAttack _playerAttack;
 
         #endregion
         
@@ -38,7 +38,7 @@ namespace Player.StateMachines.Machines
         public IInventory Inventory => _inventory;
         public IGear Gear => _gear;
         public IPlayerAnimations PlayerAnimations => _playerAnimations;
-        public IPlayerMeleeAttack PlayerMeleeAttack => _playerMeleeAttack;
+        public IPlayerAttack PlayerAttack => _playerAttack;
 
         #endregion
 

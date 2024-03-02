@@ -17,7 +17,7 @@ namespace Player.StateMachines.Interfaces
         IFootStepsTracker FootStepsTracker { get; }
         IGear Gear { get; }
         IPlayerAnimations PlayerAnimations { get; }
-        IPlayerMeleeAttack PlayerMeleeAttack { get; }
+        IPlayerAttack PlayerAttack { get; }
         
         #endregion
 

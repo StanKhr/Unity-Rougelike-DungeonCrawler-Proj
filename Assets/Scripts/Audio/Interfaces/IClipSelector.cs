@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-namespace Audio.ClipSelectors
+namespace Audio.Interfaces
 {
-    public abstract class ClipSelector : MonoBehaviour
+    public interface IClipSelector
     {
         #region Methods
 
-        public abstract AudioClip Select();
-        public bool TryOneShotAudioSource(AudioSource audioSource)
+        AudioClip Select();
+        bool TryOneShotAudioSource(AudioSource audioSource)
         {
             if (!audioSource)
             {

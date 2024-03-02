@@ -1,4 +1,5 @@
 ﻿using Audio.ClipSelectors;
+using Audio.Interfaces;
 using UI.Utility;
 using UnityEngine;
 
@@ -8,8 +9,15 @@ namespace Audio.Triggers
     {
         #region Editor Fields
 
-        [SerializeField] private ClipSelector _selectedAudio;
-        [SerializeField] private ClipSelector _submittedAudio;
+        [SerializeField] private ClipSelectorMono _selectedAudio;
+        [SerializeField] private ClipSelectorMono _submittedAudio;
+
+        #endregion
+
+        #region Properties
+
+        private IClipSelector ClipSelectorSelected => _selectedAudio;
+        private IClipSelector ClipSelectorSubmitted => _submittedAudio;
 
         #endregion
         
@@ -33,12 +41,12 @@ namespace Audio.Triggers
         
         private void SelectedCallback()
         {
-            _selectedAudio.TryOneShotAudioSource(AudioSource);
+            ClipSelectorSelected.TryOneShotAudioSource(AudioSource);
         }
         
         private void SubmittedCallback()
         {
-            _submittedAudio.TryOneShotAudioSource(AudioSource);
+            ClipSelectorSubmitted.TryOneShotAudioSource(AudioSource);
         }
         
         #endregion

@@ -32,8 +32,55 @@ Transform:
   - {fileID: 1481138189475518463}
   - {fileID: 3651336506004215365}
   - {fileID: 3699580498660196406}
+  - {fileID: 3074681262807955798}
   m_Father: {fileID: 8496516805109912082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1303807045672587777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3074681262807955798}
+  - component: {fileID: 2382692739845734165}
+  m_Layer: 7
+  m_Name: PlayerAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3074681262807955798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303807045672587777}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2045104704807305905}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2382692739845734165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303807045672587777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d53ef24bc544aa8f7d104bb2571c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AudioSource>k__BackingField: {fileID: 6141010839929952566}
+  _playerAttack: {fileID: 0}
 --- !u!1 &1801738262260975020
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +637,7 @@ MonoBehaviour:
   _footStepsTracker: {fileID: 7315915114580270916}
   _gear: {fileID: 509330952836004890}
   _playerAnimations: {fileID: 7345476285307767408}
-  _playerMeleeAttack: {fileID: 0}
+  _playerAttack: {fileID: 0}
 --- !u!114 &1548980193278334187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,7 +912,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clips:
-  - {fileID: 8300000, guid: 5e7f88a85af7f5c47b3e51dc16739aa3, type: 3}
   - {fileID: 8300000, guid: 3d299abc55684a94ab01818c923c7318, type: 3}
   - {fileID: 8300000, guid: 01ba6b8c0ffc86549b06416a93da061e, type: 3}
 --- !u!114 &1142971804926124217
@@ -1446,7 +1492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 2200731330181941279}
   _audioSource: {fileID: 6141010839929952566}
-  _clipSelector: {fileID: 176579050955669246}
+  _damagedClipSelector: {fileID: 0}
+  _diedClipSelector: {fileID: 0}
 --- !u!114 &176579050955669246
 MonoBehaviour:
   m_ObjectHideFlags: 0

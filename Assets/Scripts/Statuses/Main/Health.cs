@@ -66,14 +66,16 @@ namespace Statuses.Main
         }
 #endif
 
-        public void ApplyDamage(Damage damage)
+        public bool TryApplyDamage(Damage damage)
         {
             if (!(this as IHealth).Alive)
             {
-                return;
+                return false;
             }
 
             CurrentValue -= damage.Value;
+
+            return true;
         }
 
         public bool TryHeal(float healValue)

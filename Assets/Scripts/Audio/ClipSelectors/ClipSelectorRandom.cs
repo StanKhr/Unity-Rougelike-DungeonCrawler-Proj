@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Audio.ClipSelectors
 {
-    public class ClipSelectorRandom : ClipSelector
+    public class ClipSelectorRandom : ClipSelectorMono
     {
         #region Editor Fields
 

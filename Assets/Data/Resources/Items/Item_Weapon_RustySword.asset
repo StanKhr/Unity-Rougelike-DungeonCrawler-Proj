@@ -40,6 +40,12 @@ MonoBehaviour:
   <ScaleDexterity>k__BackingField: 3
   <ScaleIntellect>k__BackingField: -1
   <DamageType>k__BackingField: 0
+  _clipSelectorChargeAttack:
+    _audioClip: {fileID: 8300000, guid: 5e7f88a85af7f5c47b3e51dc16739aa3, type: 3}
+  _clipSelectorReleaseAttack:
+    _audioClip: {fileID: 8300000, guid: d92f902a981369248bf4a40d90196c8f, type: 3}
+  _clipSelectorHit:
+    _audioClip: {fileID: 8300000, guid: adb8edf893a490942b9de360e4f05dd5, type: 3}
   references:
     version: 2
     RefIds: []

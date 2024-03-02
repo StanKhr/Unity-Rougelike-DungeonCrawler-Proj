@@ -43,7 +43,7 @@ namespace Props.Projectiles
         {
             if (context.TryGetComponent<IDamageable>(out var damageable))
             {
-                damageable.ApplyDamage(_damage);
+                damageable.TryApplyDamage(_damage);
             }
             
             _arrowHealth.Kill();

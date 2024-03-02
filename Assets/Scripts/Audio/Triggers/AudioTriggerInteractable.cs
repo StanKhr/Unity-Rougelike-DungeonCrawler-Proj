@@ -1,4 +1,5 @@
 ﻿using Audio.ClipSelectors;
+using Audio.Interfaces;
 using Props.InteractionCallbacks;
 using Props.Interfaces;
 using UnityEngine;
@@ -10,8 +11,8 @@ namespace Audio.Triggers
         #region Editor Fields
 
         [field: SerializeField] protected AudioSource AudioSource { get; private set; }
-        [SerializeField] private ClipSelector _clipSelectorInteractionStarted;
-        [SerializeField] private ClipSelector _clipSelectorInteractionEnded;
+        [SerializeField] private ClipSelectorMono _clipSelectorInteractionStarted;
+        [SerializeField] private ClipSelectorMono _clipSelectorInteractionEnded;
 
         #endregion
         
@@ -23,6 +24,8 @@ namespace Audio.Triggers
 
         #region Properties
 
+        private IClipSelector ClipSelectorInteractionStarted => _clipSelectorInteractionStarted;
+        private IClipSelector ClipSelectorInteractionEnded => _clipSelectorInteractionEnded;
         protected override bool UseStartCallback => _clipSelectorInteractionStarted;
         protected override bool UseEndCallback => _clipSelectorInteractionEnded;
 
@@ -32,22 +35,12 @@ namespace Audio.Triggers
 
         protected override void InteractionStartedCallback(GameObject context)
         {
-            if (!_clipSelectorInteractionStarted)
-            {
-                return;
-            }
-            
-            _clipSelectorInteractionStarted.TryOneShotAudioSource(AudioSource);
+            ClipSelectorInteractionStarted?.TryOneShotAudioSource(AudioSource);
         }
 
         protected override void InteractionEndedCallback(GameObject context)
         {
-            if (!_clipSelectorInteractionEnded)
-            {
-                return;
-            }
-            
-            _clipSelectorInteractionEnded.TryOneShotAudioSource(AudioSource);
+            ClipSelectorInteractionEnded?.TryOneShotAudioSource(AudioSource);
         }
 
         #endregion

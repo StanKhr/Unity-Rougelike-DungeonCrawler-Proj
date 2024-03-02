@@ -4,12 +4,13 @@ using Player.Inventories.Interfaces;
 
 namespace Player.Interfaces
 {
-    public interface IPlayerMeleeAttack
+    public interface IPlayerAttack
     {
         #region Events
 
         event DelegateHolder.MeleeAttackDataEvents OnAttackChargeStarted;
         event DelegateHolder.WeaponEvents OnAttackReleased;
+        event DelegateHolder.MeleeAttackDataEvents OnAttackApplied;
         event Action OnAttackEnded; 
 
         #endregion

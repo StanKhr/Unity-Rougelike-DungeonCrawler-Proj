@@ -33,7 +33,7 @@ namespace Player.StateMachines.States
 
         public override void Enter()
         {
-            var playerAttack = StateMachinePlayer.PlayerMeleeAttack;
+            var playerAttack = StateMachinePlayer.PlayerAttack;
             playerAttack.OnAttackChargeStarted += AttackChargeStartedCallback;
             playerAttack.OnAttackEnded += AttackEndedCallback;
             playerAttack.OnAttackReleased += AttackReleasedCallback;
@@ -43,7 +43,7 @@ namespace Player.StateMachines.States
 
         public override void Exit()
         {
-            var playerAttack = StateMachinePlayer.PlayerMeleeAttack;
+            var playerAttack = StateMachinePlayer.PlayerAttack;
             
             playerAttack.OnAttackChargeStarted -= AttackChargeStartedCallback;
             playerAttack.OnAttackEnded -= AttackEndedCallback;
@@ -56,7 +56,7 @@ namespace Player.StateMachines.States
         {
             UpdateLocomotion(deltaTime);
 
-            var playerMeleeAttack = StateMachinePlayer.PlayerMeleeAttack;
+            var playerMeleeAttack = StateMachinePlayer.PlayerAttack;
             
             playerMeleeAttack.Tick(deltaTime);
 

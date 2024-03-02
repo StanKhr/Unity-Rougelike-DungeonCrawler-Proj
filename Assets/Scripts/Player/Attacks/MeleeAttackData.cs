@@ -1,4 +1,5 @@
 ﻿using Player.Inventories.Interfaces;
+using UnityEngine;
 
 namespace Player.Attacks
 {
@@ -6,10 +7,12 @@ namespace Player.Attacks
     {
         #region Constructors
 
-        public MeleeAttackData(IWeapon weapon, float critChangePercentage)
+        public MeleeAttackData(IWeapon weapon, float critChargePercent, bool critApplied, GameObject attackVictim)
         {
             Weapon = weapon;
-            CritChangePercentage = critChangePercentage;
+            CritChargePercent = critChargePercent;
+            CritApplied = critApplied;
+            AttackVictim = attackVictim;
         }
 
         #endregion
@@ -17,7 +20,9 @@ namespace Player.Attacks
         #region Properties
 
         public IWeapon Weapon { get; }
-        public float CritChangePercentage { get; }
+        public float CritChargePercent { get; }
+        public bool CritApplied { get; }
+        public GameObject AttackVictim { get; }
 
         #endregion
     }

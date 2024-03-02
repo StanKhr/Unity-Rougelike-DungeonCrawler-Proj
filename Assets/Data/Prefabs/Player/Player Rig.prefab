@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb82a57994a40688fc9c9173adf799c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerMeleeAttack: {fileID: 3665877201946409283}
+  _playerAttack: {fileID: 3665877201946409283}
   _sliderContainer: {fileID: 78388776140669446}
   _sliderFillImage: {fileID: 9066024930775386425}
   _critTagRect: {fileID: 2321409566327636135}
@@ -8480,10 +8480,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2440888649355307301}
     m_Modifications:
+    - target: {fileID: 2382692739845734165, guid: 782408980134efb4da21bbed16055e12, type: 3}
+      propertyPath: _playerAttack
+      value: 
+      objectReference: {fileID: 3665877201946409283}
     - target: {fileID: 2387627697339951175, guid: 782408980134efb4da21bbed16055e12, type: 3}
       propertyPath: _eyeScanner
       value: 
       objectReference: {fileID: 734389047049311856}
+    - target: {fileID: 2387627697339951175, guid: 782408980134efb4da21bbed16055e12, type: 3}
+      propertyPath: _playerAttack
+      value: 
+      objectReference: {fileID: 3665877201946409283}
     - target: {fileID: 2387627697339951175, guid: 782408980134efb4da21bbed16055e12, type: 3}
       propertyPath: _cameraWrapper
       value: 

@@ -19,7 +19,7 @@ namespace UI.Presenters
         
         #region Editor Fields
 
-        [SerializeField] private PlayerMeleeAttack _playerMeleeAttack;
+        [SerializeField] private PlayerAttack _playerAttack;
 
         [Header("Views")]
         [SerializeField] private RectTransform _sliderContainer;
@@ -36,7 +36,7 @@ namespace UI.Presenters
 
         #region Properties
 
-        private IPlayerMeleeAttack PlayerMeleeAttack => _playerMeleeAttack;
+        private IPlayerAttack PlayerAttack => _playerAttack;
 
         #endregion
 
@@ -46,26 +46,26 @@ namespace UI.Presenters
         {
             Init();
             
-            PlayerMeleeAttack.OnAttackChargeStarted += AttackChargeStartedCallback;
-            PlayerMeleeAttack.OnAttackReleased += AttackReleasedCallback;
-            PlayerMeleeAttack.OnAttackEnded += AttackEndedCallback;
+            PlayerAttack.OnAttackChargeStarted += AttackChargeStartedCallback;
+            PlayerAttack.OnAttackReleased += AttackReleasedCallback;
+            PlayerAttack.OnAttackEnded += AttackEndedCallback;
         }
 
         private void OnDestroy()
         {
-            PlayerMeleeAttack.OnAttackChargeStarted -= AttackChargeStartedCallback;
-            PlayerMeleeAttack.OnAttackReleased -= AttackReleasedCallback;
-            PlayerMeleeAttack.OnAttackEnded -= AttackEndedCallback;
+            PlayerAttack.OnAttackChargeStarted -= AttackChargeStartedCallback;
+            PlayerAttack.OnAttackReleased -= AttackReleasedCallback;
+            PlayerAttack.OnAttackEnded -= AttackEndedCallback;
         }
 
         private void Update()
         {
-            if (!PlayerMeleeAttack.ChargingAttack)
+            if (!PlayerAttack.ChargingAttack)
             {
                 return;
             }
 
-            _sliderFillImage.fillAmount = PlayerMeleeAttack.ChargePercent;
+            _sliderFillImage.fillAmount = PlayerAttack.ChargePercent;
         }
 
         #endregion
@@ -91,7 +91,7 @@ namespace UI.Presenters
             critSize.x = sliderSize.x * CritRectScale;
             _critTagRect.sizeDelta = critSize;
             
-            SetCritTagPosition(context.CritChangePercentage);
+            SetCritTagPosition(context.CritChargePercent);
             
             _sliderContainer.gameObject.SetActiveSmart(true);
         }

@@ -13,7 +13,7 @@ namespace Statuses.Interfaces
         
         #region Methods
 
-        void ApplyDamage(Damage damage);
+        bool TryApplyDamage(Damage damage);
 
         #endregion
     }

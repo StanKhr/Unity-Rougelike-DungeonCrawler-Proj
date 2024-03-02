@@ -2,7 +2,7 @@
 
 namespace Audio.ClipSelectors
 {
-    public class ClipSelectorSimple : ClipSelector
+    public class ClipSelectorSimple : ClipSelectorMono
     {
         #region Editor Fields
 

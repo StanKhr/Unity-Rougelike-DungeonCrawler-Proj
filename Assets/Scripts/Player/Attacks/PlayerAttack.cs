@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 namespace Player.Attacks
 {
-    public class PlayerMeleeAttack : MonoBehaviour, IPlayerMeleeAttack
+    public class PlayerAttack : MonoBehaviour, IPlayerAttack
     {
         #region Constant
         
@@ -28,6 +28,7 @@ namespace Player.Attacks
         
         public event DelegateHolder.MeleeAttackDataEvents OnAttackChargeStarted;
         public event DelegateHolder.WeaponEvents OnAttackReleased;
+        public event DelegateHolder.MeleeAttackDataEvents OnAttackApplied;
         public event Action OnAttackEnded;
         
         #endregion
@@ -126,8 +127,14 @@ namespace Player.Attacks
                 DamageType = UsedWeapon.DamageType,
                 Source = _ownerHealth.gameObject
             };
-            
-            damageable.ApplyDamage(damage);
+
+            if (!damageable.TryApplyDamage(damage))
+            {
+                return;
+            }
+
+            var attackData = new MeleeAttackData(UsedWeapon, 0f, _applyCriticalDamage, other.gameObject);
+            OnAttackApplied?.Invoke(attackData);
         }
 
         #endregion
@@ -146,7 +153,7 @@ namespace Player.Attacks
             ChargingAttack = true;
 
             _critChargePercent = Random.Range(CritMinPercent, CritMaxPercent);
-            var attackData = new MeleeAttackData(UsedWeapon, _critChargePercent);
+            var attackData = new MeleeAttackData(UsedWeapon, _critChargePercent, false, null);
             
             OnAttackChargeStarted?.Invoke(attackData);
         }

@@ -1,4 +1,5 @@
 using Audio.ClipSelectors;
+using Audio.Interfaces;
 using Miscellaneous;
 using UnityEngine;
 
@@ -9,14 +10,16 @@ namespace Audio.Triggers
         #region Editor Fields
 
         [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private ClipSelector _damagedClipSelector;
-        [SerializeField] private ClipSelector _diedClipSelector;
+        [SerializeField] private ClipSelectorMono _damagedClipSelector;
+        [SerializeField] private ClipSelectorMono _diedClipSelector;
 
         #endregion
 
         #region Properties
 
         protected override bool ObserveDeath => true;
+        private IClipSelector DamagedClipSelector => _damagedClipSelector;
+        private IClipSelector DiedClipSelector => _diedClipSelector;
 
         #endregion
 
@@ -24,12 +27,12 @@ namespace Audio.Triggers
         
         protected override void DamagedCallback(float context)
         {
-            _damagedClipSelector.TryOneShotAudioSource(_audioSource);
+            DamagedClipSelector.TryOneShotAudioSource(_audioSource);
         }
 
         protected override void DiedCallback()
         {
-            _diedClipSelector.TryOneShotAudioSource(_audioSource);
+            DiedClipSelector.TryOneShotAudioSource(_audioSource);
         }
 
         #endregion
