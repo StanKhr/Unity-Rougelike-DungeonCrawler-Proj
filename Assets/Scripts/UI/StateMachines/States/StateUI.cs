@@ -1,6 +1,5 @@
 ﻿using System;
 using FSM.Main;
-using Player.Inputs;
 using Player.Inputs.Interfaces;
 using UI.StateMachines.Interfaces;
 

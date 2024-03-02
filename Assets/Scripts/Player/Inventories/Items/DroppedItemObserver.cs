@@ -1,5 +1,4 @@
-﻿using System;
-using Miscellaneous.Interfaces;
+﻿using Miscellaneous.Interfaces;
 using Player.Inventories.Interfaces;
 using Props.Common;
 using UnityEngine;

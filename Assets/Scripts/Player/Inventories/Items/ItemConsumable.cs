@@ -1,7 +1,6 @@
 ﻿using Player.Inventories.ConsumableEffects;
 using Player.Inventories.Interfaces;
 using Props.Interfaces;
-using UI.Utility;
 using UnityEngine;
 
 namespace Player.Inventories.Items

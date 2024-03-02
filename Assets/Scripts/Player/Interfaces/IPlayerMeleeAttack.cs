@@ -1,7 +1,6 @@
 ﻿using System;
 using Miscellaneous;
 using Player.Inventories.Interfaces;
-using Player.StateMachines.Interfaces;
 
 namespace Player.Interfaces
 {

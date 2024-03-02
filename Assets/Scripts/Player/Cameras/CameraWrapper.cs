@@ -1,5 +1,4 @@
-﻿using System;
-using Cinemachine;
+﻿using Cinemachine;
 using Player.Cameras.Enums;
 using Player.Cameras.Interfaces;
 using UnityEngine;

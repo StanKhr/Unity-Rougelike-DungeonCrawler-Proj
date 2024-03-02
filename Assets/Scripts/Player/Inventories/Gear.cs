@@ -1,8 +1,6 @@
-﻿using System;
-using Miscellaneous;
+﻿using Miscellaneous;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
-using Player.Inventories.Items;
 using UnityEngine;
 
 namespace Player.Inventories

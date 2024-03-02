@@ -1,5 +1,4 @@
-﻿using System;
-using Miscellaneous;
+﻿using Miscellaneous;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
 using Props.Interfaces;

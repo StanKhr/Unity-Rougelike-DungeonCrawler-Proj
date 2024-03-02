@@ -1,7 +1,6 @@
 ﻿using Player.Attacks;
 using Player.GameStories.Datas;
 using Player.Inventories.Interfaces;
-using Player.Inventories.Items;
 using UI.Presenters.Items;
 using UnityEngine;
 

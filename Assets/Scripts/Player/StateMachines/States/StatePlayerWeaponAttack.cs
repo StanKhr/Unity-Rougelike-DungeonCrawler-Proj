@@ -1,9 +1,7 @@
 ﻿using FSM.Main;
-using Miscellaneous;
 using Player.Attacks;
 using Player.Inventories.Interfaces;
 using Player.StateMachines.Interfaces;
-using UnityEngine;
 
 namespace Player.StateMachines.States
 {

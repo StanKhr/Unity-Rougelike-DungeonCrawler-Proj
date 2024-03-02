@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Player.Interfaces;
 using Player.Inventories.Enums;
 using Player.Inventories.Interfaces;

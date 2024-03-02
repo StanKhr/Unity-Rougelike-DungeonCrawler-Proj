@@ -1,6 +1,4 @@
-﻿using System;
-using Miscellaneous;
-using Player.Attacks;
+﻿using Player.Attacks;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
 using UI.Utility;

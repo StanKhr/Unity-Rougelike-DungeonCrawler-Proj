@@ -1,10 +1,7 @@
-﻿using System;
-using Player.Interfaces;
+﻿using Player.Interfaces;
 using Player.Inventories;
 using Player.Inventories.Interfaces;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Localization;
 
 namespace UI.Presenters
 {

@@ -1,5 +1,4 @@
-﻿using Props.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Props.InteractionCallbacks
 {
