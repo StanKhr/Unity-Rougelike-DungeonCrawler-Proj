@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Props.InteractionCallbacks
 {
-    public class ObjectDisabler : InteractableCallbacksComponent
+    public class InteractableCallbackObjectDestroyer : InteractableCallbacksComponent
     {
         #region Properties
 
@@ -15,7 +15,7 @@ namespace Props.InteractionCallbacks
 
         protected override void InteractionStartedCallback(GameObject context)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
         #endregion

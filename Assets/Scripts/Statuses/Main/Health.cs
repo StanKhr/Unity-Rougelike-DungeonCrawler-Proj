@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using System;
+using Miscellaneous;
 using Statuses.Datas;
 using Statuses.Interfaces;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace Statuses.Main
         #region Events
 
         public event DelegateHolder.FloatEvents OnDamaged;
+        public event Action OnDied;
+        public event Action OnResurrected;
 
         #endregion
 
@@ -20,22 +23,18 @@ namespace Statuses.Main
             get => base.CurrentValue;
             protected set
             {
-                var current = CurrentValue;
+                var previousValue = CurrentValue;
 
                 base.CurrentValue = value;
-                
-                if (current > 0f && value < current)
-                {
-                    var damageAmount = CurrentValue - value;
-                    OnDamaged?.Invoke(damageAmount);
-                }
+
+                CheckDamageEvent(previousValue, CurrentValue);
+                CheckDeathEvent(previousValue, CurrentValue);
+                CheckResurrectEvent(previousValue, CurrentValue);
             }
         }
 
-        public bool Alive => CurrentValue > 0f;
-
         #endregion
-        
+
         #region Methods
 
 #if UNITY_EDITOR
@@ -45,20 +44,20 @@ namespace Statuses.Main
             CurrentValue += 20;
         }
 #endif
-        
+
         public void ApplyDamage(Damage damage)
         {
-            if (!Alive)
+            if (!(this as IHealth).Alive)
             {
                 return;
             }
-            
+
             CurrentValue -= damage.Value;
         }
-        
+
         public bool TryHeal(float healValue)
         {
-            if (!Alive)
+            if (!(this as IHealth).Alive)
             {
                 return false;
             }
@@ -66,6 +65,56 @@ namespace Statuses.Main
             CurrentValue += healValue;
 
             return true;
+        }
+
+        public void Resurrect()
+        {
+            CurrentValue = MaxValue;
+        }
+
+        private void CheckDeathEvent(float previousValue, float currentValue)
+        {
+            if (currentValue > 0f)
+            {
+                return;
+            }
+
+            if (previousValue <= 0f)
+            {
+                return;
+            }
+            
+            OnDied?.Invoke();
+        }
+
+        private void CheckDamageEvent(float previousValue, float currentValue)
+        {
+            if (currentValue < 0f)
+            {
+                return;
+            }
+
+            if (previousValue <= 0f)
+            {
+                return;
+            }
+            
+            OnDamaged?.Invoke(previousValue - currentValue);
+        }
+
+        private void CheckResurrectEvent(float previousValue, float currentValue)
+        {
+            if (previousValue > 0f)
+            {
+                return;
+            }
+
+            if (currentValue <= previousValue)
+            {
+                return;
+            }
+
+            OnResurrected?.Invoke();
         }
 
         #endregion

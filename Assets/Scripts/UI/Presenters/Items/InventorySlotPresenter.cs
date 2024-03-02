@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace UI.Presenters.Items
 {
-    public class InventorySlotPresenter : MonoBehaviour, ISelectHandler, ISubmitHandler
+    public class InventorySlotPresenter : MonoBehaviour, ISelectHandler, ISubmitHandler, IPointerClickHandler
     {
         #region Constants
 
@@ -96,6 +96,11 @@ namespace UI.Presenters.Items
         public void OnSelect(BaseEventData eventData)
         {
             OnSlotSelected?.Invoke(this);
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            OnUseItemTriggered?.Invoke(this);
         }
 
         #endregion

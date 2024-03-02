@@ -14,7 +14,8 @@ namespace Miscellaneous
 
         #region Properties
 
-        private IDamageable Damageable => _health;
+        protected IDamageable Damageable => _health;
+        protected IHealth Health => _health;
 
         #endregion
 

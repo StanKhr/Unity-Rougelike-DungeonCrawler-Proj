@@ -118,8 +118,6 @@ namespace Player.Attacks
                 return;
             }
             
-            LogWriter.DevelopmentLog($"Trying to damage: {other.name}");
-            
             _affectedTargets.Add(other);
 
             if (!other.gameObject.TryGetComponent<IDamageable>(out var damageable))

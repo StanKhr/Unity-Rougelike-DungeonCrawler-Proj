@@ -41,6 +41,11 @@ namespace Props.Projectiles
 
         private void EnteredCallback(Collider context)
         {
+            if (context.isTrigger)
+            {
+                return;
+            }
+            
             OnVictimFound?.Invoke(context.gameObject);
         }
 
