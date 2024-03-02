@@ -16,6 +16,7 @@ namespace Miscellaneous
 
         protected IDamageable Damageable => _health;
         protected IHealth Health => _health;
+        protected virtual bool ObserveDeath { get; } = false;
 
         #endregion
 
@@ -24,11 +25,19 @@ namespace Miscellaneous
         protected virtual void OnEnable()
         {
             Damageable.OnDamaged += DamagedCallback;
+            if (ObserveDeath)
+            {
+                Health.OnDied += DiedCallback;
+            }
         }
 
         protected virtual void OnDisable()
         {
             Damageable.OnDamaged -= DamagedCallback;
+            if (ObserveDeath)
+            {
+                Health.OnDied -= DiedCallback;
+            }
         }
 
         #endregion
@@ -36,6 +45,10 @@ namespace Miscellaneous
         #region Methods
 
         protected abstract void DamagedCallback(float context);
+        protected virtual void DiedCallback()
+        {
+            
+        }
 
 
         #endregion
