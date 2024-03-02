@@ -182,7 +182,9 @@ namespace Player.Attacks
             }
             
             ChargingAttack = false;
-            _applyCriticalDamage = CheckCritCharge(ChargeTimer, _critChargePercent);
+
+            var chargePercent = ChargeTimer / _maxChargeTimeSeconds;
+            _applyCriticalDamage = CheckCritCharge(chargePercent, _critChargePercent);
             _calculatedDamage = CalculateDamageValue(UsedWeapon, ChargeTimer, _applyCriticalDamage);
             
             OnAttackReleased?.Invoke(UsedWeapon);
@@ -201,9 +203,9 @@ namespace Player.Attacks
             _attackCollider.enabled = false;
         }
 
-        private static bool CheckCritCharge(float chargeTime, float critChargePercent)
+        private static bool CheckCritCharge(float chargeTimePercent, float critChargePercent)
         {
-            return Math.Abs(chargeTime - critChargePercent) < CritPercentageBounds;
+            return Math.Abs(chargeTimePercent - critChargePercent) <= CritPercentageBounds;
         }
 
         private static float CalculateDamageValue(IWeapon weapon, float chargeTime, bool critApplied)
