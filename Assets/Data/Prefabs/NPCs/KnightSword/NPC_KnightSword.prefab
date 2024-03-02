@@ -126,6 +126,8 @@ GameObject:
   - component: {fileID: 6331427975620954505}
   - component: {fileID: 1699242613050725822}
   - component: {fileID: 4235102361156619401}
+  - component: {fileID: 1754533038920188317}
+  - component: {fileID: 1987485246370785524}
   m_Layer: 7
   m_Name: NPC_KnightSword
   m_TagString: Untagged
@@ -224,6 +226,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseValue: 10
+--- !u!114 &1754533038920188317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853018127330601841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bced92f8ed914efdb69825eaeb3bd3ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 1699242613050725822}
+--- !u!114 &1987485246370785524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853018127330601841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff85159e756486092145a378b74a387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 1699242613050725822}
+  _animator: {fileID: 0}
 --- !u!1 &6854518714594591606
 GameObject:
   m_ObjectHideFlags: 0

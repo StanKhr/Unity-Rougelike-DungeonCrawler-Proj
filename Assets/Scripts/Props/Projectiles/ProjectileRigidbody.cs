@@ -1,5 +1,7 @@
 ﻿using Abilities.Triggers;
 using Miscellaneous;
+using Player.Interfaces;
+using Player.Miscellaneous;
 using Props.Interfaces;
 using UnityEngine;
 
@@ -17,9 +19,16 @@ namespace Props.Projectiles
 
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private ColliderTrigger _colliderTrigger;
+        [SerializeField] private TimerComponent _selfDestroyTimer;
         
         [Header("Settings")]
         [SerializeField] private float _speed;
+
+        #endregion
+
+        #region Properties
+
+        private ITimer SelfDestroyTimer => _selfDestroyTimer;
 
         #endregion
 
@@ -28,20 +37,50 @@ namespace Props.Projectiles
         private void OnEnable()
         {
             _colliderTrigger.OnEntered += EnteredCallback;
+
+            if (SelfDestroyTimer == null)
+            {
+                return;
+            }
+
+            SelfDestroyTimer.OnTimerStarted += SelfDestroyTimerStartedCallback;
         }
 
         private void OnDisable()
         {
             _colliderTrigger.OnEntered -= EnteredCallback;
+
+            if (SelfDestroyTimer == null)
+            {
+                return;
+            }
+
+            SelfDestroyTimer.OnTimerStarted -= SelfDestroyTimerStartedCallback;
         }
 
         #endregion
         
         #region Methods
 
+        private void SelfDestroyTimerStartedCallback()
+        {
+            _rigidbody.velocity = Vector3.zero;
+        }
+
         private void EnteredCallback(Collider context)
         {
             if (context.isTrigger)
+            {
+                return;
+            }
+
+            if (SelfDestroyTimer == null)
+            {
+                OnVictimFound?.Invoke(context.gameObject);
+                return;
+            }
+
+            if (SelfDestroyTimer.InProgress)
             {
                 return;
             }

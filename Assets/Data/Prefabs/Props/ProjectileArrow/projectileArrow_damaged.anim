@@ -51,8 +51,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._Inverse_Texture
-    path: Sprites/SpriteA
+    attribute: material._InverseTexture
+    path: Sprites/SpriteB
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -90,8 +90,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._Inverse_Texture
-    path: Sprites/SpriteB
+    attribute: material._InverseTexture
+    path: Sprites/SpriteA
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -104,8 +104,8 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3419151285
-      attribute: 2320691529
+      path: 1388661263
+      attribute: 2413955971
       script: {fileID: 0}
       typeID: 212
       customType: 22
@@ -113,8 +113,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1388661263
-      attribute: 2320691529
+      path: 3419151285
+      attribute: 2413955971
       script: {fileID: 0}
       typeID: 212
       customType: 22
@@ -177,8 +177,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._Inverse_Texture
-    path: Sprites/SpriteA
+    attribute: material._InverseTexture
+    path: Sprites/SpriteB
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -216,8 +216,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._Inverse_Texture
-    path: Sprites/SpriteB
+    attribute: material._InverseTexture
+    path: Sprites/SpriteA
     classID: 212
     script: {fileID: 0}
     flags: 0

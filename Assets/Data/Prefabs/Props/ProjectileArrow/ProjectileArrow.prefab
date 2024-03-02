@@ -309,6 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 8396440386405401715}
   _colliderTrigger: {fileID: 1426345023138248491}
+  _selfDestroyTimer: {fileID: 8381117491984626999}
   _speed: 400
 --- !u!114 &6182532324642867980
 MonoBehaviour:

@@ -24,12 +24,33 @@ namespace Statuses.Main
             protected set
             {
                 var previousValue = CurrentValue;
-
                 base.CurrentValue = value;
 
-                CheckDamageEvent(previousValue, CurrentValue);
-                CheckDeathEvent(previousValue, CurrentValue);
-                CheckResurrectEvent(previousValue, CurrentValue);
+                var healthDifference = previousValue - CurrentValue;
+                if (Math.Abs(previousValue - CurrentValue) <= 0f)
+                {
+                    return;
+                }
+                
+                if (CurrentValue > previousValue)
+                {
+                    if (previousValue <= 0f)
+                    {
+                        OnResurrected?.Invoke();
+                        return;
+                    }
+                    
+                    return;
+                }
+
+                OnDamaged?.Invoke(healthDifference);
+                
+                if ((this as IHealth).Alive)
+                {
+                    return;
+                }
+                
+                OnDied?.Invoke();
             }
         }
 
@@ -70,51 +91,6 @@ namespace Statuses.Main
         public void Resurrect()
         {
             CurrentValue = MaxValue;
-        }
-
-        private void CheckDeathEvent(float previousValue, float currentValue)
-        {
-            if (currentValue > 0f)
-            {
-                return;
-            }
-
-            if (previousValue <= 0f)
-            {
-                return;
-            }
-            
-            OnDied?.Invoke();
-        }
-
-        private void CheckDamageEvent(float previousValue, float currentValue)
-        {
-            if (currentValue < 0f)
-            {
-                return;
-            }
-
-            if (previousValue <= 0f)
-            {
-                return;
-            }
-            
-            OnDamaged?.Invoke(previousValue - currentValue);
-        }
-
-        private void CheckResurrectEvent(float previousValue, float currentValue)
-        {
-            if (previousValue > 0f)
-            {
-                return;
-            }
-
-            if (currentValue <= previousValue)
-            {
-                return;
-            }
-
-            OnResurrected?.Invoke();
         }
 
         #endregion

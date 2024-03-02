@@ -20,6 +20,7 @@ namespace Player.Attacks
         private const float CritMaxPercent = 0.9f;
         private const float CritPercentageBounds = 0.05f;
         private const float CritDamagePercent = 1.2f;
+        private const float MinAttackDamage = 1.0f;
 
         #endregion
         
@@ -94,17 +95,6 @@ namespace Player.Attacks
         #endregion
 
         #region Unity Callbacks
-
-        private void OnDrawGizmos()
-        {
-            if (!_attackCollider)
-            {
-                return;
-            }
-            
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _attackCollider.radius);
-        }
 
         private void Start()
         {
@@ -219,12 +209,18 @@ namespace Player.Attacks
         private static float CalculateDamageValue(IWeapon weapon, float chargeTime, bool critApplied)
         {
             var chargeTimeSeconds = weapon.CalculateChargeTimeSeconds();
+            float totalDamage;
+            
             if (critApplied)
             {
-                return weapon.DamageValue * CritDamagePercent;
+                totalDamage =  weapon.DamageValue * CritDamagePercent;
             }
-            
-            return weapon.DamageValue * (chargeTime / chargeTimeSeconds);
+            else
+            {
+                totalDamage = weapon.DamageValue * (chargeTime / chargeTimeSeconds);
+            }
+
+            return Mathf.Max(totalDamage, MinAttackDamage);
         }
 
         #endregion

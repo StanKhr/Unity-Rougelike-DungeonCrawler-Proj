@@ -28,7 +28,7 @@ namespace Statuses.Main
         #region Fields
 
         private float _maxValue;
-        private float _currentValue;
+        private float _currentValue = 0f;
 
         #endregion
 
@@ -41,7 +41,10 @@ namespace Statuses.Main
             {
                 var percent = (this as IStatus).Percent;
                 _maxValue = Mathf.Max(value, 0f);
-                CurrentValue = MaxValue * percent;
+                if (CurrentValue > 0f)
+                {
+                    CurrentValue = MaxValue * percent;
+                }
                 
                 OnMaxValueChanged?.Invoke();
             }

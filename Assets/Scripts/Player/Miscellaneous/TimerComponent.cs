@@ -25,6 +25,33 @@ namespace Player.Miscellaneous
         #region Fields
 
         private CancellationTokenSource _cancellationTokenSource;
+        private bool _inProgress;
+
+        #endregion
+
+        #region Properties
+
+        public bool InProgress
+        {
+            get => _inProgress;
+            private set
+            {
+                if (InProgress == value)
+                {
+                    return;
+                }
+
+                _inProgress = value;
+
+                if (InProgress)
+                {
+                    OnTimerStarted?.Invoke();
+                    return;
+                }
+                
+                OnTimerEnded?.Invoke();
+            }
+        }
 
         #endregion
 
@@ -38,6 +65,7 @@ namespace Player.Miscellaneous
         #endregion
 
         #region Methods
+
 
         public bool TryStart()
         {
@@ -54,8 +82,8 @@ namespace Player.Miscellaneous
         {
             _cancellationTokenSource?.Cancel();
             _cancellationTokenSource = new CancellationTokenSource();
-            
-            OnTimerStarted?.Invoke();
+
+            InProgress = true;
 
             var delayMS = Mathf.RoundToInt(_seconds * 1000f);
             var cancelled = await UniTask.Delay(delayMS, cancellationToken: _cancellationTokenSource.Token)
@@ -65,8 +93,8 @@ namespace Player.Miscellaneous
                 OnTimerCancelled?.Invoke();
                 return;
             }
-            
-            OnTimerEnded?.Invoke();
+
+            InProgress = false;
         }
 
         #endregion

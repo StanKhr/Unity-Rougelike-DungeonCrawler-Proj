@@ -11,6 +11,12 @@ namespace Player.Interfaces
         event Action OnTimerEnded;
 
         #endregion
+
+        #region Properties
+
+        bool InProgress { get; }
+
+        #endregion
         
         #region Methods
 
