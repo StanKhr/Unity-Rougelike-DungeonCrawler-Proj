@@ -21,6 +21,7 @@ namespace Statuses.Interfaces
         
         bool TryHeal(float healValue);
         void Resurrect();
+        void Kill();
 
         #endregion
     }

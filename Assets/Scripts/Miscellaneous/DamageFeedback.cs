@@ -37,6 +37,7 @@ namespace Miscellaneous
 
         protected abstract void DamagedCallback(float context);
 
+
         #endregion
     }
 }

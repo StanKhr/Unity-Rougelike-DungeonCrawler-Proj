@@ -328,6 +328,7 @@ MonoBehaviour:
     <Value>k__BackingField: 15
     <DamageType>k__BackingField: 0
     <Source>k__BackingField: {fileID: 6749179636832731721}
+  _arrowHealth: {fileID: 4454566745305375405}
 --- !u!114 &4454566745305375405
 MonoBehaviour:
   m_ObjectHideFlags: 0

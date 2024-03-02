@@ -12,7 +12,7 @@ namespace Props.Common
 
         private static readonly int DamagedHash = Animator.StringToHash("Damaged");
         private static readonly int KilledHash = Animator.StringToHash("Killed");
-        private static readonly int ResurrectedHash = Animator.StringToHash("Resurrected");
+        // private static readonly int ResurrectedHash = Animator.StringToHash("Resurrected");
 
         #endregion
 
@@ -26,9 +26,10 @@ namespace Props.Common
         
         protected override void DamagedCallback(float context)
         {
+            _animator.Play(DamagedHash);
+            
             if (Health.Alive)
             {
-                _animator.Play(DamagedHash);
                 return;
             }
             

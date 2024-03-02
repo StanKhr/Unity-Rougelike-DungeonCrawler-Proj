@@ -93,6 +93,16 @@ namespace Statuses.Main
             CurrentValue = MaxValue;
         }
 
+        public void Kill()
+        {
+            if (!(this as IHealth).Alive)
+            {
+                return;
+            }
+            
+            CurrentValue = 0f;
+        }
+
         #endregion
     }
 }
