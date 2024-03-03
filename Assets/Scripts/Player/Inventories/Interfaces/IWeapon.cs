@@ -26,7 +26,6 @@ namespace Player.Inventories.Interfaces
 
         float GetScaleMultiplier(AttributeScaleType attributeScaleType);
         float CalculateChargeTimeSeconds();
-        IClipSelector GetCorrespondingHitClipSelector();
 
         #endregion
     }

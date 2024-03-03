@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Audio.ClipSelectors.Scriptables
+namespace Audio.ClipSelectors
 {
     [CreateAssetMenu (menuName = "RPG / Clip Selectors / Simple", fileName = "ClipSelector_Simple_NEW")]
     public class ClipSelectorScriptableSimple : ClipSelectorScriptable

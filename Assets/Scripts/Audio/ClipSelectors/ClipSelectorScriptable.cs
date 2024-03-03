@@ -1,7 +1,7 @@
 ﻿using Audio.Interfaces;
 using UnityEngine;
 
-namespace Audio.ClipSelectors.Scriptables
+namespace Audio.ClipSelectors
 {
     public abstract class ClipSelectorScriptable : ScriptableObject, IClipSelector
     {

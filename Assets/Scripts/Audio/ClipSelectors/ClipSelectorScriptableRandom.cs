@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Audio.ClipSelectors.Scriptables
+namespace Audio.ClipSelectors
 {
     [CreateAssetMenu (menuName = "RPG / Clip Selectors / Random", fileName = "ClipSelector_Random_NEW")]
     public class ClipSelectorScriptableRandom : ClipSelectorScriptable

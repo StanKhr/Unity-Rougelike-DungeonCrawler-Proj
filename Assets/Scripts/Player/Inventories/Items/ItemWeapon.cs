@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Audio.ClipSelectors;
-using Audio.ClipSelectors.Pure;
 using Audio.Interfaces;
 using Player.Interfaces;
 using Player.Inventories.Enums;
@@ -50,9 +49,8 @@ namespace Player.Inventories.Items
         [field: SerializeField] public DamageType DamageType { get; private set; } = DamageType.MeleeSlash;
 
         [Header("Audio")]
-        [SerializeField] private ClipSelectorPure _clipSelectorChargeAttack;
-        [SerializeField] private ClipSelectorPure _clipSelectorReleaseAttack;
-        [SerializeField] private ClipSelectorPure _clipSelectorHit;
+        [SerializeField] private ClipSelectorScriptable _clipSelectorChargeAttack;
+        [SerializeField] private ClipSelectorScriptable _clipSelectorReleaseAttack;
         #endregion
         
         #region Properties
@@ -90,12 +88,6 @@ namespace Player.Inventories.Items
         public float CalculateChargeTimeSeconds()
         {
             return SpeedSecondValue / SpeedValue;
-        }
-
-        public IClipSelector GetCorrespondingHitClipSelector()
-        {
-            //todo: check for hit surface type; armor etc; return corresponding audio
-            return _clipSelectorHit;
         }
 
         #endregion

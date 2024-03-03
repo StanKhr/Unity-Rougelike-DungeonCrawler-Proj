@@ -26,25 +26,17 @@ namespace Audio.Triggers
         {
             PlayerAttack.OnAttackChargeStarted += AttackChargeStartedCallback;
             PlayerAttack.OnAttackReleased += AttackReleasedCallback;
-            PlayerAttack.OnAttackApplied += AttackAppliedCallback;
         }
 
         private void OnDisable()
         {
             PlayerAttack.OnAttackChargeStarted -= AttackChargeStartedCallback;
             PlayerAttack.OnAttackReleased -= AttackReleasedCallback;
-            PlayerAttack.OnAttackApplied -= AttackAppliedCallback;
         }
 
         #endregion
 
         #region Methods
-
-        private void AttackAppliedCallback(MeleeAttackData context)
-        {
-            var clipSelector = context.Weapon.GetCorrespondingHitClipSelector();
-            clipSelector.TryOneShotAudioSource(AudioSource);
-        }
 
         private void AttackReleasedCallback(IWeapon context)
         {
