@@ -147,7 +147,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5626018267792630895}
   - {fileID: 7480523381733185195}
   m_Father: {fileID: 1874072077404878237}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -328,54 +327,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
---- !u!1 &5483385715136270370
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5626018267792630895}
-  - component: {fileID: 8359436499210475158}
-  m_Layer: 7
-  m_Name: DamagedClipSelector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5626018267792630895
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5483385715136270370}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7162008781425853339}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8359436499210475158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5483385715136270370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c2c4837cfc042feb3050193a684e144, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clips:
-  - {fileID: 8300000, guid: a6bb22ebb17283941a58cf5ecb0cce48, type: 3}
-  - {fileID: 8300000, guid: af0c6c308f25fb74981a7efab7c27fe4, type: 3}
-  - {fileID: 8300000, guid: e71a2ee7b64eb6746ac8a3d731d43644, type: 3}
 --- !u!1 &6853018127330601841
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +345,6 @@ GameObject:
   - component: {fileID: 3156577450657137879}
   - component: {fileID: 3219481087715430697}
   - component: {fileID: 2928223629394422033}
-  - component: {fileID: 2381181372869661412}
   m_Layer: 7
   m_Name: NPC_KnightSword
   m_TagString: Plate
@@ -532,8 +482,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 5153187139877897092}
-  _damagedClipSelector: {fileID: 8359436499210475158}
-  _diedClipSelector: {fileID: 4785747215665631670}
+  _damagedClipSelector: {fileID: 11400000, guid: e290bb36d847cce4abf5e98b97bca33b, type: 2}
+  _diedClipSelector: {fileID: 11400000, guid: 66a7236b9a3fe1747a8f90b1bc5e51e7, type: 2}
   _observeDeath: 1
 --- !u!114 &3219481087715430697
 MonoBehaviour:
@@ -561,23 +511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 5153187139877897092}
-  _clipSelectorMono: {fileID: 2381181372869661412}
---- !u!114 &2381181372869661412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6853018127330601841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c2c4837cfc042feb3050193a684e144, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clips:
-  - {fileID: 8300000, guid: 86cb006214d3dcd4db61904e14c60bfa, type: 3}
-  - {fileID: 8300000, guid: 60c1e961a61346d488a3dca236d4483e, type: 3}
-  - {fileID: 8300000, guid: b3668eab24a57f846ac767195a7904e9, type: 3}
+  _clipSelectorMono: {fileID: 11400000, guid: 067f34d47a668fd4a814dc3af186f662, type: 2}
 --- !u!1 &6854518714594591606
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +605,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7480523381733185195}
-  - component: {fileID: 4785747215665631670}
   m_Layer: 7
   m_Name: DiedClipSelector
   m_TagString: Untagged
@@ -694,19 +627,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7162008781425853339}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4785747215665631670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7110845941678754963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce100f2996e40cd9d7f533e4280a974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 114e51eccd97be049a71589b680c39e7, type: 3}
 --- !u!1 &7797952296619355365
 GameObject:
   m_ObjectHideFlags: 0

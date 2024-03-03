@@ -206,8 +206,6 @@ GameObject:
   - component: {fileID: 8856921686456199770}
   - component: {fileID: 2100134463993548794}
   - component: {fileID: 2918029285592350019}
-  - component: {fileID: 8616261714308646583}
-  - component: {fileID: 750640651606031001}
   - component: {fileID: 9218469297200200271}
   - component: {fileID: 2647322375859158672}
   m_Layer: 11
@@ -303,34 +301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AudioSource>k__BackingField: {fileID: 2061183885221584895}
-  _clipSelectorInteractionStarted: {fileID: 8616261714308646583}
-  _clipSelectorInteractionEnded: {fileID: 750640651606031001}
---- !u!114 &8616261714308646583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761517511746834075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce100f2996e40cd9d7f533e4280a974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 005852d3f5b029d43aa95242d2124d86, type: 3}
---- !u!114 &750640651606031001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761517511746834075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce100f2996e40cd9d7f533e4280a974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: ada8b202f0f42374d8af51a56a71d81a, type: 3}
+  _clipSelectorInteractionStarted: {fileID: 11400000, guid: 2b3c09584d0d5f1479d3579e68262007, type: 2}
+  _clipSelectorInteractionEnded: {fileID: 11400000, guid: 1aa444a8ce27b5149b15dd23f2989969, type: 2}
 --- !u!114 &9218469297200200271
 MonoBehaviour:
   m_ObjectHideFlags: 0

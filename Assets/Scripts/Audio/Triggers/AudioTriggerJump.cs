@@ -2,6 +2,7 @@
 using Abilities.Locomotion;
 using Audio.ClipSelectors;
 using Audio.ClipSelectors.Mono;
+using Audio.ClipSelectors.Scriptables;
 using Audio.Interfaces;
 using UnityEngine;
 
@@ -12,8 +13,8 @@ namespace Audio.Triggers
         #region Editor Fields
 
         [SerializeField] private LocomotionCharacterController _locomotion;
-        [SerializeField] private ClipSelectorMono _clipSelectorJump;
-        [SerializeField] private ClipSelectorMono _clipSelectorLanding;
+        [SerializeField] private ClipSelectorScriptable _clipSelectorJump;
+        [SerializeField] private ClipSelectorScriptable _clipSelectorLanding;
 
         #endregion
 

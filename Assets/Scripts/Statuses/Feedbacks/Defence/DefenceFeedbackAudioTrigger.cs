@@ -1,5 +1,6 @@
 ﻿using System;
 using Audio.ClipSelectors.Mono;
+using Audio.ClipSelectors.Scriptables;
 using Audio.Interfaces;
 using Audio.Triggers;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace Statuses.Feedbacks.Defence
         #region Editor Fields
 
         [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private ClipSelectorMono _clipSelectorMono;
+        [SerializeField] private ClipSelectorScriptable _clipSelectorMono;
 
         #endregion
 

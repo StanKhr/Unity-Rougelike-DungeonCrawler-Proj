@@ -1,5 +1,6 @@
 ﻿using Audio.ClipSelectors;
 using Audio.ClipSelectors.Mono;
+using Audio.ClipSelectors.Scriptables;
 using Audio.Interfaces;
 using Player.Cameras.Interfaces;
 using Player.Miscellaneous;
@@ -12,7 +13,7 @@ namespace Audio.Triggers
         #region Editor Fields
 
         [SerializeField] private FootStepsTracker _footStepsTracker;
-        [SerializeField] private ClipSelectorMono _clipSelector;
+        [SerializeField] private ClipSelectorScriptable _clipSelector;
 
         #endregion
 

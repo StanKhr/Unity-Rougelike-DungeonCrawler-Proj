@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Audio.ClipSelectors.Mono
+namespace Audio.ClipSelectors.Scriptables
 {
-    public class ClipSelectorMonoSimple : ClipSelectorMono
+    [CreateAssetMenu (menuName = "RPG / Clip Selectors / Simple", fileName = "ClipSelector_Simple_NEW")]
+    public class ClipSelectorScriptableSimple : ClipSelectorScriptable
     {
         #region Editor Fields
 

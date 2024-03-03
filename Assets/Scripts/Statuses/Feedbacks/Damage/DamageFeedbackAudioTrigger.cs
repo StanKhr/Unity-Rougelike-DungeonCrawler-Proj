@@ -1,4 +1,5 @@
 using Audio.ClipSelectors.Mono;
+using Audio.ClipSelectors.Scriptables;
 using Audio.Interfaces;
 using UnityEngine;
 
@@ -9,8 +10,8 @@ namespace Statuses.Feedbacks.Damage
         #region Editor Fields
 
         [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private ClipSelectorMono _damagedClipSelector;
-        [SerializeField] private ClipSelectorMono _diedClipSelector;
+        [SerializeField] private ClipSelectorScriptable _damagedClipSelector;
+        [SerializeField] private ClipSelectorScriptable _diedClipSelector;
         [SerializeField] private bool _observeDeath = true;
 
         #endregion

@@ -1,5 +1,6 @@
 ﻿using Audio.ClipSelectors;
 using Audio.ClipSelectors.Mono;
+using Audio.ClipSelectors.Scriptables;
 using Audio.Interfaces;
 using Props.InteractionCallbacks;
 using Props.Interfaces;
@@ -12,8 +13,8 @@ namespace Audio.Triggers
         #region Editor Fields
 
         [field: SerializeField] protected AudioSource AudioSource { get; private set; }
-        [SerializeField] private ClipSelectorMono _clipSelectorInteractionStarted;
-        [SerializeField] private ClipSelectorMono _clipSelectorInteractionEnded;
+        [SerializeField] private ClipSelectorScriptable _clipSelectorInteractionStarted;
+        [SerializeField] private ClipSelectorScriptable _clipSelectorInteractionEnded;
 
         #endregion
         

@@ -2961,8 +2961,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6174162069062562703}
   - component: {fileID: 7754346340944731201}
-  - component: {fileID: 1021939087214795109}
-  - component: {fileID: 9210349748360337827}
   m_Layer: 5
   m_Name: AudioCallbacks
   m_TagString: Untagged
@@ -2998,34 +2996,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AudioSource>k__BackingField: {fileID: 8027535285779634629}
-  _selectedAudio: {fileID: 1021939087214795109}
-  _submittedAudio: {fileID: 9210349748360337827}
---- !u!114 &1021939087214795109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4527566969967692708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce100f2996e40cd9d7f533e4280a974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: f4e36aae81a48cc4e8a93e493226fe4e, type: 3}
---- !u!114 &9210349748360337827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4527566969967692708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce100f2996e40cd9d7f533e4280a974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 412bbd4782bde5f43a28e4b202e70450, type: 3}
+  _selectedAudio: {fileID: 11400000, guid: dc1f99b237354d6479548f972d2c5501, type: 2}
+  _submittedAudio: {fileID: 11400000, guid: fc71da29e8d9f0d4583c49482d93b844, type: 2}
 --- !u!1 &4644454872772020772
 GameObject:
   m_ObjectHideFlags: 0
