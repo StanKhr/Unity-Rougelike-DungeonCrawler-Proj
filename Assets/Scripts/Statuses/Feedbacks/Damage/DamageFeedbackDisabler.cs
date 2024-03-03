@@ -1,12 +1,10 @@
-﻿
-using System.Threading;
-using Miscellaneous;
+﻿using System.Threading;
 using Player.Interfaces;
 using Player.Miscellaneous;
 using UI.Utility;
 using UnityEngine;
 
-namespace Props.Common
+namespace Statuses.Feedbacks.Damage
 {
     public class DamageFeedbackDisabler : DamageFeedback
     {

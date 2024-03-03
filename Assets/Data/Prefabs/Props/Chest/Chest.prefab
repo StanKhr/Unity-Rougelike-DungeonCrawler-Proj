@@ -107,9 +107,11 @@ GameObject:
   - component: {fileID: 5113372688592787920}
   - component: {fileID: 8108410984885049991}
   - component: {fileID: 4717607066041492692}
+  - component: {fileID: 3559730849540235269}
+  - component: {fileID: 6262269558919410386}
   m_Layer: 11
   m_Name: Chest
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,6 +262,33 @@ MonoBehaviour:
   _useConditions:
   - {fileID: 858005224324059731}
   - {fileID: 2830575371767619790}
+--- !u!114 &3559730849540235269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995770745722199101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3f29bb08dd498594b36b3ec0ebe259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseValue: 100
+--- !u!114 &6262269558919410386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995770745722199101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff85159e756486092145a378b74a387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 3559730849540235269}
+  _animator: {fileID: 4270219999014195258}
 --- !u!1 &4268249077398967199
 GameObject:
   m_ObjectHideFlags: 0

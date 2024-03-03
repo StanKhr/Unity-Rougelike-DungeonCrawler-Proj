@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Audio.ClipSelectors
+namespace Audio.ClipSelectors.Mono
 {
-    public class ClipSelectorRandom : ClipSelectorMono
+    public class ClipSelectorMonoRandom : ClipSelectorMono
     {
         #region Editor Fields
 

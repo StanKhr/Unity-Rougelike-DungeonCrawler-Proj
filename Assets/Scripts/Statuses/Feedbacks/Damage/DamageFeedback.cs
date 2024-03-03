@@ -2,7 +2,7 @@
 using Statuses.Main;
 using UnityEngine;
 
-namespace Miscellaneous
+namespace Statuses.Feedbacks.Damage
 {
     public abstract class DamageFeedback : MonoBehaviour
     {
@@ -16,6 +16,7 @@ namespace Miscellaneous
 
         protected IDamageable Damageable => _health;
         protected IHealth Health => _health;
+        protected virtual bool ObserveDamage { get; } = true;
         protected virtual bool ObserveDeath { get; } = false;
 
         #endregion
@@ -24,7 +25,11 @@ namespace Miscellaneous
 
         protected virtual void OnEnable()
         {
-            Damageable.OnDamaged += DamagedCallback;
+            if (ObserveDamage)
+            {
+                Damageable.OnDamaged += DamagedCallback;
+            }
+            
             if (ObserveDeath)
             {
                 Health.OnDied += DiedCallback;
@@ -33,7 +38,11 @@ namespace Miscellaneous
 
         protected virtual void OnDisable()
         {
-            Damageable.OnDamaged -= DamagedCallback;
+            if (ObserveDamage)
+            {
+                Damageable.OnDamaged -= DamagedCallback;
+            }
+            
             if (ObserveDeath)
             {
                 Health.OnDied -= DiedCallback;

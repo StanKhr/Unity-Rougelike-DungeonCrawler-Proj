@@ -1,9 +1,9 @@
 ﻿using Audio.Interfaces;
 using UnityEngine;
 
-namespace Audio.ClipSelectors
+namespace Audio.ClipSelectors.Scriptables
 {
-    public abstract class ClipSelectorMono : MonoBehaviour, IClipSelector
+    public abstract class ClipSelectorScriptable : ScriptableObject, IClipSelector
     {
         #region Methods
 

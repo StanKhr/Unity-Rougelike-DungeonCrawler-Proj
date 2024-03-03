@@ -1,7 +1,6 @@
-﻿using Miscellaneous;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Props.Common
+namespace Statuses.Feedbacks.Damage
 {
     public class DamageFeedbackAnimations : DamageFeedback
     {

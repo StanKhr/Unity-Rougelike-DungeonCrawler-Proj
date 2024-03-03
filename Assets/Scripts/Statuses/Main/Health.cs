@@ -73,6 +73,16 @@ namespace Statuses.Main
                 return false;
             }
 
+            if (TryGetComponent<IDefence>(out var defence))
+            {
+                if (defence.TryAbsorbDamage(damage, out var remainingDamageValue))
+                {
+                    return false;
+                }
+
+                damage.Value = remainingDamageValue;
+            }
+
             CurrentValue -= damage.Value;
 
             return true;
@@ -84,7 +94,7 @@ namespace Statuses.Main
             {
                 return false;
             }
-
+            
             CurrentValue += healValue;
 
             return true;

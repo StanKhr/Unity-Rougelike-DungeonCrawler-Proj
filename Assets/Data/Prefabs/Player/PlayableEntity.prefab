@@ -1492,8 +1492,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 2200731330181941279}
   _audioSource: {fileID: 6141010839929952566}
-  _damagedClipSelector: {fileID: 0}
+  _damagedClipSelector: {fileID: 176579050955669246}
   _diedClipSelector: {fileID: 0}
+  _observeDeath: 0
 --- !u!114 &176579050955669246
 MonoBehaviour:
   m_ObjectHideFlags: 0

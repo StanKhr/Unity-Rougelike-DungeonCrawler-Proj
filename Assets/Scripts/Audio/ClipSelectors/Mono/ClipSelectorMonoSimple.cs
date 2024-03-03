@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Audio.ClipSelectors
+namespace Audio.ClipSelectors.Mono
 {
-    public class ClipSelectorSimple : ClipSelectorMono
+    public class ClipSelectorMonoSimple : ClipSelectorMono
     {
         #region Editor Fields
 

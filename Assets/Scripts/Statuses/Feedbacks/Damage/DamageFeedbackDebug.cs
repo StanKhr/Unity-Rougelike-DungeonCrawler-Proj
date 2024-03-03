@@ -1,4 +1,6 @@
-﻿namespace Miscellaneous
+﻿using Miscellaneous;
+
+namespace Statuses.Feedbacks.Damage
 {
     public class DamageFeedbackDebug : DamageFeedback
     {

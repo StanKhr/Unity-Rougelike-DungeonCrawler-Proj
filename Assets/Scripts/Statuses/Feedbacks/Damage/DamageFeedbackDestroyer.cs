@@ -1,4 +1,4 @@
-﻿namespace Props.Common
+﻿namespace Statuses.Feedbacks.Damage
 {
     public class DamageFeedbackDestroyer : DamageFeedbackDisabler
     {

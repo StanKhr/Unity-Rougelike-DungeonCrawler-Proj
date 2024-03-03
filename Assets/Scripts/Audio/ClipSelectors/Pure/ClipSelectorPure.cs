@@ -2,7 +2,7 @@
 using Audio.Interfaces;
 using UnityEngine;
 
-namespace Audio.ClipSelectors
+namespace Audio.ClipSelectors.Pure
 {
     [Serializable]
     public class ClipSelectorPure : IClipSelector
