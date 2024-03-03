@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace UI.Presenters
 {
-    public class WeaponPresenter : EquipmentPresenterBase
+    public class WeaponNamePresenter : EquipmentPresenterBase
     {
         #region Editor Fields
 
@@ -47,12 +47,12 @@ namespace UI.Presenters
 
         #region Methods
         
-        private void WeaponEquippedCallback(IWeapon context)
+        protected virtual void WeaponEquippedCallback(IWeapon context)
         {
             SetValue(context.Name);
         }
 
-        private void WeaponRemovedCallback(IWeapon context)
+        protected virtual void WeaponRemovedCallback(IWeapon context)
         {
             SetValue(string.Empty);
         }

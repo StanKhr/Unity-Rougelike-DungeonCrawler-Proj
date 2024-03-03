@@ -2652,6 +2652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6864512758528916961}
   - component: {fileID: 6946765417218894953}
+  - component: {fileID: 1434175756033094430}
   m_Layer: 0
   m_Name: WeaponPresenter
   m_TagString: Untagged
@@ -2716,6 +2717,41 @@ MonoBehaviour:
       type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
       data:
         m_Value: 
+--- !u!114 &1434175756033094430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3739230641095250464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a788aeb6a004cd091521f72fc99f498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMeshProUGUI: {fileID: 8486336214202705296}
+  _localizedStringValue:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _localeEmpty:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _gear: {fileID: 4417830919691353321}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &4019728030646582875
 GameObject:
   m_ObjectHideFlags: 0
