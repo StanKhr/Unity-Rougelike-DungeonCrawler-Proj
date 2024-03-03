@@ -6679,7 +6679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7457b863f284ebaa3f2b13fb082b649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 2653844354053392620}
+  _playerHealth: {fileID: 2653844354053392620}
   _canvasGroup: {fileID: 2561337619433243647}
   _fullFilledValue: 0.5
   _effectDecayDelay: 0.5
@@ -8500,10 +8500,6 @@ PrefabInstance:
       propertyPath: _inputProvider
       value: 
       objectReference: {fileID: 3648680424501871758}
-    - target: {fileID: 2387627697339951175, guid: 782408980134efb4da21bbed16055e12, type: 3}
-      propertyPath: _playerMeleeAttack
-      value: 
-      objectReference: {fileID: 3665877201946409283}
     - target: {fileID: 4799805662674334367, guid: 782408980134efb4da21bbed16055e12, type: 3}
       propertyPath: m_Name
       value: PlayableEntity
@@ -8552,14 +8548,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9100416289625787701, guid: 782408980134efb4da21bbed16055e12, type: 3}
-      propertyPath: _attackRadius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9100416289625787701, guid: 782408980134efb4da21bbed16055e12, type: 3}
-      propertyPath: _attackTransformDummy
-      value: 
-      objectReference: {fileID: 6871843238280400394}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

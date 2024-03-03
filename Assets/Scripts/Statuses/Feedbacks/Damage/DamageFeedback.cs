@@ -6,16 +6,18 @@ namespace Statuses.Feedbacks.Damage
 {
     public abstract class DamageFeedback : MonoBehaviour
     {
-        #region Editor Fields
+        #region Fields
 
-        [SerializeField] private Health _health;
+        private IDamageable _damageable;
+        private IHealth _health;
 
         #endregion
-
+        
         #region Properties
 
-        protected IDamageable Damageable => _health;
-        protected IHealth Health => _health;
+        protected virtual IDamageable Damageable => _damageable ??= GetComponent<IDamageable>();
+        protected virtual IHealth Health => _health ??= GetComponent<IHealth>();
+        
         protected virtual bool ObserveDamage { get; } = true;
         protected virtual bool ObserveDeath { get; } = false;
 

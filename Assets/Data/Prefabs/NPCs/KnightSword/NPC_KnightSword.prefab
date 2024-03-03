@@ -392,6 +392,9 @@ GameObject:
   - component: {fileID: 1754533038920188317}
   - component: {fileID: 1987485246370785524}
   - component: {fileID: 3156577450657137879}
+  - component: {fileID: 3219481087715430697}
+  - component: {fileID: 2928223629394422033}
+  - component: {fileID: 2381181372869661412}
   m_Layer: 7
   m_Name: NPC_KnightSword
   m_TagString: Plate
@@ -503,7 +506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bced92f8ed914efdb69825eaeb3bd3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 1699242613050725822}
 --- !u!114 &1987485246370785524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,7 +518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff85159e756486092145a378b74a387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 1699242613050725822}
   _animator: {fileID: 6331427975620954505}
 --- !u!114 &3156577450657137879
 MonoBehaviour:
@@ -530,11 +531,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be8373e62c2a2e4296646c4336ac61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 1699242613050725822}
   _audioSource: {fileID: 5153187139877897092}
   _damagedClipSelector: {fileID: 8359436499210475158}
   _diedClipSelector: {fileID: 4785747215665631670}
   _observeDeath: 1
+--- !u!114 &3219481087715430697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853018127330601841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be66ab9a95c48c392906313028fdc11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 6331427975620954505}
+--- !u!114 &2928223629394422033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853018127330601841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d64f7b3f85473ba0d916beb2989d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 5153187139877897092}
+  _clipSelectorMono: {fileID: 2381181372869661412}
+--- !u!114 &2381181372869661412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853018127330601841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c2c4837cfc042feb3050193a684e144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clips:
+  - {fileID: 8300000, guid: 86cb006214d3dcd4db61904e14c60bfa, type: 3}
+  - {fileID: 8300000, guid: 60c1e961a61346d488a3dca236d4483e, type: 3}
+  - {fileID: 8300000, guid: b3668eab24a57f846ac767195a7904e9, type: 3}
 --- !u!1 &6854518714594591606
 GameObject:
   m_ObjectHideFlags: 0

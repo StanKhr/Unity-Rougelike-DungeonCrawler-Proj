@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShieldBlockEffect
+  m_Name: ShieldBlockEffect_NPC
   m_Shader: {fileID: -6465566751694194690, guid: f5135bb02e41a8f40a91d720800c0773, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -97,7 +97,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AO: 1
+    - _AO: 0
     - _AlphaClip: 1
     - _AlphaToMask: 1
     - _BillboardEnabled: 1
@@ -138,12 +138,12 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Emission: {r: 1, g: 1, b: 1, a: 0}
+    - _Emission: {r: 1, g: 0.7135441, b: 0.07075471, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Normal: {r: 1, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Specular: {r: 1, g: 1, b: 1, a: 0}
-    - _SpritePositionOffset: {r: 0, g: 0, b: 0.1, a: 0}
+    - _SpritePositionOffset: {r: 0, g: 1, b: 0.5, a: 0}
     - _Test: {r: 0, g: 0, b: 0, a: 0}
     - _TestVector: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

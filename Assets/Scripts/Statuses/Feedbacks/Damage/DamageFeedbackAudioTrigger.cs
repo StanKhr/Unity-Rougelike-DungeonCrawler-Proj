@@ -1,13 +1,10 @@
-using Audio.ClipSelectors;
 using Audio.ClipSelectors.Mono;
 using Audio.Interfaces;
-using Miscellaneous;
-using Statuses.Feedbacks.Damage;
 using UnityEngine;
 
-namespace Audio.Triggers
+namespace Statuses.Feedbacks.Damage
 {
-    public class AudioTriggerDamageFeedback : DamageFeedback
+    public class DamageFeedbackAudioTrigger : DamageFeedback
     {
         #region Editor Fields
 

@@ -2,6 +2,8 @@
 using Cysharp.Threading.Tasks;
 using Miscellaneous;
 using Statuses.Feedbacks.Damage;
+using Statuses.Interfaces;
+using Statuses.Main;
 using UnityEngine;
 
 namespace UI.Presenters
@@ -16,6 +18,8 @@ namespace UI.Presenters
         
         #region Editor Fields
 
+        [SerializeField] private Health _playerHealth;
+        
         [Header("Views")]
         [SerializeField] private CanvasGroup _canvasGroup;
 
@@ -29,6 +33,13 @@ namespace UI.Presenters
         #region Fields
 
         private CancellationTokenSource _cancellationTokenSource;
+
+        #endregion
+
+        #region Properties
+
+        protected override IDamageable Damageable => _playerHealth;
+        protected override IHealth Health => _playerHealth;
 
         #endregion
 
