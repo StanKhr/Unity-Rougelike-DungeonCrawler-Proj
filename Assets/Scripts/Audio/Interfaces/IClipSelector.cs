@@ -24,7 +24,7 @@ namespace Audio.Interfaces
             return true;
         }
 
-        bool TryPlayOneShotAtPosition(Vector3 position)
+        bool TryPlayOneShotAtPosition(Vector3 position, float volume)
         {
             var clip = Select();
             if (!clip)
@@ -32,7 +32,7 @@ namespace Audio.Interfaces
                 return false;
             }
 
-            AudioSource.PlayClipAtPoint(clip, position);
+            AudioSource.PlayClipAtPoint(clip, position, volume);
             return true;
         }
 

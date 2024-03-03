@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c2c4837cfc042feb3050193a684e144, type: 3}
+  m_Name: ClipSelector_Random_SurfaceWood
+  m_EditorClassIdentifier: 
+  _clips:
+  - {fileID: 8300000, guid: d9570c4ad2739a645842d3cd2b5af77a, type: 3}
+  - {fileID: 8300000, guid: 20d20de9f5ffb73468a6d5b3789707fe, type: 3}
+  - {fileID: 8300000, guid: ce92e74b1c578614bbb2d56f41c81e42, type: 3}
