@@ -4,10 +4,16 @@ namespace Audio.Interfaces
 {
     public interface IClipSelector
     {
+        #region Constants
+
+        private const float BaseVolume = 1.0f;
+
+        #endregion
+        
         #region Methods
 
         AudioClip Select();
-        bool TryPlayOneShot(AudioSource audioSource)
+        bool TryOneShotOnAudioSource(AudioSource audioSource, float volume = BaseVolume)
         {
             if (!audioSource)
             {
@@ -20,11 +26,11 @@ namespace Audio.Interfaces
                 return false;
             }
 
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip, volume);
             return true;
         }
 
-        bool TryPlayOneShotAtPosition(Vector3 position, float volume)
+        bool TryOneShotAtPosition(Vector3 position, float volume = BaseVolume)
         {
             var clip = Select();
             if (!clip)

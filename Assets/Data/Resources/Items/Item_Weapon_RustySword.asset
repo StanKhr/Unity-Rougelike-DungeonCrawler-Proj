@@ -43,7 +43,7 @@ MonoBehaviour:
   <ScaleIntellect>k__BackingField: -1
   <DamageType>k__BackingField: 0
   _clipSelectorChargeAttack: {fileID: 11400000, guid: 43cb678ffee81824aa858725ddc3f11d, type: 2}
-  _clipSelectorReleaseAttack: {fileID: 11400000, guid: 62fb493dd28e3b54492bcfa27e457409, type: 2}
+  _clipSelectorReleaseAttack: {fileID: 11400000, guid: 05a3c59c1460bdd489514eccd3c6c1f9, type: 2}
   references:
     version: 2
     RefIds: []

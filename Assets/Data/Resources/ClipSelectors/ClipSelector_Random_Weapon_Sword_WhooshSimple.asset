@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c2c4837cfc042feb3050193a684e144, type: 3}
-  m_Name: ClipSelector_Random_Weapon_Sword_Release
+  m_Name: ClipSelector_Random_Weapon_Sword_WhooshSimple
   m_EditorClassIdentifier: 
   _clips:
-  - {fileID: 8300000, guid: 0fc9adab339df75489ffdf030ffc5c9b, type: 3}
-  - {fileID: 8300000, guid: f7afb97a7bc5e78469636407000b9a10, type: 3}
-  - {fileID: 8300000, guid: d92f902a981369248bf4a40d90196c8f, type: 3}
+  - {fileID: 8300000, guid: a641263163e80d64181e9c364822d950, type: 3}
+  - {fileID: 8300000, guid: f13e1d8028f496e48a070a0d260804b3, type: 3}
+  - {fileID: 8300000, guid: 1b804a8ccf12b3f4da43d59ca35fe251, type: 3}

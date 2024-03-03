@@ -25,7 +25,7 @@ namespace Statuses.Feedbacks.Defence
 
         protected override void DamageAbsorbedCallback()
         {
-            ClipSelector.TryPlayOneShot(_audioSource);
+            ClipSelector.TryOneShotOnAudioSource(_audioSource);
         }
 
         #endregion

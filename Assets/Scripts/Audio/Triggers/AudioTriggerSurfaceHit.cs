@@ -92,7 +92,7 @@ namespace Audio.Triggers
             // LogWriter.DevelopmentLog($"{context}: surface type found: {surfaceType.ToString()}");
 
             var clipSelector = GetClipSelectorFromPropType(surfaceType);
-            clipSelector?.TryPlayOneShotAtPosition(context.transform.position, _sfxVolume);
+            clipSelector?.TryOneShotAtPosition(context.transform.position, _sfxVolume);
         }
 
         private IClipSelector GetClipSelectorFromPropType(ObjectSurfaceType objectSurfaceType)

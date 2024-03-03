@@ -40,7 +40,7 @@ namespace Audio.Triggers
 
         private void StepMadeCallback()
         {
-            ClipSelector.TryPlayOneShot(AudioSource);
+            ClipSelector.TryOneShotOnAudioSource(AudioSource);
         }
 
         #endregion

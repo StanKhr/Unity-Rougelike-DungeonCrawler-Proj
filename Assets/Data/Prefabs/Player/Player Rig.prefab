@@ -7024,9 +7024,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAttack: {fileID: 3665877201946409283}
-  _sfxVolume: 0.3
+  _sfxVolume: 0.5
+  _clipSelectorFlesh: {fileID: 0}
+  _clipSelectorAstral: {fileID: 0}
+  _clipSelectorPlate: {fileID: 0}
   _clipSelectorWood: {fileID: 11400000, guid: b46d4310212ac7840b4acf40afaa8c9a, type: 2}
   _clipSelectorStone: {fileID: 11400000, guid: 9dbbc1de50938194a8a8a43088003580, type: 2}
+  _clipSelectorWater: {fileID: 0}
   _clipSelectorDirt: {fileID: 11400000, guid: 2762c5c8621433040b495344430dd98b, type: 2}
 --- !u!1001 &119316492838196467
 PrefabInstance:

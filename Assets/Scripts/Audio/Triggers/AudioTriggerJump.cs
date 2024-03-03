@@ -44,12 +44,12 @@ namespace Audio.Triggers
 
         private void JumpCallback()
         {
-            ClipSelectorJump.TryPlayOneShot(AudioSource);
+            ClipSelectorJump.TryOneShotOnAudioSource(AudioSource);
         }
 
         private void GroundLandedCallback()
         {
-            ClipSelectorLanding.TryPlayOneShot(AudioSource);
+            ClipSelectorLanding.TryOneShotOnAudioSource(AudioSource);
         }
 
         #endregion
