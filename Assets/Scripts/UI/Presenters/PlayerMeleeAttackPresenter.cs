@@ -9,14 +9,6 @@ namespace UI.Presenters
 {
     public class PlayerMeleeAttackPresenter : MonoBehaviour
     {
-        #region Constants
-
-        private const float CritRectScale = 0.1f;
-        private const float CritTagMinPositionPercent = 0.1f;
-        private const float CritTagMaxPositionPercent = 0.9f;
-
-        #endregion
-        
         #region Editor Fields
 
         [SerializeField] private PlayerAttack _playerAttack;
@@ -88,7 +80,7 @@ namespace UI.Presenters
             _sliderContainer.sizeDelta = sliderSize;
 
             var critSize = _critTagRect.sizeDelta;
-            critSize.x = sliderSize.x * CritRectScale;
+            critSize.x = sliderSize.x * context.Weapon.CritPercentBounds;
             _critTagRect.sizeDelta = critSize;
             
             SetCritTagPosition(context.CritChargePercent);

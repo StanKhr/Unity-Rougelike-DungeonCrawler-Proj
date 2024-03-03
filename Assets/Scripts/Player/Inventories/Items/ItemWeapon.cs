@@ -43,6 +43,9 @@ namespace Player.Inventories.Items
         [field: SerializeField] public float DamageValue { get; private set; }
         [field: SerializeField] public float SpeedValue { get; private set; }
         [field: SerializeField] public float AttackDuration { get; private set; } = 0.5f;
+        [field: SerializeField, Range(0f, 0.5f)] public float CritPercentBounds { get; private set; } = 0.1f;
+        [field: SerializeField, Min(1f)] public float CritDamageMultiplier { get; private set; } = 1.2f;
+        
         [field: SerializeField] public AttributeScaleType ScaleStrength { get; private set; }
         [field: SerializeField] public AttributeScaleType ScaleDexterity { get; private set; }
         [field: SerializeField] public AttributeScaleType ScaleIntellect { get; private set; }

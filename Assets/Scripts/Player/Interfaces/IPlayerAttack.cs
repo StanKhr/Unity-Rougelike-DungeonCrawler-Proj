@@ -11,7 +11,8 @@ namespace Player.Interfaces
         event DelegateHolder.MeleeAttackDataEvents OnAttackChargeStarted;
         event DelegateHolder.WeaponEvents OnAttackReleased;
         event DelegateHolder.MeleeAttackDataEvents OnAttackApplied;
-        event Action OnAttackEnded; 
+        event DelegateHolder.GameObjectEvents OnPropHit;
+        event Action OnAttackEnded;
 
         #endregion
 

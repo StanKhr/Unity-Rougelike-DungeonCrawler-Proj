@@ -7,12 +7,11 @@ namespace Player.Attacks
     {
         #region Constructors
 
-        public MeleeAttackData(IWeapon weapon, float critChargePercent, bool critApplied, GameObject attackVictim)
+        public MeleeAttackData(IWeapon weapon, float critChargePercent, bool critApplied)
         {
             Weapon = weapon;
             CritChargePercent = critChargePercent;
             CritApplied = critApplied;
-            AttackVictim = attackVictim;
         }
 
         #endregion
@@ -22,8 +21,7 @@ namespace Player.Attacks
         public IWeapon Weapon { get; }
         public float CritChargePercent { get; }
         public bool CritApplied { get; }
-        public GameObject AttackVictim { get; }
-
+        
         #endregion
     }
 }

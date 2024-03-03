@@ -13,6 +13,8 @@ namespace Player.Inventories.Interfaces
         float DamageValue { get; }
         float SpeedValue { get; }
         float AttackDuration { get; }
+        float CritPercentBounds { get; }
+        float CritDamageMultiplier { get; }
         AttributeScaleType ScaleStrength { get; }
         AttributeScaleType ScaleDexterity { get; }
         AttributeScaleType ScaleIntellect { get; }

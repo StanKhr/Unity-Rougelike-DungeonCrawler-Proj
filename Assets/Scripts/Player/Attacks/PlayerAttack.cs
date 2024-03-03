@@ -14,23 +14,21 @@ namespace Player.Attacks
     public class PlayerAttack : MonoBehaviour, IPlayerAttack
     {
         #region Constant
-        
+
+        private const float CritMinimumChargePercent = 0.5f;
         private const float MinChargeTime = 0.1f;
-        private const float CritMinPercent = 0.6f;
-        private const float CritMaxPercent = 0.9f;
-        private const float CritPercentageBounds = 0.05f;
-        private const float CritDamagePercent = 1.2f;
         private const float MinAttackDamage = 1.0f;
 
         #endregion
-        
+
         #region Events
-        
+
         public event DelegateHolder.MeleeAttackDataEvents OnAttackChargeStarted;
         public event DelegateHolder.WeaponEvents OnAttackReleased;
         public event DelegateHolder.MeleeAttackDataEvents OnAttackApplied;
+        public event DelegateHolder.GameObjectEvents OnPropHit;
         public event Action OnAttackEnded;
-        
+
         #endregion
 
         #region Editor Fields
@@ -57,6 +55,7 @@ namespace Player.Attacks
         #region Properties
 
         private IDamageable OwnerDamageable => _ownerHealth;
+
         public bool ChargingAttack
         {
             get => _chargingAttack;
@@ -66,11 +65,13 @@ namespace Player.Attacks
                 {
                     return;
                 }
-                
+
                 _chargingAttack = value;
             }
         }
+
         public float ChargePercent => ChargeTimer / _maxChargeTimeSeconds;
+
         private IWeapon UsedWeapon
         {
             get => _usedWeapon;
@@ -81,12 +82,13 @@ namespace Player.Attacks
                 {
                     return;
                 }
-                
+
                 _maxChargeTimeSeconds = UsedWeapon.CalculateChargeTimeSeconds();
                 _attackDuration = UsedWeapon.AttackDuration;
                 ChargeTimer = 0f;
             }
         }
+
         private float ChargeTimer
         {
             get => _chargeTimer;
@@ -108,14 +110,20 @@ namespace Player.Attacks
             {
                 return;
             }
-            
+
             _affectedTargets.Add(other);
 
-            if (!other.gameObject.TryGetComponent<IDamageable>(out var damageable))
+            if (other.gameObject.TryGetComponent<IDamageable>(out var damageable))
             {
+                TryApplyDamage(damageable);
                 return;
             }
 
+            OnPropHit?.Invoke(other.gameObject);
+        }
+
+        private void TryApplyDamage(IDamageable damageable)
+        {
             if (damageable == OwnerDamageable)
             {
                 return;
@@ -133,12 +141,12 @@ namespace Player.Attacks
                 return;
             }
 
-            var attackData = new MeleeAttackData(UsedWeapon, 0f, _applyCriticalDamage, other.gameObject);
+            var attackData = new MeleeAttackData(UsedWeapon, 0f, _applyCriticalDamage);
             OnAttackApplied?.Invoke(attackData);
         }
 
         #endregion
-        
+
         #region Methods
 
         public void ChargeAttack(IWeapon weapon)
@@ -149,12 +157,16 @@ namespace Player.Attacks
             }
 
             UsedWeapon = weapon;
-            
+
             ChargingAttack = true;
 
-            _critChargePercent = Random.Range(CritMinPercent, CritMaxPercent);
-            var attackData = new MeleeAttackData(UsedWeapon, _critChargePercent, false, null);
+            var halvedBounds = UsedWeapon.CritPercentBounds * 0.5f;
+            var critMinPercent = CritMinimumChargePercent + halvedBounds;
+            var critMaxPercent = 1 - halvedBounds;
             
+            _critChargePercent = Random.Range(critMinPercent, critMaxPercent);
+            var attackData = new MeleeAttackData(UsedWeapon, _critChargePercent, false);
+
             OnAttackChargeStarted?.Invoke(attackData);
         }
 
@@ -172,7 +184,7 @@ namespace Player.Attacks
                 // try apply damage
                 return;
             }
-            
+
             InterruptAttack();
         }
 
@@ -187,13 +199,14 @@ namespace Player.Attacks
             {
                 return;
             }
-            
+
             ChargingAttack = false;
 
             var chargePercent = ChargeTimer / _maxChargeTimeSeconds;
-            _applyCriticalDamage = CheckCritCharge(chargePercent, _critChargePercent);
+            _applyCriticalDamage =CheckCritCharge(chargePercent, 
+                _critChargePercent, UsedWeapon.CritPercentBounds);
             _calculatedDamage = CalculateDamageValue(UsedWeapon, ChargeTimer, _applyCriticalDamage);
-            
+
             OnAttackReleased?.Invoke(UsedWeapon);
 
             _affectedTargets.Clear();
@@ -204,25 +217,25 @@ namespace Player.Attacks
         {
             ChargingAttack = false;
             _attackDuration = 0f;
-            
+
             OnAttackEnded?.Invoke();
-            
+
             _attackCollider.enabled = false;
         }
 
-        private static bool CheckCritCharge(float chargeTimePercent, float critChargePercent)
+        private static bool CheckCritCharge(float chargeTimePercent, float critChargePercent, float critPercentBounds)
         {
-            return Math.Abs(chargeTimePercent - critChargePercent) <= CritPercentageBounds;
+            return Math.Abs(chargeTimePercent - critChargePercent) <= critPercentBounds * 0.5F;
         }
 
         private static float CalculateDamageValue(IWeapon weapon, float chargeTime, bool critApplied)
         {
             var chargeTimeSeconds = weapon.CalculateChargeTimeSeconds();
             float totalDamage;
-            
+
             if (critApplied)
             {
-                totalDamage =  weapon.DamageValue * CritDamagePercent;
+                totalDamage = weapon.DamageValue * weapon.CritDamageMultiplier;
             }
             else
             {
