@@ -1,6 +1,7 @@
 ﻿using Props.Interfaces;
 using Statuses.Datas;
 using Statuses.Interfaces;
+using Statuses.Main;
 using UnityEngine;
 
 namespace Props.Projectiles
@@ -11,13 +12,15 @@ namespace Props.Projectiles
 
         [SerializeField] private ProjectileRigidbody _projectileRigidbody;
         [SerializeField] private Damage _damage;
+        [SerializeField] private Health _arrowHealth;
 
         #endregion
 
         #region Properties
 
         private IProjectile Projectile => _projectileRigidbody;
-
+        private IHealth ArrowHealth => _arrowHealth;
+        
         #endregion
 
         #region Unity Callbacks
@@ -40,10 +43,10 @@ namespace Props.Projectiles
         {
             if (context.TryGetComponent<IDamageable>(out var damageable))
             {
-                damageable.ApplyDamage(_damage);
+                damageable.TryApplyDamage(_damage);
             }
             
-            Destroy(gameObject);
+            _arrowHealth.Kill();
         }
 
         #endregion

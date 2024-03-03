@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c2c4837cfc042feb3050193a684e144, type: 3}
+  m_Name: ClipSelector_Random_Weapon_Sword_WhooshSimple
+  m_EditorClassIdentifier: 
+  _clips:
+  - {fileID: 8300000, guid: a641263163e80d64181e9c364822d950, type: 3}
+  - {fileID: 8300000, guid: f13e1d8028f496e48a070a0d260804b3, type: 3}
+  - {fileID: 8300000, guid: 1b804a8ccf12b3f4da43d59ca35fe251, type: 3}

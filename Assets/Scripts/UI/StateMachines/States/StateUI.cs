@@ -1,6 +1,5 @@
 ﻿using System;
 using FSM.Main;
-using Player.Inputs;
 using Player.Inputs.Interfaces;
 using UI.StateMachines.Interfaces;
 
@@ -32,10 +31,16 @@ namespace UI.StateMachines.States
             
         }
 
+        protected void EnableCursor(bool enable)
+        {
+            InputProvider.CursorVisibility.SetVisibility(enable);
+        }
+
         protected void EnableGameplayInputs(bool enable)
         {
             InputProvider.Camera.EnableMap(enable);
             InputProvider.Movement.EnableMap(enable);
+            InputProvider.Abilities.EnableMap(enable);
         }
         
         protected void SetInventoryCallback(Action callback, bool subscribe)

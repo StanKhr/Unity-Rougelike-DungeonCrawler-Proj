@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using System;
+using Miscellaneous;
 using Statuses.Datas;
 using Statuses.Interfaces;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace Statuses.Main
         #region Events
 
         public event DelegateHolder.FloatEvents OnDamaged;
+        public event Action OnDied;
+        public event Action OnResurrected;
 
         #endregion
 
@@ -20,22 +23,39 @@ namespace Statuses.Main
             get => base.CurrentValue;
             protected set
             {
-                var current = CurrentValue;
-
+                var previousValue = CurrentValue;
                 base.CurrentValue = value;
-                
-                if (current > 0f && value < current)
+
+                var healthDifference = previousValue - CurrentValue;
+                if (Math.Abs(previousValue - CurrentValue) <= 0f)
                 {
-                    var damageAmount = CurrentValue - value;
-                    OnDamaged?.Invoke(damageAmount);
+                    return;
                 }
+                
+                if (CurrentValue > previousValue)
+                {
+                    if (previousValue <= 0f)
+                    {
+                        OnResurrected?.Invoke();
+                        return;
+                    }
+                    
+                    return;
+                }
+
+                OnDamaged?.Invoke(healthDifference);
+                
+                if ((this as IHealth).Alive)
+                {
+                    return;
+                }
+                
+                OnDied?.Invoke();
             }
         }
 
-        public bool Alive => CurrentValue > 0f;
-
         #endregion
-        
+
         #region Methods
 
 #if UNITY_EDITOR
@@ -45,27 +65,54 @@ namespace Statuses.Main
             CurrentValue += 20;
         }
 #endif
-        
-        public void ApplyDamage(Damage damage)
+
+        public bool TryApplyDamage(Damage damage)
         {
-            if (!Alive)
-            {
-                return;
-            }
-            
-            CurrentValue -= damage.Value;
-        }
-        
-        public bool TryHeal(float healValue)
-        {
-            if (!Alive)
+            if (!(this as IHealth).Alive)
             {
                 return false;
             }
 
+            if (TryGetComponent<IDefence>(out var defence))
+            {
+                if (defence.TryAbsorbDamage(damage, out var remainingDamageValue))
+                {
+                    return false;
+                }
+
+                damage.Value = remainingDamageValue;
+            }
+
+            CurrentValue -= damage.Value;
+
+            return true;
+        }
+
+        public bool TryHeal(float healValue)
+        {
+            if (!(this as IHealth).Alive)
+            {
+                return false;
+            }
+            
             CurrentValue += healValue;
 
             return true;
+        }
+
+        public void Resurrect()
+        {
+            CurrentValue = MaxValue;
+        }
+
+        public void Kill()
+        {
+            if (!(this as IHealth).Alive)
+            {
+                return;
+            }
+            
+            CurrentValue = 0f;
         }
 
         #endregion

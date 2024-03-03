@@ -2,7 +2,6 @@
 using Player.Cameras.Enums;
 using Player.StateMachines.Interfaces;
 using Props.Interfaces;
-using UnityEngine;
 
 namespace Player.StateMachines.States
 {
@@ -28,32 +27,47 @@ namespace Player.StateMachines.States
         public override void Enter()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            inputProvider.Movement.OnJump += JumpCallback;
             
-            inputProvider.Abilities.EnableMap(true);
+            inputProvider.Movement.OnJump += JumpCallback;
             inputProvider.Abilities.OnInteracted += InteractedCallback;
-            inputProvider.CursorVisibility.SetVisibility(false);
             
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
             cameraWrapper.SetActiveCamera(ActiveCameraType.FreeLook);
+            
+            var playerAnimations = StateMachinePlayer.PlayerAnimations;
+            playerAnimations.PlayHandsIdleLoop();
         }
 
         public override void Exit()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
-            inputProvider.Camera.EnableMap(false);
             
-            inputProvider.Movement.EnableMap(false);
             inputProvider.Movement.OnJump -= JumpCallback;
-            
-            inputProvider.Abilities.EnableMap(false);
             inputProvider.Abilities.OnInteracted -= InteractedCallback;
-            inputProvider.CursorVisibility.SetVisibility(true);
         }
 
         public override void Tick(float deltaTime)
         {
             UpdateLocomotion(deltaTime);
+            CheckAttackInput();
+        }
+
+        private void CheckAttackInput()
+        {
+            var inputProvider = StateMachinePlayer.InputProvider;
+            if (!inputProvider.Abilities.AttackInputHolding)
+            {
+                return;
+            }
+            
+            var gear = StateMachinePlayer.Gear;
+            if (!gear.WeaponEquipped)
+            {
+                return;
+            }
+
+            var weapon = gear.Weapon;
+            StateMachinePlayer.ToWeaponAttackState(weapon);
         }
 
         private void InteractedCallback()
@@ -90,33 +104,13 @@ namespace Player.StateMachines.States
             locomotion.Crouching = crouching;
             locomotion.Sprinting = sprinting;
             
-            var moveDirection = CalculateCameraDirection();
+            var moveDirection = StateMachinePlayer.CalculateCameraDirection();
             
             locomotion.SetTargetMotion(moveDirection);
             locomotion.TickMotion(deltaTime);
 
             var footStepsTracker = StateMachinePlayer.FootStepsTracker;
             footStepsTracker.Tick(locomotion, deltaTime);
-        }
-
-        private Vector3 CalculateCameraDirection()
-        {
-            var cameraWrapper = StateMachinePlayer.CameraWrapper;
-            var inputProvider = StateMachinePlayer.InputProvider;
-            
-            var forward = cameraWrapper.CameraForward;
-            var right = cameraWrapper.CameraRight;
-
-            forward.y = 0;
-            right.y = 0;
-            
-            forward.Normalize();
-            right.Normalize();
-
-            var x = inputProvider.Movement.MoveInputs.x;
-            var y = inputProvider.Movement.MoveInputs.y;
-            
-            return (forward * y + right * x).normalized;
         }
 
         #endregion

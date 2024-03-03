@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2197360281847757856}
   - component: {fileID: 1793663458633161054}
   - component: {fileID: 4088854244418456065}
-  - component: {fileID: 1021450196443293225}
   - component: {fileID: 731765493605652878}
   - component: {fileID: 145994684467358470}
   m_Layer: 8
@@ -85,21 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AudioSource>k__BackingField: {fileID: 5922122285049400967}
-  _clipSelectorInteractionStarted: {fileID: 1021450196443293225}
+  _clipSelectorInteractionStarted: {fileID: 11400000, guid: 85cb2c78b5fee4040b2543c63284b9d5, type: 2}
   _clipSelectorInteractionEnded: {fileID: 0}
---- !u!114 &1021450196443293225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261850602091089210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce100f2996e40cd9d7f533e4280a974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 0cf9c050b4cac0b4ab31989a428ba914, type: 3}
 --- !u!114 &731765493605652878
 MonoBehaviour:
   m_ObjectHideFlags: 0

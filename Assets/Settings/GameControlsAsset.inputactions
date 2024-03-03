@@ -268,6 +268,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponAttack",
+                    "type": "Button",
+                    "id": "6048f64e-2b24-4f98-9211-914eebeb4c8a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -301,6 +310,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d3bf265-c291-48c1-b2e5-df8d8cc80977",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "WeaponAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d2dd30fa-f8c0-409a-9782-bbec002c5aae",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "WeaponAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -352,6 +383,17 @@
                 },
                 {
                     "name": "",
+                    "id": "fad0e91c-5d7c-457e-b182-991bedc3308e",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a27f58e0-3f86-4c7f-9301-3120f7cc33dc",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -386,7 +428,7 @@
                 {
                     "name": "",
                     "id": "7305a1fc-d448-4b3e-9302-71615991eaac",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

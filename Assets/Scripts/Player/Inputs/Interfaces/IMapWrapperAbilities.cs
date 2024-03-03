@@ -10,5 +10,11 @@ namespace Player.Inputs.Interfaces
         event Action OnInteracted;
 
         #endregion
+
+        #region Properties
+
+        bool AttackInputHolding { get; }
+
+        #endregion
     }
 }

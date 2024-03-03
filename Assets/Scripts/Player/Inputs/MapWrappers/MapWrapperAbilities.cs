@@ -23,6 +23,12 @@ namespace Player.Inputs.MapWrappers
 
         #endregion
 
+        #region Properties
+
+        public bool AttackInputHolding { get; private set; }
+
+        #endregion
+
         #region Methods
 
         public void EnableMap(bool enable)
@@ -44,6 +50,11 @@ namespace Player.Inputs.MapWrappers
             }
             
             OnInteracted?.Invoke();
+        }
+
+        void GameControlsAsset.IAbilitiesMapActions.OnWeaponAttack(InputAction.CallbackContext context)
+        {
+            AttackInputHolding = context.ReadValue<float>() > 0f;
         }
 
         public void OnTest(InputAction.CallbackContext context)

@@ -34,18 +34,19 @@ namespace UI.Presenters.Items
         {
             InitializeSlots();
             
-            InventorySlotPresenter.OnSelected += SlotSelectedCallback;
-            InventorySlotPresenter.OnUsed += SlotUsedCallback;
+            InventorySlotPresenter.OnSlotSelected += SlotSlotSelectedCallback;
+            InventorySlotPresenter.OnUseItemTriggered += SlotUseItemTriggeredCallback;
             Inventory.Slots.OnSlotUpdated += SlotUpdatedCallback;
-            // Inventory.OnItemDropped += ItemDroppedCallback;
+            Inventory.OnItemUsed += ItemUsedCallback;
         }
 
         private void OnDestroy()
         {
-            InventorySlotPresenter.OnSelected -= SlotSelectedCallback;
-            InventorySlotPresenter.OnUsed -= SlotUsedCallback;
+            InventorySlotPresenter.OnSlotSelected -= SlotSlotSelectedCallback;
+            InventorySlotPresenter.OnUseItemTriggered -= SlotUseItemTriggeredCallback;
+            
             Inventory.Slots.OnSlotUpdated -= SlotUpdatedCallback;
-            // Inventory.OnItemDropped -= ItemDroppedCallback;
+            Inventory.OnItemUsed -= ItemUsedCallback;
         }
 
         #endregion
@@ -111,13 +112,13 @@ namespace UI.Presenters.Items
             _slots[slotIndex].TryUpdateCorrespondingSlot(slot);
         }
 
-        private void SlotSelectedCallback(InventorySlotPresenter context)
+        private void SlotSlotSelectedCallback(InventorySlotPresenter context)
         {
             _selectedSlotPresenter = context;
             UpdateDescriptionPopup(context);
         }
 
-        private void SlotUsedCallback(InventorySlotPresenter context)
+        private void SlotUseItemTriggeredCallback(InventorySlotPresenter context)
         {
             Inventory.TryUse(context.SlotIndex);
         }
@@ -126,6 +127,11 @@ namespace UI.Presenters.Items
         {
             var slot = Inventory.Slots[slotPresenter.SlotIndex];
             _itemDescriptionPopup.FillDescription(slot.Item);
+        }
+
+        private void ItemUsedCallback(IItem context)
+        {
+            UpdateDescriptionPopup(_selectedSlotPresenter);
         }
 
         #endregion

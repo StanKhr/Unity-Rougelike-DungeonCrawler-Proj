@@ -1,4 +1,6 @@
-﻿using Player.Inventories.Enums;
+﻿using Audio.Interfaces;
+using Player.Inventories.Enums;
+using Statuses.Enums;
 using UnityEngine;
 
 namespace Player.Inventories.Interfaces
@@ -10,9 +12,22 @@ namespace Player.Inventories.Interfaces
         Sprite WeaponHandSprite { get; }
         float DamageValue { get; }
         float SpeedValue { get; }
+        float AttackDuration { get; }
+        float CritPercentBounds { get; }
+        float CritDamageMultiplier { get; }
         AttributeScaleType ScaleStrength { get; }
         AttributeScaleType ScaleDexterity { get; }
         AttributeScaleType ScaleIntellect { get; }
+        DamageType DamageType { get; }
+        IClipSelector ClipSelectorAttackCharge { get; }
+        IClipSelector ClipSelectorAttackRelease { get; }
+
+        #endregion
+
+        #region Methods
+
+        float GetScaleMultiplier(AttributeScaleType attributeScaleType);
+        float CalculateChargeTimeSeconds();
 
         #endregion
     }

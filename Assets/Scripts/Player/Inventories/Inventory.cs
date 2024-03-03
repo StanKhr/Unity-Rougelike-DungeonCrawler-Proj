@@ -131,6 +131,7 @@ namespace Player.Inventories
                 return false;
             }
 
+            var item = _slots[slotIndex].Item;
             var usedSuccessfully = usable.TryUse(gameObject);
 
             if (!usedSuccessfully)
@@ -138,7 +139,7 @@ namespace Player.Inventories
                 return false;
             }
             
-            OnItemUsed?.Invoke(_slots[slotIndex].Item);
+            OnItemUsed?.Invoke(item);
 
             return true;
         }

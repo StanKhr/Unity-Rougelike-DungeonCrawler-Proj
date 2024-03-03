@@ -1,5 +1,5 @@
 ﻿using Audio.ClipSelectors;
-using Player.Cameras;
+using Audio.Interfaces;
 using Player.Cameras.Interfaces;
 using Player.Miscellaneous;
 using UnityEngine;
@@ -11,13 +11,14 @@ namespace Audio.Triggers
         #region Editor Fields
 
         [SerializeField] private FootStepsTracker _footStepsTracker;
-        [SerializeField] private ClipSelector _clipSelector;
+        [SerializeField] private ClipSelectorScriptable _clipSelector;
 
         #endregion
 
         #region Properties
 
         private IFootStepsTracker FootStepsTracker => _footStepsTracker;
+        private IClipSelector ClipSelector => _clipSelector;
 
         #endregion
 
@@ -39,7 +40,7 @@ namespace Audio.Triggers
 
         private void StepMadeCallback()
         {
-            _clipSelector.TryOneShotAudioSource(AudioSource);
+            ClipSelector.TryOneShotOnAudioSource(AudioSource);
         }
 
         #endregion

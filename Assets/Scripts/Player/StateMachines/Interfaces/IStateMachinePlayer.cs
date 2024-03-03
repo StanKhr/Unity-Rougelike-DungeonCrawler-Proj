@@ -2,6 +2,8 @@
 using Player.Cameras.Interfaces;
 using Player.Inputs.Interfaces;
 using Player.Interfaces;
+using Player.Inventories.Interfaces;
+using UnityEngine;
 
 namespace Player.StateMachines.Interfaces
 {
@@ -13,6 +15,16 @@ namespace Player.StateMachines.Interfaces
         ICameraWrapper CameraWrapper { get; }
         IEyeScanner EyeScanner { get; }
         IFootStepsTracker FootStepsTracker { get; }
+        IGear Gear { get; }
+        IPlayerAnimations PlayerAnimations { get; }
+        IPlayerAttack PlayerAttack { get; }
+        
+        #endregion
+
+        #region Methods
+
+        void ToWeaponAttackState(IWeapon weapon);
+        Vector3 CalculateCameraDirection();
 
         #endregion
     }

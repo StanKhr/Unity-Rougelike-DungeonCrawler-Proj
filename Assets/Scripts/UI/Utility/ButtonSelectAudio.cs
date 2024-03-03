@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace UI.Utility
 {
-    public class ButtonSelectAudio : MonoBehaviour, ISelectHandler, IDeselectHandler, ISubmitHandler
+    public class ButtonSelectAudio : MonoBehaviour, ISelectHandler, IDeselectHandler, ISubmitHandler, IPointerClickHandler
     {
         #region Events
 
@@ -27,6 +27,11 @@ namespace UI.Utility
         }
 
         public void OnSubmit(BaseEventData eventData)
+        {
+            OnSubmitted?.Invoke();
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
         {
             OnSubmitted?.Invoke();
         }

@@ -1,5 +1,4 @@
-﻿using System;
-using Cinemachine;
+﻿using Cinemachine;
 using Player.Cameras.Enums;
 using Player.Cameras.Interfaces;
 using UnityEngine;
@@ -12,12 +11,6 @@ namespace Player.Cameras
 
         private const int PriorityLow = 1;
         private const int PriorityHigh = 10;
-
-        #endregion
-
-        #region Events
-        
-        public event Action OnFootStepped;
 
         #endregion
 

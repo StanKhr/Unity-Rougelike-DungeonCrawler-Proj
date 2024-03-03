@@ -1,5 +1,4 @@
-﻿using Miscellaneous;
-using Props.Interfaces;
+﻿using Props.Interfaces;
 using UnityEngine;
 
 namespace Props.Common

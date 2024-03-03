@@ -24,9 +24,15 @@ namespace UI.Presenters
 
         #endregion
 
+        #region Properties
+
+        protected TextMeshProUGUI TextMeshProUGUI => _textMeshProUGUI;
+
+        #endregion
+
         #region Methods
 
-        protected void SetValue(string value)
+        protected virtual void SetValue(string value)
         {
             var valueExists = !string.IsNullOrEmpty(value);
             var equipName = valueExists ? value : _localeEmpty.GetLocalizedString();

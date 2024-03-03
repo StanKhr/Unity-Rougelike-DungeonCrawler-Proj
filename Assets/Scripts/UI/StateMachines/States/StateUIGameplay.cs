@@ -19,12 +19,14 @@ namespace UI.StateMachines.States
         {
             EnableGameplayInputs(true);
             SetInventoryCallback(InventoryInputCallback, true);
+            EnableCursor(false);
         }
 
         public override void Exit()
         {
             EnableGameplayInputs(false);
             SetInventoryCallback(InventoryInputCallback, false);
+            EnableCursor(true);
         }
 
         private void InventoryInputCallback()

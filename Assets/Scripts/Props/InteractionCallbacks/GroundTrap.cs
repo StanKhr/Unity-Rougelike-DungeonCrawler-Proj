@@ -32,7 +32,7 @@ namespace Props.InteractionCallbacks
                 return;
             }
             
-            damageable.ApplyDamage(_damage);
+            damageable.TryApplyDamage(_damage);
         }
         
         #endregion

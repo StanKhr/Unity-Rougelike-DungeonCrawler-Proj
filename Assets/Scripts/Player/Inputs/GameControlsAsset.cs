@@ -292,6 +292,15 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""6048f64e-2b24-4f98-9211-914eebeb4c8a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -325,6 +334,28 @@ namespace Scripts.Player.Inputs
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d3bf265-c291-48c1-b2e5-df8d8cc80977"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""WeaponAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d2dd30fa-f8c0-409a-9782-bbec002c5aae"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""WeaponAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -376,6 +407,17 @@ namespace Scripts.Player.Inputs
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fad0e91c-5d7c-457e-b182-991bedc3308e"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a27f58e0-3f86-4c7f-9301-3120f7cc33dc"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -410,7 +452,7 @@ namespace Scripts.Player.Inputs
                 {
                     ""name"": """",
                     ""id"": ""7305a1fc-d448-4b3e-9302-71615991eaac"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -465,6 +507,7 @@ namespace Scripts.Player.Inputs
             m_AbilitiesMap = asset.FindActionMap("AbilitiesMap", throwIfNotFound: true);
             m_AbilitiesMap_Test = m_AbilitiesMap.FindAction("Test", throwIfNotFound: true);
             m_AbilitiesMap_Interact = m_AbilitiesMap.FindAction("Interact", throwIfNotFound: true);
+            m_AbilitiesMap_WeaponAttack = m_AbilitiesMap.FindAction("WeaponAttack", throwIfNotFound: true);
             // UtilityMap
             m_UtilityMap = asset.FindActionMap("UtilityMap", throwIfNotFound: true);
             m_UtilityMap_OpenInventory = m_UtilityMap.FindAction("OpenInventory", throwIfNotFound: true);
@@ -657,12 +700,14 @@ namespace Scripts.Player.Inputs
         private List<IAbilitiesMapActions> m_AbilitiesMapActionsCallbackInterfaces = new List<IAbilitiesMapActions>();
         private readonly InputAction m_AbilitiesMap_Test;
         private readonly InputAction m_AbilitiesMap_Interact;
+        private readonly InputAction m_AbilitiesMap_WeaponAttack;
         public struct AbilitiesMapActions
         {
             private @GameControlsAsset m_Wrapper;
             public AbilitiesMapActions(@GameControlsAsset wrapper) { m_Wrapper = wrapper; }
             public InputAction @Test => m_Wrapper.m_AbilitiesMap_Test;
             public InputAction @Interact => m_Wrapper.m_AbilitiesMap_Interact;
+            public InputAction @WeaponAttack => m_Wrapper.m_AbilitiesMap_WeaponAttack;
             public InputActionMap Get() { return m_Wrapper.m_AbilitiesMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -678,6 +723,9 @@ namespace Scripts.Player.Inputs
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @WeaponAttack.started += instance.OnWeaponAttack;
+                @WeaponAttack.performed += instance.OnWeaponAttack;
+                @WeaponAttack.canceled += instance.OnWeaponAttack;
             }
 
             private void UnregisterCallbacks(IAbilitiesMapActions instance)
@@ -688,6 +736,9 @@ namespace Scripts.Player.Inputs
                 @Interact.started -= instance.OnInteract;
                 @Interact.performed -= instance.OnInteract;
                 @Interact.canceled -= instance.OnInteract;
+                @WeaponAttack.started -= instance.OnWeaponAttack;
+                @WeaponAttack.performed -= instance.OnWeaponAttack;
+                @WeaponAttack.canceled -= instance.OnWeaponAttack;
             }
 
             public void RemoveCallbacks(IAbilitiesMapActions instance)
@@ -801,6 +852,7 @@ namespace Scripts.Player.Inputs
         {
             void OnTest(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
+            void OnWeaponAttack(InputAction.CallbackContext context);
         }
         public interface IUtilityMapActions
         {

@@ -1,4 +1,5 @@
 ﻿using FSM.Creatures.Machines;
+using Player.Attacks;
 using Player.Cameras;
 using Player.Cameras.Interfaces;
 using Player.Inputs;
@@ -22,6 +23,9 @@ namespace Player.StateMachines.Machines
         [SerializeField] private EyeScanner _eyeScanner;
         [SerializeField] private Inventory _inventory;
         [SerializeField] private FootStepsTracker _footStepsTracker;
+        [SerializeField] private Gear _gear;
+        [SerializeField] private PlayerAnimations _playerAnimations;
+        [SerializeField] private PlayerAttack _playerAttack;
 
         #endregion
         
@@ -32,6 +36,9 @@ namespace Player.StateMachines.Machines
         public IEyeScanner EyeScanner => _eyeScanner;
         public IFootStepsTracker FootStepsTracker => _footStepsTracker;
         public IInventory Inventory => _inventory;
+        public IGear Gear => _gear;
+        public IPlayerAnimations PlayerAnimations => _playerAnimations;
+        public IPlayerAttack PlayerAttack => _playerAttack;
 
         #endregion
 
@@ -46,6 +53,11 @@ namespace Player.StateMachines.Machines
         #endregion
 
         #region Methods
+        
+        public void ToWeaponAttackState(IWeapon weapon)
+        {
+            SwitchState(new StatePlayerWeaponAttack(this, weapon));
+        }
 
         public override void ToFreeLookState()
         {
@@ -56,7 +68,24 @@ namespace Player.StateMachines.Machines
         {
             SwitchState(new StatePlayerDeath(this));
         }
+        
+        public Vector3 CalculateCameraDirection()
+        {
+            var forward = CameraWrapper.CameraForward;
+            var right = CameraWrapper.CameraRight;
 
+            forward.y = 0;
+            right.y = 0;
+            
+            forward.Normalize();
+            right.Normalize();
+
+            var x = InputProvider.Movement.MoveInputs.x;
+            var y = InputProvider.Movement.MoveInputs.y;
+            
+            return (forward * y + right * x).normalized;
+        }
+        
         #endregion
     }
 }

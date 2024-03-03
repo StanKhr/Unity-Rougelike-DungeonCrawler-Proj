@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using Miscellaneous;
 using Player.GameStories.Datas;
@@ -52,7 +51,7 @@ namespace Player.GameStories
             _storyLines.Add(context);
             while (_storyLines.Count > MaxStoryLines)
             {
-                _storyLines.RemoveAt(_storyLines.Count - 1);
+                _storyLines.RemoveAt(0);
             }
 
             if (_storyLines.Count == 0)

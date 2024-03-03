@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - None
+  - Flesh
+  - Astral
+  - Plate
+  - Wood
+  - Stone
+  - Water
+  - Dirt
   layers:
   - Default
   - TransparentFX
@@ -17,7 +25,7 @@ TagManager:
   - Projectile
   - 2D
   - Interactable
-  - 
+  - AttackOverlap
   - 
   - 
   - 

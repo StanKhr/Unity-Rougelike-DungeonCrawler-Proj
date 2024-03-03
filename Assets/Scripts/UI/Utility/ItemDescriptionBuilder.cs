@@ -3,11 +3,9 @@ using System.Text;
 using Miscellaneous;
 using Player.Inventories.Enums;
 using Player.Inventories.Interfaces;
-using Player.Inventories.Items;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;
-using UnityEngine.ResourceManagement.Util;
 
 namespace UI.Utility
 {
