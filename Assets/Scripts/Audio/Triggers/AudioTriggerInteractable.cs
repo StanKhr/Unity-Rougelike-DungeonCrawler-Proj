@@ -35,12 +35,12 @@ namespace Audio.Triggers
 
         protected override void InteractionStartedCallback(GameObject context)
         {
-            ClipSelectorInteractionStarted?.TryOneShotAudioSource(AudioSource);
+            ClipSelectorInteractionStarted?.TryPlayOneShot(AudioSource);
         }
 
         protected override void InteractionEndedCallback(GameObject context)
         {
-            ClipSelectorInteractionEnded?.TryOneShotAudioSource(AudioSource);
+            ClipSelectorInteractionEnded?.TryPlayOneShot(AudioSource);
         }
 
         #endregion

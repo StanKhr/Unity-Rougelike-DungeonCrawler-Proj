@@ -7,7 +7,7 @@ namespace Audio.Interfaces
         #region Methods
 
         AudioClip Select();
-        bool TryOneShotAudioSource(AudioSource audioSource)
+        bool TryPlayOneShot(AudioSource audioSource)
         {
             if (!audioSource)
             {
@@ -21,6 +21,18 @@ namespace Audio.Interfaces
             }
 
             audioSource.PlayOneShot(clip);
+            return true;
+        }
+
+        bool TryPlayOneShotAtPosition(Vector3 position)
+        {
+            var clip = Select();
+            if (!clip)
+            {
+                return false;
+            }
+
+            AudioSource.PlayClipAtPoint(clip, position);
             return true;
         }
 

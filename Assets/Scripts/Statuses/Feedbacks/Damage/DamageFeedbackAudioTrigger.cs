@@ -27,12 +27,12 @@ namespace Statuses.Feedbacks.Damage
         
         protected override void DamagedCallback(float context)
         {
-            DamagedClipSelector.TryOneShotAudioSource(_audioSource);
+            DamagedClipSelector.TryPlayOneShot(_audioSource);
         }
 
         protected override void DiedCallback()
         {
-            DiedClipSelector.TryOneShotAudioSource(_audioSource);
+            DiedClipSelector.TryPlayOneShot(_audioSource);
         }
 
         #endregion

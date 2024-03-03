@@ -1,6 +1,6 @@
 ﻿namespace Statuses.Enums
 {
-    public enum DefenceType : int
+    public enum ObjectSurfaceType : int
     {
         None = 0,
         Flesh,
@@ -8,6 +8,7 @@
         Plate,
         Wood,
         Stone,
-        Water
+        Water,
+        Dirt
     }
 }

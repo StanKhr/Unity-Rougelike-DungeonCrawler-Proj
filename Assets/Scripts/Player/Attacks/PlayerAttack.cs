@@ -26,7 +26,7 @@ namespace Player.Attacks
         public event DelegateHolder.MeleeAttackDataEvents OnAttackChargeStarted;
         public event DelegateHolder.WeaponEvents OnAttackReleased;
         public event DelegateHolder.MeleeAttackDataEvents OnAttackApplied;
-        public event DelegateHolder.GameObjectEvents OnPropHit;
+        public event DelegateHolder.GameObjectEvents OnSurfaceHit;
         public event Action OnAttackEnded;
 
         #endregion
@@ -116,10 +116,9 @@ namespace Player.Attacks
             if (other.gameObject.TryGetComponent<IDamageable>(out var damageable))
             {
                 TryApplyDamage(damageable);
-                return;
             }
 
-            OnPropHit?.Invoke(other.gameObject);
+            OnSurfaceHit?.Invoke(other.gameObject);
         }
 
         private void TryApplyDamage(IDamageable damageable)

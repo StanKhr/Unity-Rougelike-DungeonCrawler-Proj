@@ -41,13 +41,13 @@ namespace Audio.Triggers
         private void AttackReleasedCallback(IWeapon context)
         {
             var clipSelector = context.ClipSelectorAttackRelease;
-            clipSelector.TryOneShotAudioSource(AudioSource);
+            clipSelector.TryPlayOneShot(AudioSource);
         }
 
         private void AttackChargeStartedCallback(MeleeAttackData context)
         {
             var clipSelector = context.Weapon.ClipSelectorAttackCharge;
-            clipSelector.TryOneShotAudioSource(AudioSource);
+            clipSelector.TryPlayOneShot(AudioSource);
         }
 
         #endregion

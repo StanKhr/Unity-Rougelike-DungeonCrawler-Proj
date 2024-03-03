@@ -41,12 +41,12 @@ namespace Audio.Triggers
         
         private void SelectedCallback()
         {
-            ClipSelectorSelected?.TryOneShotAudioSource(AudioSource);
+            ClipSelectorSelected?.TryPlayOneShot(AudioSource);
         }
         
         private void SubmittedCallback()
         {
-            ClipSelectorSubmitted?.TryOneShotAudioSource(AudioSource);
+            ClipSelectorSubmitted?.TryPlayOneShot(AudioSource);
         }
         
         #endregion

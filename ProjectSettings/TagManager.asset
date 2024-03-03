@@ -11,6 +11,7 @@ TagManager:
   - Wood
   - Stone
   - Water
+  - Dirt
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Projectile
   - 2D
   - Interactable
-  - 
+  - AttackOverlap
   - 
   - 
   - 
