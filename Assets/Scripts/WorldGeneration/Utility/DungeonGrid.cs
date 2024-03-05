@@ -81,7 +81,7 @@ namespace WorldGeneration.Utility
 
         private int GetRoomCornerAxis(int relatedSizeAxis)
         {
-            return (relatedSizeAxis + 1) / 2;
+            return relatedSizeAxis % 2 == 0 ? relatedSizeAxis / 2 : (relatedSizeAxis + 1) / 2;
         }
 
         #endregion

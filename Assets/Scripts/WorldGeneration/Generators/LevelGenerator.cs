@@ -30,15 +30,14 @@ namespace WorldGeneration.Generators
         // [SerializeField, Min(0)] private int _levelBoundsX = 50;
         // [SerializeField, Min(0)] private int _levelBoundsY = 50;
 
-        [SerializeField, Min(0)] private int _minRoomDistance = 1; 
-        [SerializeField, Min(0)] private int _maxRoomDistance = 2; 
+        // [SerializeField, Min(0)] private int _minRoomDistance = 1; 
+        // [SerializeField, Min(0)] private int _maxRoomDistance = 2;
+        [SerializeField, Min(0)] private int _gridCellSize = 1;
         [SerializeField] private RoomData _spawnRoomData;
 
         [Header("Debug")]
         [SerializeField] private GameObject _floorPrefabDebug;
-        [SerializeField] private Material _materialRed;
-        [SerializeField] private Material _materialBlue;
-
+        [SerializeField] private GameObject _wallPrefabDebug;
         #endregion
 
         #region Fields
@@ -87,15 +86,46 @@ namespace WorldGeneration.Generators
                     continue;
                 }
 
-                var spawnPosition = new Vector3(cellPosition.x, 0f, cellPosition.y);
-                var prefab = Instantiate(_floorPrefabDebug, spawnPosition, Quaternion.identity);
-                prefab.SetActive(true);
-                
-                prefab.name = $"Cell_{Enum.GetName(typeof(CellType), cells[cellPosition])}_{cellPosition.x.ToString()}_{cellPosition.y.ToString()}";
-
-                var meshRenderer = prefab.GetComponentInChildren<MeshRenderer>();
-                meshRenderer.material = cells[cellPosition] == CellType.Floor ? _materialBlue : _materialRed;
+                switch (cells[cellPosition])
+                {
+                    case CellType.Empty:
+                        break;
+                    case CellType.BossReservedPath:
+                    case CellType.Floor:
+                        PlaceFloor(cellPosition, _floorPrefabDebug);
+                        break;
+                    case CellType.Wall:
+                        PlaceFloor(cellPosition, _wallPrefabDebug);
+                        break;
+                    case CellType.Door:
+                        break;
+                }
             }
+        }
+
+        private void PlaceFloor(Vector2Int cellPosition, GameObject prefab)
+        {
+            var spawnPosition = ConvertGridPositionToWorld(cellPosition);
+            var instance = Instantiate(prefab, spawnPosition, Quaternion.identity, transform);
+            instance.SetActive(true);
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            instance.name = GetCellName(cellPosition, CellType.Floor);
+#endif
+                
+            // var meshRenderer = prefab.GetComponentInChildren<MeshRenderer>();
+            // meshRenderer.material = cells[cellPosition] == CellType.Floor ? _materialBlue : _materialRed;
+        }
+
+        private string GetCellName(Vector2Int cellPosition, CellType type)
+        {
+            return
+                $"Cell_{Enum.GetName(typeof(CellType), type)}_{cellPosition.x.ToString()}_{cellPosition.y.ToString()}";
+        }
+
+        private Vector3 ConvertGridPositionToWorld(Vector2Int gridPosition)
+        {
+            return new Vector3(gridPosition.x * _gridCellSize, 0f, gridPosition.y * _gridCellSize);
         }
 
         #endregion
