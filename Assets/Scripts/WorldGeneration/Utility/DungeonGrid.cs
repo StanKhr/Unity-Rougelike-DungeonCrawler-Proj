@@ -69,6 +69,14 @@ namespace WorldGeneration.Utility
             {
                 for (int y = cornerY * -1; y <= cornerY; y++)
                 {
+                    var cellPosition = new Vector2Int(x + roomData.WorldCenterPosition.x,
+                        y + roomData.WorldCenterPosition.y);
+                    
+                    if (GetCellByAxis(cellPosition) == CellType.Floor)
+                    {
+                        continue;
+                    }
+                    
                     CellType usedType;
                     if (Mathf.Abs(x) == cornerX || Mathf.Abs(y) == cornerY)
                     {
@@ -79,7 +87,7 @@ namespace WorldGeneration.Utility
                         usedType = CellType.Floor;
                     }
                     
-                    SetCell(x + roomData.WorldCenterPosition.x, y + roomData.WorldCenterPosition.y, usedType); 
+                    SetCell(cellPosition, usedType); 
                 }
             }
         }

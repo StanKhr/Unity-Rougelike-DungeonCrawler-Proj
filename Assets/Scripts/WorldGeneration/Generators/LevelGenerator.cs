@@ -32,6 +32,7 @@ namespace WorldGeneration.Generators
         [SerializeField] private RoomData _spawnRoomData;
         [SerializeField] private RoomData[] _roomsToSpawn;
         [SerializeField] private int _corridorMinSteps = 1;
+        [SerializeField] private int _corridorMaxSteps = 2;
         [SerializeField, Min(2)] private int _minRoomCount = 5;
         [SerializeField] private int _extraRoomsCount = 5;
 
@@ -72,7 +73,6 @@ namespace WorldGeneration.Generators
         public void StartGeneration()
         {
             var roomSpawnPosition = new Vector2Int(0, 0);
-            var prevPosition = roomSpawnPosition;
             
             _dungeonGrid.AddRoom(_spawnRoomData);
             _rooms.Add(_spawnRoomData);
@@ -80,10 +80,24 @@ namespace WorldGeneration.Generators
             var directionsCount = Enum.GetNames(typeof(WalkDirectionType)).Length;
             while (_rooms.Count < _minRoomCount)
             {
+                var prevPosition = roomSpawnPosition;
                 var moveDirectionType = (WalkDirectionType) Random.Range(0, directionsCount);
                 var direction = _sortedWalkDirections[moveDirectionType];
 
-                var corridorSteps = Random.Range(_corridorMinSteps, 10);
+                var corridorSteps = Random.Range(_corridorMinSteps, _corridorMaxSteps);
+                var room = _roomsToSpawn[Random.Range(0, _roomsToSpawn.Length)];
+
+                var extraSteps = 0;
+                if (direction.x != 0)
+                {
+                    extraSteps = (room.SizeX + 1) / 2;
+                }
+                else
+                {
+                    extraSteps = (room.SizeY + 1) / 2;
+                } 
+
+                corridorSteps += extraSteps;
                 while (corridorSteps > 0)
                 {
                     roomSpawnPosition += direction;
@@ -96,24 +110,11 @@ namespace WorldGeneration.Generators
                     corridorSteps--;
                     _dungeonGrid.SetCell(roomSpawnPosition, CellType.Floor);
                 }
-                
-                do
-                {
-                    roomSpawnPosition += direction;
-                } while (_dungeonGrid.GetCellByAxis(roomSpawnPosition) != CellType.Empty);
-                
-                var room = _roomsToSpawn[Random.Range(0, _roomsToSpawn.Length)];
-                // if (prevPosition.x != roomSpawnPosition.x)
-                // {
-                //     var extraSteps = (room.SizeX + 1) / 2 + roomSpawnPosition.x;
-                // }
 
                 room.WorldCenterPosition = roomSpawnPosition;
                 
                 _dungeonGrid.AddRoom(room);
                 _rooms.Add(room);
-
-                prevPosition = roomSpawnPosition;
             }
         }
         
