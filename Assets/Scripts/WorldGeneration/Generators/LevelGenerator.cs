@@ -14,7 +14,7 @@ namespace WorldGeneration.Generators
     {
         #region Constants
 
-        private static readonly Vector3Int CorridorTileSize = new Vector3Int(3, 3);
+        private const float RotateRoomChance = 0.5f;
 
         #endregion
         
@@ -62,8 +62,12 @@ namespace WorldGeneration.Generators
         {
             Random.InitState(_randomSeed);
             
+            OnGenerationStarted?.Invoke();
+            
             StartGeneration();
             SpawnDebugTiles();
+            
+            OnGenerationEnded?.Invoke();
         }
 
         #endregion
@@ -81,13 +85,17 @@ namespace WorldGeneration.Generators
             var expectedRoomCount = _requiredRoomsAmount + Random.Range(0, _extraRoomsMaxAmount);
             while (_rooms.Count < expectedRoomCount)
             {
-                var prevPosition = roomSpawnPosition;
                 var moveDirectionType = (WalkDirectionType) Random.Range(0, directionsCount);
                 var direction = _sortedWalkDirections[moveDirectionType];
                 var sideDirection = new Vector2Int(direction.y, direction.x);
 
                 var corridorSteps = Random.Range(_corridorMinSteps, _corridorMaxSteps);
                 var room = _roomsToSpawn[Random.Range(0, _roomsToSpawn.Length)];
+
+                if (Random.Range(0f, 1f) <= RotateRoomChance)
+                {
+                    room.RotateBy90Degrees();
+                }
 
                 var extraSteps = 0;
                 if (direction.x != 0)

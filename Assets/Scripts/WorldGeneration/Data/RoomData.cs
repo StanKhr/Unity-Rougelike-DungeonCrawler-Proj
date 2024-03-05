@@ -24,5 +24,14 @@ namespace WorldGeneration.Data
         [field: SerializeField] public int SizeY { get; set; }
 
         #endregion
+
+        #region Methods
+
+        public void RotateBy90Degrees()
+        {
+            (SizeX, SizeY) = (SizeY, SizeX);
+        }
+
+        #endregion
     }
 }
