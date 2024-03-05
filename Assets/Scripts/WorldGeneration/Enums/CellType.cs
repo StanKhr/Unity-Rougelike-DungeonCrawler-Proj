@@ -5,7 +5,6 @@
         Empty = 0,
         Floor,
         Wall,
-        Door,
-        BossReservedPath
+        Door
     }
 }

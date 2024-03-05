@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d31d3edd7b4f3291af04a2b85a4151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _randomSeed: 1633167181
+  _randomSeed: 1597189361
   _gridCellSize: 2
   _spawnRoomData:
     <WorldCenterPosition>k__BackingField: {x: 0, y: 0}
@@ -710,10 +710,10 @@ MonoBehaviour:
   - <WorldCenterPosition>k__BackingField: {x: 0, y: 0}
     <SizeX>k__BackingField: 11
     <SizeY>k__BackingField: 3
-  _corridorMinSteps: 3
-  _corridorMaxSteps: 10
-  _minRoomCount: 5
-  _extraRoomsCount: 5
+  _corridorMinSteps: 4
+  _corridorMaxSteps: 8
+  _requiredRoomsAmount: 6
+  _extraRoomsMaxAmount: 12
   _floorPrefabDebug: {fileID: 1298701957886992061, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
   _wallPrefabDebug: {fileID: 5121819047618408731, guid: 0885a16da57f5fc4d9b755295296ed87, type: 3}
 --- !u!4 &216937224

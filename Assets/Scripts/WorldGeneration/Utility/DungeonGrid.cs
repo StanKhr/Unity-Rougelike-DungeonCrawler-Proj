@@ -46,17 +46,6 @@ namespace WorldGeneration.Utility
         
         public void SetCell(Vector2Int position, CellType type)
         {
-            if (!Cells.TryGetValue(position, out var cellType))
-            {
-                Cells[position] = type;
-                return;
-            }
-
-            if (cellType == CellType.BossReservedPath)
-            {
-                return;
-            }
-            
             Cells[position] = type;
         }
 

@@ -33,8 +33,8 @@ namespace WorldGeneration.Generators
         [SerializeField] private RoomData[] _roomsToSpawn;
         [SerializeField] private int _corridorMinSteps = 1;
         [SerializeField] private int _corridorMaxSteps = 2;
-        [SerializeField, Min(2)] private int _minRoomCount = 5;
-        [SerializeField] private int _extraRoomsCount = 5;
+        [SerializeField, Min(2)] private int _requiredRoomsAmount = 5;
+        [SerializeField] private int _extraRoomsMaxAmount = 5;
 
         [Header("Debug")]
         [SerializeField] private GameObject _floorPrefabDebug;
@@ -78,11 +78,13 @@ namespace WorldGeneration.Generators
             _rooms.Add(_spawnRoomData);
 
             var directionsCount = Enum.GetNames(typeof(WalkDirectionType)).Length;
-            while (_rooms.Count < _minRoomCount)
+            var expectedRoomCount = _requiredRoomsAmount + Random.Range(0, _extraRoomsMaxAmount);
+            while (_rooms.Count < expectedRoomCount)
             {
                 var prevPosition = roomSpawnPosition;
                 var moveDirectionType = (WalkDirectionType) Random.Range(0, directionsCount);
                 var direction = _sortedWalkDirections[moveDirectionType];
+                var sideDirection = new Vector2Int(direction.y, direction.x);
 
                 var corridorSteps = Random.Range(_corridorMinSteps, _corridorMaxSteps);
                 var room = _roomsToSpawn[Random.Range(0, _roomsToSpawn.Length)];
@@ -108,7 +110,10 @@ namespace WorldGeneration.Generators
                     }
                     
                     corridorSteps--;
+                    
                     _dungeonGrid.SetCell(roomSpawnPosition, CellType.Floor);
+                    _dungeonGrid.SetCell(roomSpawnPosition + sideDirection, CellType.Wall);
+                    _dungeonGrid.SetCell(roomSpawnPosition - sideDirection, CellType.Wall);
                 }
 
                 room.WorldCenterPosition = roomSpawnPosition;
@@ -132,12 +137,12 @@ namespace WorldGeneration.Generators
                 {
                     case CellType.Empty:
                         break;
-                    case CellType.BossReservedPath:
                     case CellType.Floor:
-                        PlaceFloor(cellPosition, _floorPrefabDebug);
+                        PlacePrefab(cellPosition, _floorPrefabDebug);
                         break;
                     case CellType.Wall:
-                        PlaceFloor(cellPosition, _wallPrefabDebug);
+                        var wallInstance = PlacePrefab(cellPosition, _wallPrefabDebug);
+                        TryUpdateWallTile(cellPosition, wallInstance);
                         break;
                     case CellType.Door:
                         break;
@@ -145,21 +150,26 @@ namespace WorldGeneration.Generators
             }
         }
 
-        private void PlaceFloor(Vector2Int cellPosition, GameObject prefab)
+        private GameObject PlacePrefab(Vector2Int cellPosition, GameObject prefab)
         {
             var spawnPosition = ConvertGridPositionToWorld(cellPosition);
             var instance = Instantiate(prefab, spawnPosition, Quaternion.identity, transform);
             instance.SetActive(true);
-
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-            instance.name = GetCellName(cellPosition, CellType.Floor);
-#endif
+            return instance;
         }
 
-        private string GetCellName(Vector2Int cellPosition, CellType type)
+        private void TryUpdateWallTile(Vector2Int cellPosition, GameObject instance)
         {
-            return
-                $"Cell_{Enum.GetName(typeof(CellType), type)}_{cellPosition.x.ToString()}_{cellPosition.y.ToString()}";
+            if (!instance.TryGetComponent<IWallTile>(out var wallTile))
+            {
+                return;
+            }
+
+            foreach (var key in _sortedWalkDirections.Keys)
+            {
+                var checkPosition = cellPosition + _sortedWalkDirections[key];
+                wallTile.SetTile(key, _dungeonGrid.GetCellByAxis(checkPosition) == CellType.Floor);
+            }
         }
 
         private Vector3 ConvertGridPositionToWorld(Vector2Int gridPosition)
