@@ -28,7 +28,7 @@ namespace WorldGeneration.Generators
         #region Editor Fields
 
         [SerializeField] private int _randomSeed = 0;
-        [SerializeField, Min(0)] private int _gridCellSize = 1;
+        [SerializeField, Min(0)] private int _gridCellScale = 1;
         [SerializeField] private RoomData _spawnRoomData;
         [SerializeField] private RoomData[] _roomsToSpawn;
         [SerializeField] private int _corridorMinSteps = 1;
@@ -182,7 +182,7 @@ namespace WorldGeneration.Generators
 
         private Vector3 ConvertGridPositionToWorld(Vector2Int gridPosition)
         {
-            return new Vector3(gridPosition.x * _gridCellSize, 0f, gridPosition.y * _gridCellSize);
+            return new Vector3(gridPosition.x * _gridCellScale, 0f, gridPosition.y * _gridCellScale);
         }
 
         #endregion
