@@ -24,6 +24,11 @@ namespace WorldGeneration.Utility
 
         #region Methods
 
+        public CellType GetCellByAxis(Vector2Int position)
+        {
+            return Cells.GetValueOrDefault(position, CellType.Empty);
+        }
+
         public void ClearCell(int x, int y)
         {
             SetCell(x, y, CellType.Empty);

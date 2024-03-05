@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Miscellaneous;
 using UnityEngine;
 using WorldGeneration.Data;
@@ -27,22 +28,30 @@ namespace WorldGeneration.Generators
         #region Editor Fields
 
         [SerializeField] private int _randomSeed = 0;
-        // [SerializeField, Min(0)] private int _levelBoundsX = 50;
-        // [SerializeField, Min(0)] private int _levelBoundsY = 50;
-
-        // [SerializeField, Min(0)] private int _minRoomDistance = 1; 
-        // [SerializeField, Min(0)] private int _maxRoomDistance = 2;
         [SerializeField, Min(0)] private int _gridCellSize = 1;
         [SerializeField] private RoomData _spawnRoomData;
+        [SerializeField] private RoomData[] _roomsToSpawn;
+        [SerializeField] private int _corridorMinSteps = 1;
+        [SerializeField, Min(2)] private int _minRoomCount = 5;
+        [SerializeField] private int _extraRoomsCount = 5;
 
         [Header("Debug")]
         [SerializeField] private GameObject _floorPrefabDebug;
         [SerializeField] private GameObject _wallPrefabDebug;
+        
         #endregion
 
         #region Fields
 
         private readonly DungeonGrid _dungeonGrid = new();
+        private readonly List<RoomData> _rooms = new();
+        private readonly Dictionary<WalkDirectionType, Vector2Int> _sortedWalkDirections = new()
+        {
+            {WalkDirectionType.Right, new Vector2Int(1, 0)},
+            {WalkDirectionType.Top, new Vector2Int(0, 1)},
+            {WalkDirectionType.Left, new Vector2Int(-1, 0)},
+            {WalkDirectionType.Bot, new Vector2Int(0, -1)},
+        };
 
         #endregion
 
@@ -62,20 +71,52 @@ namespace WorldGeneration.Generators
 
         public void StartGeneration()
         {
-            // var levelMiddleX = _levelBoundsX % 2 == 0 ? _levelBoundsX / 2 : (_levelBoundsX + 1) / 2;
-            // var levelMiddleY = _levelBoundsY % 2 == 0 ? _levelBoundsY / 2 : (_levelBoundsY + 1) / 2;
-            // var startPoint = new Vector2Int
-            // {
-                // x = Random.Range(-levelMiddleX, levelMiddleX),
-                // y = Random.Range(-levelMiddleY, levelMiddleY)
-            // };
-
-            var startPoint = new Vector2Int(0,0);
+            var roomSpawnPosition = new Vector2Int(0, 0);
+            var prevPosition = roomSpawnPosition;
             
             _dungeonGrid.AddRoom(_spawnRoomData);
-            // LogWriter.DevelopmentLog($"[LG] Start point: {startPoint.ToString()}");
-        }
+            _rooms.Add(_spawnRoomData);
 
+            var directionsCount = Enum.GetNames(typeof(WalkDirectionType)).Length;
+            while (_rooms.Count < _minRoomCount)
+            {
+                var moveDirectionType = (WalkDirectionType) Random.Range(0, directionsCount);
+                var direction = _sortedWalkDirections[moveDirectionType];
+
+                var corridorSteps = Random.Range(_corridorMinSteps, 10);
+                while (corridorSteps > 0)
+                {
+                    roomSpawnPosition += direction;
+                    
+                    if (_dungeonGrid.GetCellByAxis(roomSpawnPosition) == CellType.Floor)
+                    {
+                        continue;
+                    }
+                    
+                    corridorSteps--;
+                    _dungeonGrid.SetCell(roomSpawnPosition, CellType.Floor);
+                }
+                
+                do
+                {
+                    roomSpawnPosition += direction;
+                } while (_dungeonGrid.GetCellByAxis(roomSpawnPosition) != CellType.Empty);
+                
+                var room = _roomsToSpawn[Random.Range(0, _roomsToSpawn.Length)];
+                // if (prevPosition.x != roomSpawnPosition.x)
+                // {
+                //     var extraSteps = (room.SizeX + 1) / 2 + roomSpawnPosition.x;
+                // }
+
+                room.WorldCenterPosition = roomSpawnPosition;
+                
+                _dungeonGrid.AddRoom(room);
+                _rooms.Add(room);
+
+                prevPosition = roomSpawnPosition;
+            }
+        }
+        
         private void SpawnDebugTiles()
         {
             var cells = _dungeonGrid.Cells;
@@ -112,9 +153,6 @@ namespace WorldGeneration.Generators
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
             instance.name = GetCellName(cellPosition, CellType.Floor);
 #endif
-                
-            // var meshRenderer = prefab.GetComponentInChildren<MeshRenderer>();
-            // meshRenderer.material = cells[cellPosition] == CellType.Floor ? _materialBlue : _materialRed;
         }
 
         private string GetCellName(Vector2Int cellPosition, CellType type)
