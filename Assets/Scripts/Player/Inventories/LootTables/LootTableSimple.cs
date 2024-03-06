@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Player.Inventories.LootTables
 {
-    [CreateAssetMenu(menuName = "RPG / Loot Tables / Simple Loop Table", fileName = "LoopTable_Simple_NEW")]
+    [CreateAssetMenu(menuName = "RPG / Loot Tables / Simple Loot Table", fileName = "LootTable_Simple_NEW")]
     public class LootTableSimple : LootTable
     {
         #region Editor Fields

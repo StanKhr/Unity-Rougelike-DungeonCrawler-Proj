@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Player.Inventories.LootTables
 {
-    [CreateAssetMenu(menuName = "RPG / Loot Tables / Single Item Loop Table", fileName = "LoopTable_SingleItem_NEW")]
+    [CreateAssetMenu(menuName = "RPG / Loot Tables / Single Item Loot Table", fileName = "LootTable_SingleItem_NEW")]
     public class LootTableSingleItem : LootTable
     {
         #region MyRegion
