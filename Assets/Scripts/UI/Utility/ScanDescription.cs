@@ -1,4 +1,5 @@
-﻿using UI.Interfaces;
+﻿using System;
+using UI.Interfaces;
 using UnityEngine;
 using UnityEngine.Localization;
 
@@ -6,6 +7,12 @@ namespace UI.Utility
 {
     public class ScanDescription : MonoBehaviour, IScanDescription
     {
+        #region Events
+
+        public event Action OnObjectScanned;
+
+        #endregion
+        
         #region Editor Fields
 
         [SerializeField] private LocalizedString _localizedString;
@@ -22,7 +29,12 @@ namespace UI.Utility
         #endregion
 
         #region Methods
-        
+
+        public void ValidateScan()
+        {
+            OnObjectScanned?.Invoke();
+        }
+
         public void OverrideLocalizedString(LocalizedString localizedString)
         {
             _localizedString = localizedString;
