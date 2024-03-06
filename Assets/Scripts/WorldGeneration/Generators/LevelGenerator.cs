@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Miscellaneous;
 using UnityEngine;
 using WorldGeneration.Data;
 using WorldGeneration.Enums;
 using WorldGeneration.Interfaces;
+using WorldGeneration.Settings;
 using WorldGeneration.Utility;
 using Random = UnityEngine.Random;
 
@@ -35,10 +35,7 @@ namespace WorldGeneration.Generators
         [SerializeField] private int _corridorMaxSteps = 2;
         [SerializeField, Min(2)] private int _requiredRoomsAmount = 5;
         [SerializeField] private int _extraRoomsMaxAmount = 5;
-
-        [Header("Debug")]
-        [SerializeField] private GameObject _floorPrefabDebug;
-        [SerializeField] private GameObject _wallPrefabDebug;
+        [SerializeField] private LevelTiles _levelTiles;
         
         #endregion
 
@@ -53,6 +50,13 @@ namespace WorldGeneration.Generators
             {WalkDirectionType.Left, new Vector2Int(-1, 0)},
             {WalkDirectionType.Bot, new Vector2Int(0, -1)},
         };
+        private readonly List<Vector2Int> _directionsTempList = new();
+
+        #endregion
+
+        #region Properties
+
+        private ILevelTiles LevelTiles => _levelTiles;
 
         #endregion
 
@@ -74,6 +78,23 @@ namespace WorldGeneration.Generators
 
         #region Methods
 
+        private Vector2Int GetRandomDirection()
+        {
+            // var directionsCount = Enum.GetNames(typeof(WalkDirectionType)).Length;
+            // var moveDirectionType = (WalkDirectionType) Random.Range(0, directionsCount);
+            // var direction = _sortedWalkDirections[moveDirectionType];
+            
+            if (_directionsTempList.Count == 0)
+            {
+                _directionsTempList.AddRange(_sortedWalkDirections.Values);
+            }
+
+            var directionIndex = Random.Range(0, _directionsTempList.Count);
+            var direction = _directionsTempList[directionIndex];
+            _directionsTempList.RemoveAt(directionIndex);
+            
+            return direction;
+        }
         public void StartGeneration()
         {
             var roomSpawnPosition = new Vector2Int(0, 0);
@@ -81,12 +102,10 @@ namespace WorldGeneration.Generators
             _dungeonGrid.AddRoom(_spawnRoomData);
             _rooms.Add(_spawnRoomData);
 
-            var directionsCount = Enum.GetNames(typeof(WalkDirectionType)).Length;
             var expectedRoomCount = _requiredRoomsAmount + Random.Range(0, _extraRoomsMaxAmount);
             while (_rooms.Count < expectedRoomCount)
             {
-                var moveDirectionType = (WalkDirectionType) Random.Range(0, directionsCount);
-                var direction = _sortedWalkDirections[moveDirectionType];
+                var direction = GetRandomDirection();
                 var sideDirection = new Vector2Int(direction.y, direction.x);
 
                 var corridorSteps = Random.Range(_corridorMinSteps, _corridorMaxSteps);
@@ -146,10 +165,10 @@ namespace WorldGeneration.Generators
                     case CellType.Empty:
                         break;
                     case CellType.Floor:
-                        PlacePrefab(cellPosition, _floorPrefabDebug);
+                        PlacePrefab(cellPosition, LevelTiles.GetFloor());
                         break;
                     case CellType.Wall:
-                        var wallInstance = PlacePrefab(cellPosition, _wallPrefabDebug);
+                        var wallInstance = PlacePrefab(cellPosition, LevelTiles.GetWall());
                         TryUpdateWallTile(cellPosition, wallInstance);
                         break;
                     case CellType.Door:

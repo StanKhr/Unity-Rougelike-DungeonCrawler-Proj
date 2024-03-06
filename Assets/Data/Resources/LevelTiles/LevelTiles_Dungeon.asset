@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cd9657e7c34ba28d15a7bd1cf2b37c, type: 3}
+  m_Name: LevelTiles_Dungeon
+  m_EditorClassIdentifier: 
+  _wallPrefab: {fileID: 5121819047618408731, guid: 0885a16da57f5fc4d9b755295296ed87, type: 3}
+  _floorPrefab: {fileID: 1298701957886992061, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
