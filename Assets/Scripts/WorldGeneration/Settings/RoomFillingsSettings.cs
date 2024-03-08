@@ -13,6 +13,7 @@ namespace WorldGeneration.Settings
     {
         #region Editor Fields
 
+        [SerializeField] private RoomFilling[] _bossRooms;
         [SerializeField] private RoomFilling[] _roomFillings;
 
         #endregion
@@ -98,7 +99,12 @@ namespace WorldGeneration.Settings
 
             return true;
         }
-        
+
+        public RoomFilling GetBossRoomFilling()
+        {
+            return _bossRooms[Randomizer.RangeInt(0, _bossRooms.Length)];
+        }
+
         #endregion
     }
 }

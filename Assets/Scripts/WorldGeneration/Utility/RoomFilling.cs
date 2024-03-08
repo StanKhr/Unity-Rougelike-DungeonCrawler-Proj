@@ -10,7 +10,7 @@ namespace WorldGeneration.Utility
         #region Constants
 
 #if UNITY_EDITOR
-        private const float GizmosYSize = 4f;
+        private const float GizmosYSize = 2f;
 #endif
 
         #endregion

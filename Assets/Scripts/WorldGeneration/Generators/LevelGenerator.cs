@@ -196,16 +196,17 @@ namespace WorldGeneration.Generators
         private void FillRooms()
         {
             var fillingsContainer = new GameObject(RoomFillingsContainerName);
-            for (int i = 0; i < _rooms.Count; i++)
+
+            var bossRoomFillingPrefab = RoomFillingsSettings.GetBossRoomFilling();
+            var bossRoom = _rooms[^1];
+            
+            Instantiate(bossRoomFillingPrefab, bossRoom.GetWorldPosition(_gridCellScale), Quaternion.identity,
+                fillingsContainer.transform);
+            
+            for (int i = 1; i < _rooms.Count - 1; i++)
             {
-                // ignoring spawn room
-                if (i == 0)
-                {
-                    continue;
-                }
-                
                 var roomSize = _rooms[i].GetSize();
-                if (!_roomFillingsSettings.TryGetFilling(roomSize, out var fillingPrefab))
+                if (!RoomFillingsSettings.TryGetFilling(roomSize, out var fillingPrefab))
                 {
                     continue;
                 }
