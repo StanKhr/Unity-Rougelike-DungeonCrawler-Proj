@@ -8,9 +8,9 @@ namespace WorldGeneration.Data
     {
         #region Constants
 
-        public RoomData(Vector2Int worldCenterPosition, int sizeX, int sizeY)
+        public RoomData(Vector2Int gridCenterPosition, int sizeX, int sizeY)
         {
-            WorldCenterPosition = worldCenterPosition;
+            GridCenterPosition = gridCenterPosition;
             SizeX = sizeX;
             SizeY = sizeY;
         }
@@ -19,7 +19,7 @@ namespace WorldGeneration.Data
 
         #region Editor Fields
 
-        [field: SerializeField] public Vector2Int WorldCenterPosition { get; set; }
+        [field: SerializeField] public Vector2Int GridCenterPosition { get; set; }
         [field: SerializeField] public int SizeX { get; set; }
         [field: SerializeField] public int SizeY { get; set; }
 
@@ -27,6 +27,16 @@ namespace WorldGeneration.Data
 
         #region Methods
 
+        public Vector3 GetWorldPosition(int gridCellScale)
+        {
+            return new Vector3(GridCenterPosition.x, 0f, GridCenterPosition.y) * gridCellScale;
+        }
+        
+        public Vector2Int GetSize()
+        {
+            return new Vector2Int(SizeX, SizeY);
+        }
+        
         public void RotateBy90Degrees()
         {
             (SizeX, SizeY) = (SizeY, SizeX);

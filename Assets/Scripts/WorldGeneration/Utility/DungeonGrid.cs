@@ -58,8 +58,8 @@ namespace WorldGeneration.Utility
             {
                 for (int y = cornerY * -1; y <= cornerY; y++)
                 {
-                    var cellPosition = new Vector2Int(x + roomData.WorldCenterPosition.x,
-                        y + roomData.WorldCenterPosition.y);
+                    var cellPosition = new Vector2Int(x + roomData.GridCenterPosition.x,
+                        y + roomData.GridCenterPosition.y);
                     
                     if (GetCellByAxis(cellPosition) == CellType.Floor)
                     {

@@ -278,7 +278,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -299,7 +299,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -307,6 +307,27 @@ TextureImporter:
       bones: []
       spriteID: 3fe94412464790d4c8fbfcf278a83c39
       internalID: -1351238824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites_ui_pack_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d74856a10d46c1046a2a5e9a1b102c40
+      internalID: 1879156998
       vertices: []
       indices: 
       edges: []
@@ -329,6 +350,7 @@ TextureImporter:
       sprites_ui_pack_4: -740709686
       sprites_ui_pack_5: -1336540835
       sprites_ui_pack_6: -1811612630
+      sprites_ui_pack_7: 1879156998
       sprites_ui_pack_inventorySlot_base: -1351238824
       sprites_ui_pack_inventorySlot_selected: -2060990983
   mipmapLimitGroupName: 
