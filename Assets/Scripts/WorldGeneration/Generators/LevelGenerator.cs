@@ -36,6 +36,7 @@ namespace WorldGeneration.Generators
         [SerializeField] private LevelTiles _levelTiles;
         [SerializeField] private RoomFillingsSettings _roomFillingsSettings;
         [SerializeField] private NavMeshSurface _navMeshSurface;
+        [SerializeField] private SpawnableEnemies _spawnableEnemies;
         
         #endregion
 
@@ -59,6 +60,7 @@ namespace WorldGeneration.Generators
         private ILevelLayoutSettings LevelLayoutSettings => _levelLayoutSettings;
         private ILevelTiles LevelTiles => _levelTiles;
         private IRoomFillingsSettings RoomFillingsSettings => _roomFillingsSettings;
+        private ISpawnableEnemies SpawnableEnemies => _spawnableEnemies;
 
         #endregion
 
