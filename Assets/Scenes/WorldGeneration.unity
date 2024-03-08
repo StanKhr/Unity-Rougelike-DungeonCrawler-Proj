@@ -18,8 +18,8 @@ RenderSettings:
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 12
-  m_LinearFogEnd: 24
+  m_LinearFogStart: 8
+  m_LinearFogEnd: 32
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -295,6 +295,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6807409757900211605, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8716253938063293545, guid: eb3f5017718dcd845a14566ff78d8b9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -341,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d31d3edd7b4f3291af04a2b85a4151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _randomSeed: -452853386
+  _randomSeed: -861784561
   _gridCellScale: 2
   _levelLayoutSettings: {fileID: 11400000, guid: ff754a5dd3c2b2b4c8f53cb700ab1921, type: 2}
   _levelTiles: {fileID: 11400000, guid: 3f6ad7d2b744d9f4eb2e334b331cde61, type: 2}
@@ -602,63 +606,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
---- !u!1001 &2018005355
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1298701957886992061, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
-      propertyPath: m_Name
-      value: Dungeon_GroundTile
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594637217357306146, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594637217357306146, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594637217357306146, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594637217357306146, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594637217357306146, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594637217357306146, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594637217357306146, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594637217357306146, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594637217357306146, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594637217357306146, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bce52c4cb1bd14748bc6ac6f3dc191c4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -666,4 +613,3 @@ SceneRoots:
   - {fileID: 114603611}
   - {fileID: 216937224}
   - {fileID: 1100361585}
-  - {fileID: 2018005355}

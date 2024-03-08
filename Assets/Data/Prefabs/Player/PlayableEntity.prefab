@@ -1425,6 +1425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8039469313218949163}
   - component: {fileID: 3578065981370344803}
+  - component: {fileID: 3878584565210434975}
   m_Layer: 13
   m_Name: MinimapCircle
   m_TagString: Untagged
@@ -1440,13 +1441,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8706443400716810912}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8496516805109912082}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
 --- !u!212 &3578065981370344803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1499,6 +1500,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3878584565210434975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8706443400716810912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 861c7228dd6943e8958f67dfec26e3ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _presicion: 100
 --- !u!1 &9222231257257757195
 GameObject:
   m_ObjectHideFlags: 0
