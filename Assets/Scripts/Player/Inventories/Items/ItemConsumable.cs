@@ -43,7 +43,7 @@ namespace Player.Inventories.Items
                 return false;
             }
 
-            if (!inventory.HasItemOfType(this, out var slotIndex))
+            if (!inventory.HasItem(this, out var slotIndex))
             {
                 return false;
             }

@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using System;
+using Miscellaneous;
 using Player.Inventories.Datas;
 using Player.Inventories.Interfaces;
 using Props.Interfaces;
@@ -43,7 +44,7 @@ namespace Player.Inventories
             var testGuid = "6d37904db7290ee428c658a90968e6e5";
             var item = ItemDatabase.Instance.GetFromGuid(testGuid);
             
-            if (HasItemOfType(item, out int slotIndex))
+            if (HasItem(item, out int slotIndex))
             {
                 TryUse(slotIndex);
             }
@@ -53,10 +54,30 @@ namespace Player.Inventories
 
         #region Public Methods
 
-
-        public bool HasItemOfType(IItem item, out int slotIndex)
+        public bool HasItemType(Type type, out int slotIndex)
         {
+            for (int i = 0; i < _slots.Length; i++)
+            {
+                if (_slots[i].IsEmpty)
+                {
+                    continue;
+                }
+
+                if (_slots[i].Item.GetType() != type)
+                {
+                    continue;
+                }
+
+                slotIndex = i;
+                return true;
+            }
+
             slotIndex = 0;
+            return false;
+        }
+
+        public bool HasItem(IItem item, out int slotIndex)
+        {
             for (int i = 0; i < _slots.Length; i++)
             {
                 if (_slots[i].IsEmpty)
@@ -73,6 +94,7 @@ namespace Player.Inventories
                 return true;
             }
 
+            slotIndex = 0;
             return false;
         }
 
@@ -93,7 +115,7 @@ namespace Player.Inventories
 
         public bool TryDrop(IItem item)
         {
-            if (!HasItemOfType(item, out var slotIndex))
+            if (!HasItem(item, out var slotIndex))
             {
                 return false;
             }

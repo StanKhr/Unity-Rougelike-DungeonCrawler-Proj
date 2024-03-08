@@ -59,7 +59,7 @@ namespace Props.Common
                 return false;
             }
 
-            var lootItem = LootTable.GetItem();
+            var lootItem = LootTable.GetItem(user);
             if (!inventory.TryAdd(lootItem))
             {
                 return false;

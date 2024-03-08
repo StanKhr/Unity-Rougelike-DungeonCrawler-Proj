@@ -9,7 +9,7 @@ namespace Player.Inventories.LootTables
     {
         #region Methods
 
-        public abstract IItem GetItem();
+        public abstract IItem GetItem(GameObject user);
 
         #endregion
     }

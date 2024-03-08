@@ -16,7 +16,7 @@ namespace Player.Inventories.LootTables
 
         #region Methods
 
-        public override IItem GetItem()
+        public override IItem GetItem(GameObject user)
         {
             return _items[Randomizer.RangeInt(0, _items.Length)];
         }
