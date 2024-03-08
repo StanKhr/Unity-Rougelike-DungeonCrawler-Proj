@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿
+using Miscellaneous;
 using Player.Inventories;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
@@ -36,6 +37,7 @@ namespace UI.Presenters.Items
             
             InventorySlotPresenter.OnSlotSelected += SlotSlotSelectedCallback;
             InventorySlotPresenter.OnUseItemTriggered += SlotUseItemTriggeredCallback;
+            InventorySlotPresenter.OnSlotDropped += SlotDroppedCallback;
             Inventory.Slots.OnSlotUpdated += SlotUpdatedCallback;
             Inventory.OnItemUsed += ItemUsedCallback;
         }
@@ -44,6 +46,7 @@ namespace UI.Presenters.Items
         {
             InventorySlotPresenter.OnSlotSelected -= SlotSlotSelectedCallback;
             InventorySlotPresenter.OnUseItemTriggered -= SlotUseItemTriggeredCallback;
+            InventorySlotPresenter.OnSlotDropped -= SlotDroppedCallback;
             
             Inventory.Slots.OnSlotUpdated -= SlotUpdatedCallback;
             Inventory.OnItemUsed -= ItemUsedCallback;
@@ -93,6 +96,12 @@ namespace UI.Presenters.Items
                 _selectedSlotPresenter = _slots[0];
                 UpdateDescriptionPopup(_selectedSlotPresenter);
             }
+        }
+
+        private void SlotDroppedCallback(InventorySlotPresenter context)
+        {
+            _selectedSlotPresenter = context;
+            DropItem();
         }
         
         private void SlotUpdatedCallback(int context)
