@@ -1,7 +1,5 @@
-﻿using System;
-using Audio.ClipSelectors;
+﻿using Audio.ClipSelectors;
 using Audio.Interfaces;
-using Audio.Triggers;
 using UnityEngine;
 
 namespace Statuses.Feedbacks.Defence

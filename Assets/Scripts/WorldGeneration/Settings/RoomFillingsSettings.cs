@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Miscellaneous;
 using UnityEngine;
 using WorldGeneration.Utility;
-using Random = UnityEngine.Random;
 
 namespace WorldGeneration.Settings
 {
@@ -83,7 +83,7 @@ namespace WorldGeneration.Settings
                 refillableList.AddRange(fillingsList);
             }
             
-            var randomIndex = Random.Range(0, refillableList.Count);
+            var randomIndex = Randomizer.RangeInt(0, refillableList.Count);
             roomFilling = refillableList[randomIndex];
             refillableList.RemoveAt(randomIndex);
 

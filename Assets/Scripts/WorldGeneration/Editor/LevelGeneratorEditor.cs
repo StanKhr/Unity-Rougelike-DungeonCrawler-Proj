@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 using WorldGeneration.Generators;
 
@@ -29,7 +30,13 @@ namespace WorldGeneration.Editor
             }
 
             var seedProperty = serializedObject.FindProperty("_randomSeed");
-            seedProperty.intValue = GUID.Generate().GetHashCode();
+            var guidHash = GUID.Generate().GetHashCode();
+            if (guidHash < 0)
+            {
+                guidHash *= -2;
+            }
+            
+            seedProperty.uintValue = Convert.ToUInt32(guidHash);
         }
 
         #endregion

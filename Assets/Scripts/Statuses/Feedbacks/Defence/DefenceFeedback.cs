@@ -1,5 +1,4 @@
-﻿using System;
-using Statuses.Interfaces;
+﻿using Statuses.Interfaces;
 using UnityEngine;
 
 namespace Statuses.Feedbacks.Defence

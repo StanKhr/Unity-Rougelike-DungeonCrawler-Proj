@@ -7,7 +7,6 @@ using Statuses.Datas;
 using Statuses.Interfaces;
 using Statuses.Main;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Player.Attacks
 {
@@ -163,7 +162,7 @@ namespace Player.Attacks
             var critMinPercent = CritMinimumChargePercent + halvedBounds;
             var critMaxPercent = 1 - halvedBounds;
             
-            _critChargePercent = Random.Range(critMinPercent, critMaxPercent);
+            _critChargePercent = Randomizer.RangeFloat(critMinPercent, critMaxPercent);
             var attackData = new MeleeAttackData(UsedWeapon, _critChargePercent, false);
 
             OnAttackChargeStarted?.Invoke(attackData);

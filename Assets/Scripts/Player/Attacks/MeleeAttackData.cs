@@ -1,5 +1,4 @@
 ﻿using Player.Inventories.Interfaces;
-using UnityEngine;
 
 namespace Player.Attacks
 {

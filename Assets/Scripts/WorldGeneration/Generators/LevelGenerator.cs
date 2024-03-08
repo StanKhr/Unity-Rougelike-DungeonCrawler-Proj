@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Miscellaneous;
 using UnityEngine;
 using WorldGeneration.Data;
 using WorldGeneration.Enums;
 using WorldGeneration.Interfaces;
 using WorldGeneration.Settings;
 using WorldGeneration.Utility;
-using Random = UnityEngine.Random;
 
 namespace WorldGeneration.Generators
 {
@@ -28,7 +28,7 @@ namespace WorldGeneration.Generators
 
         #region Editor Fields
 
-        [SerializeField] private int _randomSeed = 0;
+        [SerializeField] private uint _randomSeed = 0;
         [SerializeField, Min(0)] private int _gridCellScale = 1;
         [SerializeField] private RoomData _spawnRoomData;
         [SerializeField] private RoomData[] _roomsToSpawn;
@@ -66,7 +66,7 @@ namespace WorldGeneration.Generators
 
         private void Start()
         {
-            Random.InitState(_randomSeed);
+            Randomizer.SetSeed(_randomSeed);
             
             OnGenerationStarted?.Invoke();
 
@@ -91,16 +91,16 @@ namespace WorldGeneration.Generators
             _dungeonGrid.AddRoom(_spawnRoomData);
             _rooms.Add(_spawnRoomData);
 
-            var expectedRoomCount = _requiredRoomsAmount + Random.Range(0, _extraRoomsMaxAmount);
+            var expectedRoomCount = _requiredRoomsAmount + Randomizer.RangeInt(0, _extraRoomsMaxAmount);
             while (_rooms.Count < expectedRoomCount)
             {
                 var direction = GetRandomDirection();
                 var sideDirection = new Vector2Int(direction.y, direction.x);
 
-                var corridorSteps = Random.Range(_corridorMinSteps, _corridorMaxSteps);
-                var room = _roomsToSpawn[Random.Range(0, _roomsToSpawn.Length)];
+                var corridorSteps = Randomizer.RangeInt(_corridorMinSteps, _corridorMaxSteps);
+                var room = _roomsToSpawn[Randomizer.RangeInt(0, _roomsToSpawn.Length)];
 
-                if (Random.Range(0f, 1f) <= RotateRoomChance)
+                if (Randomizer.ComparePercent(RotateRoomChance))
                 {
                     room.RotateBy90Degrees();
                 }
@@ -146,7 +146,7 @@ namespace WorldGeneration.Generators
                 _directionsTempList.AddRange(_sortedWalkDirections.Values);
             }
 
-            var directionIndex = Random.Range(0, _directionsTempList.Count);
+            var directionIndex = Randomizer.RangeInt(0, _directionsTempList.Count);
             var direction = _directionsTempList[directionIndex];
             _directionsTempList.RemoveAt(directionIndex);
             

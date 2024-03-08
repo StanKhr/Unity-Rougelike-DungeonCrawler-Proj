@@ -1,6 +1,5 @@
 ﻿using Miscellaneous;
 using Player.Inventories.Interfaces;
-using Player.Inventories.Items;
 using Player.Inventories.LootTables;
 using Props.Interfaces;
 using UnityEngine;

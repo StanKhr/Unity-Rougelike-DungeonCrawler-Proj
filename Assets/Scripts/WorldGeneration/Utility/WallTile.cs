@@ -1,5 +1,4 @@
-﻿using System;
-using UI.Utility;
+﻿using UI.Utility;
 using UnityEngine;
 using WorldGeneration.Enums;
 using WorldGeneration.Interfaces;

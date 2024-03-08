@@ -30,7 +30,7 @@ namespace Player.Inventories.LootTables
                 _itemsList.AddRange(_items);
             }
             
-            var listIndex = Random.Range(0, _itemsList.Count);
+            var listIndex = Randomizer.RangeInt(0, _itemsList.Count);
             var item = _itemsList[listIndex];
             _itemsList.RemoveAt(listIndex);
 

@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Miscellaneous;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace WorldGeneration.Utility
 {
@@ -34,7 +33,7 @@ namespace WorldGeneration.Utility
                 return;
             }
 
-            var randomAngle = RotationAngles[Random.Range(0, RotationAngles.Length)];
+            var randomAngle = RotationAngles[Randomizer.RangeInt(0, RotationAngles.Length)];
             if (randomAngle == 0)
             {
                 return;

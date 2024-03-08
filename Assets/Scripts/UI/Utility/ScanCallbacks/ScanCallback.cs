@@ -1,5 +1,4 @@
-﻿using System;
-using UI.Interfaces;
+﻿using UI.Interfaces;
 using UnityEngine;
 
 namespace UI.Utility.ScanCallbacks

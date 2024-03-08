@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Miscellaneous;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Player.Inventories.LootTables
 {
@@ -19,7 +18,7 @@ namespace Player.Inventories.LootTables
 
         public override IItem GetItem()
         {
-            return _items[Random.Range(0, _items.Length)];
+            return _items[Randomizer.RangeInt(0, _items.Length)];
         }
 
         #endregion
