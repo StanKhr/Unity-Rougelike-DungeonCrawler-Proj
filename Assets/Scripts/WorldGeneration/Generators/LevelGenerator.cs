@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Miscellaneous;
+using Unity.AI.Navigation;
 using UnityEngine;
 using WorldGeneration.Data;
 using WorldGeneration.Enums;
@@ -34,6 +35,7 @@ namespace WorldGeneration.Generators
         [SerializeField] private LevelLayoutSettings _levelLayoutSettings;
         [SerializeField] private LevelTiles _levelTiles;
         [SerializeField] private RoomFillingsSettings _roomFillingsSettings;
+        [SerializeField] private NavMeshSurface _navMeshSurface;
         
         #endregion
 
@@ -213,7 +215,7 @@ namespace WorldGeneration.Generators
 
         private void BakeNavigation()
         {
-            
+            _navMeshSurface.BuildNavMesh();
         }
 
         private void SpawnEnemies()
