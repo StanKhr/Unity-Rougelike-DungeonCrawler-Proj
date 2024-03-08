@@ -19,6 +19,7 @@ namespace WorldGeneration.Settings
         #region Fields
         
         private Dictionary<Vector2Int, List<RoomFilling>> _sortedRoomFillings;
+        private Dictionary<Vector2Int, List<RoomFilling>> _refillableLists;
 
         #endregion
 
@@ -34,6 +35,7 @@ namespace WorldGeneration.Settings
                 }
 
                 _sortedRoomFillings = new();
+                _refillableLists = new();
                 
                 for (int i = 0; i < _roomFillings.Length; i++)
                 {
@@ -42,6 +44,7 @@ namespace WorldGeneration.Settings
                     {
                         fillingsList = new List<RoomFilling>();
                         _sortedRoomFillings.Add(roomSize, fillingsList);
+                        _refillableLists.Add(roomSize, new List<RoomFilling>());
                     }
 
                     if (fillingsList.Contains(_roomFillings[i]))
@@ -73,9 +76,16 @@ namespace WorldGeneration.Settings
                 roomFilling = null;
                 return false;
             }
+
+            var refillableList = _refillableLists[roomSize];
+            if (refillableList.Count <= 0)
+            {
+                refillableList.AddRange(fillingsList);
+            }
             
-            var randomIndex = Random.Range(0, fillingsList.Count);
-            roomFilling = fillingsList[randomIndex];
+            var randomIndex = Random.Range(0, refillableList.Count);
+            roomFilling = refillableList[randomIndex];
+            refillableList.RemoveAt(randomIndex);
 
             return true;
         }
