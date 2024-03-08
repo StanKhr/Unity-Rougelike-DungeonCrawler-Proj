@@ -43,6 +43,7 @@ namespace WorldGeneration.Generators
         #region Fields
 
         private readonly DungeonGrid _dungeonGrid = new();
+        private readonly HashSet<Vector2Int> _corridorTiles = new();
         private readonly List<RoomData> _rooms = new();
         private readonly Dictionary<WalkDirectionType, Vector2Int> _sortedWalkDirections = new()
         {
@@ -87,6 +88,7 @@ namespace WorldGeneration.Generators
 
         public void GenerateLayout()
         {
+            _corridorTiles.Clear();
             _rooms.Clear();
             
             var roomSpawnPosition = new Vector2Int(0, 0);
@@ -132,6 +134,7 @@ namespace WorldGeneration.Generators
                 while (corridorSteps > 0)
                 {
                     roomSpawnPosition += direction;
+                    _corridorTiles.Add(roomSpawnPosition);
                     
                     if (_dungeonGrid.GetCellByAxis(roomSpawnPosition) == CellType.Floor)
                     {
@@ -221,6 +224,18 @@ namespace WorldGeneration.Generators
                 
                 Instantiate(fillingPrefab, _rooms[i].GetWorldPosition(_gridCellScale), Quaternion.identity,
                     fillingsContainer.transform);
+            }
+
+            foreach (var tile in _corridorTiles)
+            {
+                var trashPrefab = RoomFillingsSettings.GetCorridorTrash();
+                if (!trashPrefab)
+                {
+                    continue;
+                }
+
+                var trashWorldPosition = new Vector3(tile.x, 0f, tile.y) * _gridCellScale;
+                Instantiate(trashPrefab, trashWorldPosition, Quaternion.identity, fillingsContainer.transform);
             }
         }
 

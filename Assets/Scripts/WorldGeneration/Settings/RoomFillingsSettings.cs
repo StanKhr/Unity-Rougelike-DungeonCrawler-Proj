@@ -15,6 +15,8 @@ namespace WorldGeneration.Settings
 
         [SerializeField] private RoomFilling[] _bossRooms;
         [SerializeField] private RoomFilling[] _roomFillings;
+        [SerializeField, Range(0f, 1f)] private float _corridorTrashSpawnChance;
+        [SerializeField] private GameObject[] _corridorTrashPrefabs;
 
         #endregion
 
@@ -22,6 +24,7 @@ namespace WorldGeneration.Settings
         
         private Dictionary<Vector2Int, List<RoomFilling>> _sortedRoomFillings;
         private Dictionary<Vector2Int, List<RoomFilling>> _refillableLists;
+        private List<GameObject> _sortedCorridorTrash;
 
         #endregion
 
@@ -103,6 +106,21 @@ namespace WorldGeneration.Settings
         public RoomFilling GetBossRoomFilling()
         {
             return _bossRooms[Randomizer.RangeInt(0, _bossRooms.Length)];
+        }
+
+        public GameObject GetCorridorTrash()
+        {
+            if (!Randomizer.ComparePercent(_corridorTrashSpawnChance))
+            {
+                return null;
+            }
+
+            if (_sortedCorridorTrash.Count <= 0)
+            {
+                _sortedCorridorTrash.AddRange(_corridorTrashPrefabs);
+            }
+
+            return _sortedCorridorTrash.GetRandomElementAndRemove();
         }
 
         #endregion

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using WorldGeneration.Utility;
 
 namespace WorldGeneration.Interfaces
@@ -9,6 +10,7 @@ namespace WorldGeneration.Interfaces
 
         bool TryGetFilling(Vector2Int roomSize, out RoomFilling roomFilling);
         RoomFilling GetBossRoomFilling();
+        GameObject GetCorridorTrash();
 
         #endregion
     }

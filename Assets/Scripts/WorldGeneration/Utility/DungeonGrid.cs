@@ -46,6 +46,14 @@ namespace WorldGeneration.Utility
         
         public void SetCell(Vector2Int position, CellType type)
         {
+            if (Cells.TryGetValue(position, out var cell))
+            {
+                if (cell == CellType.Floor)
+                {
+                    return;
+                }
+            }
+            
             Cells[position] = type;
         }
 
