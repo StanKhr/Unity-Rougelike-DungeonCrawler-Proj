@@ -31,12 +31,8 @@ namespace WorldGeneration.Editor
 
             var seedProperty = serializedObject.FindProperty("_randomSeed");
             var guidHash = GUID.Generate().GetHashCode();
-            if (guidHash < 0)
-            {
-                guidHash *= -2;
-            }
             
-            seedProperty.uintValue = Convert.ToUInt32(guidHash);
+            seedProperty.intValue = guidHash;
         }
 
         #endregion

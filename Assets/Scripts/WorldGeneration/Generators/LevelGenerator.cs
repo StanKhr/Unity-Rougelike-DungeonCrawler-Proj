@@ -28,7 +28,7 @@ namespace WorldGeneration.Generators
 
         #region Editor Fields
 
-        [SerializeField] private uint _randomSeed = 0;
+        [SerializeField] private int _randomSeed = 0;
         [SerializeField, Min(0)] private int _gridCellScale = 1;
         [SerializeField] private RoomData _spawnRoomData;
         [SerializeField] private RoomData[] _roomsToSpawn;
@@ -185,6 +185,12 @@ namespace WorldGeneration.Generators
             var fillingsContainer = new GameObject(RoomFillingsContainerName);
             for (int i = 0; i < _rooms.Count; i++)
             {
+                // ignoring spawn room
+                if (i == 0)
+                {
+                    continue;
+                }
+                
                 var roomSize = _rooms[i].GetSize();
                 if (!_roomFillingsSettings.TryGetFilling(roomSize, out var fillingPrefab))
                 {

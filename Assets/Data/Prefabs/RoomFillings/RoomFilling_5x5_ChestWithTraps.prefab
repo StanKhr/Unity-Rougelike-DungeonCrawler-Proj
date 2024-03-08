@@ -56,9 +56,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c374f61eee68455ea87cfc4911d0dbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SizeX: 5
-  SizeY: 5
-  _rotateRandomlyWhenInstanced: 1
+  _sizeX: 5
+  _sizeY: 5
+  _rotationAngles:
+  - 90
+  - 180
+  - 270
 --- !u!1001 &809898292034652411
 PrefabInstance:
   m_ObjectHideFlags: 0

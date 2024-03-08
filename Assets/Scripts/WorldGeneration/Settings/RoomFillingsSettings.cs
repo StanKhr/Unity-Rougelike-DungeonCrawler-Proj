@@ -67,6 +67,14 @@ namespace WorldGeneration.Settings
         {
             if (!SortedRoomFillings.TryGetValue(roomSize, out var fillingsList))
             {
+                var invertedSize = new Vector2Int(roomSize.y, roomSize.x);
+
+                if (!SortedRoomFillings.TryGetValue(invertedSize, out fillingsList))
+                {
+                    roomFilling = null;
+                    return false;
+                }
+                
                 roomFilling = null;
                 return false;
             }

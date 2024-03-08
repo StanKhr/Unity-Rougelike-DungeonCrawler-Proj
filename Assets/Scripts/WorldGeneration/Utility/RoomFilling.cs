@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using System.Collections.Generic;
+using Miscellaneous;
 using UnityEngine;
 
 namespace WorldGeneration.Utility
@@ -6,21 +7,14 @@ namespace WorldGeneration.Utility
     public class RoomFilling : MonoBehaviour
     {
         #region Editor Fields
-
-        [SerializeField] private int SizeX = 1;
-        [SerializeField] private int SizeY = 1;
-        [SerializeField] private bool _rotateRandomlyWhenInstanced = true;
+        
+        [SerializeField] private int _sizeX = 1;
+        [SerializeField] private int _sizeY = 1;
+        [SerializeField] private List<float> _rotationAngles;
         
         #endregion
 
         #region Fields
-
-        private static readonly int[] RotationAngles = new[]
-        {
-            0,
-            90,
-            270
-        };
 
         #endregion
 
@@ -28,12 +22,17 @@ namespace WorldGeneration.Utility
 
         private void Start()
         {
-            if (!_rotateRandomlyWhenInstanced)
+            if (_rotationAngles.Count <= 0)
             {
                 return;
             }
 
-            var randomAngle = RotationAngles[Randomizer.RangeInt(0, RotationAngles.Length)];
+            if (!_rotationAngles.Contains(0f))
+            {
+                _rotationAngles.Add(0f);
+            }
+            
+            var randomAngle = _rotationAngles[Randomizer.RangeInt(0, _rotationAngles.Count)];
             if (randomAngle == 0)
             {
                 return;
@@ -48,7 +47,7 @@ namespace WorldGeneration.Utility
 
         public Vector2Int GetRoomSize()
         {
-            return new Vector2Int(SizeX, SizeY);
+            return new Vector2Int(_sizeX, _sizeY);
         }
 
         #endregion

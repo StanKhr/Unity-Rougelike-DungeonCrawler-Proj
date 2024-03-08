@@ -1,44 +1,34 @@
-﻿using Unity.Mathematics;
+﻿using UnityEngine;
 
 namespace Miscellaneous
 {
     public static class Randomizer
     {
-        #region Fields
-
-        #endregion
-
-        #region Properties
-
-        private static Random Random { get; set; }
-
-        #endregion
-        
         #region Methods
 
-        public static void SetSeed(uint seed)
+        public static void SetSeed(int seed)
         {
-            Random = new Random(seed);
+            Random.InitState(seed);
         }
 
         public static bool CoinFlip()
         {
-            return Random.NextBool();
+            return ComparePercent(0.5f);
         }
 
         public static int RangeInt(int min, int max)
         {
-            return Random.NextInt(min, max);
+            return Random.Range(min, max);
         }
 
         public static float RangeFloat(float min, float max)
         {
-            return Random.NextFloat(min, max);
+            return Random.Range(min, max);
         }
 
         public static bool ComparePercent(float compare)
         {
-            var percent = Random.NextFloat(0f, 1f);
+            var percent = Random.Range(0f, 1f);
 
             return percent <= compare;
         }
