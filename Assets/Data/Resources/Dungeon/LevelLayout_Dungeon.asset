@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a71b283496447a6bcfe7f074941b044, type: 3}
+  m_Name: LevelLayout_Dungeon
+  m_EditorClassIdentifier: 
+  _startRoom:
+    <SizeX>k__BackingField: 3
+    <SizeY>k__BackingField: 5
+  _bossRoom:
+    <SizeX>k__BackingField: 7
+    <SizeY>k__BackingField: 7
+  _randomRooms:
+  - <SizeX>k__BackingField: 5
+    <SizeY>k__BackingField: 5
+  - <SizeX>k__BackingField: 3
+    <SizeY>k__BackingField: 3
+  - <SizeX>k__BackingField: 7
+    <SizeY>k__BackingField: 7
+  - <SizeX>k__BackingField: 7
+    <SizeY>k__BackingField: 3
+  - <SizeX>k__BackingField: 11
+    <SizeY>k__BackingField: 5
+  - <SizeX>k__BackingField: 5
+    <SizeY>k__BackingField: 3
+  - <SizeX>k__BackingField: 7
+    <SizeY>k__BackingField: 5
+  - <SizeX>k__BackingField: 13
+    <SizeY>k__BackingField: 7
+  _corridorMinSteps: 1
+  _corridorMaxSteps: 12
+  _requiredRoomsAmount: 32
+  _extraRoomsMaxAmount: 32

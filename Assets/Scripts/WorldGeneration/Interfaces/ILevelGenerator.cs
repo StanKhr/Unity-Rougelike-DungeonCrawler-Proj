@@ -13,7 +13,7 @@ namespace WorldGeneration.Interfaces
 
         #region Methods
 
-        void StartGeneration();
+        void GenerateLayout();
 
         #endregion
     }

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using Miscellaneous;
 using UnityEngine;
+using WorldGeneration.Interfaces;
 using WorldGeneration.Utility;
 
 namespace WorldGeneration.Settings
 {
     [Serializable]
     [CreateAssetMenu (menuName = "RPG / World Generation / Room Fillings", fileName = "RoomFillings_NEW")]
-    public class RoomFillingsSettings : ScriptableObject
+    public class RoomFillingsSettings : ScriptableObject, IRoomFillingsSettings
     {
         #region Editor Fields
 

@@ -19,7 +19,7 @@ namespace WorldGeneration.Data
 
         #region Editor Fields
 
-        [field: SerializeField] public Vector2Int GridCenterPosition { get; set; }
+        public Vector2Int GridCenterPosition { get; set; }
         [field: SerializeField] public int SizeX { get; set; }
         [field: SerializeField] public int SizeY { get; set; }
 

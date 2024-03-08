@@ -30,12 +30,8 @@ namespace WorldGeneration.Generators
 
         [SerializeField] private int _randomSeed = 0;
         [SerializeField, Min(0)] private int _gridCellScale = 1;
-        [SerializeField] private RoomData _spawnRoomData;
-        [SerializeField] private RoomData[] _roomsToSpawn;
-        [SerializeField] private int _corridorMinSteps = 1;
-        [SerializeField] private int _corridorMaxSteps = 2;
-        [SerializeField, Min(2)] private int _requiredRoomsAmount = 5;
-        [SerializeField] private int _extraRoomsMaxAmount = 5;
+
+        [SerializeField] private LevelLayoutSettings _levelLayoutSettings;
         [SerializeField] private LevelTiles _levelTiles;
         [SerializeField] private RoomFillingsSettings _roomFillingsSettings;
         
@@ -58,7 +54,9 @@ namespace WorldGeneration.Generators
 
         #region Properties
 
+        private ILevelLayoutSettings LevelLayoutSettings => _levelLayoutSettings;
         private ILevelTiles LevelTiles => _levelTiles;
+        private IRoomFillingsSettings RoomFillingsSettings => _roomFillingsSettings;
 
         #endregion
 
@@ -70,10 +68,11 @@ namespace WorldGeneration.Generators
             
             OnGenerationStarted?.Invoke();
 
-            StartGeneration();
+            GenerateLayout();
             SpawnTiles();
             FillRooms();
             BakeNavigation();
+            SpawnEnemies();
             
             OnGenerationEnded?.Invoke();
         }
@@ -82,37 +81,47 @@ namespace WorldGeneration.Generators
 
         #region Methods
 
-        public void StartGeneration()
+        public void GenerateLayout()
         {
             _rooms.Clear();
             
             var roomSpawnPosition = new Vector2Int(0, 0);
-            
-            _dungeonGrid.AddRoom(_spawnRoomData);
-            _rooms.Add(_spawnRoomData);
 
-            var expectedRoomCount = _requiredRoomsAmount + Randomizer.RangeInt(0, _extraRoomsMaxAmount);
+            var startRoom = LevelLayoutSettings.GetStartRoom();
+            _dungeonGrid.AddRoom(startRoom);
+            _rooms.Add(startRoom);
+
+            var expectedRoomCount = LevelLayoutSettings.GetExpectedRoomsAmount();
             while (_rooms.Count < expectedRoomCount)
             {
                 var direction = GetRandomDirection();
                 var sideDirection = new Vector2Int(direction.y, direction.x);
 
-                var corridorSteps = Randomizer.RangeInt(_corridorMinSteps, _corridorMaxSteps);
-                var room = _roomsToSpawn[Randomizer.RangeInt(0, _roomsToSpawn.Length)];
+                var corridorSteps = LevelLayoutSettings.GetCorridorSteps();
 
+                RoomData nextRoom;
+                if (_rooms.Count + 1 < expectedRoomCount)
+                {
+                    nextRoom = LevelLayoutSettings.GetRandomRoom();
+                }
+                else
+                {
+                    nextRoom = LevelLayoutSettings.GetBossRoom();
+                }
+                
                 if (Randomizer.ComparePercent(RotateRoomChance))
                 {
-                    room.RotateBy90Degrees();
+                    nextRoom.RotateBy90Degrees();
                 }
 
                 var extraSteps = 0;
                 if (direction.x != 0)
                 {
-                    extraSteps = (room.SizeX + 1) / 2;
+                    extraSteps = (nextRoom.SizeX + 1) / 2;
                 }
                 else
                 {
-                    extraSteps = (room.SizeY + 1) / 2;
+                    extraSteps = (nextRoom.SizeY + 1) / 2;
                 } 
 
                 corridorSteps += extraSteps;
@@ -132,10 +141,10 @@ namespace WorldGeneration.Generators
                     _dungeonGrid.SetCell(roomSpawnPosition - sideDirection, CellType.Wall);
                 }
 
-                room.GridCenterPosition = roomSpawnPosition;
+                nextRoom.GridCenterPosition = roomSpawnPosition;
                 
-                _dungeonGrid.AddRoom(room);
-                _rooms.Add(room);
+                _dungeonGrid.AddRoom(nextRoom);
+                _rooms.Add(nextRoom);
             }
         }
 
@@ -203,6 +212,11 @@ namespace WorldGeneration.Generators
         }
 
         private void BakeNavigation()
+        {
+            
+        }
+
+        private void SpawnEnemies()
         {
             
         }
