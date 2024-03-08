@@ -13,6 +13,7 @@ namespace WorldGeneration.Data
             GridCenterPosition = gridCenterPosition;
             SizeX = sizeX;
             SizeY = sizeY;
+            Rotated = false;
         }
 
         #endregion
@@ -22,6 +23,7 @@ namespace WorldGeneration.Data
         public Vector2Int GridCenterPosition { get; set; }
         [field: SerializeField] public int SizeX { get; set; }
         [field: SerializeField] public int SizeY { get; set; }
+        public bool Rotated { get; private set; }
 
         #endregion
 
@@ -40,6 +42,7 @@ namespace WorldGeneration.Data
         public void RotateBy90Degrees()
         {
             (SizeX, SizeY) = (SizeY, SizeX);
+            Rotated = true;
         }
 
         #endregion

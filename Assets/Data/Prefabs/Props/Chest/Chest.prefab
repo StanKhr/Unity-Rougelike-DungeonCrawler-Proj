@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c1f16b0b6a43eba81533f597c8c9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lootTable: {fileID: 0}
+  _lootTable: {fileID: 11400000, guid: b2a68b163e323f04f9cfca5735a46a71, type: 2}
 --- !u!114 &839952826245673942
 MonoBehaviour:
   m_ObjectHideFlags: 0

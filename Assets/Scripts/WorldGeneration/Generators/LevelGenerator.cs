@@ -200,8 +200,16 @@ namespace WorldGeneration.Generators
             var bossRoomFillingPrefab = RoomFillingsSettings.GetBossRoomFilling();
             var bossRoom = _rooms[^1];
             
-            Instantiate(bossRoomFillingPrefab, bossRoom.GetWorldPosition(_gridCellScale), Quaternion.identity,
+            var filling = Instantiate(bossRoomFillingPrefab, bossRoom.GetWorldPosition(_gridCellScale), Quaternion.identity,
                 fillingsContainer.transform);
+            if (bossRoom.Rotated)
+            {
+                filling.Rotate();
+            }
+            else
+            {
+                filling.TryMirror();
+            }
             
             for (int i = 1; i < _rooms.Count - 1; i++)
             {

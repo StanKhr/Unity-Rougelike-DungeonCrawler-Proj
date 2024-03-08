@@ -15,4 +15,5 @@ MonoBehaviour:
   _enemies:
   - <EnemyType>k__BackingField: 0
     <Prefab>k__BackingField: {fileID: 6853018127330601841, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+    <SpawnWeight>k__BackingField: 4
   _bossPrefab: {fileID: 0}

@@ -9,6 +9,8 @@ namespace WorldGeneration.Utility
     {
         #region Constants
 
+        private const float RotateAngle90 = 90f;
+        private const float RotateAngle180 = 180f;
 #if UNITY_EDITOR
         private const float GizmosYSize = 2f;
 #endif
@@ -19,7 +21,6 @@ namespace WorldGeneration.Utility
 
         [SerializeField] private int _sizeX = 1;
         [SerializeField] private int _sizeY = 1;
-        [SerializeField] private List<float> _rotationAngles;
 
 #if UNITY_EDITOR
         [SerializeField] private int _gizmosScale = 2;
@@ -41,28 +42,7 @@ namespace WorldGeneration.Utility
                 new Vector3(_sizeX, GizmosYSize, _sizeY) * _gizmosScale);
         }
 #endif
-
-        private void Start()
-        {
-            if (_rotationAngles.Count <= 0)
-            {
-                return;
-            }
-
-            if (!_rotationAngles.Contains(0f))
-            {
-                _rotationAngles.Add(0f);
-            }
-
-            var randomAngle = _rotationAngles[Randomizer.RangeInt(0, _rotationAngles.Count)];
-            if (randomAngle == 0)
-            {
-                return;
-            }
-
-            transform.Rotate(0f, (float) randomAngle, 0f);
-        }
-
+        
         #endregion
 
         #region Methods
@@ -70,6 +50,24 @@ namespace WorldGeneration.Utility
         public Vector2Int GetRoomSize()
         {
             return new Vector2Int(_sizeX, _sizeY);
+        }
+
+        public bool TryMirror()
+        {
+            if (!Randomizer.CoinFlip())
+            {
+                return false;
+            }
+
+            transform.Rotate(0f, RotateAngle180, 0f);
+            
+            return true;
+        }
+
+        public void Rotate()
+        {
+            var randomAngle = Randomizer.CoinFlip() ? RotateAngle90 : -RotateAngle90;
+            transform.Rotate(0f, randomAngle, 0f);
         }
 
         #endregion
