@@ -11,6 +11,7 @@ namespace WorldGeneration.Data
 
         [field: SerializeField] public EnemyType EnemyType { get; set; }
         [field: SerializeField] public GameObject Prefab { get; set; }
+        [field: SerializeField] public int SpawnWeight { get; set; }
 
         #endregion
     }
