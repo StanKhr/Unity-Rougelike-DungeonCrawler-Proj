@@ -37,7 +37,7 @@ namespace WorldGeneration.Generators
         [SerializeField, Min(2)] private int _requiredRoomsAmount = 5;
         [SerializeField] private int _extraRoomsMaxAmount = 5;
         [SerializeField] private LevelTiles _levelTiles;
-        [SerializeField] private RoomFilling[] _roomFillings;
+        [SerializeField] private RoomFillingsSettings _roomFillingsSettings;
         
         #endregion
 
@@ -53,7 +53,6 @@ namespace WorldGeneration.Generators
             {WalkDirectionType.Bot, new Vector2Int(0, -1)},
         };
         private readonly List<Vector2Int> _directionsTempList = new();
-        private readonly Dictionary<Vector2Int, List<RoomFilling>> _sortedRoomFillings = new();
 
         #endregion
 
@@ -71,7 +70,6 @@ namespace WorldGeneration.Generators
             
             OnGenerationStarted?.Invoke();
 
-            SortRoomFillings();
             StartGeneration();
             SpawnTiles();
             FillRooms();
@@ -84,27 +82,6 @@ namespace WorldGeneration.Generators
 
         #region Methods
 
-        private void SortRoomFillings()
-        {
-            _sortedRoomFillings.Clear();
-
-            for (int i = 0; i < _roomFillings.Length; i++)
-            {
-                var roomSize = _roomFillings[i].GetRoomSize();
-                if (!_sortedRoomFillings.TryGetValue(roomSize, out var fillingsList))
-                {
-                    fillingsList = new List<RoomFilling>();
-                    _sortedRoomFillings.Add(roomSize, fillingsList);
-                }
-
-                if (fillingsList.Contains(_roomFillings[i]))
-                {
-                    continue;
-                }
-                
-                fillingsList.Add(_roomFillings[i]);
-            }
-        }
         public void StartGeneration()
         {
             _rooms.Clear();
@@ -208,15 +185,14 @@ namespace WorldGeneration.Generators
             var fillingsContainer = new GameObject(RoomFillingsContainerName);
             for (int i = 0; i < _rooms.Count; i++)
             {
-                var size = _rooms[i].GetSize();
-                if (!_sortedRoomFillings.TryGetValue(size, out var fillingsList))
+                var roomSize = _rooms[i].GetSize();
+                if (!_roomFillingsSettings.TryGetFilling(roomSize, out var fillingPrefab))
                 {
                     continue;
                 }
-
-                var randomIndex = Random.Range(0, fillingsList.Count);
-                var fillingPrefab = fillingsList[randomIndex];
-                Instantiate(fillingPrefab, _rooms[i].GetWorldPosition(_gridCellScale), Quaternion.identity);
+                
+                Instantiate(fillingPrefab, _rooms[i].GetWorldPosition(_gridCellScale), Quaternion.identity,
+                    fillingsContainer.transform);
             }
         }
 

@@ -344,32 +344,32 @@ MonoBehaviour:
   _randomSeed: 136468003
   _gridCellScale: 2
   _spawnRoomData:
-    <WorldCenterPosition>k__BackingField: {x: 0, y: 0}
+    <GridCenterPosition>k__BackingField: {x: 0, y: 0}
     <SizeX>k__BackingField: 5
     <SizeY>k__BackingField: 3
   _roomsToSpawn:
-  - <WorldCenterPosition>k__BackingField: {x: 0, y: 0}
+  - <GridCenterPosition>k__BackingField: {x: 0, y: 0}
     <SizeX>k__BackingField: 5
     <SizeY>k__BackingField: 5
-  - <WorldCenterPosition>k__BackingField: {x: 0, y: 0}
+  - <GridCenterPosition>k__BackingField: {x: 0, y: 0}
     <SizeX>k__BackingField: 7
     <SizeY>k__BackingField: 7
-  - <WorldCenterPosition>k__BackingField: {x: 0, y: 0}
+  - <GridCenterPosition>k__BackingField: {x: 0, y: 0}
     <SizeX>k__BackingField: 3
     <SizeY>k__BackingField: 3
-  - <WorldCenterPosition>k__BackingField: {x: 0, y: 0}
+  - <GridCenterPosition>k__BackingField: {x: 0, y: 0}
     <SizeX>k__BackingField: 3
     <SizeY>k__BackingField: 7
-  - <WorldCenterPosition>k__BackingField: {x: 0, y: 0}
+  - <GridCenterPosition>k__BackingField: {x: 0, y: 0}
     <SizeX>k__BackingField: 11
     <SizeY>k__BackingField: 5
-  - <WorldCenterPosition>k__BackingField: {x: 0, y: 0}
+  - <GridCenterPosition>k__BackingField: {x: 0, y: 0}
     <SizeX>k__BackingField: 5
     <SizeY>k__BackingField: 3
-  - <WorldCenterPosition>k__BackingField: {x: 0, y: 0}
+  - <GridCenterPosition>k__BackingField: {x: 0, y: 0}
     <SizeX>k__BackingField: 5
     <SizeY>k__BackingField: 7
-  - <WorldCenterPosition>k__BackingField: {x: 0, y: 0}
+  - <GridCenterPosition>k__BackingField: {x: 0, y: 0}
     <SizeX>k__BackingField: 13
     <SizeY>k__BackingField: 7
   _corridorMinSteps: 1
@@ -377,8 +377,7 @@ MonoBehaviour:
   _requiredRoomsAmount: 32
   _extraRoomsMaxAmount: 32
   _levelTiles: {fileID: 11400000, guid: 3f6ad7d2b744d9f4eb2e334b331cde61, type: 2}
-  _roomFillings:
-  - {fileID: 8820351627776281320, guid: bc309bac6ec389745b877eecdae41111, type: 3}
+  _roomFillingsSettings: {fileID: 11400000, guid: 795ad8f0835d4d14687b4c66bd2083f4, type: 2}
 --- !u!4 &216937224
 Transform:
   m_ObjectHideFlags: 0

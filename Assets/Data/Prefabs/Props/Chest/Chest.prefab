@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 3669929007455323527}
   - component: {fileID: 2431454408338123607}
   - component: {fileID: 4618956956316261136}
+  - component: {fileID: 63524301977613188}
   m_Layer: 11
   m_Name: Chest
   m_TagString: Wood
@@ -348,6 +349,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _disableWhenTriggered: 1
   _objectToEnable: {fileID: 5092115536076457729}
+--- !u!114 &63524301977613188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995770745722199101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb93f29a8484519aa4d7b0916cf0f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 5187127573828377402}
+  _interactColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &4268249077398967199
 GameObject:
   m_ObjectHideFlags: 0
