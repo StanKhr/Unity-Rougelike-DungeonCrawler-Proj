@@ -4774,7 +4774,7 @@ Camera:
     width: 0.7
     height: 1
   near clip plane: 0.01
-  far clip plane: 50
+  far clip plane: 100
   field of view: 75
   orthographic: 0
   orthographic size: 5
@@ -8836,6 +8836,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayableEntity
       objectReference: {fileID: 0}
+    - target: {fileID: 6010024798877288919, guid: 782408980134efb4da21bbed16055e12, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1124656734, guid: cd4769eb3ba62c54b8e782695d0362fb, type: 3}
+    - target: {fileID: 7553281617566343327, guid: 782408980134efb4da21bbed16055e12, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1124656734, guid: cd4769eb3ba62c54b8e782695d0362fb, type: 3}
     - target: {fileID: 7624205430124472985, guid: 782408980134efb4da21bbed16055e12, type: 3}
       propertyPath: _inputProvider
       value: 

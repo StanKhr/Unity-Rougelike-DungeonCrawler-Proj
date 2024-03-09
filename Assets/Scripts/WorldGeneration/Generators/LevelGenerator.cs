@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Miscellaneous;
 using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using WorldGeneration.Data;
 using WorldGeneration.Enums;
 using WorldGeneration.Interfaces;
@@ -246,11 +247,22 @@ namespace WorldGeneration.Generators
 
         private void SpawnEnemies()
         {
-            for (int i = 0; i < 100; i++)
+            foreach (var roomData in _rooms)
             {
-                var enemy = SpawnableEnemies.GetEnemy(EnemyType.Basic);
-                LogWriter.DevelopmentLog($"ENEMY TO SPAWN: {enemy.name}");
+                var center = roomData.GetWorldPosition(_gridCellScale);
+                if (!NavMesh.SamplePosition(center, out var hit, 10f, NavMesh.AllAreas))
+                {
+                    continue;
+                }
+
+                var enemyPrefab = SpawnableEnemies.GetEnemy(EnemyType.Basic);
+                Instantiate(enemyPrefab, hit.position, Quaternion.identity);
             }
+            // for (int i = 0; i < 100; i++)
+            // {
+            //     var enemy = SpawnableEnemies.GetEnemy(EnemyType.Basic);
+            //     LogWriter.DevelopmentLog($"ENEMY TO SPAWN: {enemy.name}");
+            // }
         }
 
         private GameObject PlacePrefab(Vector2Int cellPosition, GameObject prefab)

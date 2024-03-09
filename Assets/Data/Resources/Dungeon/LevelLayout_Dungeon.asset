@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelLayout_Dungeon
   m_EditorClassIdentifier: 
   _startRoom:
-    <SizeX>k__BackingField: 3
+    <SizeX>k__BackingField: 5
     <SizeY>k__BackingField: 5
   _bossRoom:
     <SizeX>k__BackingField: 9
