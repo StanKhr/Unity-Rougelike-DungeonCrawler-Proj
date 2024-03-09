@@ -141,14 +141,14 @@ namespace WorldGeneration.Generators
                 {
                     roomSpawnPosition += direction;
 
-                    if (!bossRoom)
-                    {
-                        _corridorTiles.Add(roomSpawnPosition);
-                    }
-
                     if (_dungeonGrid.GetCellByAxis(roomSpawnPosition) == CellType.Floor)
                     {
                         continue;
+                    }
+
+                    if (!bossRoom)
+                    {
+                        _corridorTiles.Add(roomSpawnPosition);
                     }
 
                     corridorSteps--;
@@ -233,6 +233,14 @@ namespace WorldGeneration.Generators
 
             for (int i = 1; i < _rooms.Count - 1; i++)
             {
+                // getting room's filling prefab
+                var roomSize = _rooms[i].GetGridSize();
+                if (!RoomFillingsSettings.TryGetFilling(roomSize, out var fillingPrefab))
+                {
+                    continue;
+                }
+                
+                // checking intersections
                 var roomBounds = _rooms[i].GetBounds(_gridCellScale);
                 var skipRoom = false;
                 for (int j = 0; j < roomBoundsList.Count; j++)
@@ -250,13 +258,8 @@ namespace WorldGeneration.Generators
                 }
                 
                 roomBoundsList.Add(roomBounds);
-                
-                var roomSize = _rooms[i].GetGridSize();
-                if (!RoomFillingsSettings.TryGetFilling(roomSize, out var fillingPrefab))
-                {
-                    continue;
-                }
 
+                // instantiating room filling
                 roomFilling = Instantiate(fillingPrefab, _rooms[i].GetWorldCenterPosition(_gridCellScale),
                     Quaternion.identity, fillingsContainer.transform);
                 if (_rooms[i].Rotated)
