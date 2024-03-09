@@ -42,6 +42,7 @@ namespace UI.Presenters
         private void Update()
         {
             var newPosition = PlayerGps.PositionRoundedToInt;
+            newPosition.y = 0;
             if ((_savedPosition - newPosition).sqrMagnitude <= 0f)
             {
                 return;
@@ -52,9 +53,9 @@ namespace UI.Presenters
             StringBuilder.Clear();
             StringBuilder.Append(PrefixX);
             StringBuilder.Append(_savedPosition.x.ToString("00"));
+            // StringBuilder.Append(PrefixY);
+            // StringBuilder.Append(_savedPosition.y.ToString("00"));
             StringBuilder.Append(PrefixY);
-            StringBuilder.Append(_savedPosition.y.ToString("00"));
-            StringBuilder.Append(PrefixZ);
             StringBuilder.Append(_savedPosition.z.ToString("00"));
             
             _textMeshProUGUI.SetTextSmart(StringBuilder.ToString());

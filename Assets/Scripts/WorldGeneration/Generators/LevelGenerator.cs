@@ -246,7 +246,11 @@ namespace WorldGeneration.Generators
 
         private void SpawnEnemies()
         {
-            
+            for (int i = 0; i < 100; i++)
+            {
+                var enemy = SpawnableEnemies.GetEnemy(EnemyType.Basic);
+                LogWriter.DevelopmentLog($"ENEMY TO SPAWN: {enemy.name}");
+            }
         }
 
         private GameObject PlacePrefab(Vector2Int cellPosition, GameObject prefab)
