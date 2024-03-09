@@ -209,10 +209,10 @@ namespace WorldGeneration.Generators
         private void FillRooms()
         {
             var fillingsContainer = new GameObject(RoomFillingsContainerName);
-            var roomBounds = new List<Bounds>();
+            var roomBoundsList = new List<Bounds>();
 
             var startRoom = _rooms[0];
-            roomBounds.Add(startRoom.GetBounds(_gridCellScale));
+            roomBoundsList.Add(startRoom.GetBounds(_gridCellScale));
 
             var bossRoomFillingPrefab = RoomFillingsSettings.GetBossRoomFilling();
             var bossRoom = _rooms[^1];
@@ -229,10 +229,28 @@ namespace WorldGeneration.Generators
                 roomFilling.TryMirror();
             }
 
-            roomBounds.Add(bossRoom.GetBounds(_gridCellScale));
+            roomBoundsList.Add(bossRoom.GetBounds(_gridCellScale));
 
             for (int i = 1; i < _rooms.Count - 1; i++)
             {
+                var roomBounds = _rooms[i].GetBounds(_gridCellScale);
+                var skipRoom = false;
+                for (int j = 0; j < roomBoundsList.Count; j++)
+                {
+                    if (roomBounds.Intersects(roomBoundsList[j]))
+                    {
+                        skipRoom = true;
+                        break;
+                    }
+                }
+
+                if (skipRoom)
+                {
+                    continue;
+                }
+                
+                roomBoundsList.Add(roomBounds);
+                
                 var roomSize = _rooms[i].GetGridSize();
                 if (!RoomFillingsSettings.TryGetFilling(roomSize, out var fillingPrefab))
                 {
