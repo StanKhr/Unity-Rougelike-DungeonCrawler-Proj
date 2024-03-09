@@ -12,9 +12,9 @@ namespace WorldGeneration.Editor
 
         public override void OnInspectorGUI()
         {
-            serializedObject.Update();
-            DrawSeedGenerateButton();
-            serializedObject.ApplyModifiedProperties();
+            // serializedObject.Update();
+            // DrawSeedGenerateButton();
+            // serializedObject.ApplyModifiedProperties();
             base.OnInspectorGUI();
         }
 
@@ -22,18 +22,18 @@ namespace WorldGeneration.Editor
         
         #region Methods
 
-        private void DrawSeedGenerateButton()
-        {
-            if (!GUILayout.Button("Generate new Seed"))
-            {
-                return;
-            }
-
-            var seedProperty = serializedObject.FindProperty("_randomSeed");
-            var guidHash = GUID.Generate().GetHashCode();
-            
-            seedProperty.intValue = guidHash;
-        }
+        // private void DrawSeedGenerateButton()
+        // {
+        //     if (!GUILayout.Button("Generate new Seed"))
+        //     {
+        //         return;
+        //     }
+        //
+        //     var seedProperty = serializedObject.FindProperty("_randomSeed");
+        //     var guidHash = GUID.Generate().GetHashCode();
+        //     
+        //     seedProperty.intValue = guidHash;
+        // }
 
         #endregion
     }

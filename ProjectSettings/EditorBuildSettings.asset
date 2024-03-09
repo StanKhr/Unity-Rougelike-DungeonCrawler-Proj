@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Bootstrap.unity
+    guid: 471f642bb5a851d43a1b0d2856fc2b3c
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 28e0fa65f196cc24593609806a040d11
+  - enabled: 1
+    path: Assets/Scenes/Dungeon.unity
+    guid: f6e36b40a685e5a43b6c856bb7ded800
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 467a33ffcd4923a48ad11f3b1ffdfa64, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 437d176a2f1e8a24380a71f76dcf6718, type: 2}
