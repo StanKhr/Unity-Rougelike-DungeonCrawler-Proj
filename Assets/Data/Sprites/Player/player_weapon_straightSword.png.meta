@@ -185,6 +185,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: player_hand_empty_left_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 38
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3afa496e27f4b0428a2bfdfa612fc94
+      internalID: -1640501419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -197,6 +218,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       player_hand_empty_left: -1124656734
+      player_hand_empty_left_2: -1640501419
       player_hand_interact_left: 661063311
       player_hand_sword_right: -1388549182
   mipmapLimitGroupName: 

@@ -32,18 +32,8 @@ namespace Player.Inputs
             _movement ??= new MapWrapperMovement(GameControlsAsset);
         public IMapWrapperAbilities Abilities =>
             _abilities ??= new MapWrapperAbilities(GameControlsAsset);
-
         public IMapWrapperUtility Utility => _utility ??= new MapWrapperUtility(GameControlsAsset);
         public ICursorVisibility CursorVisibility => _cursorVisibility ??= new CursorVisibility();
-
-        #endregion
-        
-        #region Unity Callbacks
-
-        private void Start()
-        {
-            
-        }
 
         #endregion
     }

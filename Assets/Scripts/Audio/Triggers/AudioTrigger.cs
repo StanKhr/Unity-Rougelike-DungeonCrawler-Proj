@@ -1,5 +1,4 @@
-﻿using Audio.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Audio.Triggers
 {

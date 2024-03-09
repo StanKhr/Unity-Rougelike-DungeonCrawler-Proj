@@ -1,6 +1,6 @@
 ﻿using Miscellaneous;
 using Player.Inventories.Interfaces;
-using Player.Inventories.Items;
+using Player.Inventories.LootTables;
 using Props.Interfaces;
 using UnityEngine;
 
@@ -17,14 +17,20 @@ namespace Props.Common
         
         #region Editor Fields
 
-        [SerializeField] private Item _item;
-
+        [SerializeField] private LootTable _lootTable;
+        
         #endregion
 
         #region Fields
 
         private bool _looted;
         private bool _opened;
+
+        #endregion
+
+        #region Properties
+
+        private ILootTable LootTable => _lootTable;
 
         #endregion
         
@@ -53,7 +59,8 @@ namespace Props.Common
                 return false;
             }
 
-            if (!inventory.TryAdd(_item))
+            var lootItem = LootTable.GetItem(user);
+            if (!inventory.TryAdd(lootItem))
             {
                 return false;
             }

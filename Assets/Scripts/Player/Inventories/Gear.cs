@@ -80,7 +80,7 @@ namespace Player.Inventories
                 return;
             }
 
-            if (Inventory.HasItemOfType(weapon, out _))
+            if (Inventory.HasItem(weapon, out _))
             {
                 return;
             }

@@ -1,4 +1,5 @@
-﻿using Props.Common;
+﻿using System;
+using Props.Common;
 using Props.Interfaces;
 using Props.Projectiles;
 using UnityEngine;
@@ -22,6 +23,14 @@ namespace Props.InteractionCallbacks
         #endregion
 
         #region Unity Callbacks
+
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(_launchDummy.position, _launchDummy.forward * 20f);
+        }
+#endif
 
         private void OnEnable()
         {

@@ -34,7 +34,7 @@ namespace Props.UseConditions
                 return false;
             }
 
-            if (!inventory.HasItemOfType(Item, out var slotIndex))
+            if (!inventory.HasItem(Item, out var slotIndex))
             {
                 return false;
             }

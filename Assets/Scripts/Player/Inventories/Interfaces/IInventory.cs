@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using System;
+using Miscellaneous;
 using Player.Inventories.Datas;
 
 namespace Player.Inventories.Interfaces
@@ -21,7 +22,8 @@ namespace Player.Inventories.Interfaces
         
         #region Methods
 
-        bool HasItemOfType(IItem item, out int slotIndex);
+        bool HasItemType(Type type, out int slotIndex);
+        bool HasItem(IItem item, out int slotIndex);
         bool TryAdd(IItem item);
         bool TryDrop(IItem item);
         bool TryDrop(int slotIndex);

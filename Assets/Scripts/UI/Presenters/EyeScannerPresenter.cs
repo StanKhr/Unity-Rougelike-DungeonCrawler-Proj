@@ -52,6 +52,8 @@ namespace UI.Presenters
 
         private void FillPopup(IScanDescription scanDescription)
         {
+            scanDescription?.ValidateScan();
+            
             var descriptionExists = scanDescription != null;
             
             _text.SetTextSmart(descriptionExists ? scanDescription.Name : string.Empty);

@@ -60,6 +60,7 @@ Material:
     - _AlphaClip: 1
     - _AlphaToMask: 1
     - _BillboardEnabled: 0
+    - _BillboardStrength: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _CastShadows: 1
@@ -83,4 +84,5 @@ Material:
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _Normal: {r: 1, g: 1, b: 1, a: 0}
     - _Specular: {r: 1, g: 1, b: 1, a: 0}
+    - _SpritePositionOffset: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

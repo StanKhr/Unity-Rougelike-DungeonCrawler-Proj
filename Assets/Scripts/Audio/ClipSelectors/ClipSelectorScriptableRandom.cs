@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Miscellaneous;
 using UnityEngine;
 
 namespace Audio.ClipSelectors
@@ -32,7 +33,7 @@ namespace Audio.ClipSelectors
                 _clipsList.AddRange(_clips);
             }
 
-            var randomIndex = Random.Range(0, _clipsList.Count);
+            var randomIndex = Randomizer.RangeInt(0, _clipsList.Count);
             var clip = _clipsList[randomIndex];
             _clipsList.Remove(clip);
 

@@ -1,5 +1,4 @@
 ﻿using Statuses.Interfaces;
-using Statuses.Main;
 using UnityEngine;
 
 namespace Statuses.Feedbacks.Damage
