@@ -209,32 +209,46 @@ namespace WorldGeneration.Generators
         private void FillRooms()
         {
             var fillingsContainer = new GameObject(RoomFillingsContainerName);
+            var roomBounds = new List<Bounds>();
+
+            var startRoom = _rooms[0];
+            roomBounds.Add(startRoom.GetBounds(_gridCellScale));
 
             var bossRoomFillingPrefab = RoomFillingsSettings.GetBossRoomFilling();
             var bossRoom = _rooms[^1];
 
-            var filling = Instantiate(bossRoomFillingPrefab, bossRoom.GetWorldPosition(_gridCellScale),
+            var roomFilling = Instantiate(bossRoomFillingPrefab, bossRoom.GetWorldCenterPosition(_gridCellScale),
                 Quaternion.identity,
                 fillingsContainer.transform);
             if (bossRoom.Rotated)
             {
-                filling.Rotate();
+                roomFilling.Rotate();
             }
             else
             {
-                filling.TryMirror();
+                roomFilling.TryMirror();
             }
+
+            roomBounds.Add(bossRoom.GetBounds(_gridCellScale));
 
             for (int i = 1; i < _rooms.Count - 1; i++)
             {
-                var roomSize = _rooms[i].GetSize();
+                var roomSize = _rooms[i].GetGridSize();
                 if (!RoomFillingsSettings.TryGetFilling(roomSize, out var fillingPrefab))
                 {
                     continue;
                 }
 
-                Instantiate(fillingPrefab, _rooms[i].GetWorldPosition(_gridCellScale), Quaternion.identity,
-                    fillingsContainer.transform);
+                roomFilling = Instantiate(fillingPrefab, _rooms[i].GetWorldCenterPosition(_gridCellScale),
+                    Quaternion.identity, fillingsContainer.transform);
+                if (_rooms[i].Rotated)
+                {
+                    roomFilling.Rotate();
+                }
+                else
+                {
+                    roomFilling.TryMirror();
+                }
             }
 
             foreach (var tile in _corridorTiles)

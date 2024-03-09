@@ -38,7 +38,8 @@ namespace WorldGeneration.Utility
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(transform.position + new Vector3(0f, GizmosYSize, 0f),
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(Vector3.zero + new Vector3(0f, GizmosYSize, 0f),
                 new Vector3(_sizeX, GizmosYSize, _sizeY) * _gizmosScale);
         }
 #endif

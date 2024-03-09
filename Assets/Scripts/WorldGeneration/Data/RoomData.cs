@@ -32,7 +32,7 @@ namespace WorldGeneration.Data
 
         #region Methods
 
-        public Vector3 GetWorldPosition(int gridCellScale)
+        public Vector3 GetWorldCenterPosition(int gridCellScale)
         {
             return new Vector3(GridCenterPosition.x, 0f, GridCenterPosition.y) * gridCellScale;
         }
@@ -42,7 +42,7 @@ namespace WorldGeneration.Data
             var x = Randomizer.RangeInt(-SizeX, SizeX + 1);
             var y = Randomizer.RangeInt(-SizeY, SizeY + 1);
 
-            var center = GetWorldPosition(gridCellScale);
+            var center = GetWorldCenterPosition(gridCellScale);
 
             if (!Rotated)
             {
@@ -52,15 +52,27 @@ namespace WorldGeneration.Data
             return center + new Vector3(y, 0f, x) * gridCellScale;
         }
         
-        public Vector2Int GetSize()
+        public Vector2Int GetGridSize()
         {
-            return new Vector2Int(SizeX, SizeY);
+            if (!Rotated)
+            {
+                return new Vector2Int(SizeX, SizeY);
+            }
+
+            return new Vector2Int(SizeY, SizeX);
         }
         
         public void RotateBy90Degrees()
         {
             (SizeX, SizeY) = (SizeY, SizeX);
             Rotated = true;
+        }
+
+        public Bounds GetBounds(int gridCellScale)
+        {
+            var center = GetWorldCenterPosition(gridCellScale);
+            var size = GetGridSize();
+            return new Bounds(center, new Vector3(size.x, 0f, size.y) * gridCellScale);
         }
 
         #endregion
