@@ -19,11 +19,12 @@ namespace WorldGeneration.Generators
         private const string RoomFillingsContainerName = "RoomFillings";
         private const float RotateRoomChance = 0.5f;
         private const int MinimumEnemiesPerRoom = 1;
+        private const float MaxEnemySpawnDistanceOffset = 10f;
 
         #endregion
-        
+
         #region Events
-        
+
         public event Action OnGenerationStarted;
         public event Action OnGenerationEnded;
 
@@ -39,7 +40,7 @@ namespace WorldGeneration.Generators
         [SerializeField] private RoomFillingsSettings _roomFillingsSettings;
         [SerializeField] private NavMeshSurface _navMeshSurface;
         [SerializeField] private SpawnableEnemies _spawnableEnemies;
-        
+
         #endregion
 
         #region Fields
@@ -47,6 +48,7 @@ namespace WorldGeneration.Generators
         private readonly DungeonGrid _dungeonGrid = new();
         private readonly HashSet<Vector2Int> _corridorTiles = new();
         private readonly List<RoomData> _rooms = new();
+
         private readonly Dictionary<WalkDirectionType, Vector2Int> _sortedWalkDirections = new()
         {
             {WalkDirectionType.Right, new Vector2Int(1, 0)},
@@ -54,6 +56,7 @@ namespace WorldGeneration.Generators
             {WalkDirectionType.Left, new Vector2Int(-1, 0)},
             {WalkDirectionType.Bot, new Vector2Int(0, -1)},
         };
+
         private readonly List<Vector2Int> _directionsTempList = new();
 
         #endregion
@@ -72,7 +75,7 @@ namespace WorldGeneration.Generators
         private void Start()
         {
             Randomizer.SetSeed(_randomSeed);
-            
+
             OnGenerationStarted?.Invoke();
 
             GenerateLayout();
@@ -80,7 +83,7 @@ namespace WorldGeneration.Generators
             FillRooms();
             BakeNavigation();
             SpawnEnemies();
-            
+
             OnGenerationEnded?.Invoke();
         }
 
@@ -92,7 +95,7 @@ namespace WorldGeneration.Generators
         {
             _corridorTiles.Clear();
             _rooms.Clear();
-            
+
             var roomSpawnPosition = new Vector2Int(0, 0);
 
             var startRoom = LevelLayoutSettings.GetStartRoom();
@@ -108,7 +111,8 @@ namespace WorldGeneration.Generators
                 var corridorSteps = LevelLayoutSettings.GetCorridorSteps();
 
                 RoomData nextRoom;
-                if (_rooms.Count + 1 < expectedRoomCount)
+                var bossRoom = _rooms.Count + 1 >= expectedRoomCount;
+                if (!bossRoom)
                 {
                     nextRoom = LevelLayoutSettings.GetRandomRoom();
                 }
@@ -116,7 +120,7 @@ namespace WorldGeneration.Generators
                 {
                     nextRoom = LevelLayoutSettings.GetBossRoom();
                 }
-                
+
                 if (Randomizer.ComparePercent(RotateRoomChance))
                 {
                     nextRoom.RotateBy90Degrees();
@@ -130,28 +134,32 @@ namespace WorldGeneration.Generators
                 else
                 {
                     extraSteps = (nextRoom.SizeY + 1) / 2;
-                } 
+                }
 
                 corridorSteps += extraSteps;
                 while (corridorSteps > 0)
                 {
                     roomSpawnPosition += direction;
-                    _corridorTiles.Add(roomSpawnPosition);
-                    
+
+                    if (!bossRoom)
+                    {
+                        _corridorTiles.Add(roomSpawnPosition);
+                    }
+
                     if (_dungeonGrid.GetCellByAxis(roomSpawnPosition) == CellType.Floor)
                     {
                         continue;
                     }
-                    
+
                     corridorSteps--;
-                    
+
                     _dungeonGrid.SetCell(roomSpawnPosition, CellType.Floor);
                     _dungeonGrid.SetCell(roomSpawnPosition + sideDirection, CellType.Wall);
                     _dungeonGrid.SetCell(roomSpawnPosition - sideDirection, CellType.Wall);
                 }
 
                 nextRoom.GridCenterPosition = roomSpawnPosition;
-                
+
                 _dungeonGrid.AddRoom(nextRoom);
                 _rooms.Add(nextRoom);
             }
@@ -167,10 +175,10 @@ namespace WorldGeneration.Generators
             var directionIndex = Randomizer.RangeInt(0, _directionsTempList.Count);
             var direction = _directionsTempList[directionIndex];
             _directionsTempList.RemoveAt(directionIndex);
-            
+
             return direction;
         }
-        
+
         private void SpawnTiles()
         {
             var cells = _dungeonGrid.Cells;
@@ -186,10 +194,10 @@ namespace WorldGeneration.Generators
                     case CellType.Empty:
                         break;
                     case CellType.Floor:
-                        PlacePrefab(cellPosition, LevelTiles.GetFloor());
+                        PlaceTilePrefab(cellPosition, LevelTiles.GetFloor());
                         break;
                     case CellType.Wall:
-                        var wallInstance = PlacePrefab(cellPosition, LevelTiles.GetWall());
+                        var wallInstance = PlaceTilePrefab(cellPosition, LevelTiles.GetWall());
                         TryUpdateWallTile(cellPosition, wallInstance);
                         break;
                     case CellType.Door:
@@ -204,8 +212,9 @@ namespace WorldGeneration.Generators
 
             var bossRoomFillingPrefab = RoomFillingsSettings.GetBossRoomFilling();
             var bossRoom = _rooms[^1];
-            
-            var filling = Instantiate(bossRoomFillingPrefab, bossRoom.GetWorldPosition(_gridCellScale), Quaternion.identity,
+
+            var filling = Instantiate(bossRoomFillingPrefab, bossRoom.GetWorldPosition(_gridCellScale),
+                Quaternion.identity,
                 fillingsContainer.transform);
             if (bossRoom.Rotated)
             {
@@ -215,7 +224,7 @@ namespace WorldGeneration.Generators
             {
                 filling.TryMirror();
             }
-            
+
             for (int i = 1; i < _rooms.Count - 1; i++)
             {
                 var roomSize = _rooms[i].GetSize();
@@ -223,7 +232,7 @@ namespace WorldGeneration.Generators
                 {
                     continue;
                 }
-                
+
                 Instantiate(fillingPrefab, _rooms[i].GetWorldPosition(_gridCellScale), Quaternion.identity,
                     fillingsContainer.transform);
             }
@@ -248,17 +257,19 @@ namespace WorldGeneration.Generators
 
         private void SpawnEnemies()
         {
-            foreach (var roomData in _rooms)
+            for (var i = 1; i < _rooms.Count; i++)
             {
+                var roomData = _rooms[i];
                 int enemiesAmount = roomData.MaxEnemies <= MinimumEnemiesPerRoom
                     ? MinimumEnemiesPerRoom
                     : Randomizer.RangeInt(MinimumEnemiesPerRoom, roomData.MaxEnemies);
 
-                for (int i = 0; i < enemiesAmount; i++)
+                for (int j = 0; j < enemiesAmount; j++)
                 {
                     var spawnPosition = roomData.GetRandomInsidePosition(_gridCellScale);
-                
-                    if (!NavMesh.SamplePosition(spawnPosition, out var hit, 10f, NavMesh.AllAreas))
+
+                    if (!NavMesh.SamplePosition(spawnPosition, out var hit, MaxEnemySpawnDistanceOffset,
+                            NavMesh.AllAreas))
                     {
                         continue;
                     }
@@ -269,7 +280,7 @@ namespace WorldGeneration.Generators
             }
         }
 
-        private GameObject PlacePrefab(Vector2Int cellPosition, GameObject prefab)
+        private GameObject PlaceTilePrefab(Vector2Int cellPosition, GameObject prefab)
         {
             var spawnPosition = ConvertGridPositionToWorld(cellPosition);
             var instance = Instantiate(prefab, spawnPosition, Quaternion.identity, transform);
