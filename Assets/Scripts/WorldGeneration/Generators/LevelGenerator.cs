@@ -18,6 +18,7 @@ namespace WorldGeneration.Generators
 
         private const string RoomFillingsContainerName = "RoomFillings";
         private const float RotateRoomChance = 0.5f;
+        private const int MinimumEnemiesPerRoom = 1;
 
         #endregion
         
@@ -249,20 +250,23 @@ namespace WorldGeneration.Generators
         {
             foreach (var roomData in _rooms)
             {
-                var center = roomData.GetWorldPosition(_gridCellScale);
-                if (!NavMesh.SamplePosition(center, out var hit, 10f, NavMesh.AllAreas))
-                {
-                    continue;
-                }
+                int enemiesAmount = roomData.MaxEnemies <= MinimumEnemiesPerRoom
+                    ? MinimumEnemiesPerRoom
+                    : Randomizer.RangeInt(MinimumEnemiesPerRoom, roomData.MaxEnemies);
 
-                var enemyPrefab = SpawnableEnemies.GetEnemy(EnemyType.Basic);
-                Instantiate(enemyPrefab, hit.position, Quaternion.identity);
+                for (int i = 0; i < enemiesAmount; i++)
+                {
+                    var spawnPosition = roomData.GetRandomInsidePosition(_gridCellScale);
+                
+                    if (!NavMesh.SamplePosition(spawnPosition, out var hit, 10f, NavMesh.AllAreas))
+                    {
+                        continue;
+                    }
+
+                    var enemyPrefab = SpawnableEnemies.GetEnemy(EnemyType.Basic);
+                    Instantiate(enemyPrefab, hit.position, Quaternion.identity);
+                }
             }
-            // for (int i = 0; i < 100; i++)
-            // {
-            //     var enemy = SpawnableEnemies.GetEnemy(EnemyType.Basic);
-            //     LogWriter.DevelopmentLog($"ENEMY TO SPAWN: {enemy.name}");
-            // }
         }
 
         private GameObject PlacePrefab(Vector2Int cellPosition, GameObject prefab)
