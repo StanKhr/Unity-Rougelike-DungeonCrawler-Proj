@@ -4,6 +4,6 @@
     {
         Boostrap,
         MainMenu,
-        
+        Dungeon
     }
 }

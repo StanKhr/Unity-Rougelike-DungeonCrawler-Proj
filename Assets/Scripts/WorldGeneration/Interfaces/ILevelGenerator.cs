@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous;
 
 namespace WorldGeneration.Interfaces
 {
@@ -6,6 +7,7 @@ namespace WorldGeneration.Interfaces
     {
         #region Events
 
+        public static event DelegateHolder.LevelGeneratorEvents OnLevelGeneratorStarted;
         event Action OnGenerationStarted;
         event Action OnGenerationEnded;
 
@@ -15,6 +17,15 @@ namespace WorldGeneration.Interfaces
 
         void Generate(int seed);
         void Clear();
+
+        #endregion
+
+        #region Interface Methods
+
+        public void CallGeneratorStartedEvent(ILevelGenerator levelGenerator)
+        {
+            OnLevelGeneratorStarted?.Invoke(levelGenerator);
+        }
 
         #endregion
     }

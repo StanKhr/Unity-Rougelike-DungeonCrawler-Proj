@@ -68,6 +68,15 @@ namespace WorldGeneration.Generators
 
         #endregion
 
+        #region Unity Callbacks
+
+        private void Start()
+        {
+            (this as ILevelGenerator).CallGeneratorStartedEvent(this);
+        }
+
+        #endregion
+
         #region Methods
 
         public void Generate(int seed)
