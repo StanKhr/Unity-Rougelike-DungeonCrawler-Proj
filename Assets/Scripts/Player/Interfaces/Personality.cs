@@ -29,6 +29,9 @@ namespace Player.Interfaces
         }
         
         public GenderType Gender { get; private set; }
+        public float Health { get; private set; }
+        public float Energy { get; private set; }
+        public float Mana { get; private set; }
         
         #endregion
     }

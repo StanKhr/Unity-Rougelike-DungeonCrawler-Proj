@@ -26,22 +26,19 @@ namespace FSM.GameLoop.States
 
         public override void Enter()
         {
-            ILevelGenerator.OnLevelGeneratorStarted += LevelGeneratorStartedCallback;
+            ILevelGenerator.OnLevelGeneratorLoaded += LevelGeneratorStartedCallback;
             StateMachine.LoadScene(GameSceneType.Dungeon);
         }
 
         public override void Exit()
         {
-            ILevelGenerator.OnLevelGeneratorStarted -= LevelGeneratorStartedCallback;
+            ILevelGenerator.OnLevelGeneratorLoaded -= LevelGeneratorStartedCallback;
             StateMachine.UnloadScene(GameSceneType.Dungeon);
         }
 
         private void LevelGeneratorStartedCallback(ILevelGenerator levelGenerator)
         {
             LevelGenerator = levelGenerator;
-            var randomSeed = Guid.NewGuid().GetHashCode();
-            
-            LevelGenerator.Generate(randomSeed);
         }
 
         #endregion

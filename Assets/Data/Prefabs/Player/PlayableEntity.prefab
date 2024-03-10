@@ -604,6 +604,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseValue: 100
+  _regenerateDelaySeconds: 1.5
+  _rechargePercentPerSec: 0.1
 --- !u!114 &2276899729217826470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,6 +641,8 @@ MonoBehaviour:
   _gear: {fileID: 509330952836004890}
   _playerAnimations: {fileID: 7345476285307767408}
   _playerAttack: {fileID: 0}
+  _stamina: {fileID: 4759841884282708631}
+  _mana: {fileID: 2276899729217826470}
 --- !u!114 &1548980193278334187
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using Player.Cameras.Interfaces;
 using Player.Inputs.Interfaces;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
+using Statuses.Interfaces;
 using UnityEngine;
 
 namespace Player.StateMachines.Interfaces
@@ -18,6 +19,8 @@ namespace Player.StateMachines.Interfaces
         IGear Gear { get; }
         IPlayerAnimations PlayerAnimations { get; }
         IPlayerAttack PlayerAttack { get; }
+        IStamina Stamina { get; }
+        IMana Mana { get; }
         
         #endregion
 

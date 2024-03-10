@@ -7,7 +7,7 @@ namespace WorldGeneration.Interfaces
     {
         #region Events
 
-        public static event DelegateHolder.LevelGeneratorEvents OnLevelGeneratorStarted;
+        public static event DelegateHolder.LevelGeneratorEvents OnLevelGeneratorLoaded;
         event Action OnGenerationStarted;
         event Action OnGenerationEnded;
 
@@ -22,9 +22,9 @@ namespace WorldGeneration.Interfaces
 
         #region Interface Methods
 
-        public void CallGeneratorStartedEvent(ILevelGenerator levelGenerator)
+        public void CallGeneratorLoadedEvent(ILevelGenerator levelGenerator)
         {
-            OnLevelGeneratorStarted?.Invoke(levelGenerator);
+            OnLevelGeneratorLoaded?.Invoke(levelGenerator);
         }
 
         #endregion

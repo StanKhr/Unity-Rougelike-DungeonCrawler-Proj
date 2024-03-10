@@ -12,7 +12,7 @@ namespace Player.GameStories
     {
         #region Constants
 
-        private const int MaxStoryLines = 8;
+        private const int MaxStoryLines = 10;
         private const string NextLineSkip = "\n";
 
         #endregion

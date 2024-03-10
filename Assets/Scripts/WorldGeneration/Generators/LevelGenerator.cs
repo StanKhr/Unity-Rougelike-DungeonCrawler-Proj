@@ -72,7 +72,10 @@ namespace WorldGeneration.Generators
 
         private void Start()
         {
-            (this as ILevelGenerator).CallGeneratorStartedEvent(this);
+            (this as ILevelGenerator).CallGeneratorLoadedEvent(this);
+            
+            var randomSeed = Guid.NewGuid().GetHashCode();
+            Generate(randomSeed);
         }
 
         #endregion

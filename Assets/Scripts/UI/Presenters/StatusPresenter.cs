@@ -10,17 +10,12 @@ namespace UI.Presenters
 {
     public class StatusPresenter : MonoBehaviour
     {
-        #region Constants
-
-        private const float DelayTime = 1.5f;
-        private const float AnimationSpeed = 0.25f;
-
-        #endregion
-        
         #region Editor Fields
 
         [SerializeField] private Status _status;
-
+        [SerializeField] private float _delayTime = 1.5f;
+        [SerializeField] private float _animationSpeed = 0.25f;
+        
         [Header("Views")]
         [SerializeField] private TextMeshProUGUI _valueText;
         [SerializeField] private TextMeshProUGUI _percentText;
@@ -88,7 +83,13 @@ namespace UI.Presenters
                 return;
             }
 
-            MaskFill = Mathf.MoveTowards(MaskFill, Status.Percent, Time.deltaTime * AnimationSpeed);
+            if (_animationSpeed <= 0f)
+            {
+                MaskFill = Status.Percent;
+                return;
+            }
+
+            MaskFill = Mathf.MoveTowards(MaskFill, Status.Percent, Time.deltaTime * _animationSpeed);
         }
 
         #endregion
@@ -105,7 +106,7 @@ namespace UI.Presenters
         private void CurrentValueChangedCallback()
         {
             UpdateText();
-            _delay = DelayTime;
+            _delay = _delayTime;
             SetDarkFill(Status.Percent);
         }
         

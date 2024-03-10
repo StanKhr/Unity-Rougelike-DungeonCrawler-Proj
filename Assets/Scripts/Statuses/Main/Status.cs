@@ -34,6 +34,7 @@ namespace Statuses.Main
 
         #region Properties
 
+        protected virtual bool EventNotificationEnabled => true;
         public float MaxValue
         {
             get => _maxValue;
@@ -44,6 +45,11 @@ namespace Statuses.Main
                 if (CurrentValue > 0f)
                 {
                     CurrentValue = MaxValue * percent;
+                }
+
+                if (!EventNotificationEnabled)
+                {
+                    return;
                 }
                 
                 OnMaxValueChanged?.Invoke();
@@ -56,6 +62,11 @@ namespace Statuses.Main
             protected set
             {
                 _currentValue = Mathf.Clamp(value, MinValue, MaxValue);
+
+                if (!EventNotificationEnabled)
+                {
+                    return;
+                }
                 
                 OnCurrentValueChanged?.Invoke();
             }

@@ -15,6 +15,7 @@ namespace Player.Inventories.Interfaces
         float AttackDuration { get; }
         float CritPercentBounds { get; }
         float CritDamageMultiplier { get; }
+        float AttackEnergyCost { get; }
         AttributeScaleType ScaleStrength { get; }
         AttributeScaleType ScaleDexterity { get; }
         AttributeScaleType ScaleIntellect { get; }

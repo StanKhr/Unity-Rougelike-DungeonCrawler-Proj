@@ -1,6 +1,8 @@
-﻿namespace Statuses.Main
+﻿using Statuses.Interfaces;
+
+namespace Statuses.Main
 {
-    public class Mana : Status
+    public class Mana : Status, IMana
     {
         
     }

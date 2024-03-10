@@ -50,6 +50,9 @@ namespace Player.StateMachines.States
         {
             UpdateLocomotion(deltaTime);
             CheckAttackInput();
+
+            var stamina = StateMachinePlayer.Stamina;
+            stamina.Tick(deltaTime);
         }
 
         private void CheckAttackInput()
