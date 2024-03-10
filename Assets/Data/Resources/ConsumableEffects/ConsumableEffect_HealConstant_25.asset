@@ -23,10 +23,12 @@ MonoBehaviour:
     m_LocalVariables:
     - name: value
       variable:
-        rid: -2
+        rid: 6755321619783614470
   _healValue: 25
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 6755321619783614470
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 
