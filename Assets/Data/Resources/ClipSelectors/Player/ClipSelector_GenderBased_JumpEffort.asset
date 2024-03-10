@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e52df88694437698e61ffbdc2de239, type: 3}
+  m_Name: ClipSelector_GenderBased_JumpEffort
+  m_EditorClassIdentifier: 
+  _male: {fileID: 11400000, guid: 9378d4c6cf897e846a7ff2519e7f8143, type: 2}
+  _female: {fileID: 11400000, guid: 494585c86f7f9824aa969da2fe8f1343, type: 2}

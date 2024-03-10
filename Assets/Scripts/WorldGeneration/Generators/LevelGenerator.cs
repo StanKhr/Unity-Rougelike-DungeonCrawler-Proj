@@ -17,6 +17,7 @@ namespace WorldGeneration.Generators
         #region Constants
 
         private const string RoomFillingsContainerName = "RoomFillings";
+        private const string EnemiesContainerName = "Enemies";
         private const float RotateRoomChance = 0.5f;
         private const int MinimumEnemiesPerRoom = 1;
         private const float MaxEnemySpawnDistanceOffset = 10f;
@@ -32,7 +33,6 @@ namespace WorldGeneration.Generators
 
         #region Editor Fields
 
-        [SerializeField] private int _randomSeed = 0;
         [SerializeField, Min(0)] private int _gridCellScale = 1;
 
         [SerializeField] private LevelLayoutSettings _levelLayoutSettings;
@@ -48,7 +48,6 @@ namespace WorldGeneration.Generators
         private readonly DungeonGrid _dungeonGrid = new();
         private readonly HashSet<Vector2Int> _corridorTiles = new();
         private readonly List<RoomData> _rooms = new();
-
         private readonly Dictionary<WalkDirectionType, Vector2Int> _sortedWalkDirections = new()
         {
             {WalkDirectionType.Right, new Vector2Int(1, 0)},
@@ -56,7 +55,6 @@ namespace WorldGeneration.Generators
             {WalkDirectionType.Left, new Vector2Int(-1, 0)},
             {WalkDirectionType.Bot, new Vector2Int(0, -1)},
         };
-
         private readonly List<Vector2Int> _directionsTempList = new();
 
         #endregion
@@ -74,7 +72,21 @@ namespace WorldGeneration.Generators
 
         private void Start()
         {
-            Randomizer.SetSeed(_randomSeed);
+            (this as ILevelGenerator).CallGeneratorLoadedEvent(this);
+            
+            var randomSeed = Guid.NewGuid().GetHashCode();
+            Generate(randomSeed);
+        }
+
+        #endregion
+
+        #region Methods
+
+        public void Generate(int seed)
+        {
+            Clear();
+            
+            Randomizer.SetSeed(seed);
 
             OnGenerationStarted?.Invoke();
 
@@ -87,15 +99,21 @@ namespace WorldGeneration.Generators
             OnGenerationEnded?.Invoke();
         }
 
-        #endregion
-
-        #region Methods
-
-        public void GenerateLayout()
+        public void Clear()
         {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                var child = transform.GetChild(i);
+                Destroy(child.gameObject);
+            }
+            
             _corridorTiles.Clear();
             _rooms.Clear();
+            _dungeonGrid.Clear();
+        }
 
+        private void GenerateLayout()
+        {
             var roomSpawnPosition = new Vector2Int(0, 0);
 
             var startRoom = LevelLayoutSettings.GetStartRoom();
@@ -208,10 +226,17 @@ namespace WorldGeneration.Generators
 
         private void FillRooms()
         {
-            var fillingsContainer = new GameObject(RoomFillingsContainerName);
+            var fillingsContainer = new GameObject(RoomFillingsContainerName)
+            {
+                transform =
+                {
+                    parent = transform
+                }
+            };
+            
             var roomBoundsList = new List<Bounds>();
-
             var startRoom = _rooms[0];
+            
             roomBoundsList.Add(startRoom.GetBounds(_gridCellScale));
 
             var bossRoomFillingPrefab = RoomFillingsSettings.GetBossRoomFilling();
@@ -292,6 +317,14 @@ namespace WorldGeneration.Generators
 
         private void SpawnEnemies()
         {
+            var enemyParent = new GameObject(EnemiesContainerName)
+            {
+                transform =
+                {
+                    parent = transform
+                }
+            };
+
             for (var i = 1; i < _rooms.Count; i++)
             {
                 var roomData = _rooms[i];
@@ -310,7 +343,7 @@ namespace WorldGeneration.Generators
                     }
 
                     var enemyPrefab = SpawnableEnemies.GetEnemy(EnemyType.Basic);
-                    Instantiate(enemyPrefab, hit.position, Quaternion.identity);
+                    Instantiate(enemyPrefab, hit.position, Quaternion.identity, enemyParent.transform);
                 }
             }
         }

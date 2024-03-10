@@ -28,16 +28,6 @@ namespace WorldGeneration.Utility
         {
             return Cells.GetValueOrDefault(position, CellType.Empty);
         }
-
-        public void ClearCell(int x, int y)
-        {
-            SetCell(x, y, CellType.Empty);
-        }
-        
-        public void ClearCell(Vector2Int position)
-        {
-            SetCell(position, CellType.Empty);
-        }
         
         public void SetCell(int x, int y, CellType type)
         {
@@ -55,6 +45,21 @@ namespace WorldGeneration.Utility
             }
             
             Cells[position] = type;
+        }
+
+        public void ClearCell(int x, int y)
+        {
+            SetCell(x, y, CellType.Empty);
+        }
+        
+        public void ClearCell(Vector2Int position)
+        {
+            SetCell(position, CellType.Empty);
+        }
+
+        public void Clear()
+        {
+            Cells.Clear();
         }
 
         public void AddRoom(RoomData roomData)

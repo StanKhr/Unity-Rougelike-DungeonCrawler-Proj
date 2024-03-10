@@ -33,6 +33,13 @@ namespace Player.StateMachines.States
 
         public override void Enter()
         {
+            var stamina = StateMachinePlayer.Stamina;
+            if (stamina.CurrentValue <= 0f)
+            {
+                StateMachinePlayer.ToFreeLookState();
+                return;
+            }
+            
             var playerAttack = StateMachinePlayer.PlayerAttack;
             playerAttack.OnAttackChargeStarted += AttackChargeStartedCallback;
             playerAttack.OnAttackEnded += AttackEndedCallback;
@@ -72,12 +79,19 @@ namespace Player.StateMachines.States
             {
                 return;
             }
-
+            
             playerMeleeAttack.ReleaseAttack();
         }
 
         private void AttackReleasedCallback(IWeapon weapon)
         {
+            var stamina = StateMachinePlayer.Stamina;
+            if (!stamina.TryDecrease(Weapon.AttackEnergyCost))
+            {
+                StateMachinePlayer.ToFreeLookState();
+                return;
+            }
+            
             var playerAnimations = StateMachinePlayer.PlayerAnimations;
             playerAnimations.PlayWeaponAttackRelease();
         }

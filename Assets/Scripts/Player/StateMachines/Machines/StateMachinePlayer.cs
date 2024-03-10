@@ -10,6 +10,8 @@ using Player.Inventories.Interfaces;
 using Player.Miscellaneous;
 using Player.StateMachines.Interfaces;
 using Player.StateMachines.States;
+using Statuses.Interfaces;
+using Statuses.Main;
 using UnityEngine;
 
 namespace Player.StateMachines.Machines
@@ -26,6 +28,8 @@ namespace Player.StateMachines.Machines
         [SerializeField] private Gear _gear;
         [SerializeField] private PlayerAnimations _playerAnimations;
         [SerializeField] private PlayerAttack _playerAttack;
+        [SerializeField] private Stamina _stamina;
+        [SerializeField] private Mana _mana;
 
         #endregion
         
@@ -39,6 +43,8 @@ namespace Player.StateMachines.Machines
         public IGear Gear => _gear;
         public IPlayerAnimations PlayerAnimations => _playerAnimations;
         public IPlayerAttack PlayerAttack => _playerAttack;
+        public IStamina Stamina => _stamina;
+        public IMana Mana => _mana;
 
         #endregion
 

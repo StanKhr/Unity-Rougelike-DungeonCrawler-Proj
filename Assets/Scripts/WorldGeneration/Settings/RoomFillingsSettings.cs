@@ -24,7 +24,7 @@ namespace WorldGeneration.Settings
         
         private Dictionary<Vector2Int, List<RoomFilling>> _sortedRoomFillings;
         private Dictionary<Vector2Int, List<RoomFilling>> _refillableLists;
-        private List<GameObject> _sortedCorridorTrash;
+        private List<GameObject> _sortedCorridorTrash = new();
 
         #endregion
 

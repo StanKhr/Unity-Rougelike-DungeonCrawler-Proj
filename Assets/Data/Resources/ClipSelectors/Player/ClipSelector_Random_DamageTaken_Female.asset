@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c2c4837cfc042feb3050193a684e144, type: 3}
-  m_Name: ClipSelector_Random_Weapon_Sword_ChargeAttack
+  m_Name: ClipSelector_Random_DamageTaken_Female
   m_EditorClassIdentifier: 
   _clips:
-  - {fileID: 8300000, guid: 5e7f88a85af7f5c47b3e51dc16739aa3, type: 3}
+  - {fileID: 8300000, guid: bdb81842fee72de4bb3a8f6662256d10, type: 3}
+  - {fileID: 8300000, guid: e4f655d099364084faa218bab8cc251c, type: 3}
+  - {fileID: 8300000, guid: f70393065056dee45b8cbac526595faf, type: 3}

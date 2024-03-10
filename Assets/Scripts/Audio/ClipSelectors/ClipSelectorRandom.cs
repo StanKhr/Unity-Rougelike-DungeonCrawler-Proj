@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Audio.ClipSelectors
 {
     [CreateAssetMenu (menuName = "RPG / Clip Selectors / Random", fileName = "ClipSelector_Random_NEW")]
-    public class ClipSelectorScriptableRandom : ClipSelectorScriptable
+    public class ClipSelectorRandom : ClipSelector
     {
         #region Editor Fields
 
@@ -21,7 +21,7 @@ namespace Audio.ClipSelectors
         
         #region Methods
 
-        public override AudioClip Select()
+        public override AudioClip SelectNext()
         {
             if (_clips.Length <= 0)
             {

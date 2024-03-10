@@ -11,8 +11,8 @@ namespace Audio.Triggers
         #region Editor Fields
 
         [field: SerializeField] protected AudioSource AudioSource { get; private set; }
-        [SerializeField] private ClipSelectorScriptable _clipSelectorInteractionStarted;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorInteractionEnded;
+        [SerializeField] private ClipSelector _clipSelectorInteractionStarted;
+        [SerializeField] private ClipSelector _clipSelectorInteractionEnded;
 
         #endregion
         

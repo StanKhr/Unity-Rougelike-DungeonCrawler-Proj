@@ -462,7 +462,6 @@ GameObject:
   - component: {fileID: 6610891149360071957}
   - component: {fileID: 3928323119986198838}
   - component: {fileID: 6768869772791888163}
-  - component: {fileID: 2200731330181941279}
   - component: {fileID: 4759841884282708631}
   - component: {fileID: 2276899729217826470}
   - component: {fileID: 2387627697339951175}
@@ -474,6 +473,7 @@ GameObject:
   - component: {fileID: 6470148962846245056}
   - component: {fileID: 7345476285307767408}
   - component: {fileID: 1189147326885911897}
+  - component: {fileID: 3351926364369600923}
   m_Layer: 7
   m_Name: PlayableEntity
   m_TagString: Untagged
@@ -578,19 +578,6 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 64
     _boxCastSize: {x: 0.5, y: 0.5, z: 0.5}
---- !u!114 &2200731330181941279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4799805662674334367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c3f29bb08dd498594b36b3ec0ebe259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _baseValue: 100
 --- !u!114 &4759841884282708631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,6 +591,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseValue: 100
+  _regenerateDelaySeconds: 1.5
+  _rechargePercentPerSec: 0.1
 --- !u!114 &2276899729217826470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,7 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _locomotionCharacterController: {fileID: 6768869772791888163}
-  _health: {fileID: 2200731330181941279}
+  _health: {fileID: 3351926364369600923}
   _inputProvider: {fileID: 0}
   _cameraWrapper: {fileID: 0}
   _eyeScanner: {fileID: 0}
@@ -639,6 +628,8 @@ MonoBehaviour:
   _gear: {fileID: 509330952836004890}
   _playerAnimations: {fileID: 7345476285307767408}
   _playerAttack: {fileID: 0}
+  _stamina: {fileID: 4759841884282708631}
+  _mana: {fileID: 2276899729217826470}
 --- !u!114 &1548980193278334187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,9 +738,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 6141010839929952566}
-  _damagedClipSelector: {fileID: 11400000, guid: 31243e3f5d766884c972aedf2488cd60, type: 2}
+  _damagedClipSelector: {fileID: 11400000, guid: 29e370bb1865f0e4c8cabc9c50a97079, type: 2}
   _diedClipSelector: {fileID: 0}
   _observeDeath: 0
+--- !u!114 &3351926364369600923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799805662674334367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21736496f8a74376a7676fad30c13e84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseValue: 0
 --- !u!1 &5407754322543843440
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <AudioSource>k__BackingField: {fileID: 6141010839929952566}
   _locomotion: {fileID: 6768869772791888163}
-  _clipSelectorJump: {fileID: 11400000, guid: 9378d4c6cf897e846a7ff2519e7f8143, type: 2}
+  _clipSelectorJump: {fileID: 11400000, guid: 33cf10a0fb44482439e551f566b6a471, type: 2}
   _clipSelectorLanding: {fileID: 11400000, guid: 17ddc4ccf2e5035408aa4dbc2bf61daa, type: 2}
 --- !u!1 &6371515655075773070
 GameObject:

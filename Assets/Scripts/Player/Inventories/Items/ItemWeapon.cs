@@ -45,6 +45,7 @@ namespace Player.Inventories.Items
         [field: SerializeField] public float AttackDuration { get; private set; } = 0.5f;
         [field: SerializeField, Range(0f, 0.5f)] public float CritPercentBounds { get; private set; } = 0.1f;
         [field: SerializeField, Min(1f)] public float CritDamageMultiplier { get; private set; } = 1.2f;
+        [field: SerializeField] public float AttackEnergyCost { get; private set; } = 0.2f;
         
         [field: SerializeField] public AttributeScaleType ScaleStrength { get; private set; }
         [field: SerializeField] public AttributeScaleType ScaleDexterity { get; private set; }
@@ -52,8 +53,8 @@ namespace Player.Inventories.Items
         [field: SerializeField] public DamageType DamageType { get; private set; } = DamageType.MeleeSlash;
 
         [Header("Audio")]
-        [SerializeField] private ClipSelectorScriptable _clipSelectorChargeAttack;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorReleaseAttack;
+        [SerializeField] private ClipSelector _clipSelectorChargeAttack;
+        [SerializeField] private ClipSelector _clipSelectorReleaseAttack;
         #endregion
         
         #region Properties

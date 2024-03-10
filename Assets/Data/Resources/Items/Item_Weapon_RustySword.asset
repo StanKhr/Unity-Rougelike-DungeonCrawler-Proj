@@ -38,11 +38,12 @@ MonoBehaviour:
   <AttackDuration>k__BackingField: 0.5
   <CritPercentBounds>k__BackingField: 0.1
   <CritDamageMultiplier>k__BackingField: 1.2
+  <AttackEnergyCost>k__BackingField: 20
   <ScaleStrength>k__BackingField: 2
   <ScaleDexterity>k__BackingField: 3
   <ScaleIntellect>k__BackingField: -1
   <DamageType>k__BackingField: 0
-  _clipSelectorChargeAttack: {fileID: 11400000, guid: 43cb678ffee81824aa858725ddc3f11d, type: 2}
+  _clipSelectorChargeAttack: {fileID: 11400000, guid: a1ccd5dd68a224b4083692a47b156dd5, type: 2}
   _clipSelectorReleaseAttack: {fileID: 11400000, guid: 05a3c59c1460bdd489514eccd3c6c1f9, type: 2}
   references:
     version: 2

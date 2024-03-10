@@ -92,6 +92,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Bat
       objectReference: {fileID: 0}
+    - target: {fileID: 7177525359821227806, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: _nonTranslatedName
+      value: Bat
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177525359821227806, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: _localizedString.m_TableEntryReference.m_KeyId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177525359821227806, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: _localizedString.m_TableReference.m_TableCollectionName
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4235102361156619401, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
     - {fileID: 3219481087715430697, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
