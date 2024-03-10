@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_KnightSword Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8069418663691102756, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: <MinAttackDistance>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

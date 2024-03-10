@@ -25,30 +25,7 @@ namespace Player.Inventories
 
         #region Properties
         public SlotsData Slots => _slots;
-
-        #endregion
-
-        #region Unity Callbacks
-
-        [ContextMenu("Test add sword")]
-        private void TestAddEquipSword()
-        {
-            var testGuid = "6d37904db7290ee428c658a90968e6e5";
-            var item = ItemDatabase.Instance.GetFromGuid(testGuid);
-            TryAdd(item as IItem);
-        }
-
-        [ContextMenu("Test use sword")]
-        private void TestUnequipSword()
-        {
-            var testGuid = "6d37904db7290ee428c658a90968e6e5";
-            var item = ItemDatabase.Instance.GetFromGuid(testGuid);
-            
-            if (HasItem(item, out int slotIndex))
-            {
-                TryUse(slotIndex);
-            }
-        }
+        public bool ItemManipulationsEnabled { get; set; } = false;
 
         #endregion
 
@@ -100,6 +77,11 @@ namespace Player.Inventories
 
         public bool TryAdd(IItem item)
         {
+            if (!ItemManipulationsEnabled)
+            {
+                return false;
+            }
+            
             for (int i = 0; i < _slots.Length; i++)
             {
                 if (_slots[i].IsEmpty)
@@ -125,6 +107,11 @@ namespace Player.Inventories
 
         public bool TryDrop(int slotIndex)
         {
+            if (!ItemManipulationsEnabled)
+            {
+                return false;
+            }
+
             if (_slots[slotIndex].IsEmpty)
             {
                 return false;
@@ -143,6 +130,11 @@ namespace Player.Inventories
 
         public bool TryUse(int slotIndex)
         {
+            if (!ItemManipulationsEnabled)
+            {
+                return false;
+            }
+
             if (_slots[slotIndex].IsEmpty)
             {
                 return false;

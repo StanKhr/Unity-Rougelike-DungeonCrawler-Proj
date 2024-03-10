@@ -17,6 +17,7 @@ namespace Player.Inventories.Interfaces
         #region Properties
 
         SlotsData Slots { get; }
+        bool ItemManipulationsEnabled { get; set; }
 
         #endregion
         
