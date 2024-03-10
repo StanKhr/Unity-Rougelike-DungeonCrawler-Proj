@@ -739,7 +739,7 @@ MonoBehaviour:
   <AttackChargeTime>k__BackingField: 0.6
   <AttackReleaseTime>k__BackingField: 1.2
   <MinAttackDistance>k__BackingField: 3
-  _attackRadius: 4
+  _attackRadius: 2
   _damageValue: 10
   _damageableLayers:
     serializedVersion: 2
