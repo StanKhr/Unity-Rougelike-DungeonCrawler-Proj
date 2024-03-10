@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
-namespace NPCs.Components.Interfaces
+namespace NPCs.Interfaces
 {
     public interface INavMeshAgentWrapper
     {
         #region Properties
 
-        Vector3 Destination { get; }
+        Vector3 Velocity { get; set; }
+        Vector3 Destination { get; set; }
         Vector3 NormalizedDesiredVelocity { get; }
         bool IsOnNavMesh { get; }
 

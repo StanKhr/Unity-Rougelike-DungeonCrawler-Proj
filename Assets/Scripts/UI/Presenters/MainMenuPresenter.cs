@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Player.Interfaces;
 using TMPro;
 using UI.Utility;
+using UI.Utility.Personality;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

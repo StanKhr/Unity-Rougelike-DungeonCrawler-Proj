@@ -1,10 +1,13 @@
-﻿namespace NPCs.Components.Interfaces
+﻿using UnityEngine;
+
+namespace NPCs.Interfaces
 {
     public interface IPlayerFinder
     {
         #region Properties
 
         bool PlayerFound { get; }
+        Vector3 PlayerPosition { get; }
 
         #endregion
 

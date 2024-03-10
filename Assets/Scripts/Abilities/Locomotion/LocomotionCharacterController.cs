@@ -45,6 +45,7 @@ namespace Abilities.Locomotion
         public bool Sprinting { get; set; }
         public bool Crouching { get; set; }
         public Vector3 BodyVelocity => _characterController.velocity;
+        public Vector3 Position => _characterController.transform.position;
         public bool Grounded
         {
             get => _grounded;

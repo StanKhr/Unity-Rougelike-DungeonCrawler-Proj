@@ -1,6 +1,7 @@
 ﻿using FSM.Main;
 using Miscellaneous;
 using NPCs.FSM.Interfaces;
+using UnityEngine;
 
 namespace NPCs.FSM.States
 {
@@ -24,7 +25,8 @@ namespace NPCs.FSM.States
 
         public override void Enter()
         {
-            
+            var locomotion = StateMachineEnemy.Locomotion;
+            locomotion.SetTargetMotion(Vector3.zero);
         }
 
         public override void Exit()
@@ -36,8 +38,15 @@ namespace NPCs.FSM.States
         {
             var playerFinder = StateMachineEnemy.PlayerFinder;
             playerFinder.Tick(deltaTime);
+
+            if (playerFinder.PlayerFound)
+            {
+                StateMachineEnemy.ToChasePlayerState();
+                return;
+            }
             
-            LogWriter.DevelopmentLog($"Found player? {playerFinder.PlayerFound.ToString()}");
+            var locomotion = StateMachineEnemy.Locomotion;
+            locomotion.TickMotion(deltaTime);
         }
 
         #endregion

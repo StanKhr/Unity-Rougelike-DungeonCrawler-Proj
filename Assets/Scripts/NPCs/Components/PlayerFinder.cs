@@ -1,8 +1,8 @@
 ﻿using System;
-using NPCs.Components.Interfaces;
+using NPCs.Interfaces;
 using UnityEngine;
 
-namespace NPCs.Components.Navigation
+namespace NPCs.Components
 {
     public class PlayerFinder : MonoBehaviour, IPlayerFinder
     {
@@ -40,7 +40,7 @@ namespace NPCs.Components.Navigation
         #region Unity Callbacks
 
 #if UNITY_EDITOR
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, _scanRadius);

@@ -21,6 +21,7 @@ namespace Abilities.Interfaces
         bool Crouching { get; set; }
         bool Grounded { get; }
         Vector3 BodyVelocity { get; }
+        Vector3 Position { get; }
 
         #endregion
         

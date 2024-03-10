@@ -1,9 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
-using NPCs.Components.Interfaces;
+using NPCs.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace NPCs.Components.Navigation
+namespace NPCs.Components
 {
     public class NavMeshAgentWrapper : MonoBehaviour, INavMeshAgentWrapper
     {

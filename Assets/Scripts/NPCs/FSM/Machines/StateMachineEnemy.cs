@@ -1,8 +1,8 @@
 ﻿using FSM.Creatures.Machines;
-using NPCs.Components.Interfaces;
-using NPCs.Components.Navigation;
+using NPCs.Components;
 using NPCs.FSM.Interfaces;
 using NPCs.FSM.States;
+using NPCs.Interfaces;
 using UnityEngine;
 
 namespace NPCs.FSM.Machines
@@ -40,6 +40,11 @@ namespace NPCs.FSM.Machines
         public override void ToFreeLookState()
         {
             SwitchState(new StateEnemyFreeLook(this));
+        }
+        
+        public void ToChasePlayerState()
+        {
+            SwitchState(new StateEnemyChasePlayer(this));
         }
 
         public override void ToDeathState()

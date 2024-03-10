@@ -1,5 +1,5 @@
 ﻿using FSM.Creatures.Interfaces;
-using NPCs.Components.Interfaces;
+using NPCs.Interfaces;
 
 namespace NPCs.FSM.Interfaces
 {
@@ -15,5 +15,7 @@ namespace NPCs.FSM.Interfaces
         #region Methods
 
         #endregion
+
+        void ToChasePlayerState();
     }
 }
