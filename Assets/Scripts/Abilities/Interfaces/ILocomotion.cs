@@ -31,8 +31,8 @@ namespace Abilities.Interfaces
         void SetTargetMotion(Vector3 newTargetDirection);
         void TickMotion(float deltaTime);
         void EnableCollider(bool enable);
+        void Teleport(Vector3 position);
 
         #endregion
-
     }
 }

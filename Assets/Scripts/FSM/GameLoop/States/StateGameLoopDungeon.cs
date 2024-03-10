@@ -1,7 +1,12 @@
 ﻿using System;
+using Abilities.Interfaces;
 using FSM.GameLoop.Enums;
 using FSM.GameLoop.Interfaces;
+using Player.Miscellaneous;
 using Player.StateMachines.States;
+using Props.Common;
+using Statuses.Interfaces;
+using UnityEngine;
 using WorldGeneration.Interfaces;
 
 namespace FSM.GameLoop.States
@@ -19,6 +24,7 @@ namespace FSM.GameLoop.States
 
         #region Fields
 
+        private GameObject PlayerObject { get; set; }
         private ILevelGenerator LevelGenerator { get; set; }
 
         #endregion
@@ -29,6 +35,8 @@ namespace FSM.GameLoop.States
         {
             ILevelGenerator.OnLevelGeneratorLoaded += LevelGeneratorStartedCallback;
             StatePlayerDeath.OnPlayerDied += PlayerDiedCallback;
+            NextFloorLadder.OnNextFloorTriggered += NextFloorTriggeredCallback;
+            PlayerNotifier.OnPlayerLoaded += PlayerLoadedCallback;
             
             StateMachine.LoadScene(GameSceneType.Dungeon);
         }
@@ -37,8 +45,30 @@ namespace FSM.GameLoop.States
         {
             ILevelGenerator.OnLevelGeneratorLoaded -= LevelGeneratorStartedCallback;
             StatePlayerDeath.OnPlayerDied -= PlayerDiedCallback;
+            NextFloorLadder.OnNextFloorTriggered -= NextFloorTriggeredCallback;
+            PlayerNotifier.OnPlayerLoaded -= PlayerLoadedCallback;
             
             StateMachine.UnloadScene(GameSceneType.Dungeon);
+        }
+
+        private void PlayerLoadedCallback(GameObject context)
+        {
+            PlayerObject = context;
+        }
+
+        private void NextFloorTriggeredCallback()
+        {
+            if (PlayerObject.TryGetComponent<IHealth>(out var health))
+            {
+                health.Resurrect();
+            }
+            
+            if (PlayerObject.TryGetComponent<ILocomotion>(out var locomotion))
+            {
+                locomotion.Teleport(Vector3.zero);
+            }
+            
+            LevelGenerator.GenerateNew();
         }
 
         private void PlayerDiedCallback()
