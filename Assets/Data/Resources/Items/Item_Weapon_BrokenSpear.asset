@@ -33,7 +33,7 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   <WeaponHandSprite>k__BackingField: {fileID: -1986463232, guid: cd4769eb3ba62c54b8e782695d0362fb, type: 3}
-  <DamageValue>k__BackingField: 10
+  <DamageValue>k__BackingField: 15
   <SpeedValue>k__BackingField: 90
   <AttackDuration>k__BackingField: 0.5
   <CritPercentBounds>k__BackingField: 0.15

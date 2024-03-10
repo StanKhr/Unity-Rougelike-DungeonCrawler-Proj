@@ -9,6 +9,7 @@ namespace WorldGeneration.Interfaces
         #region Methods
 
         bool TryGetFilling(Vector2Int roomSize, out RoomFilling roomFilling);
+        RoomFilling GetStartRoomFilling();
         RoomFilling GetBossRoomFilling();
         GameObject GetCorridorTrash();
 

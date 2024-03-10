@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaea649d095e460d9a6c2dc073bddd7b, type: 3}
   m_Name: RoomFillings_Dungeon
   m_EditorClassIdentifier: 
+  _startRooms:
+  - {fileID: 8820351627776281320, guid: a5f4e0c341d2c9b4e8cabde3679126bb, type: 3}
   _bossRooms:
   - {fileID: 8820351627776281320, guid: 168941d0e02af6747890d9f98cbb6850, type: 3}
   _roomFillings:
