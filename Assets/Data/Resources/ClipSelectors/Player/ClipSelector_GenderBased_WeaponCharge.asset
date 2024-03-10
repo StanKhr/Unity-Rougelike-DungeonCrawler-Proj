@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e52df88694437698e61ffbdc2de239, type: 3}
+  m_Name: ClipSelector_GenderBased_WeaponCharge
+  m_EditorClassIdentifier: 
+  _male: {fileID: 11400000, guid: 43cb678ffee81824aa858725ddc3f11d, type: 2}
+  _female: {fileID: 11400000, guid: 9576fd8ea417edd4c9f3ce405b316675, type: 2}

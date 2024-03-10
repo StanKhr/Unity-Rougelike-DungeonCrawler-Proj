@@ -10,7 +10,7 @@ namespace Audio.Triggers
     {
         #region Editor Fields
 
-        [SerializeField] private ClipSelectorScriptable _clipSelector;
+        [SerializeField] private ClipSelector _clipSelector;
 
         #endregion
 

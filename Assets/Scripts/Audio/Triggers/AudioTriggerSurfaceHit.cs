@@ -17,13 +17,13 @@ namespace Audio.Triggers
         [SerializeField, Range(0f, 1f)] private float _sfxVolume;
 
         [Header("Clip Selectors")]
-        [SerializeField] private ClipSelectorScriptable _clipSelectorFlesh;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorAstral;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorPlate;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorWood;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorStone;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorWater;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorDirt;
+        [SerializeField] private ClipSelector _clipSelectorFlesh;
+        [SerializeField] private ClipSelector _clipSelectorAstral;
+        [SerializeField] private ClipSelector _clipSelectorPlate;
+        [SerializeField] private ClipSelector _clipSelectorWood;
+        [SerializeField] private ClipSelector _clipSelectorStone;
+        [SerializeField] private ClipSelector _clipSelectorWater;
+        [SerializeField] private ClipSelector _clipSelectorDirt;
 
         #endregion
 

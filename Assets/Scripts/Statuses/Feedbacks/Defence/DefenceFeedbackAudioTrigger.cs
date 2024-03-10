@@ -9,7 +9,7 @@ namespace Statuses.Feedbacks.Defence
         #region Editor Fields
 
         [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorMono;
+        [SerializeField] private ClipSelector _clipSelectorMono;
 
         #endregion
 

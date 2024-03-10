@@ -3,7 +3,7 @@
 namespace Audio.ClipSelectors
 {
     [CreateAssetMenu (menuName = "RPG / Clip Selectors / Simple", fileName = "ClipSelector_Simple_NEW")]
-    public class ClipSelectorScriptableSimple : ClipSelectorScriptable
+    public class ClipSelectorSimple : ClipSelector
     {
         #region Editor Fields
 

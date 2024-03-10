@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Audio.ClipSelectors
 {
     [CreateAssetMenu (menuName = "RPG / Clip Selectors / Queue", fileName = "ClipSelector_Queue_NEW")]
-    public class ClipSelectorScriptableQueue : ClipSelectorScriptable
+    public class ClipSelectorQueue : ClipSelector
     {
         #region Editor Fields
 

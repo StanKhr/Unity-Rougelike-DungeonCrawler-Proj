@@ -11,8 +11,8 @@ namespace Audio.Triggers
         #region Editor Fields
 
         [SerializeField] private LocomotionCharacterController _locomotion;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorJump;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorLanding;
+        [SerializeField] private ClipSelector _clipSelectorJump;
+        [SerializeField] private ClipSelector _clipSelectorLanding;
 
         #endregion
 

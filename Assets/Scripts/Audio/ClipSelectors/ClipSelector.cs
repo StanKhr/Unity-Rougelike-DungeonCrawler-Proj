@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Audio.ClipSelectors
 {
-    public abstract class ClipSelectorScriptable : ScriptableObject, IClipSelector
+    public abstract class ClipSelector : ScriptableObject, IClipSelector
     {
         #region Methods
 

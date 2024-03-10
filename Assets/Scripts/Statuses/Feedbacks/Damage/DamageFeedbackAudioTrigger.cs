@@ -9,8 +9,8 @@ namespace Statuses.Feedbacks.Damage
         #region Editor Fields
 
         [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private ClipSelectorScriptable _damagedClipSelector;
-        [SerializeField] private ClipSelectorScriptable _diedClipSelector;
+        [SerializeField] private ClipSelector _damagedClipSelector;
+        [SerializeField] private ClipSelector _diedClipSelector;
         [SerializeField] private bool _observeDeath = true;
 
         #endregion

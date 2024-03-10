@@ -11,7 +11,7 @@ namespace Audio.Triggers
         #region Editor Fields
 
         [SerializeField] private FootStepsTracker _footStepsTracker;
-        [SerializeField] private ClipSelectorScriptable _clipSelector;
+        [SerializeField] private ClipSelector _clipSelector;
 
         #endregion
 

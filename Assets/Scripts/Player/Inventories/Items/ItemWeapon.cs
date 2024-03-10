@@ -52,8 +52,8 @@ namespace Player.Inventories.Items
         [field: SerializeField] public DamageType DamageType { get; private set; } = DamageType.MeleeSlash;
 
         [Header("Audio")]
-        [SerializeField] private ClipSelectorScriptable _clipSelectorChargeAttack;
-        [SerializeField] private ClipSelectorScriptable _clipSelectorReleaseAttack;
+        [SerializeField] private ClipSelector _clipSelectorChargeAttack;
+        [SerializeField] private ClipSelector _clipSelectorReleaseAttack;
         #endregion
         
         #region Properties

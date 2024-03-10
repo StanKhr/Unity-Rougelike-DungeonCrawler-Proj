@@ -747,7 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 6141010839929952566}
-  _damagedClipSelector: {fileID: 11400000, guid: 31243e3f5d766884c972aedf2488cd60, type: 2}
+  _damagedClipSelector: {fileID: 11400000, guid: 29e370bb1865f0e4c8cabc9c50a97079, type: 2}
   _diedClipSelector: {fileID: 0}
   _observeDeath: 0
 --- !u!1 &5407754322543843440
@@ -912,7 +912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <AudioSource>k__BackingField: {fileID: 6141010839929952566}
   _locomotion: {fileID: 6768869772791888163}
-  _clipSelectorJump: {fileID: 11400000, guid: 9378d4c6cf897e846a7ff2519e7f8143, type: 2}
+  _clipSelectorJump: {fileID: 11400000, guid: 33cf10a0fb44482439e551f566b6a471, type: 2}
   _clipSelectorLanding: {fileID: 11400000, guid: 17ddc4ccf2e5035408aa4dbc2bf61daa, type: 2}
 --- !u!1 &6371515655075773070
 GameObject:
