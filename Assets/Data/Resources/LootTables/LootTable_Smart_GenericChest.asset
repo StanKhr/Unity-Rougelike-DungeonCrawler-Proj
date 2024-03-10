@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af8543d36324b32a5dbabf5a1eec27c, type: 3}
   m_Name: LootTable_Smart_GenericChest
   m_EditorClassIdentifier: 
+  _weaponPreference: 1
   _items:
   - {fileID: 11400000, guid: 927b6ddc30c4be343b08fb717156c4dd, type: 2}
   - {fileID: 11400000, guid: d9e97056254a48b42bd5b678f5ed69c9, type: 2}
   - {fileID: 11400000, guid: 1358157f0a58d4e42921845624c6ae82, type: 2}
+  - {fileID: 11400000, guid: 0c0b5ac9b1fa5824283e878ed628b132, type: 2}
+  - {fileID: 11400000, guid: 2ed20ad3a2a7c444e88f3615427a9177, type: 2}
+  - {fileID: 11400000, guid: a285ba813d40b81438507ecab3c2b523, type: 2}
+  - {fileID: 11400000, guid: 39bb2817c1963764a8552d923ddc3048, type: 2}
+  - {fileID: 11400000, guid: edede0047f4bc42438e7768ce2afac01, type: 2}
