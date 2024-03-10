@@ -12,7 +12,7 @@ namespace Audio.Settings
     {
         #region Constants
 
-        private const float MinVolume = 0f;
+        private const float MinVolume = 0.001f;
         private const float MaxVolume = 1f;
 
         #endregion
@@ -49,7 +49,7 @@ namespace Audio.Settings
                 {
                     newVolume = value;
                 }
-                else if (value < MinVolume)
+                else if (value <= 0)
                 {
                     newVolume = MaxVolume;
                 }
@@ -91,11 +91,6 @@ namespace Audio.Settings
 
         private void OnDestroy()
         {
-            if (Math.Abs(Volume - _defaultVolume) < 0f)
-            {
-                return;
-            }
-            
             PlayerPrefs.SetFloat(_propertyName, Volume);
         }
 
