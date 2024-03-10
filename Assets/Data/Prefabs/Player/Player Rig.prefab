@@ -6763,7 +6763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd50cec5881464fab93ebfbb3f2d939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ownerHealth: {fileID: 0}
+  _ownerHealth: {fileID: 1502697430210199912}
   _attackCollider: {fileID: 321786643662095100}
 --- !u!135 &321786643662095100
 SphereCollider:
@@ -10275,7 +10275,7 @@ PrefabInstance:
     - target: {fileID: 4195803642305481527, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
       propertyPath: _status
       value: 
-      objectReference: {fileID: 8669590793232867940}
+      objectReference: {fileID: 1502697430210199912}
     - target: {fileID: 6348830471163494968, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

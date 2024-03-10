@@ -126,7 +126,7 @@ namespace UI.Utility
         public Player.Interfaces.Personality GeneratePersonality()
         {
             return new Player.Interfaces.Personality(_selectedGender, (float) _healthProperty.Value,
-                (float) _manaProperty.Value, (float) _staminaProperty.Value);
+                (float) _staminaProperty.Value, (float) _manaProperty.Value);
         }
 
         private void StatusValueChangedCallback(PersonalityStatusProperty personalityStatusProperty)

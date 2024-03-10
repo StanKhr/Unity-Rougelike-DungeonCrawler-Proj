@@ -120,7 +120,7 @@ namespace UI.Presenters
         {
             _personalityRect.gameObject.SetActiveSmart(show);
             ShowMainButtons(!show);
-            SelectButton(show ? _startRunButton : _createPersonalityButton);
+            SelectButton(show ? _createPersonalityHideButton : _createPersonalityButton);
         }
         
         private void ShowLore(bool show)

@@ -2088,6 +2088,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 897471428617302060, guid: dba6d4254a0257f4a875fe301f25ce18, type: 3}
+      propertyPath: _minValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6182921977473624245, guid: dba6d4254a0257f4a875fe301f25ce18, type: 3}
       propertyPath: m_text
       value: Stamina
@@ -5057,6 +5061,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 897471428617302060, guid: dba6d4254a0257f4a875fe301f25ce18, type: 3}
+      propertyPath: _minValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6182921977473624245, guid: dba6d4254a0257f4a875fe301f25ce18, type: 3}
       propertyPath: m_text
       value: Mana
@@ -6220,6 +6228,10 @@ PrefabInstance:
     - target: {fileID: 894793956942901598, guid: dba6d4254a0257f4a875fe301f25ce18, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897471428617302060, guid: dba6d4254a0257f4a875fe301f25ce18, type: 3}
+      propertyPath: _minValue
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6390441046890320621, guid: dba6d4254a0257f4a875fe301f25ce18, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
