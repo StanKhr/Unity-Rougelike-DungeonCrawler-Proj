@@ -11,7 +11,6 @@ namespace Player.Inventories.LootTables
     {
         #region Editor Fields
 
-        [SerializeField] private bool _weaponPreference = true;
         [SerializeField] private Item[] _items;
 
         #endregion
@@ -31,26 +30,6 @@ namespace Player.Inventories.LootTables
                 _itemsList.AddRange(_items);
             }
 
-            if (!_weaponPreference)
-            {
-                return FindRandomItem();
-            }
-
-            if (!user.TryGetComponent<IInventory>(out var inventory))
-            {
-                return FindRandomItem();
-            }
-
-            if (inventory.HasItemType(typeof(ItemWeapon), out _))
-            {
-                return FindRandomItem();
-            }
-
-            if (TryFindWeapon(out var weapon))
-            {
-                return weapon;
-            }
-
             return FindRandomItem();
         }
 
@@ -61,24 +40,6 @@ namespace Player.Inventories.LootTables
             _itemsList.RemoveAt(listIndex);
 
             return item;
-        }
-
-        private bool TryFindWeapon(out IItem weapon)
-        {
-            for (int i = 0; i < _itemsList.Count; i++)
-            {
-                if (_itemsList[i].GetType() != typeof(ItemWeapon))
-                {
-                    continue;
-                }
-
-                weapon = _itemsList[i];
-                _itemsList.RemoveAt(i);
-                return true;
-            }
-
-            weapon = null;
-            return false;
         }
 
         #endregion
