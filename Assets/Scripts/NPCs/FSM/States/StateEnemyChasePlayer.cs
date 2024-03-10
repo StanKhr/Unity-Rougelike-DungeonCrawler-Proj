@@ -34,6 +34,8 @@ namespace NPCs.FSM.States
         public override void Tick(float deltaTime)
         {
             var playerFinder = StateMachineEnemy.PlayerFinder;
+            playerFinder.Tick(deltaTime);
+            
             if (!playerFinder.PlayerFound)
             {
                 StateMachineEnemy.ToFreeLookState();

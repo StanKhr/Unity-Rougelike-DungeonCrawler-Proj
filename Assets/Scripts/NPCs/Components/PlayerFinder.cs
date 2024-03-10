@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous;
 using NPCs.Interfaces;
 using UnityEngine;
 
@@ -16,13 +17,17 @@ namespace NPCs.Components
 
         [SerializeField] private float _scanDelay = 0.5f;
         [SerializeField] private float _scanRadius = 5f;
+        [SerializeField] private float _chaseMaxDistance = 7f;
+        [SerializeField] private float _stopChaseMinTimeSeconds = 5f;
         [SerializeField] private LayerMask _scanLayers;
+        [SerializeField] private LayerMask _obstacleLayers;
 
         #endregion
 
         #region Fields
 
         private float _delay;
+        private float _stopChaseTimer;
 
         private GameObject _playerObject;
 
@@ -32,8 +37,13 @@ namespace NPCs.Components
 
         #region Properties
 
-        public bool PlayerFound { get; private set; }
-        public Vector3 PlayerPosition => _playerObject ? _playerObject.transform.position : Vector3.zero;
+        private GameObject PlayerObject
+        {
+            get => _playerObject;
+            set => _playerObject = value;
+        }
+        public bool PlayerFound => PlayerObject;
+        public Vector3 PlayerPosition => PlayerObject ? PlayerObject.transform.position : Vector3.zero;
 
         #endregion
 
@@ -55,27 +65,38 @@ namespace NPCs.Components
         {
             if (PlayerFound)
             {
-                return;
+                var visible = PlayerIsVisible();
+                // LogWriter.DevelopmentLog($"Player is visible: {visible}; timer {_delay}");
+                if (visible)
+                {
+                    _delay = _stopChaseMinTimeSeconds;
+                    return;
+                }
             }
-
+            
             if (_delay > 0f)
             {
                 _delay -= deltaTime;
                 return;
             }
 
-            _delay = _scanDelay;
+            if (!PlayerFound)
+            {
+                _delay = _scanDelay;
+                PlayerObject = TryFindPlayer();
+                return;
+            }
 
-            PlayerFound = TryFindPlayer();
+            PlayerObject = null;
         }
 
-        private bool TryFindPlayer()
+        private GameObject TryFindPlayer()
         {
             Array.Clear(ScanResults, 0, ScanResults.Length);
 
             if (Physics.OverlapSphereNonAlloc(transform.position, _scanRadius, ScanResults, _scanLayers) <= 0)
             {
-                return false;
+                return null;
             }
 
             for (int i = 0; i < ScanResults.Length; i++)
@@ -90,11 +111,25 @@ namespace NPCs.Components
                     continue;
                 }
 
-                _playerObject = ScanResults[i].gameObject;
-                return true;
+                return ScanResults[i].gameObject;
             }
             
-            return false;
+            return null;
+        }
+
+        private bool PlayerIsVisible()
+        {
+            var enemyPosition = transform.position;
+            var playerPosition = PlayerPosition;
+            playerPosition.y = enemyPosition.y;
+
+            if (Vector3.Distance(enemyPosition, playerPosition) > _chaseMaxDistance)
+            {
+                return false;
+            }
+            
+            var linecast = Physics.Linecast(enemyPosition, playerPosition, out _, _obstacleLayers);
+            return linecast;
         }
 
         #endregion

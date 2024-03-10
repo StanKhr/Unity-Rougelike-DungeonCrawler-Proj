@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3137347232264437333}
   - component: {fileID: 647146215139653605}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShieldSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5208542294206855903}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,9 +713,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scanDelay: 0.5
   _scanRadius: 5
+  _chaseMaxDistance: 12
+  _stopChaseMinTimeSeconds: 5
   _scanLayers:
     serializedVersion: 2
     m_Bits: 128
+  _obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &6854518714594591606
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5387125769852037917}
   - component: {fileID: 3332561336589886051}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7946739637548971680}
   - component: {fileID: 1250311004595220209}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DecalShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
