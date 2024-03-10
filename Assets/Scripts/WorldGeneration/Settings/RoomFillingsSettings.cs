@@ -13,6 +13,7 @@ namespace WorldGeneration.Settings
     {
         #region Editor Fields
 
+        [SerializeField] private RoomFilling[] _startRooms;
         [SerializeField] private RoomFilling[] _bossRooms;
         [SerializeField] private RoomFilling[] _roomFillings;
         [SerializeField, Range(0f, 1f)] private float _corridorTrashSpawnChance;
@@ -101,6 +102,11 @@ namespace WorldGeneration.Settings
             refillableList.RemoveAt(randomIndex);
 
             return true;
+        }
+
+        public RoomFilling GetStartRoomFilling()
+        {
+            return _startRooms[Randomizer.RangeInt(0, _startRooms.Length)];
         }
 
         public RoomFilling GetBossRoomFilling()

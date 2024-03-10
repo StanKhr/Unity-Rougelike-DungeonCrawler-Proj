@@ -138,6 +138,17 @@ namespace Abilities.Locomotion
             _characterController.enabled = false;
         }
 
+        public void Teleport(Vector3 position)
+        {
+            var reEnableController = _characterController.enabled;
+            _characterController.enabled = false;
+            _characterController.transform.position = position;
+            if (reEnableController)
+            {
+                _characterController.enabled = true;
+            }
+        }
+
         private void TickGravity(float deltaTime)
         {
             Grounded = _groundScanner.ScanForGround(out _);

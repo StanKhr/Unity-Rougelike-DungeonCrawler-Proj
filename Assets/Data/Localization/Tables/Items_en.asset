@@ -61,6 +61,78 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 8722672576366379015
+  - m_Id: 5694014442430475
+    m_Localized: Rice Soup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5694014442430477
+    m_Localized: Bandit Knife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5694014442430493
+    m_Localized: Priest Hammer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5694014442430495
+    m_Localized: Broken Gigantic Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5694014442430497
+    m_Localized: Steel Hammer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5694014442430499
+    m_Localized: Broken Spear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5694014442430501
+    m_Localized: Sharp Cutlass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5694014442430503
+    m_Localized: Poisoned Dagger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5697276646252557
+    m_Localized: Heal Potion (Small)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5697276646252558
+    m_Localized: Heal Potion (Average)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5697276646252559
+    m_Localized: Heal Potion (Big)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5694014408876032
+    m_Localized: Apple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5694014438236161
+    m_Localized: Cheese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5694014442430465
+    m_Localized: Sausage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5694014442430467
+    m_Localized: Bread
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5697852519997454
+    m_Localized: A common potion.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5697852519997455
+    m_Localized: A common food.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5697852519997456
+    m_Localized: A common weapon.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

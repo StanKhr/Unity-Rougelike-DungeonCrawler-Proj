@@ -14,7 +14,8 @@ namespace WorldGeneration.Interfaces
         #endregion
 
         #region Methods
-
+        
+        void GenerateNew();
         void Generate(int seed);
         void Clear();
 

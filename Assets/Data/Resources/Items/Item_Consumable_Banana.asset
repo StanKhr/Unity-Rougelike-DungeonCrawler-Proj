@@ -32,7 +32,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  _consumableEffectScriptable: {fileID: 11400000, guid: 6dcf67307a209024a9ae9a5e37f6b448, type: 2}
+  _consumableEffectScriptable: {fileID: 11400000, guid: 9a1505de02a4d4848a1e0f241ec196e3, type: 2}
   references:
     version: 2
     RefIds: []

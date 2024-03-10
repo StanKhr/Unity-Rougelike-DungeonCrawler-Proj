@@ -73,14 +73,19 @@ namespace WorldGeneration.Generators
         private void Start()
         {
             (this as ILevelGenerator).CallGeneratorLoadedEvent(this);
-            
-            var randomSeed = Guid.NewGuid().GetHashCode();
-            Generate(randomSeed);
+
+            GenerateNew();
         }
 
         #endregion
 
         #region Methods
+
+        public void GenerateNew()
+        {
+            var randomSeed = Guid.NewGuid().GetHashCode();
+            Generate(randomSeed);
+        } 
 
         public void Generate(int seed)
         {
@@ -236,22 +241,35 @@ namespace WorldGeneration.Generators
             
             var roomBoundsList = new List<Bounds>();
             var startRoom = _rooms[0];
+
+            var startRoomFillingPrefab = RoomFillingsSettings.GetStartRoomFilling();
+            var startRoomFilling = Instantiate(startRoomFillingPrefab, startRoom.GetWorldCenterPosition(_gridCellScale),
+                Quaternion.identity,
+                fillingsContainer.transform);
+            if (startRoom.Rotated)
+            {
+                startRoomFilling.Rotate();
+            }
+            else
+            {
+                startRoomFilling.TryMirror();
+            }
             
             roomBoundsList.Add(startRoom.GetBounds(_gridCellScale));
 
             var bossRoomFillingPrefab = RoomFillingsSettings.GetBossRoomFilling();
             var bossRoom = _rooms[^1];
 
-            var roomFilling = Instantiate(bossRoomFillingPrefab, bossRoom.GetWorldCenterPosition(_gridCellScale),
+            var bossRoomFilling = Instantiate(bossRoomFillingPrefab, bossRoom.GetWorldCenterPosition(_gridCellScale),
                 Quaternion.identity,
                 fillingsContainer.transform);
             if (bossRoom.Rotated)
             {
-                roomFilling.Rotate();
+                bossRoomFilling.Rotate();
             }
             else
             {
-                roomFilling.TryMirror();
+                bossRoomFilling.TryMirror();
             }
 
             roomBoundsList.Add(bossRoom.GetBounds(_gridCellScale));
@@ -285,15 +303,15 @@ namespace WorldGeneration.Generators
                 roomBoundsList.Add(roomBounds);
 
                 // instantiating room filling
-                roomFilling = Instantiate(fillingPrefab, _rooms[i].GetWorldCenterPosition(_gridCellScale),
+                bossRoomFilling = Instantiate(fillingPrefab, _rooms[i].GetWorldCenterPosition(_gridCellScale),
                     Quaternion.identity, fillingsContainer.transform);
                 if (_rooms[i].Rotated)
                 {
-                    roomFilling.Rotate();
+                    bossRoomFilling.Rotate();
                 }
                 else
                 {
-                    roomFilling.TryMirror();
+                    bossRoomFilling.TryMirror();
                 }
             }
 

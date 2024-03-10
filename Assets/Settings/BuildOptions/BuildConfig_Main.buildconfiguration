@@ -30,6 +30,10 @@
                 {
                     "Scene": "GlobalObjectId_V1-1-f6e36b40a685e5a43b6c856bb7ded800-102900000-0",
                     "AutoLoad": false
+                },
+                {
+                    "Scene": "GlobalObjectId_V1-1-48a0829e61e06ae428b71c862b5324fc-102900000-0",
+                    "AutoLoad": false
                 }
             ]
         },

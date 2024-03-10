@@ -209,10 +209,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4743037445829944107}
     m_Modifications:
-    - target: {fileID: 3072713143366159533, guid: f1414b58f0983fb4dba5efa59b03b2a7, type: 3}
-      propertyPath: _lootTable
-      value: 
-      objectReference: {fileID: 11400000, guid: b2a68b163e323f04f9cfca5735a46a71, type: 2}
     - target: {fileID: 3933032474151097346, guid: f1414b58f0983fb4dba5efa59b03b2a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5

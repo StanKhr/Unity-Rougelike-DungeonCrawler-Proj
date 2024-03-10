@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c1f16b0b6a43eba81533f597c8c9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lootTable: {fileID: 11400000, guid: b2a68b163e323f04f9cfca5735a46a71, type: 2}
+  _lootTable: {fileID: 11400000, guid: 279498dd0c30a2f469c58c0bec08210b, type: 2}
 --- !u!114 &839952826245673942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68f118b733449b28bcfaa528e73c839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nonTranslatedName: 
   _localizedString:
     m_TableReference:
       m_TableCollectionName: GUID:77543326267eca4498b80a366ea8594e

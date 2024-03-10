@@ -165,43 +165,106 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hand_interact_left
+      name: player_hand_yellowDagger
       rect:
         serializedVersion: 2
-        x: 71
+        x: 70
         y: 0
-        width: 24
-        height: 37
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        width: 36
+        height: 41
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 642984dac08d72842b833af078f5d52b
-      internalID: 661063311
+      spriteID: 7bcda433b94f220498b0428cf6fccb94
+      internalID: -136386006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hand_empty_left_2
+      name: player_hand_cutlass
       rect:
         serializedVersion: 2
-        x: 96
+        x: 106
         y: 0
-        width: 38
-        height: 37
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        width: 39
+        height: 56
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3afa496e27f4b0428a2bfdfa612fc94
-      internalID: -1640501419
+      spriteID: a68fade8f32c7ef4aafa726494d8c1d5
+      internalID: -291838530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_hand_brokenSword
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 58
+        width: 41
+        height: 51
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce2c8a435385b9742b3008ce45487387
+      internalID: -258688113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_weapon_brokenSpear
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 61
+        width: 34
+        height: 56
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f9877800f9de04996cf27fa26cdab0
+      internalID: -1986463232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_weapon_hammer
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 81
+        width: 38
+        height: 52
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4fed811efeaeb842bc0ed63c9afe423
+      internalID: 771101555
       vertices: []
       indices: 
       edges: []
@@ -217,10 +280,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      player_hand_brokenSword: -258688113
+      player_hand_cutlass: -291838530
       player_hand_empty_left: -1124656734
       player_hand_empty_left_2: -1640501419
       player_hand_interact_left: 661063311
       player_hand_sword_right: -1388549182
+      player_hand_yellowDagger: -136386006
+      player_weapon_brokenSpear: -1986463232
+      player_weapon_hammer: 771101555
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

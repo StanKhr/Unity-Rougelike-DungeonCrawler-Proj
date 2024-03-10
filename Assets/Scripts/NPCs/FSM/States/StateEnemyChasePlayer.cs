@@ -47,6 +47,7 @@ namespace NPCs.FSM.States
               
             var playerPosition = playerFinder.PlayerPosition;
             var locomotion = StateMachineEnemy.Locomotion;
+            playerPosition.y = locomotion.Position.y;
 
             var enemyAttack = StateMachineEnemy.EnemyAttack;
             if (Vector3.Distance(locomotion.Position, playerPosition) <= enemyAttack.MinAttackDistance)

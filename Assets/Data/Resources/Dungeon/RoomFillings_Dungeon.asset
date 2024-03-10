@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaea649d095e460d9a6c2dc073bddd7b, type: 3}
   m_Name: RoomFillings_Dungeon
   m_EditorClassIdentifier: 
+  _startRooms:
+  - {fileID: 8820351627776281320, guid: a5f4e0c341d2c9b4e8cabde3679126bb, type: 3}
   _bossRooms:
   - {fileID: 8820351627776281320, guid: 168941d0e02af6747890d9f98cbb6850, type: 3}
   _roomFillings:
@@ -21,6 +23,7 @@ MonoBehaviour:
   - {fileID: 8820351627776281320, guid: 1495f1a28fe208345b183dbaf3c4f468, type: 3}
   - {fileID: 8820351627776281320, guid: e8d2ce8b880070949804374ec1c2fb30, type: 3}
   - {fileID: 8820351627776281320, guid: 5a6377ccfd5e386449832dd1d259bdd3, type: 3}
+  - {fileID: 8820351627776281320, guid: 34a6f5a216556c148a0556e382cab243, type: 3}
   _corridorTrashSpawnChance: 0.1
   _corridorTrashPrefabs:
   - {fileID: 2368887119196729179, guid: 0c18f60336fc18d4f93760169d7dc6be, type: 3}
