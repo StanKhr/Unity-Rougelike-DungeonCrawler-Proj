@@ -6763,7 +6763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd50cec5881464fab93ebfbb3f2d939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ownerHealth: {fileID: 2653844354053392620}
+  _ownerHealth: {fileID: 0}
   _attackCollider: {fileID: 321786643662095100}
 --- !u!135 &321786643662095100
 SphereCollider:
@@ -7005,7 +7005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7457b863f284ebaa3f2b13fb082b649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealth: {fileID: 2653844354053392620}
+  _playerHealth: {fileID: 1502697430210199912}
   _canvasGroup: {fileID: 2561337619433243647}
   _fullFilledValue: 0.5
   _effectDecayDelay: 0.5
@@ -9080,22 +9080,22 @@ PrefabInstance:
       addedObject: {fileID: 6937998386859244194}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 782408980134efb4da21bbed16055e12, type: 3}
---- !u!20 &1824464880832198011 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2526243660601472392, guid: 782408980134efb4da21bbed16055e12, type: 3}
-  m_PrefabInstance: {fileID: 4206019128908447987}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2653844354053392620 stripped
+--- !u!114 &1502697430210199912 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2200731330181941279, guid: 782408980134efb4da21bbed16055e12, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3351926364369600923, guid: 782408980134efb4da21bbed16055e12, type: 3}
   m_PrefabInstance: {fileID: 4206019128908447987}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c3f29bb08dd498594b36b3ec0ebe259, type: 3}
+  m_Script: {fileID: 11500000, guid: 21736496f8a74376a7676fad30c13e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &1824464880832198011 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2526243660601472392, guid: 782408980134efb4da21bbed16055e12, type: 3}
+  m_PrefabInstance: {fileID: 4206019128908447987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2722395327941324373 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2276899729217826470, guid: 782408980134efb4da21bbed16055e12, type: 3}
@@ -10275,7 +10275,7 @@ PrefabInstance:
     - target: {fileID: 4195803642305481527, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
       propertyPath: _status
       value: 
-      objectReference: {fileID: 2653844354053392620}
+      objectReference: {fileID: 8669590793232867940}
     - target: {fileID: 6348830471163494968, guid: b5132c9c4192d6f4180a75008c5b9108, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

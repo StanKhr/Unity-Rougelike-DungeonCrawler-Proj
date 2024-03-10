@@ -20,18 +20,24 @@ namespace UI.Utility
         
         #region Editor Fields
 
+        
         [SerializeField] private PersonalityStatusProperty _healthProperty;
         [SerializeField] private PersonalityStatusProperty _staminaProperty;
         [SerializeField] private PersonalityStatusProperty _manaProperty;
 
         [Header("Views")]
         [SerializeField] private TextMeshProUGUI _sumText;
+        [SerializeField] private Button _genderNextButton;
+        [SerializeField] private Button _genderPreviousButton;
+        [SerializeField] private TextMeshProUGUI _genderText;
 
         #endregion
 
         #region Fields
 
+        private GenderType _selectedGender;
         private List<PersonalityStatusProperty> _statusProperties;
+        private Dictionary<GenderType, string> _genderNames;
 
         #endregion
 
@@ -44,6 +50,26 @@ namespace UI.Utility
             _manaProperty
         };
 
+        private Dictionary<GenderType, string> GenderNames
+        {
+            get
+            {
+                if (_genderNames != null)
+                {
+                    return _genderNames;
+                }
+
+                _genderNames ??= new Dictionary<GenderType, string>();
+                var enumNames = Enum.GetNames(typeof(GenderType));
+                for (int i = 0; i < enumNames.Length; i++)
+                {
+                    _genderNames.Add((GenderType)i, enumNames[i]);
+                }
+
+                return _genderNames;
+            }
+        }
+
         public bool StatusPointsAllocated => CalculateExpectedSum() == 0;
 
         #endregion
@@ -53,12 +79,21 @@ namespace UI.Utility
         private void Start()
         {
             PersonalityStatusProperty.OnStatusValueChanged += StatusValueChangedCallback;
+            
+            _genderNextButton.onClick.AddListener(() => GenderNext(true));
+            _genderPreviousButton.onClick.AddListener(() => GenderNext(false));
+            
             ActivateProperties(true);
+            SelectGender(GenderType.Male);
         }
 
         private void OnDestroy()
         {
             PersonalityStatusProperty.OnStatusValueChanged -= StatusValueChangedCallback;
+            
+            _genderNextButton.onClick.RemoveAllListeners();
+            _genderPreviousButton.onClick.RemoveAllListeners();
+            
             ActivateProperties(false);
         }
 
@@ -66,9 +101,31 @@ namespace UI.Utility
 
         #region Methods
 
+        private void GenderNext(bool moveForward)
+        {
+            var index = (int) _selectedGender;
+            index += moveForward ? 1 : -1;
+            if (GenderNames.Values.Count <= index)
+            {
+                index = 0;
+            }
+            else if (index < 0)
+            {
+                index = GenderNames.Values.Count - 1;
+            }
+            
+            SelectGender((GenderType) index);
+        }
+
+        private void SelectGender(GenderType genderType)
+        {
+            _selectedGender = genderType;
+            _genderText.text = GenderNames[_selectedGender];
+        }
+
         public Player.Interfaces.Personality GeneratePersonality()
         {
-            return new Player.Interfaces.Personality(GenderType.Male, (float) _healthProperty.Value,
+            return new Player.Interfaces.Personality(_selectedGender, (float) _healthProperty.Value,
                 (float) _manaProperty.Value, (float) _staminaProperty.Value);
         }
 

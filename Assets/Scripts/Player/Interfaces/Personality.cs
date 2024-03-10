@@ -22,7 +22,10 @@ namespace Player.Interfaces
 
         public Personality(GenderType gender, float health, float stamina, float mana)
         {
-            
+            Gender = gender;
+            Health = health;
+            Stamina = stamina;
+            Mana = mana;
         }
 
         #endregion
