@@ -22,4 +22,7 @@ MonoBehaviour:
   - <EnemyType>k__BackingField: 0
     <Prefab>k__BackingField: {fileID: 7595267231226952789, guid: f1d18bdd17ee11047a0f4a4e0fdd4b6a, type: 3}
     <SpawnWeight>k__BackingField: 1
+  - <EnemyType>k__BackingField: 0
+    <Prefab>k__BackingField: {fileID: 9068390077472807894, guid: e2a24b823706c3346be181912135dee5, type: 3}
+    <SpawnWeight>k__BackingField: 3
   _bossPrefab: {fileID: 0}

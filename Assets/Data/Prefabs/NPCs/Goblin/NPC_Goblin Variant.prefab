@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1139984471223701466
+--- !u!1001 &2505033933736636583
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1699242613050725822, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: _baseValue
-      value: 20
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1874072077404878237, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1874072077404878237, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1874072077404878237, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -55,50 +55,30 @@ PrefabInstance:
     - target: {fileID: 3156577450657137879, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: _diedClipSelector
       value: 
-      objectReference: {fileID: 11400000, guid: ca48252859c0bf24aab3641c79926284, type: 2}
+      objectReference: {fileID: 11400000, guid: 7e53aecab0c6fb6458e3b7a92b41b976, type: 2}
     - target: {fileID: 3156577450657137879, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: _damagedClipSelector
       value: 
-      objectReference: {fileID: 11400000, guid: 8a645c8a63ca0a84f862b7bc75e58426, type: 2}
-    - target: {fileID: 3332561336589886051, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
-      propertyPath: m_Size.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3332561336589886051, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
-      propertyPath: m_Size.y
-      value: 3
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 35733f6d01a610c40bd87b1a7a03e019, type: 2}
     - target: {fileID: 3332561336589886051, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -590899687, guid: 300ccd53142d74046b78d8787f420e3e, type: 3}
-    - target: {fileID: 3332561336589886051, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4235102361156619401, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
-      propertyPath: _baseValue
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5387125769852037917, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 847027036, guid: 8f91823886d9bcd42b8aa73f327d3769, type: 3}
     - target: {fileID: 6331427975620954505, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: f5d8778ddc56b684c8ee6470dda2aa66, type: 2}
+      objectReference: {fileID: 22100000, guid: 030de622673e48040a3179ee2d1a9344, type: 2}
     - target: {fileID: 6415537067725104158, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: _locomotionData.<RunSpeed>k__BackingField
-      value: 2
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6853018127330601841, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: m_Name
-      value: NPC_Bat
+      value: NPC_Goblin Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7177525359821227806, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: _nonTranslatedName
-      value: Rabid Bat
+      value: Greedy Goblin
       objectReference: {fileID: 0}
     - target: {fileID: 7177525359821227806, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: _localizedString.m_TableEntryReference.m_KeyId
@@ -112,10 +92,19 @@ PrefabInstance:
       propertyPath: _damageValue
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4235102361156619401, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
-    - {fileID: 3219481087715430697, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
-    - {fileID: 2928223629394422033, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+    - target: {fileID: 8069418663691102756, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: _attackRadius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069418663691102756, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: <AttackChargeTime>k__BackingField
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069418663691102756, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: <AttackReleaseTime>k__BackingField
+      value: 0.8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
