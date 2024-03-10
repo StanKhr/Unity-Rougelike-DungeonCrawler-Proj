@@ -21,7 +21,7 @@ namespace Audio.ClipSelectors
         
         #region Methods
 
-        public override AudioClip Select()
+        public override AudioClip SelectNext()
         {
             if (_clips.Length <= 0)
             {

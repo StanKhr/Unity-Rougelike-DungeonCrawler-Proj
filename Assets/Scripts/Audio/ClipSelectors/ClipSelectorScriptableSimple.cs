@@ -13,7 +13,7 @@ namespace Audio.ClipSelectors
         
         #region Methods
 
-        public override AudioClip Select()
+        public override AudioClip SelectNext()
         {
             return _clip;
         }

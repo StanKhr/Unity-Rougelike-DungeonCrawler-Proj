@@ -12,7 +12,7 @@ namespace Audio.Interfaces
         
         #region Methods
 
-        AudioClip Select();
+        AudioClip SelectNext();
         bool TryOneShotOnAudioSource(AudioSource audioSource, float volume = BaseVolume)
         {
             if (!audioSource)
@@ -20,7 +20,7 @@ namespace Audio.Interfaces
                 return false;
             }
             
-            var clip = Select();
+            var clip = SelectNext();
             if (!clip)
             {
                 return false;
@@ -32,7 +32,7 @@ namespace Audio.Interfaces
 
         bool TryOneShotAtPosition(Vector3 position, float volume = BaseVolume)
         {
-            var clip = Select();
+            var clip = SelectNext();
             if (!clip)
             {
                 return false;

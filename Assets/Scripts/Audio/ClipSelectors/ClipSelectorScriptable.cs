@@ -7,7 +7,7 @@ namespace Audio.ClipSelectors
     {
         #region Methods
 
-        public abstract AudioClip Select();
+        public abstract AudioClip SelectNext();
 
         #endregion
     }
