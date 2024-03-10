@@ -127,9 +127,10 @@ namespace NPCs.Components
             {
                 return false;
             }
-            
-            var linecast = Physics.Linecast(enemyPosition, playerPosition, out _, _obstacleLayers);
-            return linecast;
+
+            return true;
+            // var linecast = Physics.Linecast(enemyPosition, playerPosition, out _, _obstacleLayers);
+            // return linecast;
         }
 
         #endregion

@@ -63,7 +63,7 @@ namespace NPCs.FSM.Machines
 
         public override void ToDeathState()
         {
-            
+            SwitchState(new StateEnemyDeath(this));
         }
 
         #endregion

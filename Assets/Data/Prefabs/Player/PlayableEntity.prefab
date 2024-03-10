@@ -591,8 +591,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseValue: 100
-  _regenerateDelaySeconds: 1.5
-  _rechargePercentPerSec: 0.1
+  _regenerateDelaySeconds: 1.2
+  _rechargePercentPerSec: 0.4
 --- !u!114 &2276899729217826470
 MonoBehaviour:
   m_ObjectHideFlags: 0

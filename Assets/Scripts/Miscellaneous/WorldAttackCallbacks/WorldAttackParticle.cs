@@ -1,7 +1,7 @@
 ﻿using Miscellaneous.ObjectPooling;
 using UnityEngine;
 
-namespace Miscellaneous
+namespace Miscellaneous.WorldAttackCallbacks
 {
     public class WorldAttackParticle : PooledObject
     {

@@ -227,6 +227,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: sprite_knightSword_death
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 36
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892cfd309ec8dd441a44e994042a6388
+      internalID: 1553430860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_knightSword_attack1
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 48
+        width: 46
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f80d67a7fcd59cb469e55620c8d41b0b
+      internalID: -1829669362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_knightSword_attack0
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 0
+        width: 56
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfb9287da0ca8034e9e2a909d1052d40
+      internalID: 247872845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -238,6 +301,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      sprite_knightSword_attack0: 247872845
+      sprite_knightSword_attack1: -1829669362
+      sprite_knightSword_death: 1553430860
       sprite_knightSword_idle_0: -466742870
       sprite_knightSword_idle_1: -633304953
       sprite_knightSword_idle_2: 1600067892

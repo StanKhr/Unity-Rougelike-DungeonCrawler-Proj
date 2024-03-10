@@ -6,8 +6,16 @@ namespace NPCs.Components
 {
     public class EnemyAnimations : MonoBehaviour, IEnemyAnimations
     {
+        #region Properties
+
+        private const float MinVelocity = 0f;
+        private const float MaxVelocity = 1f;
+
+        #endregion
+        
         #region Constants
 
+        private static readonly int VelocityHash = Animator.StringToHash("Velocity");
         private static readonly int IdleHash = Animator.StringToHash("Idle");
         private static readonly int MovementHash = Animator.StringToHash("Movement");
         private static readonly int AttackHash = Animator.StringToHash("Attack");
@@ -25,12 +33,12 @@ namespace NPCs.Components
 
         public void PlayIdle()
         {
-            PlayAnimation(IdleHash);
+            _animator.SetFloat(VelocityHash, MinVelocity);
         }
 
         public void PlayMovement()
         {
-            PlayAnimation(MovementHash);
+            _animator.SetFloat(VelocityHash, MaxVelocity);
         }
 
         public void PlayAttack()

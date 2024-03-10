@@ -1,11 +1,10 @@
-﻿using System;
-using Audio.ClipSelectors;
+﻿using Audio.ClipSelectors;
 using Audio.Interfaces;
 using Miscellaneous.ObjectPooling;
 using NPCs.Components;
 using UnityEngine;
 
-namespace Miscellaneous
+namespace Miscellaneous.WorldAttackCallbacks
 {
     public class WorldAttackParticleSpawner : MonoBehaviour
     {
