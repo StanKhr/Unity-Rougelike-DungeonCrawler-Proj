@@ -23,6 +23,9 @@ namespace NPCs.FSM.States
 
             var locomotion = StateMachineEnemy.Locomotion;
             navMeshAgentWrapper.TeleportAgent(locomotion.BodyVelocity);
+
+            var enemyAnimations = StateMachineEnemy.EnemyAnimations;
+            enemyAnimations.PlayMovement();
         }
 
         public override void Exit()
@@ -41,10 +44,18 @@ namespace NPCs.FSM.States
                 StateMachineEnemy.ToFreeLookState();
                 return;
             }
-            
-            var navMeshAgentWrapper = StateMachineEnemy.NavMeshAgentWrapper;    
+              
             var playerPosition = playerFinder.PlayerPosition;
             var locomotion = StateMachineEnemy.Locomotion;
+
+            var enemyAttack = StateMachineEnemy.EnemyAttack;
+            if (Vector3.Distance(locomotion.Position, playerPosition) <= enemyAttack.MinAttackDistance)
+            {
+                StateMachineEnemy.ToAttackState();
+                return;
+            }
+            
+            var navMeshAgentWrapper = StateMachineEnemy.NavMeshAgentWrapper;  
 
             Vector3 direction;
             

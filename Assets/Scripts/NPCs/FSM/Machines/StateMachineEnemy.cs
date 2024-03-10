@@ -13,6 +13,13 @@ namespace NPCs.FSM.Machines
 
         [SerializeField] private NavMeshAgentWrapper _navMeshAgentWrapper;
         [SerializeField] private PlayerFinder _playerFinder;
+        [SerializeField] private EnemyAnimations _enemyAnimations;
+
+        #endregion
+
+        #region Fields
+
+        private IEnemyAttack _usedAttack;
 
         #endregion
 
@@ -20,6 +27,8 @@ namespace NPCs.FSM.Machines
 
         public INavMeshAgentWrapper NavMeshAgentWrapper => _navMeshAgentWrapper;
         public IPlayerFinder PlayerFinder => _playerFinder;
+        public IEnemyAnimations EnemyAnimations => _enemyAnimations;
+        public IEnemyAttack EnemyAttack => _usedAttack ??= GetComponent<IEnemyAttack>();
 
         #endregion
 
@@ -45,6 +54,11 @@ namespace NPCs.FSM.Machines
         public void ToChasePlayerState()
         {
             SwitchState(new StateEnemyChasePlayer(this));
+        }
+
+        public void ToAttackState()
+        {
+            SwitchState(new StateEnemyAttack(this));
         }
 
         public override void ToDeathState()

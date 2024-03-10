@@ -450,6 +450,8 @@ GameObject:
   - component: {fileID: 7362294145834760517}
   - component: {fileID: 6415537067725104158}
   - component: {fileID: 3564397264175259313}
+  - component: {fileID: 8069418663691102756}
+  - component: {fileID: 4525650589994647203}
   m_Layer: 7
   m_Name: NPC_KnightSword
   m_TagString: Plate
@@ -657,6 +659,7 @@ MonoBehaviour:
   _health: {fileID: 1699242613050725822}
   _navMeshAgentWrapper: {fileID: 7362294145834760517}
   _playerFinder: {fileID: 3564397264175259313}
+  _enemyAnimations: {fileID: 4525650589994647203}
 --- !u!114 &7362294145834760517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,6 +724,39 @@ MonoBehaviour:
   _obstacleLayers:
     serializedVersion: 2
     m_Bits: 1
+--- !u!114 &8069418663691102756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853018127330601841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8555b060f85a4fc58f4b59a58885db26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AttackChargeTime>k__BackingField: 0.6
+  <AttackReleaseTime>k__BackingField: 1.2
+  <MinAttackDistance>k__BackingField: 3
+  _attackRadius: 4
+  _damageValue: 10
+  _damageableLayers:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &4525650589994647203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853018127330601841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3198e1628931475d952e7525e8e13847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 6331427975620954505}
 --- !u!1 &6854518714594591606
 GameObject:
   m_ObjectHideFlags: 0

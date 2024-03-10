@@ -9,13 +9,16 @@ namespace NPCs.FSM.Interfaces
 
         INavMeshAgentWrapper NavMeshAgentWrapper { get; }
         IPlayerFinder PlayerFinder { get; }
+        IEnemyAnimations EnemyAnimations { get; }
+        IEnemyAttack EnemyAttack { get; }
 
         #endregion
 
         #region Methods
 
-        #endregion
-
         void ToChasePlayerState();
+        void ToAttackState();
+
+        #endregion
     }
 }

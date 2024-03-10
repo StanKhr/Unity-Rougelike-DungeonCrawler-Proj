@@ -26,7 +26,9 @@ namespace Miscellaneous
         public delegate void MeleeAttackDataEvents(MeleeAttackData context);
         public delegate void LevelGeneratorEvents(ILevelGenerator levelGenerator);
         public delegate void StatusPropertyEvents(PersonalityStatusProperty personalityStatusProperty);
+        public delegate void Vector3Events(Vector3 context);
 
         #endregion
+
     }
 }

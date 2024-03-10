@@ -27,6 +27,9 @@ namespace NPCs.FSM.States
         {
             var locomotion = StateMachineEnemy.Locomotion;
             locomotion.SetTargetMotion(Vector3.zero);
+
+            var enemyAnimations = StateMachineEnemy.EnemyAnimations;
+            enemyAnimations.PlayIdle();
         }
 
         public override void Exit()
