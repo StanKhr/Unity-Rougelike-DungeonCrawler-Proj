@@ -10,7 +10,7 @@ namespace Player.StateMachines.States
     {
         #region Constants
 
-        private const float GameLoopNotificationDelaySeconds = 5f;
+        private const float GameLoopNotificationDelaySeconds = 4f;
 
         #endregion
 

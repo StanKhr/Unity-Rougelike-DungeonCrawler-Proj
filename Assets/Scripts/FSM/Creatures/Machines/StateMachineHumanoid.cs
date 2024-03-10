@@ -28,11 +28,6 @@ namespace FSM.Creatures.Machines
 
         #region Unity Callbacks
 
-        protected override void Start()
-        {
-            base.Start();
-        }
-
         private void OnEnable()
         {
             Damageable.OnDamaged += DamagedCallback;
