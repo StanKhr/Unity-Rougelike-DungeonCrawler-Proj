@@ -80,6 +80,11 @@ namespace Player.StateMachines.States
                 return;
             }
             
+            playerMeleeAttack.ReleaseAttack();
+        }
+
+        private void AttackReleasedCallback(IWeapon weapon)
+        {
             var stamina = StateMachinePlayer.Stamina;
             if (!stamina.TryDecrease(Weapon.AttackEnergyCost))
             {
@@ -87,11 +92,6 @@ namespace Player.StateMachines.States
                 return;
             }
             
-            playerMeleeAttack.ReleaseAttack();
-        }
-
-        private void AttackReleasedCallback(IWeapon weapon)
-        {
             var playerAnimations = StateMachinePlayer.PlayerAnimations;
             playerAnimations.PlayWeaponAttackRelease();
         }

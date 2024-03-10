@@ -15,6 +15,7 @@ namespace UI.Utility
         
         #region Editor Fields
 
+        [SerializeField] private string _nonTranslatedName;
         [SerializeField] private LocalizedString _localizedString;
         [SerializeField] private Color _color = new Color(1f, 1f, 1f, 1f);
 
@@ -23,7 +24,7 @@ namespace UI.Utility
         #region Properties
 
         public bool LocalizedStringExists => !_localizedString.IsEmpty;
-        public string Name => LocalizedStringExists ? _localizedString.GetLocalizedString() : $"??{name}";
+        public string Name => LocalizedStringExists ? _localizedString.GetLocalizedString() : _nonTranslatedName;
         public Color Color => _color;
 
         #endregion
