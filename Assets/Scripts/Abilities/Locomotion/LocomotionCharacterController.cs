@@ -133,6 +133,11 @@ namespace Abilities.Locomotion
             _characterController.Move(finalMotion);
         }
 
+        public void EnableCollider(bool enable)
+        {
+            _characterController.enabled = false;
+        }
+
         private void TickGravity(float deltaTime)
         {
             Grounded = _groundScanner.ScanForGround(out _);

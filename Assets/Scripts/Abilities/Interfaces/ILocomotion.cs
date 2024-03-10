@@ -30,7 +30,9 @@ namespace Abilities.Interfaces
         void ApplyJump();
         void SetTargetMotion(Vector3 newTargetDirection);
         void TickMotion(float deltaTime);
+        void EnableCollider(bool enable);
 
         #endregion
+
     }
 }

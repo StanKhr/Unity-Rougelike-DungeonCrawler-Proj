@@ -9,7 +9,11 @@ AnimatorOverrideController:
   m_Name: NPC_Bat
   m_Controller: {fileID: 9100000, guid: 7ee65947f2c6efb4da858bb608992ea1, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: cadbefe367c088d498c0a0d5aa3e2ed9, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: cadbefe367c088d498c0a0d5aa3e2ed9, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 960e71715ae42694eb00b02eb5c1e7d9, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: cadbefe367c088d498c0a0d5aa3e2ed9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 49c9797aafb172d4c84c5ff3aaf42c1f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cadbefe367c088d498c0a0d5aa3e2ed9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: eb30b75d4982a9e47b4c69be5fe839a6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8ab5e7a82848d3246ad383303080992e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c83fc9355980cf34d8f5ec759334fec6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 672014c6a57260842a05051cba552fd5, type: 2}

@@ -20,6 +20,7 @@ namespace NPCs.FSM.States
         {
             var locomotion = StateMachineEnemy.Locomotion;
             locomotion.SetTargetMotion(Vector3.zero);
+            locomotion.EnableCollider(false);
             
             var enemyAnimations = StateMachineEnemy.EnemyAnimations;
             enemyAnimations.PlayDeath();
