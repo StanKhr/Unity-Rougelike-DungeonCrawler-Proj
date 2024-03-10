@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Audio.Triggers
 {
-    public class AudioTriggerSurfaceHit : MonoBehaviour
+    public class AudioTriggerSurfaceHit : AudioTriggerPooing
     {
         #region Editor Fields
 
@@ -90,7 +90,15 @@ namespace Audio.Triggers
             // LogWriter.DevelopmentLog($"{context}: surface type found: {surfaceType.ToString()}");
 
             var clipSelector = GetClipSelectorFromPropType(surfaceType);
-            clipSelector?.TryOneShotAtPosition(context.transform.position, _sfxVolume);
+            if (clipSelector == null)
+            {
+                return;
+            }
+            
+            var audioSourcePooled = Pool.Get();
+            audioSourcePooled.transform.position = context.transform.position;
+            
+            clipSelector.TryOneShotOnAudioSource(audioSourcePooled.Source, _sfxVolume);
         }
 
         private IClipSelector GetClipSelectorFromPropType(ObjectSurfaceType objectSurfaceType)

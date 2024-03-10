@@ -7505,6 +7505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79cb49cfb8840498c41d1d2264c6d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioSourcePooledPrefab: {fileID: 3963088782126740919, guid: 8df63170e46cdc3409f9de9ccad8d29b, type: 3}
   _playerAttack: {fileID: 3665877201946409283}
   _sfxVolume: 0.5
   _clipSelectorFlesh: {fileID: 0}

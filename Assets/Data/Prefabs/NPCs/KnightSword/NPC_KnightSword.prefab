@@ -399,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68f118b733449b28bcfaa528e73c839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nonTranslatedName: 
   _localizedString:
     m_TableReference:
       m_TableCollectionName: GUID:109a4cbef6266054a8d04f0e40dd8117
@@ -543,7 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b2784220744f878df8e7454b67b64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseValue: 10
+  _baseValue: 5
 --- !u!114 &1754533038920188317
 MonoBehaviour:
   m_ObjectHideFlags: 0

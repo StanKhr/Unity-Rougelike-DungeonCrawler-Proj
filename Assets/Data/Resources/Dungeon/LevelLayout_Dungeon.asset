@@ -23,28 +23,28 @@ MonoBehaviour:
   _randomRooms:
   - <SizeX>k__BackingField: 5
     <SizeY>k__BackingField: 5
-    <MaxEnemies>k__BackingField: 3
+    <MaxEnemies>k__BackingField: 2
   - <SizeX>k__BackingField: 3
+    <SizeY>k__BackingField: 3
+    <MaxEnemies>k__BackingField: 1
+  - <SizeX>k__BackingField: 7
+    <SizeY>k__BackingField: 7
+    <MaxEnemies>k__BackingField: 3
+  - <SizeX>k__BackingField: 7
+    <SizeY>k__BackingField: 3
+    <MaxEnemies>k__BackingField: 1
+  - <SizeX>k__BackingField: 11
+    <SizeY>k__BackingField: 5
+    <MaxEnemies>k__BackingField: 4
+  - <SizeX>k__BackingField: 5
     <SizeY>k__BackingField: 3
     <MaxEnemies>k__BackingField: 2
   - <SizeX>k__BackingField: 7
-    <SizeY>k__BackingField: 7
+    <SizeY>k__BackingField: 5
     <MaxEnemies>k__BackingField: 4
-  - <SizeX>k__BackingField: 7
-    <SizeY>k__BackingField: 3
-    <MaxEnemies>k__BackingField: 3
-  - <SizeX>k__BackingField: 11
-    <SizeY>k__BackingField: 5
-    <MaxEnemies>k__BackingField: 5
-  - <SizeX>k__BackingField: 5
-    <SizeY>k__BackingField: 3
-    <MaxEnemies>k__BackingField: 3
-  - <SizeX>k__BackingField: 7
-    <SizeY>k__BackingField: 5
-    <MaxEnemies>k__BackingField: 5
   - <SizeX>k__BackingField: 13
     <SizeY>k__BackingField: 7
-    <MaxEnemies>k__BackingField: 7
+    <MaxEnemies>k__BackingField: 5
   _corridorMinSteps: 1
   _corridorMaxSteps: 12
   _requiredRoomsAmount: 32
