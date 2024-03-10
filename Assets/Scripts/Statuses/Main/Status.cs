@@ -78,7 +78,7 @@ namespace Statuses.Main
 
         private void Awake()
         {
-            SetMaxValue(_baseValue);
+            SetMaxValue(GetBaseValue());
             CurrentValue = MaxValue;
         }
 
@@ -94,6 +94,11 @@ namespace Statuses.Main
         public void SetMaxValue(float maxValue)
         {
             MaxValue = maxValue;
+        }
+
+        protected virtual float GetBaseValue()
+        {
+            return _baseValue;
         }
 
         #endregion

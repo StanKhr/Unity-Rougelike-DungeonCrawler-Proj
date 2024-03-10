@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using UnityEngine;
 
 namespace UI.Utility
 {
@@ -14,6 +15,16 @@ namespace UI.Utility
             }
 
             textMeshProUGUI.text = text;
+        }
+
+        public static void SetColorSmart(this TextMeshProUGUI textMeshProUGUI, Color color)
+        {
+            if (textMeshProUGUI.color.Equals(color))
+            {
+                return;
+            }
+
+            textMeshProUGUI.color = color;
         }
 
         #endregion

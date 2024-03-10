@@ -4,11 +4,25 @@ namespace Player.Interfaces
 {
     public class Personality
     {
+        #region Constants
+
+        private float BaseStatusBalue = 100f;
+
+        #endregion
+        
         #region Constructors
 
-        public Personality()
+        private Personality()
         {
             Gender = GenderType.Female;
+            Health = BaseStatusBalue;
+            Stamina = BaseStatusBalue;
+            Mana = BaseStatusBalue;
+        }
+
+        public Personality(GenderType gender, float health, float stamina, float mana)
+        {
+            
         }
 
         #endregion
@@ -30,7 +44,7 @@ namespace Player.Interfaces
         
         public GenderType Gender { get; private set; }
         public float Health { get; private set; }
-        public float Energy { get; private set; }
+        public float Stamina { get; private set; }
         public float Mana { get; private set; }
         
         #endregion

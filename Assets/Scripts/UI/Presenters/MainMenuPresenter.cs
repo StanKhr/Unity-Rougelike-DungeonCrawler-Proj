@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Player.Interfaces;
 using TMPro;
 using UI.Utility;
 using UnityEngine;
@@ -26,7 +27,10 @@ namespace UI.Presenters
 
         #region Editor Fields
 
+        [SerializeField] private PersonalityCreator _personalityCreator;
+
         [Header("Views")]
+        [SerializeField] private Button _createPersonalityButton;
         [SerializeField] private Button _startRunButton;
         [SerializeField] private Button _exitGameButton;
         [SerializeField] private Button _loreButton;
@@ -38,8 +42,10 @@ namespace UI.Presenters
         [SerializeField] private Button _loreHideButton;        
         [SerializeField] private Button _inputsHideButton;
         [SerializeField] private Button _settingsHideButton;
+        [SerializeField] private Button _createPersonalityHideButton;
 
         [Header("Windows")]
+        [SerializeField] private RectTransform _personalityRect;
         [SerializeField] private RectTransform _loreWindowRect;
         [SerializeField] private RectTransform _inputsRect;
         [SerializeField] private RectTransform _settingsRect;
@@ -61,7 +67,7 @@ namespace UI.Presenters
 
             _buttons = new List<Button>()
             {
-                _startRunButton,
+                _createPersonalityButton,
                 _exitGameButton,
                 _loreButton,
                 _inputsButton,
@@ -69,13 +75,17 @@ namespace UI.Presenters
                 _settingsButton,
             };
             
+            ShowPersonalityCreator(false);
             ShowLore(false);
             ShowInputs(false);
             ShowSettings(false);
             
-            _startRunButton.onClick.AddListener(() => OnDungeonRunStarted?.Invoke());
+            _startRunButton.onClick.AddListener(TryStartRun);
             _exitGameButton.onClick.AddListener(() => OnGameExited?.Invoke());
             _creditsButton.onClick.AddListener(() => System.Diagnostics.Process.Start(ItchLink));
+            
+            _createPersonalityButton.onClick.AddListener(() => ShowPersonalityCreator(true));
+            _createPersonalityHideButton.onClick.AddListener(() => ShowPersonalityCreator(false));
             
             _loreButton.onClick.AddListener(() => ShowLore(true));
             _loreHideButton.onClick.AddListener(() => ShowLore(false));
@@ -86,12 +96,32 @@ namespace UI.Presenters
             _settingsButton.onClick.AddListener(() => ShowSettings(true));
             _settingsHideButton.onClick.AddListener(() => ShowSettings(false));
             
-            SelectButton(_startRunButton);
+            SelectButton(_createPersonalityButton);
         }
 
         #endregion
 
         #region Methods
+
+        private void TryStartRun()
+        {
+            if (!_personalityCreator.StatusPointsAllocated)
+            {
+                return;
+            }
+
+            var personality = _personalityCreator.GeneratePersonality();
+            Personality.Active = personality;
+            
+            OnDungeonRunStarted?.Invoke();
+        }
+
+        private void ShowPersonalityCreator(bool show)
+        {
+            _personalityRect.gameObject.SetActiveSmart(show);
+            ShowMainButtons(!show);
+            SelectButton(show ? _createPersonalityHideButton : _createPersonalityButton);
+        }
         
         private void ShowLore(bool show)
         {

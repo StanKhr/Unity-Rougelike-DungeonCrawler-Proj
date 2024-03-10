@@ -2,6 +2,8 @@
 using Player.GameStories.Datas;
 using Player.Inventories.Interfaces;
 using UI.Presenters.Items;
+using UI.Utility;
+using UI.Utility.Personality;
 using UnityEngine;
 using WorldGeneration.Interfaces;
 
@@ -23,8 +25,8 @@ namespace Miscellaneous
         public delegate void BoolEvents(bool context);
         public delegate void MeleeAttackDataEvents(MeleeAttackData context);
         public delegate void LevelGeneratorEvents(ILevelGenerator levelGenerator);
+        public delegate void StatusPropertyEvents(PersonalityStatusProperty personalityStatusProperty);
 
         #endregion
-
     }
 }

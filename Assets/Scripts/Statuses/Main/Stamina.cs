@@ -1,4 +1,5 @@
-﻿using Statuses.Interfaces;
+﻿using Player.Interfaces;
+using Statuses.Interfaces;
 using UnityEngine;
 
 namespace Statuses.Main
@@ -53,6 +54,11 @@ namespace Statuses.Main
             }
 
             CurrentValue += MaxValue * _rechargePercentPerSec * deltaTime;
+        }
+
+        protected override float GetBaseValue()
+        {
+            return Personality.Active.Stamina;
         }
 
         #endregion
