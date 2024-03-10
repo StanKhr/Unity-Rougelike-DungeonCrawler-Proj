@@ -47,8 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pressurePlate: {fileID: 8052172971962607570}
   _damage:
-    <Value>k__BackingField: 20
+    <Value>k__BackingField: 10
     <DamageType>k__BackingField: 0
+    <Source>k__BackingField: {fileID: 0}
 --- !u!1001 &7906559268274343124
 PrefabInstance:
   m_ObjectHideFlags: 0

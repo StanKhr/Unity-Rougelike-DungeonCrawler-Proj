@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Audio.ClipSelectors;
 using Audio.Interfaces;
+using Audio.Sources;
+using Miscellaneous.ObjectPooling;
 using Player.Attacks;
 using Player.Interfaces;
 using Statuses.Enums;
@@ -13,6 +15,7 @@ namespace Audio.Triggers
     {
         #region Editor Fields
 
+        [SerializeField] private AudioSourcePooled _audioSourcePooledPrefab;
         [SerializeField] private PlayerAttack _playerAttack;
         [SerializeField, Range(0f, 1f)] private float _sfxVolume;
 
@@ -30,7 +33,8 @@ namespace Audio.Triggers
         #region Fields
 
         private Dictionary<ObjectSurfaceType, IClipSelector> _sortedSelectors;
-
+        private ObjectPoolWrapper _objectPoolWrapper;
+        
         #endregion
 
         #region Properties
@@ -58,6 +62,21 @@ namespace Audio.Triggers
                 };
 
                 return _sortedSelectors;
+            }
+        }
+
+        private ObjectPoolWrapper PoolWrapper
+        {
+            get
+            {
+                if (_objectPoolWrapper != null)
+                {
+                    return _objectPoolWrapper;
+                }
+
+                _objectPoolWrapper = new ObjectPoolWrapper(_audioSourcePooledPrefab);
+
+                return _objectPoolWrapper;
             }
         }
 
@@ -90,7 +109,15 @@ namespace Audio.Triggers
             // LogWriter.DevelopmentLog($"{context}: surface type found: {surfaceType.ToString()}");
 
             var clipSelector = GetClipSelectorFromPropType(surfaceType);
-            clipSelector?.TryOneShotAtPosition(context.transform.position, _sfxVolume);
+            if (clipSelector == null)
+            {
+                return;
+            }
+            
+            var audioSourcePooled = (AudioSourcePooled) PoolWrapper.Get();
+            audioSourcePooled.transform.position = context.transform.position;
+            
+            clipSelector.TryOneShotOnAudioSource(audioSourcePooled.Source, _sfxVolume);
         }
 
         private IClipSelector GetClipSelectorFromPropType(ObjectSurfaceType objectSurfaceType)

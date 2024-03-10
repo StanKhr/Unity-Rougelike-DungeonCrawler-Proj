@@ -45,6 +45,7 @@ namespace Abilities.Locomotion
         public bool Sprinting { get; set; }
         public bool Crouching { get; set; }
         public Vector3 BodyVelocity => _characterController.velocity;
+        public Vector3 Position => _characterController.transform.position;
         public bool Grounded
         {
             get => _grounded;
@@ -130,6 +131,11 @@ namespace Abilities.Locomotion
             finalMotion += new Vector3(0f, Gravity * deltaTime, 0f);
 
             _characterController.Move(finalMotion);
+        }
+
+        public void EnableCollider(bool enable)
+        {
+            _characterController.enabled = false;
         }
 
         private void TickGravity(float deltaTime)

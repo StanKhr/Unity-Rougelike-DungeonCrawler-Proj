@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemies:
   - <EnemyType>k__BackingField: 0
-    <Prefab>k__BackingField: {fileID: 6853018127330601841, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
-    <SpawnWeight>k__BackingField: 1
+    <Prefab>k__BackingField: {fileID: 7895914719338819549, guid: 9efc8283aa40b0d45b16a023ce537b32, type: 3}
+    <SpawnWeight>k__BackingField: 2
   - <EnemyType>k__BackingField: 0
     <Prefab>k__BackingField: {fileID: 5821120753149043883, guid: 5a198ebc2cd48984a8f85b5867efd31a, type: 3}
     <SpawnWeight>k__BackingField: 4
+  - <EnemyType>k__BackingField: 0
+    <Prefab>k__BackingField: {fileID: 7595267231226952789, guid: f1d18bdd17ee11047a0f4a4e0fdd4b6a, type: 3}
+    <SpawnWeight>k__BackingField: 1
+  - <EnemyType>k__BackingField: 0
+    <Prefab>k__BackingField: {fileID: 9068390077472807894, guid: e2a24b823706c3346be181912135dee5, type: 3}
+    <SpawnWeight>k__BackingField: 3
   _bossPrefab: {fileID: 0}

@@ -21,7 +21,8 @@ namespace Player.StateMachines.Interfaces
         IPlayerAttack PlayerAttack { get; }
         IStamina Stamina { get; }
         IMana Mana { get; }
-        
+        IInventory Inventory { get; }
+
         #endregion
 
         #region Methods

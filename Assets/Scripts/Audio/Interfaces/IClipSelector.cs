@@ -30,17 +30,17 @@ namespace Audio.Interfaces
             return true;
         }
 
-        bool TryOneShotAtPosition(Vector3 position, float volume = BaseVolume)
-        {
-            var clip = SelectNext();
-            if (!clip)
-            {
-                return false;
-            }
-
-            AudioSource.PlayClipAtPoint(clip, position, volume);
-            return true;
-        }
+        // bool TryOneShotAtPosition(Vector3 position, float volume = BaseVolume)
+        // {
+        //     var clip = SelectNext();
+        //     if (!clip)
+        //     {
+        //         return false;
+        //     }
+        //
+        //     AudioSource.PlayClipAtPoint(clip, position, volume);
+        //     return true;
+        // }
 
         #endregion
     }

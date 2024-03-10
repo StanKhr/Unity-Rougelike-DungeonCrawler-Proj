@@ -1376,6 +1376,52 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2082570617419472939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6298505633534110485}
+  - component: {fileID: 2045586929524276390}
+  m_Layer: 0
+  m_Name: WorldAttackParticleSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6298505633534110485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082570617419472939}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4053477788910944646}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2045586929524276390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082570617419472939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57cedfb95cfa4742be5bff892e767859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackParticle: {fileID: 1420195800631058996, guid: 1afd37f92d557b84f80f4d68e05b8570, type: 3}
+  _attackClips: {fileID: 11400000, guid: e3dcbb1608d2c604f88030197a344a3a, type: 2}
 --- !u!1 &2103212750582908813
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,6 +2356,7 @@ Transform:
   - {fileID: 4054970661692118803}
   - {fileID: 3310903148438655886}
   - {fileID: 7292747827524579339}
+  - {fileID: 6298505633534110485}
   m_Father: {fileID: 2440888649355307301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3220566459513670852
@@ -4863,7 +4910,7 @@ Transform:
   m_GameObject: {fileID: 6242391721125187609}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 1}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7505,6 +7552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79cb49cfb8840498c41d1d2264c6d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioSourcePooledPrefab: {fileID: 3963088782126740919, guid: 8df63170e46cdc3409f9de9ccad8d29b, type: 3}
   _playerAttack: {fileID: 3665877201946409283}
   _sfxVolume: 0.5
   _clipSelectorFlesh: {fileID: 0}

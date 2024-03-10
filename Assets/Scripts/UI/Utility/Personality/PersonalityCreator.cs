@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using Player.Enums;
 using TMPro;
-using UI.Utility.Personality;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Utility
+namespace UI.Utility.Personality
 {
     public class PersonalityCreator : MonoBehaviour
     {

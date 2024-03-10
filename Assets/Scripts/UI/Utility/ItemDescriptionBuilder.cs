@@ -73,19 +73,19 @@ namespace UI.Utility
             StringBuilder.Append(speedMessage);
             StringBuilder.Append("\n");
 
-            var strName = GetAttributeScaleName(weapon.ScaleStrength);
-            var dexName = GetAttributeScaleName(weapon.ScaleDexterity);
-            var intName = GetAttributeScaleName(weapon.ScaleIntellect);
-
-            var strVariable = (StringVariable) _attributesScaleLocale[VariableStrength];
-            var dexVariable = (StringVariable) _attributesScaleLocale[VariableDexterity];
-            var intVariable = (StringVariable) _attributesScaleLocale[VariableIntellect];
-
-            strVariable.Value = strName;
-            dexVariable.Value = dexName;
-            intVariable.Value = intName;
-
-            StringBuilder.Append(_attributesScaleLocale.GetLocalizedString());
+            // var strName = GetAttributeScaleName(weapon.ScaleStrength);
+            // var dexName = GetAttributeScaleName(weapon.ScaleDexterity);
+            // var intName = GetAttributeScaleName(weapon.ScaleIntellect);
+            //
+            // var strVariable = (StringVariable) _attributesScaleLocale[VariableStrength];
+            // var dexVariable = (StringVariable) _attributesScaleLocale[VariableDexterity];
+            // var intVariable = (StringVariable) _attributesScaleLocale[VariableIntellect];
+            //
+            // strVariable.Value = strName;
+            // dexVariable.Value = dexName;
+            // intVariable.Value = intName;
+            //
+            // StringBuilder.Append(_attributesScaleLocale.GetLocalizedString());
             
             return StringBuilder.ToString();
         }

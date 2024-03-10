@@ -36,11 +36,17 @@ namespace Player.StateMachines.States
             
             var playerAnimations = StateMachinePlayer.PlayerAnimations;
             playerAnimations.PlayHandsIdleLoop();
+
+            var inventory = StateMachinePlayer.Inventory;
+            inventory.ItemManipulationsEnabled = true;
         }
 
         public override void Exit()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
+
+            var inventory = StateMachinePlayer.Inventory;
+            inventory.ItemManipulationsEnabled = false;
             
             inputProvider.Movement.OnJump -= JumpCallback;
             inputProvider.Abilities.OnInteracted -= InteractedCallback;

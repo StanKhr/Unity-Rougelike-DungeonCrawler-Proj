@@ -21,6 +21,7 @@ namespace Abilities.Interfaces
         bool Crouching { get; set; }
         bool Grounded { get; }
         Vector3 BodyVelocity { get; }
+        Vector3 Position { get; }
 
         #endregion
         
@@ -29,7 +30,9 @@ namespace Abilities.Interfaces
         void ApplyJump();
         void SetTargetMotion(Vector3 newTargetDirection);
         void TickMotion(float deltaTime);
+        void EnableCollider(bool enable);
 
         #endregion
+
     }
 }

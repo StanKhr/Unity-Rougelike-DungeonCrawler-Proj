@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1699242613050725822, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: _baseValue
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1874072077404878237, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,13 +88,17 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: f5d8778ddc56b684c8ee6470dda2aa66, type: 2}
+    - target: {fileID: 6415537067725104158, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: _locomotionData.<RunSpeed>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6853018127330601841, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: m_Name
       value: NPC_Bat
       objectReference: {fileID: 0}
     - target: {fileID: 7177525359821227806, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: _nonTranslatedName
-      value: Bat
+      value: Rabid Bat
       objectReference: {fileID: 0}
     - target: {fileID: 7177525359821227806, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: _localizedString.m_TableEntryReference.m_KeyId
@@ -103,6 +107,10 @@ PrefabInstance:
     - target: {fileID: 7177525359821227806, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: _localizedString.m_TableReference.m_TableCollectionName
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069418663691102756, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: _damageValue
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4235102361156619401, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
