@@ -1,4 +1,5 @@
-﻿using FSM.Main;
+﻿using System;
+using FSM.Main;
 using Player.Cameras.Enums;
 using Player.StateMachines.Interfaces;
 using UnityEngine;
@@ -7,6 +8,18 @@ namespace Player.StateMachines.States
 {
     public class StatePlayerDeath : State
     {
+        #region Constants
+
+        private const float GameLoopNotificationDelaySeconds = 5f;
+
+        #endregion
+
+        #region Events
+
+        public static event Action OnPlayerDied;
+
+        #endregion
+        
         #region Constructors
 
         public StatePlayerDeath(IStateMachinePlayer stateMachinePlayer)
@@ -22,10 +35,18 @@ namespace Player.StateMachines.States
 
         #endregion
 
+        #region Fields
+
+        private float _notificationDelay;
+
+        #endregion
+
         #region Methods
         
         public override void Enter()
         {
+            ResetNotificationDelay();
+            
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
             cameraWrapper.SetActiveCamera(ActiveCameraType.Death);
 
@@ -47,11 +68,25 @@ namespace Player.StateMachines.States
             
             locomotion.SetTargetMotion(Vector3.zero);
             locomotion.TickMotion(deltaTime);
+
+            if (_notificationDelay > 0f)
+            {
+                _notificationDelay -= deltaTime;
+                return;
+            }
+            
+            ResetNotificationDelay();
+            OnPlayerDied?.Invoke();
         }
 
         private void TestInputPressedCallback()
         {
             StateMachinePlayer.Resurrect();
+        }
+
+        private void ResetNotificationDelay()
+        {
+            _notificationDelay = GameLoopNotificationDelaySeconds;
         }
 
         #endregion

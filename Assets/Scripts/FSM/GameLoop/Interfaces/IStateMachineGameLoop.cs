@@ -8,6 +8,7 @@ namespace FSM.GameLoop.Interfaces
         
         void ToMainMenuState();
         void ToDungeonState();
+        void ToDeathState();
         
         #endregion
         

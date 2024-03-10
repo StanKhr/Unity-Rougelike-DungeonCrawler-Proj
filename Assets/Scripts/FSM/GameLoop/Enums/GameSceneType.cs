@@ -4,6 +4,7 @@
     {
         Boostrap,
         MainMenu,
-        Dungeon
+        Dungeon,
+        Death
     }
 }

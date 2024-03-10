@@ -43,6 +43,11 @@ namespace FSM.GameLoop.Machines
             SwitchState(new StateGameLoopDungeon(this));
         }
 
+        public void ToDeathState()
+        {
+            SwitchState(new StateGameLoopDeath(this));
+        }
+
         public void LoadScene(GameSceneType type)
         {
             var sceneName = GetSceneName(type);
