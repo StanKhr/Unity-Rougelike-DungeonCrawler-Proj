@@ -38,6 +38,7 @@ namespace UI.Presenters.Items
             InventorySlotPresenter.OnSlotSelected += SlotSlotSelectedCallback;
             InventorySlotPresenter.OnUseItemTriggered += SlotUseItemTriggeredCallback;
             InventorySlotPresenter.OnSlotDropped += SlotDroppedCallback;
+            
             Inventory.Slots.OnSlotUpdated += SlotUpdatedCallback;
             Inventory.OnItemUsed += ItemUsedCallback;
         }

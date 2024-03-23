@@ -83,7 +83,7 @@ namespace UI.Presenters
             
             _startRunButton.onClick.AddListener(TryStartRun);
             _exitGameButton.onClick.AddListener(() => OnGameExited?.Invoke());
-            _creditsButton.onClick.AddListener(() => System.Diagnostics.Process.Start(ItchLink));
+            _creditsButton.onClick.AddListener(() => Application.OpenURL(ItchLink));
             
             _createPersonalityButton.onClick.AddListener(() => ShowPersonalityCreator(true));
             _createPersonalityHideButton.onClick.AddListener(() => ShowPersonalityCreator(false));
