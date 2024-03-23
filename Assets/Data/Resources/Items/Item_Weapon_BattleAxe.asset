@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba1a7d99af3e441c9298b308c15b3203, type: 3}
-  m_Name: Item_Weapon_Hammer
+  m_Name: Item_Weapon_BattleAxe
   m_EditorClassIdentifier: 
-  _guid: f7377f62bd7493c44a0e775d4268bdcc
-  _icon: {fileID: 1638002858, guid: 9b2abd160dd333f4ab2279aee03262ac, type: 3}
+  _guid: 80ffe8cc09e03144494bfe9a79cb4699
+  _icon: {fileID: 1469299911, guid: 9b2abd160dd333f4ab2279aee03262ac, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:0b16142d2ef10d84497e540277a52ce6
     m_TableEntryReference:
-      m_KeyId: 27
+      m_KeyId: 26
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -32,13 +32,13 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  <WeaponHandSprite>k__BackingField: {fileID: 771101555, guid: cd4769eb3ba62c54b8e782695d0362fb, type: 3}
+  <WeaponHandSprite>k__BackingField: {fileID: -258688113, guid: cd4769eb3ba62c54b8e782695d0362fb, type: 3}
   <DamageValue>k__BackingField: 60
-  <SpeedValue>k__BackingField: 30
+  <SpeedValue>k__BackingField: 50
   <AttackDuration>k__BackingField: 0.5
-  <CritPercentBounds>k__BackingField: 0.2
-  <CritDamageMultiplier>k__BackingField: 1.2
-  <AttackEnergyCost>k__BackingField: 60
+  <CritPercentBounds>k__BackingField: 0.1
+  <CritDamageMultiplier>k__BackingField: 1.5
+  <AttackEnergyCost>k__BackingField: 30
   <ScaleStrength>k__BackingField: 2
   <ScaleDexterity>k__BackingField: 3
   <ScaleIntellect>k__BackingField: -1

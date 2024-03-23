@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba1a7d99af3e441c9298b308c15b3203, type: 3}
-  m_Name: Item_Weapon_BrokenSword
+  m_Name: Item_Weapon_Zweihaender
   m_EditorClassIdentifier: 
   _guid: 80ffe8cc09e03144494bfe9a79cb4699
   _icon: {fileID: 1469299911, guid: 9b2abd160dd333f4ab2279aee03262ac, type: 3}
@@ -18,7 +18,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:0b16142d2ef10d84497e540277a52ce6
     m_TableEntryReference:
-      m_KeyId: 5694014442430495
+      m_KeyId: 31
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -27,18 +27,18 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:0b16142d2ef10d84497e540277a52ce6
     m_TableEntryReference:
-      m_KeyId: 5697852519997456
+      m_KeyId: 37
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
   <WeaponHandSprite>k__BackingField: {fileID: -258688113, guid: cd4769eb3ba62c54b8e782695d0362fb, type: 3}
-  <DamageValue>k__BackingField: 55
-  <SpeedValue>k__BackingField: 30
+  <DamageValue>k__BackingField: 65
+  <SpeedValue>k__BackingField: 45
   <AttackDuration>k__BackingField: 0.5
   <CritPercentBounds>k__BackingField: 0.1
-  <CritDamageMultiplier>k__BackingField: 1.2
-  <AttackEnergyCost>k__BackingField: 25
+  <CritDamageMultiplier>k__BackingField: 1.5
+  <AttackEnergyCost>k__BackingField: 40
   <ScaleStrength>k__BackingField: 2
   <ScaleDexterity>k__BackingField: 3
   <ScaleIntellect>k__BackingField: -1

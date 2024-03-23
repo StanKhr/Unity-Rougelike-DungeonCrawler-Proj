@@ -41,6 +41,30 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 8722672420731224075
+  - m_Id: 7
+    m_Key: NAME_patrialCrowley
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Key: NAME_greedyGoblin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9
+    m_Key: NAME_rabidBat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10
+    m_Key: NAME_scarySpider
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11
+    m_Key: NAME_stoneGolem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12
+    m_Key: NAME_doomcaller
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -30,12 +30,12 @@ MonoBehaviour:
       m_Items:
       - rid: 8722672589656817683
   - m_Id: 3
-    m_Localized: 'Item was dropped: {value}'
+    m_Localized: You throw {value} away
     m_Metadata:
       m_Items:
       - rid: 8722672589656817683
   - m_Id: 4
-    m_Localized: 'Item was received: {value}'
+    m_Localized: 'You get: {value}'
     m_Metadata:
       m_Items:
       - rid: 8722672589656817683
@@ -55,10 +55,146 @@ MonoBehaviour:
       m_Items:
       - rid: 8722672589656817683
   - m_Id: 7
-    m_Localized: 'You use: {value}'
+    m_Localized: 'Equipment: {value}'
     m_Metadata:
       m_Items:
       - rid: 8722672589656817683
+  - m_Id: 8
+    m_Localized: 'You use: {value}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9
+    m_Localized: Begin Your Adventure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10
+    m_Localized: Control Input Scheme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12
+    m_Localized: Read Lore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13
+    m_Localized: Exit Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Localized: Gender
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Localized: Create your own personality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Localized: Music Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19
+    m_Localized: Ambient Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20
+    m_Localized: Effects Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21
+    m_Localized: 'As a young paladin novice in the kingdom of Mortreon, the burden
+      of duty weighs heavily upon your shoulders. The kingdom''s dungeons have become
+      overrun with vile creatures and the lingering taint of demonic presence. It
+      is your solemn task to cleanse these dark depths and restore peace to the land.
+
+
+      Armed
+      with little more than your faith and a sword, you embark on your perilous quest.
+      The corridors resonate with ominous whispers and shadows seem to coil around
+      you, concealing unseen threats.
+
+
+      Yet, driven by your unwavering resolve
+      and the guiding light of your convictions, you press onward. Each step forward
+      brings you closer to confronting the malevolent forces that dwell within the
+      dungeon''s depths.
+
+
+      But the challenges you face are formidable, testing
+      your courage, strength, and faith at every turn. Will you be able to overcome
+      the horrors that await you in the darkness? Can you withstand the temptations
+      and trials that seek to corrupt your soul?
+
+
+      The outcome of your quest
+      hangs in the balance. Will you emerge victorious, a beacon of hope for the
+      kingdom of Mortreon, or will you falter in the face of overwhelming darkness?
+      The fate of the land rests in your hands. Will you be able to achieve your
+      goal?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22
+    m_Localized: 'Movement: WASD / Left Stick
+
+      Look: Mouse / Right Stick
+
+      Jump:
+      Space / (B)
+
+      Sprint: Shift / (B) (Hold)
+
+
+      Interact: E / (A)
+
+      Inventory:
+      I / (Start)
+
+      Pause Menu: Esc / (Back)
+
+
+      Attack: LMB / R1
+
+
+      Use
+      Item: Enter; LMB / (A)
+
+      Drop Item: Backspace; RMB / (X)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23
+    m_Localized: You Died!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24
+    m_Localized: Try Again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25
+    m_Localized: To Main Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26
+    m_Localized: Male
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27
+    m_Localized: Female
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28
+    m_Localized: Dungeons of Mortreon
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

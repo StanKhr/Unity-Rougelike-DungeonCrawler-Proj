@@ -11,7 +11,7 @@ namespace Player.Inventories.Items
     {
         #region Constants
 
-        private const string DefaultEmptyString = "...";
+        private const string DefaultEmptyString = "!NEEDS TRANSLATION!";
 
         #endregion
         

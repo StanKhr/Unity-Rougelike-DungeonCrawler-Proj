@@ -119,6 +119,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -207,13 +220,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hand_brokenSword
+      name: player_hand_battleAxe
       rect:
         serializedVersion: 2
-        x: 119
-        y: 58
-        width: 41
-        height: 51
+        x: 122
+        y: 103
+        width: 38
+        height: 57
       alignment: 8
       pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,13 +241,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_weapon_brokenSpear
+      name: player_weapon_zweihaender
       rect:
         serializedVersion: 2
-        x: 79
-        y: 61
-        width: 34
-        height: 56
+        x: 74
+        y: 86
+        width: 48
+        height: 74
       alignment: 8
       pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,9 +265,9 @@ TextureImporter:
       name: player_weapon_hammer
       rect:
         serializedVersion: 2
-        x: 24
+        x: 0
         y: 81
-        width: 38
+        width: 39
         height: 52
       alignment: 8
       pivot: {x: 1, y: 0}
@@ -265,6 +278,27 @@ TextureImporter:
       bones: []
       spriteID: f4fed811efeaeb842bc0ed63c9afe423
       internalID: 771101555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_weapon_brokenSpear
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 78
+        width: 34
+        height: 56
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 353cbc19eb9651b4d9b90dc0c064b695
+      internalID: 1968758596
       vertices: []
       indices: 
       edges: []
@@ -280,15 +314,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player_hand_brokenSword: -258688113
+      player_hand_battleAxe: -258688113
       player_hand_cutlass: -291838530
       player_hand_empty_left: -1124656734
       player_hand_empty_left_2: -1640501419
       player_hand_interact_left: 661063311
       player_hand_sword_right: -1388549182
       player_hand_yellowDagger: -136386006
-      player_weapon_brokenSpear: -1986463232
+      player_weapon_brokenSpear: 1968758596
       player_weapon_hammer: 771101555
+      player_weapon_zweihaender: -1986463232
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

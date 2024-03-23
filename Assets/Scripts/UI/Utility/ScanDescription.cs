@@ -7,6 +7,12 @@ namespace UI.Utility
 {
     public class ScanDescription : MonoBehaviour, IScanDescription
     {
+        #region Constants
+
+        private const string NonLocalizedNameText = "!NEEDS TRANSLATION!";
+
+        #endregion
+        
         #region Events
 
         public event Action OnObjectScanned;
@@ -15,7 +21,6 @@ namespace UI.Utility
         
         #region Editor Fields
 
-        [SerializeField] private string _nonTranslatedName;
         [SerializeField] private LocalizedString _localizedString;
         [SerializeField] private Color _color = new Color(1f, 1f, 1f, 1f);
 
@@ -24,7 +29,7 @@ namespace UI.Utility
         #region Properties
 
         public bool LocalizedStringExists => !_localizedString.IsEmpty;
-        public string Name => LocalizedStringExists ? _localizedString.GetLocalizedString() : _nonTranslatedName;
+        public string Name => LocalizedStringExists ? _localizedString.GetLocalizedString() : NonLocalizedNameText;
         public Color Color => _color;
 
         #endregion

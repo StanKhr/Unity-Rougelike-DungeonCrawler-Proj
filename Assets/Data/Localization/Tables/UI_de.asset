@@ -30,12 +30,12 @@ MonoBehaviour:
       m_Items:
       - rid: 8722672589656817684
   - m_Id: 3
-    m_Localized: 'Gegenstand war entfernt: {value}'
+    m_Localized: Sie werfen {value} weg
     m_Metadata:
       m_Items:
       - rid: 8722672589656817684
   - m_Id: 4
-    m_Localized: 'Gegenstand war erhalten: {value}'
+    m_Localized: 'Sie bekommen: {value}'
     m_Metadata:
       m_Items:
       - rid: 8722672589656817684
@@ -55,10 +55,116 @@ MonoBehaviour:
       m_Items:
       - rid: 8722672589656817684
   - m_Id: 7
-    m_Localized: 'Sie verwenden: {value}'
+    m_Localized: "Ausr\xFCstung: {value}"
     m_Metadata:
       m_Items:
       - rid: 8722672589656817684
+  - m_Id: 8
+    m_Localized: 'Sie verwenden: {value}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9
+    m_Localized: Beginnen Sie Ihr Abenteuer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10
+    m_Localized: Steuerungseingabeschema
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11
+    m_Localized: Einstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12
+    m_Localized: Lore lesen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13
+    m_Localized: Spiel verlassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Localized: Geschlecht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Localized: "Zur\xFCck"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Localized: "Best\xE4tigen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Localized: "Erstellen Sie Ihre eigene Pers\xF6nlichkeit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Localized: "Musiklautst\xE4rke"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19
+    m_Localized: "Umgebungslautst\xE4rke"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20
+    m_Localized: "Effektlautst\xE4rke"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21
+    m_Localized: "Als junger Paladin-Novize im K\xF6nigreich Mortreon lastet die
+      B\xFCrde der Pflicht schwer auf deinen Schultern. Die Verliese des K\xF6nigreichs
+      sind von abscheulichen Kreaturen \xFCberrannt worden, und die anhaltende Spur
+      d\xE4monischer Pr\xE4senz lastet auf ihnen. Es ist deine feierliche Aufgabe,
+      diese dunklen Tiefen zu reinigen und Frieden im Land wiederherzustellen.\n\nBewaffnet
+      mit nicht viel mehr als deinem Glauben und einem Schwert, begibst du dich auf
+      deine gef\xE4hrliche Quest. Die Korridore hallen wider von unheilvollen Fl\xFCstern,
+      und Schatten scheinen sich um dich zu winden, um unsichtbare Bedrohungen zu
+      verbergen.\n\nDoch angetrieben von deinem unersch\xFCtterlichen Willen und
+      dem leitenden Licht deiner \xDCberzeugungen dringst du weiter vor. Jeder Schritt
+      nach vorne bringt dich n\xE4her an die Konfrontation mit den b\xF6sartigen
+      Kr\xE4ften, die in den Tiefen des Verlieses lauern.\n\nAber die Herausforderungen,
+      denen du gegen\xFCberstehst, sind enorm und pr\xFCfen deinen Mut, deine St\xE4rke
+      und deinen Glauben bei jedem Schritt. Wirst du in der Lage sein, die Schrecken
+      zu \xFCberwinden, die dich in der Dunkelheit erwarten? Kannst du den Versuchungen
+      und Pr\xFCfungen widerstehen, die darauf abzielen, deine Seele zu korrumpieren?\n\nDas
+      Ergebnis deiner Quest steht auf Messers Schneide. Wirst du als Sieger hervorgehen,
+      ein Leuchtfeuer der Hoffnung f\xFCr das K\xF6nigreich Mortreon, oder wirst
+      du angesichts \xFCberw\xE4ltigender Dunkelheit scheitern? Das Schicksal des
+      Landes liegt in deinen H\xE4nden. Wirst du in der Lage sein, dein Ziel zu erreichen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22
+    m_Localized: "Bewegung: WASD / Linker Stick\nBlick: Maus / Rechter Stick\nSpringen:
+      Space / (B)\nSprinten: Shift / (B) (halten)\n\nInteraktion: E / (A)\nInventar:
+      I / (Start)\nPause-Men\xFC: Esc / (Zur\xFCck)\n\nAngreifen: LMB / R1\n\nGegenstand
+      benutzen: Enter; LMB / (A)\nGegenstand fallenlassen: Backspace; RMB / (X)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23
+    m_Localized: Sie sind gestorben!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24
+    m_Localized: Versuchen Sie es erneut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25
+    m_Localized: "Zum Hauptmen\xFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26
+    m_Localized: "M\xE4nnlich"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27
+    m_Localized: Weiblich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28
+    m_Localized: Verliese von Mortreon
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

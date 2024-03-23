@@ -42,6 +42,30 @@ MonoBehaviour:
     m_Localized: "Skelettsch\xFCtze"
     m_Metadata:
       m_Items: []
+  - m_Id: 7
+    m_Localized: Crowley, der fleischgewordene Tod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Localized: Gieriger Goblin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9
+    m_Localized: "Tollw\xFCtige Fledermaus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10
+    m_Localized: Gruselige Spinne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11
+    m_Localized: Steingolem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12
+    m_Localized: Schicksalsrufer
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

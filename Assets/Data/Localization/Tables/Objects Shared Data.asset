@@ -68,7 +68,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 12
-    m_Key: OBJ_groundButton
+    m_Key: OBJ_pressurePlate
     m_Metadata:
       m_Items:
       - rid: 8722672420781031428
@@ -104,6 +104,11 @@ MonoBehaviour:
     m_Key: OBJ_nothing
     m_Metadata:
       m_Items: []
+  - m_Id: 21
+    m_Key: OBJ_groundTrap
+    m_Metadata:
+      m_Items:
+      - rid: 6755321913601687564
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
@@ -111,6 +116,10 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 6755321913601687564
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: die
     - rid: 8722672420731224064
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
