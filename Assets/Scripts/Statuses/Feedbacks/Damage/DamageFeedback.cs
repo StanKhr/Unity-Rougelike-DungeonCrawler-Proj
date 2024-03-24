@@ -1,5 +1,4 @@
 ﻿using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Interfaces;
 using UnityEngine;
 
@@ -56,7 +55,7 @@ namespace Statuses.Feedbacks.Damage
         
         #region Methods
 
-        protected abstract void DamagedCallback(Events.FloatEvent context);
+        protected abstract void DamagedCallback(EventContext.FloatEvent context);
         protected virtual void DiedCallback()
         {
             

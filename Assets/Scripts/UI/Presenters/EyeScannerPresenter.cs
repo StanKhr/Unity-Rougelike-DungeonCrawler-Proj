@@ -1,6 +1,5 @@
 ﻿using Miscellaneous;
 using Player.Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using TMPro;
 using UI.Enums;
 using UI.Interfaces;
@@ -41,7 +40,7 @@ namespace UI.Presenters
 
         #region Methods
         
-        private void TargetFoundCallback(Events.GameObjectEvent context)
+        private void TargetFoundCallback(EventContext.GameObjectEvent context)
         {
             context.GameObject.TryGetComponent<IScanDescription>(out var scanDescription);
             FillPopup(scanDescription);

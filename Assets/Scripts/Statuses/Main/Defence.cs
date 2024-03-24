@@ -1,6 +1,5 @@
-﻿using System;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+﻿using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Datas;
 using Statuses.Interfaces;
 
@@ -10,7 +9,7 @@ namespace Statuses.Main
     {
         #region Events
 
-        public IEvent OnDamageAbsorbed { get; } = new CustomEvent();
+        public IEvent OnDamageAbsorbed { get; } = EventFactory.CreateEvent();
 
         #endregion
         

@@ -1,7 +1,6 @@
 ﻿using Abilities.Interfaces;
 using Abilities.Triggers;
 using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Interfaces;
@@ -13,10 +12,10 @@ namespace Props.Common
     {
         #region Events
 
-        public IContextEvent<Events.GameObjectEvent> OnInteractionStarted { get; } =
-            new ContextEvent<Events.GameObjectEvent>();
-        public IContextEvent<Events.GameObjectEvent> OnInteractionEnded { get; } =
-            new ContextEvent<Events.GameObjectEvent>();
+        public IContextEvent<EventContext.GameObjectEvent> OnInteractionStarted { get; } =
+            EventFactory.CreateContextEvent<EventContext.GameObjectEvent>();
+        public IContextEvent<EventContext.GameObjectEvent> OnInteractionEnded { get; } =
+            EventFactory.CreateContextEvent<EventContext.GameObjectEvent>();
 
         #endregion
         
@@ -57,7 +56,7 @@ namespace Props.Common
 
         #region Methods
         
-        private void EnteredCallback(Events.ColliderEvent context)
+        private void EnteredCallback(EventContext.ColliderEvent context)
         {
             if (_singleUse && _wasUsed)
             {
@@ -65,15 +64,15 @@ namespace Props.Common
             }
 
             _wasUsed = true;
-            OnInteractionStarted?.NotifyListeners(new Events.GameObjectEvent
+            OnInteractionStarted?.NotifyListeners(new EventContext.GameObjectEvent
             {
                 GameObject = context.Collider.gameObject
             });
         }
 
-        private void LeftCallback(Events.ColliderEvent context)
+        private void LeftCallback(EventContext.ColliderEvent context)
         {
-            OnInteractionEnded?.NotifyListeners(new Events.GameObjectEvent
+            OnInteractionEnded?.NotifyListeners(new EventContext.GameObjectEvent
             {
                 GameObject = context.Collider.gameObject
             });

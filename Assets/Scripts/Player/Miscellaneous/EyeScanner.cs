@@ -1,7 +1,5 @@
-﻿using System;
-using Miscellaneous;
+﻿using Miscellaneous;
 using Player.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
@@ -12,12 +10,12 @@ namespace Player.Miscellaneous
     {
         #region Events
 
-        public IContextEvent<Events.GameObjectEvent> OnTargetFound { get; } =
-            new ContextEvent<Events.GameObjectEvent>();
-        public IEvent OnTargetLost { get; } = new CustomEvent();
+        public IContextEvent<EventContext.GameObjectEvent> OnTargetFound { get; } =
+            EventFactory.CreateContextEvent<EventContext.GameObjectEvent>();
+        public IEvent OnTargetLost { get; } = EventFactory.CreateEvent();
 
         #endregion
-        
+
         #region Editor Fields
 
         [SerializeField] private float _rayMaxDistance = 5f;
@@ -46,7 +44,7 @@ namespace Player.Miscellaneous
                 _target = value;
                 if (value)
                 {
-                    OnTargetFound?.NotifyListeners(new Events.GameObjectEvent
+                    OnTargetFound?.NotifyListeners(new EventContext.GameObjectEvent
                     {
                         GameObject = value
                     });
@@ -63,9 +61,9 @@ namespace Player.Miscellaneous
 
         private void Update()
         {
-            var castResult = Physics.Raycast(transform.position, transform.forward, 
+            var castResult = Physics.Raycast(transform.position, transform.forward,
                 out var hit, _rayMaxDistance, _scannedLayers, QueryTriggerInteraction.Collide);
-            
+
             if (!castResult)
             {
                 Target = null;

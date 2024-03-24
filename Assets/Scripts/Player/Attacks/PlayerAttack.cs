@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Miscellaneous;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Datas;
@@ -25,10 +24,13 @@ namespace Player.Attacks
 
         #region Events
 
-        public IContextEvent<Events.MeleeAttackEvent> OnAttackChargeStarted { get; } = new ContextEvent<Events.MeleeAttackEvent>();
-        public IContextEvent<Events.GameObjectEvent> OnSurfaceHit { get; } = new ContextEvent<Events.GameObjectEvent>();
-        public IContextEvent<Events.WeaponEvent> OnAttackReleased { get; } = new ContextEvent<Events.WeaponEvent>();
-        public IEvent OnAttackEnded { get; } = new CustomEvent();
+        public IContextEvent<EventContext.MeleeAttackEvent> OnAttackChargeStarted { get; } =
+            EventFactory.CreateContextEvent<EventContext.MeleeAttackEvent>();
+        public IContextEvent<EventContext.GameObjectEvent> OnSurfaceHit { get; } =
+            EventFactory.CreateContextEvent<EventContext.GameObjectEvent>();
+        public IContextEvent<EventContext.WeaponEvent> OnAttackReleased { get; } =
+            EventFactory.CreateContextEvent<EventContext.WeaponEvent>();
+        public IEvent OnAttackEnded { get; } = EventFactory.CreateEvent();
 
         #endregion
 
@@ -119,7 +121,7 @@ namespace Player.Attacks
                 TryApplyDamage(damageable);
             }
 
-            OnSurfaceHit?.NotifyListeners(new Events.GameObjectEvent
+            OnSurfaceHit?.NotifyListeners(new EventContext.GameObjectEvent
             {
                 GameObject = other.gameObject
             });
@@ -158,7 +160,7 @@ namespace Player.Attacks
             var critMaxPercent = 1 - halvedBounds;
 
             _critChargePercent = Randomizer.RangeFloat(critMinPercent, critMaxPercent);
-            var attackData = new Events.MeleeAttackEvent
+            var attackData = new EventContext.MeleeAttackEvent
             {
                 Weapon = UsedWeapon,
                 CritChargePercent = _critChargePercent,
@@ -205,7 +207,7 @@ namespace Player.Attacks
                 _critChargePercent, UsedWeapon.CritPercentBounds);
             _calculatedDamage = CalculateDamageValue(UsedWeapon, ChargeTimer, _applyCriticalDamage);
 
-            OnAttackReleased?.NotifyListeners(new Events.WeaponEvent
+            OnAttackReleased?.NotifyListeners(new EventContext.WeaponEvent
             {
                 Weapon = UsedWeapon
             });

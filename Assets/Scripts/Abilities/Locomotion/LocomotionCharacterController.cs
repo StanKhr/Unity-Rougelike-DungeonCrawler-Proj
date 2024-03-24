@@ -1,7 +1,5 @@
-﻿using System;
-using Abilities.Interfaces;
+﻿using Abilities.Interfaces;
 using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
@@ -19,9 +17,10 @@ namespace Abilities.Locomotion
 
         #region Events
 
-        public IEvent OnJumped { get; } = new CustomEvent();
-        public IEvent OnGroundLanded { get; } = new CustomEvent();
-        public IContextEvent<Events.FloatEvent> OnFallDamageTriggered { get; } = new ContextEvent<Events.FloatEvent>();
+        public IEvent OnJumped { get; } = EventFactory.CreateEvent();
+        public IEvent OnGroundLanded { get; } = EventFactory.CreateEvent();
+        public IContextEvent<EventContext.FloatEvent> OnFallDamageTriggered { get; } =
+            EventFactory.CreateContextEvent<EventContext.FloatEvent>();
 
         #endregion
 
@@ -62,7 +61,7 @@ namespace Abilities.Locomotion
 
                 if (triggerFallDamage && Gravity <= _locomotionData.FallDamageGravityThreshold)
                 {
-                    OnFallDamageTriggered?.NotifyListeners(new Events.FloatEvent
+                    OnFallDamageTriggered?.NotifyListeners(new EventContext.FloatEvent
                     {
                         Float = Gravity
                     });

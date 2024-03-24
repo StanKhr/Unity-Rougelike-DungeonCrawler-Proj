@@ -1,5 +1,4 @@
 ﻿using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Statuses.Feedbacks.Damage
 {
@@ -7,7 +6,7 @@ namespace Statuses.Feedbacks.Damage
     {
         #region Methods
 
-        protected override void DamagedCallback(Events.FloatEvent context)
+        protected override void DamagedCallback(EventContext.FloatEvent context)
         {
             LogWriter.DevelopmentLog($"{name} was damaged for: {context.Float.ToString("F")}; remained health: {Health.CurrentValue.ToString("F")}/{Health.MaxValue.ToString("F")}");
         }

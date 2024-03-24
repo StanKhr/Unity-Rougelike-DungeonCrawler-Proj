@@ -2,7 +2,6 @@
 using Miscellaneous;
 using Player.Inventories.Interfaces;
 using Player.StateMachines.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Player.StateMachines.States
 {
@@ -84,7 +83,7 @@ namespace Player.StateMachines.States
             playerMeleeAttack.ReleaseAttack();
         }
 
-        private void AttackReleasedCallback(Events.WeaponEvent context)
+        private void AttackReleasedCallback(EventContext.WeaponEvent context)
         {
             var stamina = StateMachinePlayer.Stamina;
             if (!stamina.TryDecrease(Weapon.AttackEnergyCost))
@@ -102,7 +101,7 @@ namespace Player.StateMachines.States
             StateMachinePlayer.ToFreeLookState();
         }
 
-        private void AttackChargeStartedCallback(Events.MeleeAttackEvent context)
+        private void AttackChargeStartedCallback(EventContext.MeleeAttackEvent context)
         {
             var playerAnimations = StateMachinePlayer.PlayerAnimations;
             playerAnimations.PlayWeaponAttackCharge(Weapon.CalculateChargeTimeSeconds());

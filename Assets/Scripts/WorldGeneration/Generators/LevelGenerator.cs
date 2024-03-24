@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -28,8 +28,8 @@ namespace WorldGeneration.Generators
 
         #region Events
 
-        public IEvent OnGenerationStarted { get; } = new CustomEvent();
-        public IEvent OnGenerationEnded { get; } = new CustomEvent();
+        public IEvent OnGenerationStarted { get; } = EventFactory.CreateEvent();
+        public IEvent OnGenerationEnded { get; } = EventFactory.CreateEvent();
 
         #endregion
 

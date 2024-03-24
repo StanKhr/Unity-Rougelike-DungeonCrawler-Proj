@@ -1,6 +1,5 @@
 ﻿using System;
 using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Datas;
@@ -13,9 +12,10 @@ namespace Statuses.Main
     {
         #region Events
 
-        public IEvent OnDied { get; } = new CustomEvent();
-        public IEvent OnResurrected { get; } = new CustomEvent();
-        public IContextEvent<Events.FloatEvent> OnDamaged { get; } = new ContextEvent<Events.FloatEvent>();
+        public IEvent OnDied { get; } = EventFactory.CreateEvent();
+        public IEvent OnResurrected { get; } = EventFactory.CreateEvent();
+        public IContextEvent<EventContext.FloatEvent> OnDamaged { get; } =
+            EventFactory.CreateContextEvent<EventContext.FloatEvent>();
         
         #endregion
 
@@ -46,7 +46,7 @@ namespace Statuses.Main
                     return;
                 }
 
-                OnDamaged?.NotifyListeners(new Events.FloatEvent
+                OnDamaged?.NotifyListeners(new EventContext.FloatEvent
                 {
                     Float = healthDifference
                 });

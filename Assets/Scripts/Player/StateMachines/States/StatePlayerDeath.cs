@@ -1,9 +1,8 @@
-﻿using System;
-using FSM.Main;
+﻿using FSM.Main;
 using Player.Cameras.Enums;
 using Player.StateMachines.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace Player.StateMachines.States
@@ -18,7 +17,7 @@ namespace Player.StateMachines.States
 
         #region Events
 
-        public static IEvent OnPlayerDied { get; } = new CustomEvent();
+        public static IEvent OnPlayerDied { get; } = EventFactory.CreateEvent();
 
         #endregion
         

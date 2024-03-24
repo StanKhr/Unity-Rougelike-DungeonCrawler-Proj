@@ -1,5 +1,4 @@
 ﻿using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
@@ -10,8 +9,8 @@ namespace Player.Miscellaneous
     {
         #region Events
 
-        public static IContextEvent<Events.GameObjectEvent> OnPlayerLoaded { get; } =
-            new ContextEvent<Events.GameObjectEvent>();
+        public static IContextEvent<EventContext.GameObjectEvent> OnPlayerLoaded { get; } =
+            EventFactory.CreateContextEvent<EventContext.GameObjectEvent>();
 
         #endregion
 
@@ -19,7 +18,7 @@ namespace Player.Miscellaneous
 
         private void Start()
         {
-            OnPlayerLoaded?.NotifyListeners(new Events.GameObjectEvent
+            OnPlayerLoaded?.NotifyListeners(new EventContext.GameObjectEvent
             {
                 GameObject = gameObject
             });

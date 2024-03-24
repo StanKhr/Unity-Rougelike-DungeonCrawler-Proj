@@ -1,5 +1,4 @@
 ﻿using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Interfaces;
@@ -11,10 +10,10 @@ namespace Props.Common
     {
         #region Events
 
-        public IContextEvent<Events.GameObjectEvent> OnInteractionStarted { get; } =
-            new ContextEvent<Events.GameObjectEvent>();
-        public IContextEvent<Events.GameObjectEvent> OnInteractionEnded { get; } =
-            new ContextEvent<Events.GameObjectEvent>();
+        public IContextEvent<EventContext.GameObjectEvent> OnInteractionStarted { get; } =
+            EventFactory.CreateContextEvent<EventContext.GameObjectEvent>();
+        public IContextEvent<EventContext.GameObjectEvent> OnInteractionEnded { get; } = 
+            EventFactory.CreateContextEvent<EventContext.GameObjectEvent>();
 
         #endregion
 

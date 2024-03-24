@@ -1,6 +1,5 @@
-﻿using System;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+﻿using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UI.Interfaces;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -17,7 +16,7 @@ namespace UI.Utility
         
         #region Events
 
-        public IEvent OnObjectScanned { get; } = new CustomEvent();
+        public IEvent OnObjectScanned { get; } = EventFactory.CreateEvent();
         
         #endregion
         

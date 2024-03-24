@@ -1,6 +1,5 @@
 ﻿using Miscellaneous;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Audio.Interfaces
 {
@@ -8,7 +7,7 @@ namespace Audio.Interfaces
     {
         #region Events
 
-        IContextEvent<Events.FloatEvent> OnNewVolumeSet { get; }
+        IContextEvent<EventContext.FloatEvent> OnNewVolumeSet { get; }
 
         #endregion
         

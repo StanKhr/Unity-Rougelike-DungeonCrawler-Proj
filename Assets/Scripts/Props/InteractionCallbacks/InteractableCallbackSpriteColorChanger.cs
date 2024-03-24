@@ -1,5 +1,4 @@
 ﻿using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace Props.InteractionCallbacks
@@ -21,7 +20,7 @@ namespace Props.InteractionCallbacks
         
         #region Methods
 
-        protected override void InteractionStartedCallback(Events.GameObjectEvent context)
+        protected override void InteractionStartedCallback(EventContext.GameObjectEvent context)
         {
             _spriteRenderer.color = _interactColor;
         }

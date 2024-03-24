@@ -2,7 +2,6 @@
 using Miscellaneous;
 using Player.Interfaces;
 using Player.Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UI.Utility;
 using UnityEngine;
 
@@ -48,7 +47,7 @@ namespace Statuses.Feedbacks.Damage
         
         #region Methods
 
-        protected override void DamagedCallback(Events.FloatEvent context)
+        protected override void DamagedCallback(EventContext.FloatEvent context)
         {
             if (Health.Alive)
             {

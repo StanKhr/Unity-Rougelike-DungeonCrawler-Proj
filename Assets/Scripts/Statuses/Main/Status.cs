@@ -1,6 +1,5 @@
-﻿using System;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+﻿using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Interfaces;
 using UnityEngine;
 
@@ -16,8 +15,8 @@ namespace Statuses.Main
         
         #region Events
 
-        public IEvent OnMaxValueChanged { get; } = new CustomEvent();
-        public IEvent OnCurrentValueChanged { get; } = new CustomEvent();
+        public IEvent OnMaxValueChanged { get; } = EventFactory.CreateEvent();
+        public IEvent OnCurrentValueChanged { get; } = EventFactory.CreateEvent();
 
         #endregion
         

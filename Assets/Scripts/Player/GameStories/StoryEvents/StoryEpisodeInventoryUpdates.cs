@@ -3,7 +3,6 @@ using Player.GameStories.Datas;
 using Player.GameStories.Interfaces;
 using Player.Inventories;
 using Player.Inventories.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;
@@ -54,17 +53,17 @@ namespace Player.GameStories.StoryEvents
 
         #region Methods
 
-        private void ItemAddedCallback(Events.ItemEvent context)
+        private void ItemAddedCallback(EventContext.ItemEvent context)
         {
             CreateEpisode(context.Item, _localizedStringItemAdded);
         }
 
-        private void ItemDroppedCallback(Events.ItemEvent context)
+        private void ItemDroppedCallback(EventContext.ItemEvent context)
         {
             CreateEpisode(context.Item, _localizedStringItemDropped);
         }
 
-        private void ItemUsedCallback(Events.ItemEvent context)
+        private void ItemUsedCallback(EventContext.ItemEvent context)
         {
             CreateEpisode(context.Item, _localizedStringItemUsed);
         }

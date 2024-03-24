@@ -2,7 +2,6 @@
 using Miscellaneous;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 
@@ -18,7 +17,8 @@ namespace Player.Inventories.Datas
 
         #region Events
 
-        public IContextEvent<Events.IntEvent> OnSlotUpdated { get; } = new ContextEvent<Events.IntEvent>();
+        public IContextEvent<EventContext.IntEvent> OnSlotUpdated { get; } =
+            EventFactory.CreateContextEvent<EventContext.IntEvent>();
 
         #endregion
 
@@ -49,7 +49,7 @@ namespace Player.Inventories.Datas
                 }
 
                 _slots[index] = value;
-                OnSlotUpdated?.NotifyListeners(new Events.IntEvent
+                OnSlotUpdated?.NotifyListeners(new EventContext.IntEvent
                 {
                     Int = index
                 });

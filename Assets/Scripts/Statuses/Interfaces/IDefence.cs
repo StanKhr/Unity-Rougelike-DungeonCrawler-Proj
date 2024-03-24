@@ -1,5 +1,4 @@
-﻿using System;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+﻿using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Statuses.Datas;
 
 namespace Statuses.Interfaces

@@ -4,7 +4,6 @@ using Miscellaneous;
 using Player.GameStories.Datas;
 using Player.GameStories.Interfaces;
 using Player.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
@@ -22,8 +21,8 @@ namespace Player.GameStories
         
         #region Events
 
-        public IContextEvent<Events.StringEvent> OnStoryUpdated { get; } =
-            new ContextEvent<Events.StringEvent>();
+        public IContextEvent<EventContext.StringEvent> OnStoryUpdated { get; } =
+            EventFactory.CreateContextEvent<EventContext.StringEvent>();
 
         #endregion
 
@@ -50,7 +49,7 @@ namespace Player.GameStories
 
         #region Methods
         
-        private void StoryEpisodeTriggeredCallback(Events.StoryEpisodeDataEvent context)
+        private void StoryEpisodeTriggeredCallback(EventContext.StoryEpisodeDataEvent context)
         {
             _storyLines.Add(context.StoryEpisodeData);
             while (_storyLines.Count > MaxStoryLines)
@@ -60,7 +59,7 @@ namespace Player.GameStories
 
             if (_storyLines.Count == 0)
             {
-                OnStoryUpdated?.NotifyListeners(new Events.StringEvent
+                OnStoryUpdated?.NotifyListeners(new EventContext.StringEvent
                 {
                     String = string.Empty
                 });
@@ -79,7 +78,7 @@ namespace Player.GameStories
                 _stringBuilder.Append(NextLineSkip);
             }
             
-            OnStoryUpdated?.NotifyListeners(new Events.StringEvent
+            OnStoryUpdated?.NotifyListeners(new EventContext.StringEvent
             {
                 String = _stringBuilder.ToString()
             });

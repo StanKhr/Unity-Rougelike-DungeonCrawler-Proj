@@ -1,6 +1,5 @@
 ﻿using Miscellaneous;
 using Player.Inventories.Items;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
@@ -19,12 +18,12 @@ namespace UI.Presenters.Items
         
         #region Events
 
-        public static IContextEvent<Events.InventorySlotPresenterEvent> OnSlotSelected { get; } =
-            new ContextEvent<Events.InventorySlotPresenterEvent>();
-        public static IContextEvent<Events.InventorySlotPresenterEvent> OnUseItemTriggered { get; } =
-            new ContextEvent<Events.InventorySlotPresenterEvent>();
-        public static IContextEvent<Events.InventorySlotPresenterEvent> OnSlotDropped { get; } =
-            new ContextEvent<Events.InventorySlotPresenterEvent>();
+        public static IContextEvent<EventContext.InventorySlotPresenterEvent> OnSlotSelected { get; } =
+            EventFactory.CreateContextEvent<EventContext.InventorySlotPresenterEvent>();
+        public static IContextEvent<EventContext.InventorySlotPresenterEvent> OnUseItemTriggered { get; } =
+            EventFactory.CreateContextEvent<EventContext.InventorySlotPresenterEvent>();
+        public static IContextEvent<EventContext.InventorySlotPresenterEvent> OnSlotDropped { get; } =
+            EventFactory.CreateContextEvent<EventContext.InventorySlotPresenterEvent>();
 
         #endregion
         
@@ -51,7 +50,7 @@ namespace UI.Presenters.Items
 
         public int SlotIndex { get; set; } = DefaultSlotIndex;
 
-        private Events.InventorySlotPresenterEvent EventContext => new()
+        private EventContext.InventorySlotPresenterEvent EventContext => new()
         {
             InventorySlotPresenter = this
         };

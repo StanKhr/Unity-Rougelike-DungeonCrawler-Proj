@@ -1,5 +1,4 @@
-﻿using System;
-using Abilities.Interfaces;
+﻿using Abilities.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 
 namespace Player.Cameras.Interfaces

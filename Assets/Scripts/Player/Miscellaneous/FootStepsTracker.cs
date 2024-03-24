@@ -1,8 +1,7 @@
-﻿using System;
-using Abilities.Interfaces;
+﻿using Abilities.Interfaces;
 using Player.Cameras.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace Player.Miscellaneous
@@ -11,7 +10,7 @@ namespace Player.Miscellaneous
     {
         #region Events
 
-        public IEvent OnStepMade { get; } = new CustomEvent();
+        public IEvent OnStepMade { get; } = EventFactory.CreateEvent();
 
         #endregion
 

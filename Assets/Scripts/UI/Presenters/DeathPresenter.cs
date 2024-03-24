@@ -1,6 +1,5 @@
-﻿using System;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+﻿using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +9,8 @@ namespace UI.Presenters
     {
         #region Events
 
-        public static IEvent OnNewTryTriggered { get; } = new CustomEvent();
-        public static IEvent OnToMainMenuLeft { get; } = new CustomEvent();
+        public static IEvent OnNewTryTriggered { get; } = EventFactory.CreateEvent();
+        public static IEvent OnToMainMenuLeft { get; } = EventFactory.CreateEvent();
 
         #endregion
 

@@ -1,6 +1,5 @@
 ﻿using Miscellaneous;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Datas;
 
 namespace Statuses.Interfaces
@@ -9,7 +8,7 @@ namespace Statuses.Interfaces
     {
         #region Events
 
-        IContextEvent<Events.FloatEvent> OnDamaged { get; }
+        IContextEvent<EventContext.FloatEvent> OnDamaged { get; }
 
         #endregion
         

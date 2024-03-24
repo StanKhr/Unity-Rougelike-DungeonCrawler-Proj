@@ -1,9 +1,8 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 using Player.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace Player.Miscellaneous
@@ -12,9 +11,9 @@ namespace Player.Miscellaneous
     {
         #region Events
 
-        public IEvent OnTimerStarted { get; } = new CustomEvent();
-        public IEvent OnTimerCancelled { get; } = new CustomEvent();
-        public IEvent OnTimerEnded { get; } = new CustomEvent();
+        public IEvent OnTimerStarted { get; } = EventFactory.CreateEvent();
+        public IEvent OnTimerCancelled { get; } = EventFactory.CreateEvent();
+        public IEvent OnTimerEnded { get; } = EventFactory.CreateEvent();
 
         #endregion
         

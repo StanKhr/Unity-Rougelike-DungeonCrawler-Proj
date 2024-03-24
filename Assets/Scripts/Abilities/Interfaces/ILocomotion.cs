@@ -1,7 +1,5 @@
-﻿using System;
-using Miscellaneous;
+﻿using Miscellaneous;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace Abilities.Interfaces
@@ -12,7 +10,7 @@ namespace Abilities.Interfaces
 
         IEvent OnJumped { get; }
         IEvent OnGroundLanded { get; }
-        IContextEvent<Events.FloatEvent> OnFallDamageTriggered { get; }
+        IContextEvent<EventContext.FloatEvent> OnFallDamageTriggered { get; }
 
         #endregion
         

@@ -1,8 +1,6 @@
-﻿using System;
-using Audio.ClipSelectors;
+﻿using Audio.ClipSelectors;
 using Audio.Interfaces;
 using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.InteractionCallbacks;
 using Props.Interfaces;
 using UnityEngine;
@@ -36,12 +34,12 @@ namespace Audio.Triggers
 
         #region Methods
 
-        protected override void InteractionStartedCallback(Events.GameObjectEvent context)
+        protected override void InteractionStartedCallback(EventContext.GameObjectEvent context)
         {
             ClipSelectorInteractionStarted?.TryOneShotOnAudioSource(AudioSource);
         }
 
-        protected override void InteractionEndedCallback(Events.GameObjectEvent context)
+        protected override void InteractionEndedCallback(EventContext.GameObjectEvent context)
         {
             ClipSelectorInteractionEnded?.TryOneShotOnAudioSource(AudioSource);
         }

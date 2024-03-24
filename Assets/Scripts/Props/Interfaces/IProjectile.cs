@@ -1,6 +1,5 @@
 ﻿using Miscellaneous;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace Props.Interfaces
@@ -9,7 +8,7 @@ namespace Props.Interfaces
     {
         #region Events
 
-        IContextEvent<Events.GameObjectEvent> OnVictimFound { get; }
+        IContextEvent<EventContext.GameObjectEvent> OnVictimFound { get; }
 
         #endregion
         

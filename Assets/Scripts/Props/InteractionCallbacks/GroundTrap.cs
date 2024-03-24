@@ -1,5 +1,4 @@
 ﻿using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Common;
 using Props.Interfaces;
 using Statuses.Datas;
@@ -27,7 +26,7 @@ namespace Props.InteractionCallbacks
 
         #region Methods
 
-        protected override void InteractionStartedCallback(Events.GameObjectEvent context)
+        protected override void InteractionStartedCallback(EventContext.GameObjectEvent context)
         {
             if (!context.GameObject.TryGetComponent<IDamageable>(out var damageable))
             {

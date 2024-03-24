@@ -1,5 +1,4 @@
 ﻿using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Interfaces;
 using Statuses.Datas;
 using Statuses.Interfaces;
@@ -41,7 +40,7 @@ namespace Props.Projectiles
 
         #region Methods
         
-        private void VictimFoundCallback(Events.GameObjectEvent context)
+        private void VictimFoundCallback(EventContext.GameObjectEvent context)
         {
             if (context.GameObject.TryGetComponent<IDamageable>(out var damageable))
             {

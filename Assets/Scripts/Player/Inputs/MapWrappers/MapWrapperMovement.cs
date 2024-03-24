@@ -1,7 +1,6 @@
-﻿using System;
-using Player.Inputs.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
+﻿using Player.Inputs.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Scripts.Player.Inputs;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,7 +26,7 @@ namespace Player.Inputs.MapWrappers
 
         #region Events
 
-        public IEvent OnJump { get; } = new CustomEvent();
+        public IEvent OnJump { get; } = EventFactory.CreateEvent();
 
         #endregion
 

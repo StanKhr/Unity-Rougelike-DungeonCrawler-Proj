@@ -7,7 +7,7 @@ using WorldGeneration.Interfaces;
 
 namespace Miscellaneous
 {
-    public static class Events
+    public static class EventContext
     {
         #region Types
         

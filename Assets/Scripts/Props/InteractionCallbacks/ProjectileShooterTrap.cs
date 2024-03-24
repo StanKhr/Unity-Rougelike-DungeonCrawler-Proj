@@ -1,5 +1,4 @@
 ﻿using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Common;
 using Props.Interfaces;
 using Props.Projectiles;
@@ -47,7 +46,7 @@ namespace Props.InteractionCallbacks
 
         #region Methods
 
-        private void InteractionStartedCallback(Events.GameObjectEvent context)
+        private void InteractionStartedCallback(EventContext.GameObjectEvent context)
         {
             var projectileInstance = Instantiate(_projectile, _launchDummy.position, _launchDummy.rotation);
             projectileInstance.Launch();

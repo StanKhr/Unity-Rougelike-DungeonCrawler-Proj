@@ -1,7 +1,6 @@
 ﻿using System;
 using Miscellaneous;
 using NPCs.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Datas;
@@ -22,8 +21,8 @@ namespace NPCs.Components
         
         #region Events
 
-        public static IContextEvent<Events.Vector3Event> OnAttackAtPointPerformed { get; } =
-            new ContextEvent<Events.Vector3Event>();
+        public static IContextEvent<EventContext.Vector3Event> OnAttackAtPointPerformed { get; } =
+            EventFactory.CreateContextEvent<EventContext.Vector3Event>();
 
         #endregion
         
@@ -69,7 +68,7 @@ namespace NPCs.Components
             var direction = (victimPosition - position).normalized;
             var attackPosition = position + direction;
             
-            OnAttackAtPointPerformed?.NotifyListeners(new Events.Vector3Event
+            OnAttackAtPointPerformed?.NotifyListeners(new EventContext.Vector3Event
             {
                 Vector3 = attackPosition
             });

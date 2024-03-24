@@ -3,7 +3,6 @@ using Abilities.Locomotion;
 using FSM.Creatures.Interfaces;
 using FSM.Main;
 using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Interfaces;
 using Statuses.Main;
 using UnityEngine;
@@ -44,7 +43,7 @@ namespace FSM.Creatures.Machines
 
         #region Callbacks
         
-        private void DamagedCallback(Events.FloatEvent context)
+        private void DamagedCallback(EventContext.FloatEvent context)
         {
             if (Health.CurrentValue > 0f)
             {

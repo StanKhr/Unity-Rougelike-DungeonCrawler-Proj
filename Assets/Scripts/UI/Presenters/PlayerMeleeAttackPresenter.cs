@@ -1,7 +1,6 @@
 ﻿using Miscellaneous;
 using Player.Attacks;
 using Player.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UI.Utility;
 using UnityEngine;
 using UnityEngine.UI;
@@ -72,7 +71,7 @@ namespace UI.Presenters
             _sliderContainer.gameObject.SetActiveSmart(false);
         }
 
-        private void AttackChargeStartedCallback(Events.MeleeAttackEvent context)
+        private void AttackChargeStartedCallback(EventContext.MeleeAttackEvent context)
         {
             _sliderFillImage.fillAmount = 0f;
 
@@ -94,7 +93,7 @@ namespace UI.Presenters
             _sliderContainer.gameObject.SetActiveSmart(false);
         }
 
-        private void AttackReleasedCallback(Events.WeaponEvent context)
+        private void AttackReleasedCallback(EventContext.WeaponEvent context)
         {
             _sliderContainer.gameObject.SetActiveSmart(false);
         }

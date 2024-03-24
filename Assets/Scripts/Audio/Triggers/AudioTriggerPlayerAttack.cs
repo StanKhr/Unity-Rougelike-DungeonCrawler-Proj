@@ -1,7 +1,6 @@
 ﻿using Miscellaneous;
 using Player.Attacks;
 using Player.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace Audio.Triggers
@@ -38,13 +37,13 @@ namespace Audio.Triggers
 
         #region Methods
 
-        private void AttackReleasedCallback(Events.WeaponEvent context)
+        private void AttackReleasedCallback(EventContext.WeaponEvent context)
         {
             var clipSelector = context.Weapon.ClipSelectorAttackRelease;
             clipSelector.TryOneShotOnAudioSource(AudioSource);
         }
 
-        private void AttackChargeStartedCallback(Events.MeleeAttackEvent context)
+        private void AttackChargeStartedCallback(EventContext.MeleeAttackEvent context)
         {
             var clipSelector = context.Weapon.ClipSelectorAttackCharge;
             clipSelector.TryOneShotOnAudioSource(AudioSource);

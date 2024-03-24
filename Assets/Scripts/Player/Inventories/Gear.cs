@@ -1,7 +1,7 @@
 ﻿using Miscellaneous;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
@@ -17,9 +17,10 @@ namespace Player.Inventories
 
         #region Events
 
-        public ContextEvent<Events.WeaponEvent> OnWeaponEquipped { get; } = new ();
-
-        public ContextEvent<Events.WeaponEvent> OnWeaponRemoved { get; } = new ();
+        public IContextEvent<EventContext.WeaponEvent> OnWeaponEquipped { get; } =
+            EventFactory.CreateContextEvent<EventContext.WeaponEvent>();
+        public IContextEvent<EventContext.WeaponEvent> OnWeaponRemoved { get; } =
+            EventFactory.CreateContextEvent<EventContext.WeaponEvent>();
 
         #endregion
 
@@ -42,14 +43,14 @@ namespace Player.Inventories
 
                 if (Weapon != null)
                 {
-                    OnWeaponEquipped?.NotifyListeners(new Events.WeaponEvent
+                    OnWeaponEquipped?.NotifyListeners(new EventContext.WeaponEvent
                     {
                         Weapon = Weapon
                     });
                     return;
                 }
 
-                OnWeaponRemoved?.NotifyListeners(new Events.WeaponEvent()
+                OnWeaponRemoved?.NotifyListeners(new EventContext.WeaponEvent()
                 {
                     Weapon = prevWeapon
                 });
@@ -74,7 +75,7 @@ namespace Player.Inventories
 
         #region Methods
 
-        private void ItemDroppedCallback(Events.ItemEvent context)
+        private void ItemDroppedCallback(EventContext.ItemEvent context)
         {
             if (context.Item is IWeapon weapon)
             {

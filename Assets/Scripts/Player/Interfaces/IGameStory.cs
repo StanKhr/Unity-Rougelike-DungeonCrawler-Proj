@@ -1,6 +1,5 @@
 ﻿using Miscellaneous;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Player.Interfaces
 {
@@ -8,7 +7,7 @@ namespace Player.Interfaces
     {
         #region Events
 
-        public IContextEvent<Events.StringEvent> OnStoryUpdated { get; }
+        public IContextEvent<EventContext.StringEvent> OnStoryUpdated { get; }
 
         #endregion
     }

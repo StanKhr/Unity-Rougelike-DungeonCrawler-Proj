@@ -2,7 +2,6 @@
 using Miscellaneous;
 using Player.Interfaces;
 using Player.Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Interfaces;
@@ -14,8 +13,8 @@ namespace Props.Projectiles
     {
         #region Events
 
-        public IContextEvent<Events.GameObjectEvent> OnVictimFound { get; } =
-            new ContextEvent<Events.GameObjectEvent>();
+        public IContextEvent<EventContext.GameObjectEvent> OnVictimFound { get; } =
+            EventFactory.CreateContextEvent<EventContext.GameObjectEvent>();
         
         #endregion
         
@@ -61,7 +60,7 @@ namespace Props.Projectiles
             _rigidbody.velocity = Vector3.zero;
         }
 
-        private void EnteredCallback(Events.ColliderEvent context)
+        private void EnteredCallback(EventContext.ColliderEvent context)
         {
             if (context.Collider.isTrigger)
             {
@@ -70,7 +69,7 @@ namespace Props.Projectiles
 
             if (SelfDestroyTimer == null)
             {
-                OnVictimFound?.NotifyListeners(new Events.GameObjectEvent
+                OnVictimFound?.NotifyListeners(new EventContext.GameObjectEvent
                 {
                     GameObject = context.Collider.gameObject
                 });
@@ -82,7 +81,7 @@ namespace Props.Projectiles
                 return;
             }
             
-            OnVictimFound?.NotifyListeners(new Events.GameObjectEvent
+            OnVictimFound?.NotifyListeners(new EventContext.GameObjectEvent
             {
                 GameObject = context.Collider.gameObject
             });

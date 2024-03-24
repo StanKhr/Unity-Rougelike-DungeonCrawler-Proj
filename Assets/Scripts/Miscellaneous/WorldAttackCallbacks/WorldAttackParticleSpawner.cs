@@ -2,7 +2,6 @@
 using Audio.Interfaces;
 using Miscellaneous.ObjectPooling;
 using NPCs.Components;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace Miscellaneous.WorldAttackCallbacks
@@ -46,7 +45,7 @@ namespace Miscellaneous.WorldAttackCallbacks
         #region Methods
 
 
-        private void AttackPerformedCallback(Events.Vector3Event context)
+        private void AttackPerformedCallback(EventContext.Vector3Event context)
         {
             var particle = (WorldAttackParticle)_particlesPool.Get();
             particle.transform.position = context.Vector3;

@@ -1,6 +1,5 @@
 ﻿using Miscellaneous;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Abilities.Interfaces
 {
@@ -8,8 +7,8 @@ namespace Abilities.Interfaces
     {
         #region Events
 
-        IContextEvent<Events.ColliderEvent> OnEntered { get; }
-        IContextEvent<Events.ColliderEvent> OnLeft { get; }
+        IContextEvent<EventContext.ColliderEvent> OnEntered { get; }
+        IContextEvent<EventContext.ColliderEvent> OnLeft { get; }
 
         #endregion
     }

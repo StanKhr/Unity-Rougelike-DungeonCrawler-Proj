@@ -1,7 +1,6 @@
 ﻿using Miscellaneous;
 using Miscellaneous.Interfaces;
 using Player.Inventories.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Common;
 using UnityEngine;
 
@@ -46,7 +45,7 @@ namespace Player.Inventories.Items
 
         #region Methods
 
-        private void ItemDroppedCallback(Events.ItemEvent context)
+        private void ItemDroppedCallback(EventContext.ItemEvent context)
         {
             var position = transform.position;
             var instance = Instantiate(_pickableItemPrefab, position, Quaternion.identity);

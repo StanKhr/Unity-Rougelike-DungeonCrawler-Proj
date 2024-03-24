@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Miscellaneous;
 using Player.Enums;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -130,7 +129,7 @@ namespace UI.Utility.Personality
                 (float) _staminaProperty.Value, (float) _manaProperty.Value);
         }
 
-        private void StatusValueChangedCallback(Events.PersonalityStatusPropertyEvent context)
+        private void StatusValueChangedCallback(EventContext.PersonalityStatusPropertyEvent context)
         {
             var sum = CalculateExpectedSum();
             _sumText.SetTextSmart(sum > 0 ? $"+{sum.ToString()}" : sum.ToString());

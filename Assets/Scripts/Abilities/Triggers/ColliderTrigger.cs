@@ -1,6 +1,5 @@
 ﻿using Abilities.Interfaces;
 using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
@@ -11,8 +10,10 @@ namespace Abilities.Triggers
     {
         #region Events
 
-        public IContextEvent<Events.ColliderEvent> OnEntered { get; } = new ContextEvent<Events.ColliderEvent>();
-        public IContextEvent<Events.ColliderEvent> OnLeft { get; } = new ContextEvent<Events.ColliderEvent>();
+        public IContextEvent<EventContext.ColliderEvent> OnEntered { get; } =
+            EventFactory.CreateContextEvent<EventContext.ColliderEvent>();
+        public IContextEvent<EventContext.ColliderEvent> OnLeft { get; } =
+            EventFactory.CreateContextEvent<EventContext.ColliderEvent>();
 
         #endregion
         
@@ -20,7 +21,7 @@ namespace Abilities.Triggers
 
         private void OnTriggerEnter(Collider other)
         {
-            OnEntered?.NotifyListeners(new Events.ColliderEvent
+            OnEntered?.NotifyListeners(new EventContext.ColliderEvent
             {
                 Collider = other
             });
@@ -28,7 +29,7 @@ namespace Abilities.Triggers
 
         private void OnTriggerExit(Collider other)
         {
-            OnLeft?.NotifyListeners(new Events.ColliderEvent
+            OnLeft?.NotifyListeners(new EventContext.ColliderEvent
             {
                 Collider = other
             });

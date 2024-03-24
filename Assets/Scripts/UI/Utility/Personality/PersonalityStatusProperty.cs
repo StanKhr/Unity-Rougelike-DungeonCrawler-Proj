@@ -1,5 +1,4 @@
 ﻿using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using TMPro;
@@ -18,8 +17,8 @@ namespace UI.Utility.Personality
         
         #region Events
 
-        public static IContextEvent<Events.PersonalityStatusPropertyEvent> OnStatusValueChanged { get; } =
-            new ContextEvent<Events.PersonalityStatusPropertyEvent>();
+        public static IContextEvent<EventContext.PersonalityStatusPropertyEvent> OnStatusValueChanged { get; } =
+            EventFactory.CreateContextEvent<EventContext.PersonalityStatusPropertyEvent>();
 
         #endregion
 
@@ -49,7 +48,7 @@ namespace UI.Utility.Personality
             private set
             {
                 _value = Mathf.Max(value, _minValue);
-                OnStatusValueChanged?.NotifyListeners(new Events.PersonalityStatusPropertyEvent
+                OnStatusValueChanged?.NotifyListeners(new EventContext.PersonalityStatusPropertyEvent
                 {
                     PersonalityStatusProperty = this
                 });

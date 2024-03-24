@@ -4,7 +4,6 @@ using FSM.GameLoop.Interfaces;
 using Miscellaneous;
 using Player.Miscellaneous;
 using Player.StateMachines.States;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Common;
 using Statuses.Interfaces;
 using UnityEngine;
@@ -52,7 +51,7 @@ namespace FSM.GameLoop.States
             StateMachine.UnloadScene(GameSceneType.Dungeon);
         }
 
-        private void PlayerLoadedCallback(Events.GameObjectEvent context)
+        private void PlayerLoadedCallback(EventContext.GameObjectEvent context)
         {
             PlayerObject = context.GameObject;
         }
@@ -77,7 +76,7 @@ namespace FSM.GameLoop.States
             StateMachine.ToDeathState();
         }
 
-        private void LevelGeneratorStartedCallback(Events.LevelGeneratorEvent context)
+        private void LevelGeneratorStartedCallback(EventContext.LevelGeneratorEvent context)
         {
             LevelGenerator = context.LevelGenerator;
         }

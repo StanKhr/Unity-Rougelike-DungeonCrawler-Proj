@@ -1,6 +1,4 @@
-﻿using System;
-using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
+﻿using Miscellaneous;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 
@@ -10,9 +8,8 @@ namespace WorldGeneration.Interfaces
     {
         #region Events
 
-        public static IContextEvent<Events.LevelGeneratorEvent> OnLevelGeneratorLoaded { get; } =
-            new ContextEvent<Events.LevelGeneratorEvent>();
-
+        public static IContextEvent<EventContext.LevelGeneratorEvent> OnLevelGeneratorLoaded { get; } =
+            EventFactory.CreateContextEvent<EventContext.LevelGeneratorEvent>();
         IEvent OnGenerationStarted { get; }
         IEvent OnGenerationEnded { get; }
 
@@ -30,7 +27,7 @@ namespace WorldGeneration.Interfaces
 
         public void CallGeneratorLoadedEvent(ILevelGenerator levelGenerator)
         {
-            OnLevelGeneratorLoaded?.NotifyListeners(new Events.LevelGeneratorEvent
+            OnLevelGeneratorLoaded?.NotifyListeners(new EventContext.LevelGeneratorEvent
             {
                 LevelGenerator = levelGenerator
             });

@@ -2,7 +2,6 @@
 using Miscellaneous;
 using Player.Inventories.Datas;
 using Player.Inventories.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Interfaces;
@@ -14,9 +13,12 @@ namespace Player.Inventories
     {
         #region Events
 
-        public IContextEvent<Events.ItemEvent> OnItemAdded { get; } = new ContextEvent<Events.ItemEvent>();
-        public IContextEvent<Events.ItemEvent> OnItemDropped { get; } = new ContextEvent<Events.ItemEvent>();
-        public IContextEvent<Events.ItemEvent> OnItemUsed { get; } = new ContextEvent<Events.ItemEvent>();
+        public IContextEvent<EventContext.ItemEvent> OnItemAdded { get; } =
+            EventFactory.CreateContextEvent<EventContext.ItemEvent>();
+        public IContextEvent<EventContext.ItemEvent> OnItemDropped { get; } =
+            EventFactory.CreateContextEvent<EventContext.ItemEvent>();
+        public IContextEvent<EventContext.ItemEvent> OnItemUsed { get; } =
+            EventFactory.CreateContextEvent<EventContext.ItemEvent>();
 
         #endregion
 
@@ -90,7 +92,7 @@ namespace Player.Inventories
                 if (_slots[i].IsEmpty)
                 {
                     _slots.SetSlot(i, item);
-                    OnItemAdded?.NotifyListeners(new Events.ItemEvent
+                    OnItemAdded?.NotifyListeners(new EventContext.ItemEvent
                     {
                         Item = item
                     });
@@ -129,7 +131,7 @@ namespace Player.Inventories
                 return false;
             }
             
-            OnItemDropped?.NotifyListeners(new Events.ItemEvent
+            OnItemDropped?.NotifyListeners(new EventContext.ItemEvent
             {
                 Item = item
             });
@@ -162,7 +164,7 @@ namespace Player.Inventories
                 return false;
             }
             
-            OnItemUsed?.NotifyListeners(new Events.ItemEvent
+            OnItemUsed?.NotifyListeners(new EventContext.ItemEvent
             {
                 Item = item
             });

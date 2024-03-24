@@ -1,6 +1,5 @@
 ﻿using Miscellaneous;
 using Player.GameStories.Datas;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Main;
 
@@ -10,8 +9,8 @@ namespace Player.GameStories.Interfaces
     {
         #region Events
 
-        public static IContextEvent<Events.StoryEpisodeDataEvent> OnTriggered { get; } =
-            new ContextEvent<Events.StoryEpisodeDataEvent>();
+        public static IContextEvent<EventContext.StoryEpisodeDataEvent> OnTriggered { get; } =
+            EventFactory.CreateContextEvent<EventContext.StoryEpisodeDataEvent>();
 
         #endregion
 
@@ -19,7 +18,7 @@ namespace Player.GameStories.Interfaces
 
         public void TriggerEvent(StoryEpisodeData episodeData)
         {
-            OnTriggered?.NotifyListeners(new Events.StoryEpisodeDataEvent()
+            OnTriggered?.NotifyListeners(new EventContext.StoryEpisodeDataEvent()
             {
                 StoryEpisodeData = episodeData
             });

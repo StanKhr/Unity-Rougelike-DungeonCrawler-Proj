@@ -1,7 +1,6 @@
 ﻿using Audio.Interfaces;
 using Audio.Settings;
 using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using TMPro;
 using UI.Utility;
 using UnityEngine;
@@ -53,7 +52,7 @@ namespace UI.Presenters
 
         #region Methods
 
-        private void NewVolumeSetCallback(Events.FloatEvent context)
+        private void NewVolumeSetCallback(EventContext.FloatEvent context)
         {
             ValidateVolume(context.Float);
         }

@@ -2,7 +2,6 @@
 using Miscellaneous;
 using Player.Inventories.Datas;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Player.Inventories.Interfaces
 {
@@ -10,9 +9,9 @@ namespace Player.Inventories.Interfaces
     {
         #region Events
         
-        IContextEvent<Events.ItemEvent> OnItemAdded { get; }
-        IContextEvent<Events.ItemEvent> OnItemDropped { get; }
-        IContextEvent<Events.ItemEvent> OnItemUsed { get; }
+        IContextEvent<EventContext.ItemEvent> OnItemAdded { get; }
+        IContextEvent<EventContext.ItemEvent> OnItemDropped { get; }
+        IContextEvent<EventContext.ItemEvent> OnItemUsed { get; }
 
         #endregion
         

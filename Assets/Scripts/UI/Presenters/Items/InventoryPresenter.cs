@@ -3,7 +3,6 @@ using Miscellaneous;
 using Player.Inventories;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace UI.Presenters.Items
@@ -100,13 +99,13 @@ namespace UI.Presenters.Items
             }
         }
 
-        private void SlotDroppedCallback(Events.InventorySlotPresenterEvent context)
+        private void SlotDroppedCallback(EventContext.InventorySlotPresenterEvent context)
         {
             _selectedSlotPresenter = context.InventorySlotPresenter;
             DropItem();
         }
         
-        private void SlotUpdatedCallback(Events.IntEvent context)
+        private void SlotUpdatedCallback(EventContext.IntEvent context)
         {
             var slot = Inventory.Slots[context.Int];
             FillSlotPresenter(context.Int, slot);
@@ -123,13 +122,13 @@ namespace UI.Presenters.Items
             _slots[slotIndex].TryUpdateCorrespondingSlot(slot);
         }
 
-        private void SlotSlotSelectedCallback(Events.InventorySlotPresenterEvent context)
+        private void SlotSlotSelectedCallback(EventContext.InventorySlotPresenterEvent context)
         {
             _selectedSlotPresenter = context.InventorySlotPresenter;
             UpdateDescriptionPopup(context.InventorySlotPresenter);
         }
 
-        private void SlotUseItemTriggeredCallback(Events.InventorySlotPresenterEvent context)
+        private void SlotUseItemTriggeredCallback(EventContext.InventorySlotPresenterEvent context)
         {
             Inventory.TryUse(context.InventorySlotPresenter.SlotIndex);
         }
@@ -140,7 +139,7 @@ namespace UI.Presenters.Items
             _itemDescriptionPopup.FillDescription(slot.Item);
         }
 
-        private void ItemUsedCallback(Events.ItemEvent context)
+        private void ItemUsedCallback(EventContext.ItemEvent context)
         {
             UpdateDescriptionPopup(_selectedSlotPresenter);
         }

@@ -1,5 +1,4 @@
 ﻿using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Interfaces;
 using UnityEngine;
 
@@ -43,12 +42,12 @@ namespace Props.InteractionCallbacks
             }
         }
 
-        protected virtual void InteractionEndedCallback(Events.GameObjectEvent context)
+        protected virtual void InteractionEndedCallback(EventContext.GameObjectEvent context)
         {
             
         }
 
-        protected virtual void InteractionStartedCallback(Events.GameObjectEvent context)
+        protected virtual void InteractionStartedCallback(EventContext.GameObjectEvent context)
         {
             
         }

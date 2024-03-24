@@ -1,6 +1,5 @@
 ﻿using Miscellaneous;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Props.Interfaces
 {
@@ -8,8 +7,8 @@ namespace Props.Interfaces
     {
         #region Events
 
-        IContextEvent<Events.GameObjectEvent> OnInteractionStarted { get; }
-        IContextEvent<Events.GameObjectEvent> OnInteractionEnded { get; }
+        IContextEvent<EventContext.GameObjectEvent> OnInteractionStarted { get; }
+        IContextEvent<EventContext.GameObjectEvent> OnInteractionEnded { get; }
 
         #endregion
     }

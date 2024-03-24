@@ -1,7 +1,6 @@
 ﻿using Miscellaneous;
 using Player.Interfaces;
 using Player.Inventories;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace UI.Presenters
@@ -41,12 +40,12 @@ namespace UI.Presenters
 
         #region Methods
         
-        protected virtual void WeaponEquippedCallback(Events.WeaponEvent context)
+        protected virtual void WeaponEquippedCallback(EventContext.WeaponEvent context)
         {
             SetValue(context.Weapon.Name);
         }
 
-        protected virtual void WeaponRemovedCallback(Events.WeaponEvent context)
+        protected virtual void WeaponRemovedCallback(EventContext.WeaponEvent context)
         {
             SetValue(string.Empty);
         }

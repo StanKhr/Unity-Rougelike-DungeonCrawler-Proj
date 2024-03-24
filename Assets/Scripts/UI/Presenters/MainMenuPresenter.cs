@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Player.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using TMPro;
 using UI.Utility;
 using UI.Utility.Personality;
@@ -22,10 +21,8 @@ namespace UI.Presenters
         
         #region Events
 
-        public static IEvent OnDungeonRunStarted { get; } = new CustomEvent();
-
-        public static IEvent OnGameExited { get; } = new CustomEvent();
-        // public static event Action
+        public static IEvent OnDungeonRunStarted { get; } = EventFactory.CreateEvent();
+        public static IEvent OnGameExited { get; } = EventFactory.CreateEvent();
 
         #endregion
 

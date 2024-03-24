@@ -1,8 +1,6 @@
-﻿using System;
-using Miscellaneous;
+﻿using Miscellaneous;
 using Player.Inventories.Interfaces;
 using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Player.Interfaces
 {
@@ -10,9 +8,9 @@ namespace Player.Interfaces
     {
         #region Events
 
-        IContextEvent<Events.MeleeAttackEvent> OnAttackChargeStarted { get; }
-        IContextEvent<Events.GameObjectEvent> OnSurfaceHit { get; }
-        IContextEvent<Events.WeaponEvent> OnAttackReleased { get; }
+        IContextEvent<EventContext.MeleeAttackEvent> OnAttackChargeStarted { get; }
+        IContextEvent<EventContext.GameObjectEvent> OnSurfaceHit { get; }
+        IContextEvent<EventContext.WeaponEvent> OnAttackReleased { get; }
         IEvent OnAttackEnded { get; }
 
         #endregion

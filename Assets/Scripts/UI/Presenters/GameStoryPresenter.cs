@@ -1,7 +1,6 @@
 ﻿using Miscellaneous;
 using Player.GameStories;
 using Player.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using TMPro;
 using UI.Utility;
 using UnityEngine;
@@ -42,7 +41,7 @@ namespace UI.Presenters
 
         #region Methods
         
-        private void StoryUpdatedCallback(Events.StringEvent context)
+        private void StoryUpdatedCallback(EventContext.StringEvent context)
         {
             _storyText.SetTextSmart(context.String);
         }

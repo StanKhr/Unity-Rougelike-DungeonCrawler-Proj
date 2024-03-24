@@ -6,7 +6,6 @@ using Miscellaneous;
 using Miscellaneous.ObjectPooling;
 using Player.Attacks;
 using Player.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Enums;
 using Statuses.Extras;
 using UnityEngine;
@@ -100,7 +99,7 @@ namespace Audio.Triggers
 
         #region Methods
         
-        private void SurfaceHitCallback(Events.GameObjectEvent context)
+        private void SurfaceHitCallback(EventContext.GameObjectEvent context)
         {
             if (!ObjectSurfaceTypeConverter.TryGetFromObject(context.GameObject, out var surfaceType))
             {
