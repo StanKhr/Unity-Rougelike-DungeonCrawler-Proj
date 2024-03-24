@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Miscellaneous;
 using Miscellaneous.CustomEvents.Contexts;
 using Miscellaneous.CustomEvents.Events;
+using Miscellaneous.CustomEvents.Interfaces;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
 using Statuses.Datas;
@@ -24,10 +25,10 @@ namespace Player.Attacks
 
         #region Events
 
-        public ValueEvent<EventContext.MeleeAttackEvent> OnAttackChargeStarted { get; } = new ();
-        public ValueEvent<EventContext.GameObjectEvent> OnSurfaceHit { get; } = new ();
-        public ValueEvent<EventContext.WeaponEvent> OnAttackReleased { get; } = new ();
-        public SimpleEvent OnAttackEnded { get; } = new();
+        public IValueEvent<EventContext.MeleeAttackEvent> OnAttackChargeStarted { get; } = new ValueEvent<EventContext.MeleeAttackEvent>();
+        public IValueEvent<EventContext.GameObjectEvent> OnSurfaceHit { get; } = new ValueEvent<EventContext.GameObjectEvent>();
+        public IValueEvent<EventContext.WeaponEvent> OnAttackReleased { get; } = new ValueEvent<EventContext.WeaponEvent>();
+        public IEvent OnAttackEnded { get; } = new CustomEvent();
 
         #endregion
 

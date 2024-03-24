@@ -1,6 +1,7 @@
 ﻿using System;
 using Miscellaneous.CustomEvents.Contexts;
 using Miscellaneous.CustomEvents.Events;
+using Miscellaneous.CustomEvents.Interfaces;
 using Player.Inventories.Interfaces;
 
 namespace Player.Interfaces
@@ -9,10 +10,10 @@ namespace Player.Interfaces
     {
         #region Events
 
-        ValueEvent<EventContext.MeleeAttackEvent> OnAttackChargeStarted { get; }
-        ValueEvent<EventContext.GameObjectEvent> OnSurfaceHit { get; }
-        ValueEvent<EventContext.WeaponEvent> OnAttackReleased { get; }
-        SimpleEvent OnAttackEnded { get; }
+        IValueEvent<EventContext.MeleeAttackEvent> OnAttackChargeStarted { get; }
+        IValueEvent<EventContext.GameObjectEvent> OnSurfaceHit { get; }
+        IValueEvent<EventContext.WeaponEvent> OnAttackReleased { get; }
+        IEvent OnAttackEnded { get; }
 
         #endregion
 

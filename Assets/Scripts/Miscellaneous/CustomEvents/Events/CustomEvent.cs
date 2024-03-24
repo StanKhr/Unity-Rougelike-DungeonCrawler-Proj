@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Miscellaneous.CustomEvents.Interfaces;
+using UnityEngine;
 
 namespace Miscellaneous.CustomEvents.Events
 {
-    public class SimpleEvent
+    public class CustomEvent : IEvent
     {
         #region Constructors
 
-        public SimpleEvent()
+        public CustomEvent()
         {
             
         }
@@ -44,7 +47,8 @@ namespace Miscellaneous.CustomEvents.Events
 
         public void Invoke()
         {
-            foreach (var callback in Callbacks)
+            var callbacksList = Callbacks.ToList();
+            foreach (var callback in callbacksList)
             {
                 callback.Invoke();
             }
@@ -54,14 +58,14 @@ namespace Miscellaneous.CustomEvents.Events
 
         #region Operators
 
-        public static SimpleEvent operator +(SimpleEvent evn, Action callback)
+        public static CustomEvent operator +(CustomEvent evn, Action callback)
         {
             evn.AddCallback(callback);
 
             return evn;
         }
 
-        public static SimpleEvent operator -(SimpleEvent evn, Action callback)
+        public static CustomEvent operator -(CustomEvent evn, Action callback)
         {
             evn.RemoveCallback(callback);
 

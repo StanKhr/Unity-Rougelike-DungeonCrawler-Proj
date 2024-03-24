@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Miscellaneous.CustomEvents.Interfaces;
 
 namespace Miscellaneous.CustomEvents.Events
@@ -45,7 +46,8 @@ namespace Miscellaneous.CustomEvents.Events
 
         public void Invoke(T context)
         {
-            foreach (var callback in Callbacks)
+            var callbacksList = Callbacks.ToList();
+            foreach (var callback in callbacksList)
             {
                 callback.Invoke(context);
             }

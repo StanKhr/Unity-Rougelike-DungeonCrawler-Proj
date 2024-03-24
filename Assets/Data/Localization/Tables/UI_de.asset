@@ -55,7 +55,7 @@ MonoBehaviour:
       m_Items:
       - rid: 8722672589656817684
   - m_Id: 7
-    m_Localized: "Ausr\xFCstung: {value}"
+    m_Localized: "Ausger\xFCstet: {value}"
     m_Metadata:
       m_Items:
       - rid: 8722672589656817684

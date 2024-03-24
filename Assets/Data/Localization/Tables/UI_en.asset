@@ -55,7 +55,7 @@ MonoBehaviour:
       m_Items:
       - rid: 8722672589656817683
   - m_Id: 7
-    m_Localized: 'Equipment: {value}'
+    m_Localized: 'Equipped: {value}'
     m_Metadata:
       m_Items:
       - rid: 8722672589656817683
