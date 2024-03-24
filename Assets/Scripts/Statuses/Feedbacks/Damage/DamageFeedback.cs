@@ -1,4 +1,5 @@
-﻿using Statuses.Interfaces;
+﻿using Miscellaneous.EventWrapper.Main;
+using Statuses.Interfaces;
 using UnityEngine;
 
 namespace Statuses.Feedbacks.Damage
@@ -28,12 +29,12 @@ namespace Statuses.Feedbacks.Damage
         {
             if (ObserveDamage)
             {
-                Damageable.OnDamaged += DamagedCallback;
+                Damageable.OnDamaged.AddListener(DamagedCallback);
             }
             
             if (ObserveDeath)
             {
-                Health.OnDied += DiedCallback;
+                Health.OnDied.AddListener(DiedCallback);
             }
         }
 
@@ -41,12 +42,12 @@ namespace Statuses.Feedbacks.Damage
         {
             if (ObserveDamage)
             {
-                Damageable.OnDamaged -= DamagedCallback;
+                Damageable.OnDamaged.RemoveListener(DamagedCallback);
             }
             
             if (ObserveDeath)
             {
-                Health.OnDied -= DiedCallback;
+                Health.OnDied.RemoveListener(DiedCallback);
             }
         }
 
@@ -54,7 +55,7 @@ namespace Statuses.Feedbacks.Damage
         
         #region Methods
 
-        protected abstract void DamagedCallback(float context);
+        protected abstract void DamagedCallback(Events.FloatEvent context);
         protected virtual void DiedCallback()
         {
             

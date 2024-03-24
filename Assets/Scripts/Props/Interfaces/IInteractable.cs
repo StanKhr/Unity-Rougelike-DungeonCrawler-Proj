@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 
 namespace Props.Interfaces
 {
@@ -6,8 +7,8 @@ namespace Props.Interfaces
     {
         #region Events
 
-        event DelegateHolder.GameObjectEvents OnInteractionStarted;
-        event DelegateHolder.GameObjectEvents OnInteractionEnded;
+        IContextEvent<Events.GameObjectEvent> OnInteractionStarted { get; }
+        IContextEvent<Events.GameObjectEvent> OnInteractionEnded { get; }
 
         #endregion
     }

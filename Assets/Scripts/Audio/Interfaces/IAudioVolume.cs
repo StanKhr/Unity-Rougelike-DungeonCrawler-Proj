@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 
 namespace Audio.Interfaces
 {
@@ -6,7 +7,7 @@ namespace Audio.Interfaces
     {
         #region Events
 
-        event DelegateHolder.FloatEvents OnNewVolumeSet;
+        IContextEvent<Events.FloatEvent> OnNewVolumeSet { get; }
 
         #endregion
         

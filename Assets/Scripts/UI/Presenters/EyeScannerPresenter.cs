@@ -1,4 +1,5 @@
-﻿using Player.Miscellaneous;
+﻿using Miscellaneous.EventWrapper.Main;
+using Player.Miscellaneous;
 using TMPro;
 using UI.Enums;
 using UI.Interfaces;
@@ -25,23 +26,23 @@ namespace UI.Presenters
         private void Start()
         {
             FillPopup(null);
-            _eyeScanner.OnTargetFound += TargetFoundCallback;
-            _eyeScanner.OnTargetLost += TargetLostCallback;
+            _eyeScanner.OnTargetFound.AddListener(TargetFoundCallback);
+            _eyeScanner.OnTargetLost.AddListener(TargetLostCallback);
         }
 
         private void OnDestroy()
         {
-            _eyeScanner.OnTargetFound -= TargetFoundCallback;
-            _eyeScanner.OnTargetLost -= TargetLostCallback;
+            _eyeScanner.OnTargetFound.RemoveListener(TargetFoundCallback);
+            _eyeScanner.OnTargetLost.RemoveListener(TargetLostCallback);
         }
 
         #endregion
 
         #region Methods
         
-        private void TargetFoundCallback(GameObject context)
+        private void TargetFoundCallback(Events.GameObjectEvent context)
         {
-            context.TryGetComponent<IScanDescription>(out var scanDescription);
+            context.GameObject.TryGetComponent<IScanDescription>(out var scanDescription);
             FillPopup(scanDescription);
         }
 

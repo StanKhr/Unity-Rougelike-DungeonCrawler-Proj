@@ -1,5 +1,6 @@
 ﻿using System;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Player.Inventories.Datas;
 
 namespace Player.Inventories.Interfaces
@@ -8,9 +9,9 @@ namespace Player.Inventories.Interfaces
     {
         #region Events
         
-        event DelegateHolder.ItemEvents OnItemAdded;
-        event DelegateHolder.ItemEvents OnItemDropped;
-        event DelegateHolder.ItemEvents OnItemUsed;
+        IContextEvent<Events.ItemEvent> OnItemAdded { get; }
+        IContextEvent<Events.ItemEvent> OnItemDropped { get; }
+        IContextEvent<Events.ItemEvent> OnItemUsed { get; }
 
         #endregion
         

@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
+using Miscellaneous.EventWrapper.Main;
 using Statuses.Feedbacks.Damage;
 using Statuses.Interfaces;
 using Statuses.Main;
@@ -65,7 +66,7 @@ namespace UI.Presenters
             _canvasGroup.alpha = 0f;
         }
 
-        protected override void DamagedCallback(float _)
+        protected override void DamagedCallback(Events.FloatEvent context)
         {
             TriggerEffect();
         }

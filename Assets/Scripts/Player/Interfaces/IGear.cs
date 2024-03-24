@@ -1,5 +1,5 @@
-﻿using Miscellaneous.CustomEvents.Contexts;
-using Miscellaneous.CustomEvents.Events;
+﻿using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Main;
 using Player.Inventories.Interfaces;
 
 namespace Player.Interfaces
@@ -8,8 +8,8 @@ namespace Player.Interfaces
     {
         #region Events
 
-        ValueEvent<EventContext.WeaponEvent> OnWeaponEquipped { get; }
-        ValueEvent<EventContext.WeaponEvent> OnWeaponRemoved { get; }
+        ContextEvent<Events.WeaponEvent> OnWeaponEquipped { get; }
+        ContextEvent<Events.WeaponEvent> OnWeaponRemoved { get; }
 
         #endregion
         

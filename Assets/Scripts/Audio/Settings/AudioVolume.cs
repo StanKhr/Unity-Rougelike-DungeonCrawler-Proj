@@ -1,7 +1,9 @@
 ﻿using System;
 using Audio.Interfaces;
 using Cysharp.Threading.Tasks;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -18,7 +20,7 @@ namespace Audio.Settings
         
         #region Events
         
-        public event DelegateHolder.FloatEvents OnNewVolumeSet;
+        public IContextEvent<Events.FloatEvent> OnNewVolumeSet { get; } = new ContextEvent<Events.FloatEvent>();
 
         #endregion
         
@@ -67,7 +69,10 @@ namespace Audio.Settings
                 // hardcoded formula
                 _audioMixer.SetFloat(_propertyName, Mathf.Log10(newVolume) * 20);
                 
-                OnNewVolumeSet?.Invoke(newVolume);
+                OnNewVolumeSet?.NotifyListeners(new Events.FloatEvent
+                {
+                    Float = newVolume
+                });
             }
         }
 

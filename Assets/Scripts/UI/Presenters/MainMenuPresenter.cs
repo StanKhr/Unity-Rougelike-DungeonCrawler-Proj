@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using Player.Interfaces;
 using TMPro;
 using UI.Utility;
@@ -20,8 +22,9 @@ namespace UI.Presenters
         
         #region Events
 
-        public static event Action OnDungeonRunStarted;
-        public static event Action OnGameExited;
+        public static IEvent OnDungeonRunStarted { get; } = new CustomEvent();
+
+        public static IEvent OnGameExited { get; } = new CustomEvent();
         // public static event Action
 
         #endregion
@@ -82,7 +85,7 @@ namespace UI.Presenters
             ShowSettings(false);
             
             _startRunButton.onClick.AddListener(TryStartRun);
-            _exitGameButton.onClick.AddListener(() => OnGameExited?.Invoke());
+            _exitGameButton.onClick.AddListener(() => OnGameExited?.NotifyListeners());
             _creditsButton.onClick.AddListener(() => Application.OpenURL(ItchLink));
             
             _createPersonalityButton.onClick.AddListener(() => ShowPersonalityCreator(true));
@@ -114,7 +117,7 @@ namespace UI.Presenters
             var personality = _personalityCreator.GeneratePersonality();
             Personality.Active = personality;
             
-            OnDungeonRunStarted?.Invoke();
+            OnDungeonRunStarted?.NotifyListeners();
         }
 
         private void ShowPersonalityCreator(bool show)

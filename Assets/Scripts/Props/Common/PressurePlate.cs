@@ -1,6 +1,8 @@
 ﻿using Abilities.Interfaces;
 using Abilities.Triggers;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Props.Interfaces;
 using UnityEngine;
 
@@ -9,9 +11,11 @@ namespace Props.Common
     public class PressurePlate : MonoBehaviour, IInteractable
     {
         #region Events
-        
-        public event DelegateHolder.GameObjectEvents OnInteractionStarted;
-        public event DelegateHolder.GameObjectEvents OnInteractionEnded;
+
+        public IContextEvent<Events.GameObjectEvent> OnInteractionStarted { get; } =
+            new ContextEvent<Events.GameObjectEvent>();
+        public IContextEvent<Events.GameObjectEvent> OnInteractionEnded { get; } =
+            new ContextEvent<Events.GameObjectEvent>();
 
         #endregion
         
@@ -38,21 +42,21 @@ namespace Props.Common
 
         private void OnEnable()
         {
-            ColliderTrigger.OnEntered += EnteredCallback;
-            ColliderTrigger.OnLeft += LeftCallback;
+            ColliderTrigger.OnEntered.AddListener(EnteredCallback);
+            ColliderTrigger.OnLeft.AddListener(LeftCallback);
         }
 
         private void OnDisable()
         {
-            ColliderTrigger.OnEntered -= EnteredCallback;
-            ColliderTrigger.OnLeft -= LeftCallback;
+            ColliderTrigger.OnEntered.RemoveListener(EnteredCallback);
+            ColliderTrigger.OnLeft.RemoveListener(LeftCallback);
         }
 
         #endregion
 
         #region Methods
         
-        private void EnteredCallback(Collider obj)
+        private void EnteredCallback(Events.ColliderEvent context)
         {
             if (_singleUse && _wasUsed)
             {
@@ -60,12 +64,18 @@ namespace Props.Common
             }
 
             _wasUsed = true;
-            OnInteractionStarted?.Invoke(obj.gameObject);
+            OnInteractionStarted?.NotifyListeners(new Events.GameObjectEvent
+            {
+                GameObject = context.Collider.gameObject
+            });
         }
 
-        private void LeftCallback(Collider obj)
+        private void LeftCallback(Events.ColliderEvent context)
         {
-            OnInteractionEnded?.Invoke(obj.gameObject);
+            OnInteractionEnded?.NotifyListeners(new Events.GameObjectEvent
+            {
+                GameObject = context.Collider.gameObject
+            });
         }
 
         #endregion

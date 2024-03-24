@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Miscellaneous.CustomEvents.Interfaces;
-using UnityEngine;
+using Miscellaneous.EventWrapper.Interfaces;
 
-namespace Miscellaneous.CustomEvents.Events
+namespace Miscellaneous.EventWrapper.Events
 {
     public class CustomEvent : IEvent
     {
@@ -42,6 +41,11 @@ namespace Miscellaneous.CustomEvents.Events
 
         public void NotifyListeners()
         {
+            if (Listeners.Count <= 0)
+            {
+                return;
+            }
+            
             var callbacksList = Listeners.ToList();
             foreach (var callback in callbacksList)
             {

@@ -1,4 +1,5 @@
-﻿using Miscellaneous.Interfaces;
+﻿using Miscellaneous.EventWrapper.Main;
+using Miscellaneous.Interfaces;
 using Player.Inventories.Interfaces;
 using Props.Common;
 using UnityEngine;
@@ -32,23 +33,23 @@ namespace Player.Inventories.Items
 
         private void Start()
         {
-            Inventory.OnItemDropped += ItemDroppedCallback;
+            Inventory.OnItemDropped.AddListener(ItemDroppedCallback);
         }
 
         private void OnDestroy()
         {
-            Inventory.OnItemDropped -= ItemDroppedCallback;
+            Inventory.OnItemDropped.RemoveListener(ItemDroppedCallback);
         }
 
         #endregion
 
         #region Methods
 
-        private void ItemDroppedCallback(IItem context)
+        private void ItemDroppedCallback(Events.ItemEvent context)
         {
             var position = transform.position;
             var instance = Instantiate(_pickableItemPrefab, position, Quaternion.identity);
-            instance.OverrideItem(context);
+            instance.OverrideItem(context.Item);
 
             if (!instance.TryGetComponent<IForceApplier>(out var forceApplier))
             {

@@ -1,6 +1,8 @@
 ﻿using System;
 using Abilities.Interfaces;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using UnityEngine;
 
 namespace Abilities.Locomotion
@@ -16,9 +18,9 @@ namespace Abilities.Locomotion
 
         #region Events
 
-        public event Action OnJumped;
-        public event Action OnGroundLanded;
-        public event DelegateHolder.FloatEvents OnFallDamageTriggered;
+        public IEvent OnJumped { get; } = new CustomEvent();
+        public IEvent OnGroundLanded { get; } = new CustomEvent();
+        public IContextEvent<Events.FloatEvent> OnFallDamageTriggered { get; } = new ContextEvent<Events.FloatEvent>();
 
         #endregion
 
@@ -40,7 +42,6 @@ namespace Abilities.Locomotion
         #endregion
 
         #region Properties
-
         public bool Walking { get; set; }
         public bool Sprinting { get; set; }
         public bool Crouching { get; set; }
@@ -55,12 +56,15 @@ namespace Abilities.Locomotion
 
                 if (!Grounded && value)
                 {
-                    OnGroundLanded?.Invoke();
+                    OnGroundLanded?.NotifyListeners();
                 }
 
                 if (triggerFallDamage && Gravity <= _locomotionData.FallDamageGravityThreshold)
                 {
-                    OnFallDamageTriggered?.Invoke(Gravity);
+                    OnFallDamageTriggered?.NotifyListeners(new Events.FloatEvent
+                    {
+                        Float = Gravity
+                    });
                 }
                 
                 if (Grounded != value)
@@ -105,7 +109,7 @@ namespace Abilities.Locomotion
             }
 
             Gravity = Mathf.Sqrt(_locomotionData.JumpPower * JumpConstScale * Physics.gravity.y);
-            OnJumped?.Invoke();
+            OnJumped?.NotifyListeners();
         }
 
         public void SetTargetMotion(Vector3 newTargetDirection)

@@ -1,5 +1,8 @@
 ﻿using System;
 using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using NPCs.Interfaces;
 using Statuses.Datas;
 using Statuses.Enums;
@@ -19,7 +22,8 @@ namespace NPCs.Components
         
         #region Events
 
-        public static event DelegateHolder.Vector3Events OnAttackAtPointPerformed;
+        public static IContextEvent<Events.Vector3Event> OnAttackAtPointPerformed { get; } =
+            new ContextEvent<Events.Vector3Event>();
 
         #endregion
         
@@ -65,7 +69,10 @@ namespace NPCs.Components
             var direction = (victimPosition - position).normalized;
             var attackPosition = position + direction;
             
-            OnAttackAtPointPerformed?.Invoke(attackPosition);
+            OnAttackAtPointPerformed?.NotifyListeners(new Events.Vector3Event
+            {
+                Vector3 = attackPosition
+            });
 
             Array.Clear(ScanResult, 0, ScanResult.Length);
             if (Physics.OverlapSphereNonAlloc(attackPosition, _attackRadius, ScanResult, _damageableLayers) <= 0)

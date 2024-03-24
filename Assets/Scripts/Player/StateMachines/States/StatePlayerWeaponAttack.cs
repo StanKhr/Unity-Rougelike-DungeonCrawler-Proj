@@ -1,5 +1,5 @@
 ﻿using FSM.Main;
-using Miscellaneous.CustomEvents.Contexts;
+using Miscellaneous.EventWrapper.Main;
 using Player.Inventories.Interfaces;
 using Player.StateMachines.Interfaces;
 
@@ -83,7 +83,7 @@ namespace Player.StateMachines.States
             playerMeleeAttack.ReleaseAttack();
         }
 
-        private void AttackReleasedCallback(EventContext.WeaponEvent context)
+        private void AttackReleasedCallback(Events.WeaponEvent context)
         {
             var stamina = StateMachinePlayer.Stamina;
             if (!stamina.TryDecrease(Weapon.AttackEnergyCost))
@@ -101,7 +101,7 @@ namespace Player.StateMachines.States
             StateMachinePlayer.ToFreeLookState();
         }
 
-        private void AttackChargeStartedCallback(EventContext.MeleeAttackEvent context)
+        private void AttackChargeStartedCallback(Events.MeleeAttackEvent context)
         {
             var playerAnimations = StateMachinePlayer.PlayerAnimations;
             playerAnimations.PlayWeaponAttackCharge(Weapon.CalculateChargeTimeSeconds());

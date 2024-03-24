@@ -1,5 +1,7 @@
 ﻿using System;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Statuses.Datas;
 using Statuses.Interfaces;
 using UnityEngine;
@@ -10,10 +12,10 @@ namespace Statuses.Main
     {
         #region Events
 
-        public event DelegateHolder.FloatEvents OnDamaged;
-        public event Action OnDied;
-        public event Action OnResurrected;
-
+        public IEvent OnDied { get; } = new CustomEvent();
+        public IEvent OnResurrected { get; } = new CustomEvent();
+        public IContextEvent<Events.FloatEvent> OnDamaged { get; } = new ContextEvent<Events.FloatEvent>();
+        
         #endregion
 
         #region Properties
@@ -36,21 +38,24 @@ namespace Statuses.Main
                 {
                     if (previousValue <= 0f)
                     {
-                        OnResurrected?.Invoke();
+                        OnResurrected?.NotifyListeners();
                         return;
                     }
                     
                     return;
                 }
 
-                OnDamaged?.Invoke(healthDifference);
+                OnDamaged?.NotifyListeners(new Events.FloatEvent
+                {
+                    Float = healthDifference
+                });
                 
                 if ((this as IHealth).Alive)
                 {
                     return;
                 }
                 
-                OnDied?.Invoke();
+                OnDied?.NotifyListeners();
             }
         }
 

@@ -2,11 +2,11 @@
 
 namespace Player.GameStories.Datas
 {
-    public struct StoryEventData
+    public struct StoryEpisodeData
     {
         #region Constructors
 
-        public StoryEventData(string storyLine)
+        public StoryEpisodeData(string storyLine)
         {
             StoryLine = storyLine;
             // EventTime = DateTime.Now.ToString("HH:mm:ss");

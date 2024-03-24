@@ -1,4 +1,6 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Props.Interfaces;
 using UnityEngine;
 
@@ -7,9 +9,11 @@ namespace Props.Common
     public class Door : Usable, IInteractable
     {
         #region Events
-        
-        public event DelegateHolder.GameObjectEvents OnInteractionStarted;
-        public event DelegateHolder.GameObjectEvents OnInteractionEnded;
+
+        public IContextEvent<Events.GameObjectEvent> OnInteractionStarted { get; } =
+            new ContextEvent<Events.GameObjectEvent>();
+        public IContextEvent<Events.GameObjectEvent> OnInteractionEnded { get; } =
+            new ContextEvent<Events.GameObjectEvent>();
 
         #endregion
 
@@ -35,11 +39,11 @@ namespace Props.Common
 
                 if (Opened)
                 {
-                    OnInteractionStarted?.Invoke(null);
+                    OnInteractionStarted?.NotifyListeners(default);
                     return;
                 }
                 
-                OnInteractionEnded?.Invoke(null);
+                OnInteractionEnded?.NotifyListeners(default);
             }
         }
 

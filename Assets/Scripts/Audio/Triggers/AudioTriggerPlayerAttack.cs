@@ -1,4 +1,4 @@
-﻿using Miscellaneous.CustomEvents.Contexts;
+﻿using Miscellaneous.EventWrapper.Main;
 using Player.Attacks;
 using Player.Interfaces;
 using UnityEngine;
@@ -37,13 +37,13 @@ namespace Audio.Triggers
 
         #region Methods
 
-        private void AttackReleasedCallback(EventContext.WeaponEvent context)
+        private void AttackReleasedCallback(Events.WeaponEvent context)
         {
             var clipSelector = context.Weapon.ClipSelectorAttackRelease;
             clipSelector.TryOneShotOnAudioSource(AudioSource);
         }
 
-        private void AttackChargeStartedCallback(EventContext.MeleeAttackEvent context)
+        private void AttackChargeStartedCallback(Events.MeleeAttackEvent context)
         {
             var clipSelector = context.Weapon.ClipSelectorAttackCharge;
             clipSelector.TryOneShotOnAudioSource(AudioSource);

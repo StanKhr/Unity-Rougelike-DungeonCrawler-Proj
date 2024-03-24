@@ -24,12 +24,12 @@ namespace Player.Cameras
 
         private void Start()
         {
-            FootStepsTracker.OnStepMade += StepMadeCallback;
+            FootStepsTracker.OnStepMade.AddListener(StepMadeCallback);
         }
 
         private void OnDestroy()
         {
-            FootStepsTracker.OnStepMade -= StepMadeCallback;
+            FootStepsTracker.OnStepMade.RemoveListener(StepMadeCallback);
         }
 
         #endregion

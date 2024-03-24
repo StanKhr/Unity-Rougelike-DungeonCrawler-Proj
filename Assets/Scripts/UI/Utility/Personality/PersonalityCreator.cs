@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Miscellaneous.EventWrapper.Main;
 using Player.Enums;
 using TMPro;
 using UnityEngine;
@@ -77,7 +78,7 @@ namespace UI.Utility.Personality
 
         private void Start()
         {
-            PersonalityStatusProperty.OnStatusValueChanged += StatusValueChangedCallback;
+            PersonalityStatusProperty.OnStatusValueChanged.AddListener(StatusValueChangedCallback);
             
             _genderNextButton.onClick.AddListener(() => GenderNext(true));
             _genderPreviousButton.onClick.AddListener(() => GenderNext(false));
@@ -88,7 +89,7 @@ namespace UI.Utility.Personality
 
         private void OnDestroy()
         {
-            PersonalityStatusProperty.OnStatusValueChanged -= StatusValueChangedCallback;
+            PersonalityStatusProperty.OnStatusValueChanged.RemoveListener(StatusValueChangedCallback);
             
             _genderNextButton.onClick.RemoveAllListeners();
             _genderPreviousButton.onClick.RemoveAllListeners();
@@ -128,7 +129,7 @@ namespace UI.Utility.Personality
                 (float) _staminaProperty.Value, (float) _manaProperty.Value);
         }
 
-        private void StatusValueChangedCallback(PersonalityStatusProperty personalityStatusProperty)
+        private void StatusValueChangedCallback(Events.PersonalityStatusPropertyEvent context)
         {
             var sum = CalculateExpectedSum();
             _sumText.SetTextSmart(sum > 0 ? $"+{sum.ToString()}" : sum.ToString());

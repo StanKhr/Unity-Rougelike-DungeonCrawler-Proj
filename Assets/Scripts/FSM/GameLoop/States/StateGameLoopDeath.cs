@@ -19,16 +19,16 @@ namespace FSM.GameLoop.States
 
         public override void Enter()
         {
-            DeathPresenter.OnNewTryTriggered += NewTryTriggeredCallback;
-            DeathPresenter.OnToMainMenuLeft += ToMainMenuLeftCallback;
+            DeathPresenter.OnNewTryTriggered.AddListener(NewTryTriggeredCallback);
+            DeathPresenter.OnToMainMenuLeft.AddListener(ToMainMenuLeftCallback);
             
             StateMachine.LoadScene(GameSceneType.Death);
         }
 
         public override void Exit()
         {
-            DeathPresenter.OnNewTryTriggered -= NewTryTriggeredCallback;
-            DeathPresenter.OnToMainMenuLeft -= ToMainMenuLeftCallback;
+            DeathPresenter.OnNewTryTriggered.RemoveListener(NewTryTriggeredCallback);
+            DeathPresenter.OnToMainMenuLeft.RemoveListener(ToMainMenuLeftCallback);
 
             StateMachine.LoadScene(GameSceneType.Death);
         }

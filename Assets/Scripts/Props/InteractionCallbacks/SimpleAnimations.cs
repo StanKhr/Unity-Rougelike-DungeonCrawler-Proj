@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Miscellaneous.EventWrapper.Main;
+using UnityEngine;
 
 namespace Props.InteractionCallbacks
 {
@@ -33,13 +34,13 @@ namespace Props.InteractionCallbacks
 
         #region Methods
 
-        protected override void InteractionStartedCallback(GameObject context)
+        protected override void InteractionStartedCallback(Events.GameObjectEvent context)
         {
             _animator.SetFloat(SpeedHash, _animStartSpeed);
             _animator.CrossFade(StartHash, AnimationTransitionTime);
         }
 
-        protected override void InteractionEndedCallback(GameObject context)
+        protected override void InteractionEndedCallback(Events.GameObjectEvent context)
         {
             _animator.SetFloat(SpeedHash, _animEndSpeed);
             _animator.CrossFade(EndHash, AnimationTransitionTime);

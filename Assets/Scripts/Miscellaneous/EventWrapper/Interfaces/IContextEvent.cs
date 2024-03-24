@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Miscellaneous.CustomEvents.Interfaces
+namespace Miscellaneous.EventWrapper.Interfaces
 {
-    public interface IValueEvent<T> where T : struct
+    public interface IContextEvent<T> where T : struct
     {
         #region Methods
 

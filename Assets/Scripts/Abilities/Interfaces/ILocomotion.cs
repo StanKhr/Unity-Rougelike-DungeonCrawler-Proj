@@ -1,5 +1,6 @@
 ﻿using System;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using UnityEngine;
 
 namespace Abilities.Interfaces
@@ -8,9 +9,9 @@ namespace Abilities.Interfaces
     {
         #region Events
 
-        event Action OnJumped;
-        event Action OnGroundLanded;
-        event DelegateHolder.FloatEvents OnFallDamageTriggered;
+        IEvent OnJumped { get; }
+        IEvent OnGroundLanded { get; }
+        IContextEvent<Events.FloatEvent> OnFallDamageTriggered { get; }
 
         #endregion
         

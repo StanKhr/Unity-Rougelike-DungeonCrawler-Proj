@@ -1,5 +1,7 @@
 ﻿using System;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Player.Interfaces;
 using UnityEngine;
 
@@ -9,8 +11,9 @@ namespace Player.Miscellaneous
     {
         #region Events
 
-        public event DelegateHolder.GameObjectEvents OnTargetFound;
-        public event Action OnTargetLost;
+        public IContextEvent<Events.GameObjectEvent> OnTargetFound { get; } =
+            new ContextEvent<Events.GameObjectEvent>();
+        public IEvent OnTargetLost { get; } = new CustomEvent();
 
         #endregion
         
@@ -42,11 +45,14 @@ namespace Player.Miscellaneous
                 _target = value;
                 if (value)
                 {
-                    OnTargetFound?.Invoke(value);
+                    OnTargetFound?.NotifyListeners(new Events.GameObjectEvent
+                    {
+                        GameObject = value
+                    });
                     return;
                 }
 
-                OnTargetLost?.Invoke();
+                OnTargetLost?.NotifyListeners();
             }
         }
 

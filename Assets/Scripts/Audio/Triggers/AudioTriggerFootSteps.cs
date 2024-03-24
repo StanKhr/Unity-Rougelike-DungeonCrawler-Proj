@@ -26,12 +26,12 @@ namespace Audio.Triggers
 
         private void OnEnable()
         {
-            FootStepsTracker.OnStepMade += StepMadeCallback;
+            FootStepsTracker.OnStepMade.AddListener(StepMadeCallback);
         }
 
         private void OnDisable()
         {
-            FootStepsTracker.OnStepMade -= StepMadeCallback;
+            FootStepsTracker.OnStepMade.RemoveListener(StepMadeCallback);
         }
 
         #endregion

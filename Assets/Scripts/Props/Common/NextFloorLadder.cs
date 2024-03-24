@@ -1,5 +1,7 @@
 ﻿using System;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Props.Interfaces;
 using Statuses.Interfaces;
 using UnityEngine;
@@ -10,10 +12,13 @@ namespace Props.Common
     {
         #region Events
 
-        public static event Action OnNextFloorTriggered;
-        
-        public event DelegateHolder.GameObjectEvents OnInteractionStarted;
-        public event DelegateHolder.GameObjectEvents OnInteractionEnded;
+        public static IEvent OnNextFloorTriggered { get; } = new CustomEvent();
+
+        public IContextEvent<Events.GameObjectEvent> OnInteractionStarted { get; } =
+            new ContextEvent<Events.GameObjectEvent>();
+
+        public IContextEvent<Events.GameObjectEvent> OnInteractionEnded { get; } =
+            new ContextEvent<Events.GameObjectEvent>();
 
         #endregion
 
@@ -31,7 +36,7 @@ namespace Props.Common
                 return false;
             }
             
-            OnNextFloorTriggered?.Invoke();
+            OnNextFloorTriggered?.NotifyListeners();
             return true;
         }
 

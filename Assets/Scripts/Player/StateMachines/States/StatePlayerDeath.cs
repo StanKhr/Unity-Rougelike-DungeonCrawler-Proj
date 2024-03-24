@@ -1,5 +1,7 @@
 ﻿using System;
 using FSM.Main;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using Player.Cameras.Enums;
 using Player.StateMachines.Interfaces;
 using UnityEngine;
@@ -16,7 +18,7 @@ namespace Player.StateMachines.States
 
         #region Events
 
-        public static event Action OnPlayerDied;
+        public static IEvent OnPlayerDied { get; } = new CustomEvent();
 
         #endregion
         
@@ -52,14 +54,12 @@ namespace Player.StateMachines.States
 
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.Abilities.EnableMap(true);
-            inputProvider.Abilities.OnTestInputPressed += TestInputPressedCallback;
         }
 
         public override void Exit()
         {
             var inputProvider = StateMachinePlayer.InputProvider;
             inputProvider.Abilities.EnableMap(false);
-            inputProvider.Abilities.OnTestInputPressed -= TestInputPressedCallback;
         }
 
         public override void Tick(float deltaTime)
@@ -76,12 +76,7 @@ namespace Player.StateMachines.States
             }
             
             ResetNotificationDelay();
-            OnPlayerDied?.Invoke();
-        }
-
-        private void TestInputPressedCallback()
-        {
-            StateMachinePlayer.Resurrect();
+            OnPlayerDied?.NotifyListeners();
         }
 
         private void ResetNotificationDelay()

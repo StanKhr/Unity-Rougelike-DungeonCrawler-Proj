@@ -1,5 +1,7 @@
 ﻿using System;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Player.Inventories.Datas;
 using Player.Inventories.Interfaces;
 using Props.Interfaces;
@@ -10,10 +12,10 @@ namespace Player.Inventories
     public class Inventory : MonoBehaviour, IInventory
     {
         #region Events
-        
-        public event DelegateHolder.ItemEvents OnItemAdded;
-        public event DelegateHolder.ItemEvents OnItemDropped;
-        public event DelegateHolder.ItemEvents OnItemUsed;
+
+        public IContextEvent<Events.ItemEvent> OnItemAdded { get; } = new ContextEvent<Events.ItemEvent>();
+        public IContextEvent<Events.ItemEvent> OnItemDropped { get; } = new ContextEvent<Events.ItemEvent>();
+        public IContextEvent<Events.ItemEvent> OnItemUsed { get; } = new ContextEvent<Events.ItemEvent>();
 
         #endregion
 
@@ -87,7 +89,10 @@ namespace Player.Inventories
                 if (_slots[i].IsEmpty)
                 {
                     _slots.SetSlot(i, item);
-                    OnItemAdded?.Invoke(item);
+                    OnItemAdded?.NotifyListeners(new Events.ItemEvent
+                    {
+                        Item = item
+                    });
                     
                     return true;
                 }
@@ -123,7 +128,10 @@ namespace Player.Inventories
                 return false;
             }
             
-            OnItemDropped?.Invoke(item);
+            OnItemDropped?.NotifyListeners(new Events.ItemEvent
+            {
+                Item = item
+            });
             
             return true;
         }
@@ -153,7 +161,10 @@ namespace Player.Inventories
                 return false;
             }
             
-            OnItemUsed?.Invoke(item);
+            OnItemUsed?.NotifyListeners(new Events.ItemEvent
+            {
+                Item = item
+            });
 
             return true;
         }

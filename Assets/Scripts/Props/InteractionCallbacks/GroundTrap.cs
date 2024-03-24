@@ -1,4 +1,5 @@
-﻿using Props.Common;
+﻿using Miscellaneous.EventWrapper.Main;
+using Props.Common;
 using Props.Interfaces;
 using Statuses.Datas;
 using Statuses.Interfaces;
@@ -25,9 +26,9 @@ namespace Props.InteractionCallbacks
 
         #region Methods
 
-        protected override void InteractionStartedCallback(GameObject context)
+        protected override void InteractionStartedCallback(Events.GameObjectEvent context)
         {
-            if (!context.TryGetComponent<IDamageable>(out var damageable))
+            if (!context.GameObject.TryGetComponent<IDamageable>(out var damageable))
             {
                 return;
             }

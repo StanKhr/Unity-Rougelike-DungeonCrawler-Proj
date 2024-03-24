@@ -1,5 +1,5 @@
-﻿using Miscellaneous.CustomEvents.Contexts;
-using Miscellaneous.CustomEvents.Events;
+﻿using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Main;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
 using UnityEngine;
@@ -16,9 +16,9 @@ namespace Player.Inventories
 
         #region Events
 
-        public ValueEvent<EventContext.WeaponEvent> OnWeaponEquipped { get; } = new ();
+        public ContextEvent<Events.WeaponEvent> OnWeaponEquipped { get; } = new ();
 
-        public ValueEvent<EventContext.WeaponEvent> OnWeaponRemoved { get; } = new ();
+        public ContextEvent<Events.WeaponEvent> OnWeaponRemoved { get; } = new ();
 
         #endregion
 
@@ -41,14 +41,14 @@ namespace Player.Inventories
 
                 if (Weapon != null)
                 {
-                    OnWeaponEquipped?.NotifyListeners(new EventContext.WeaponEvent
+                    OnWeaponEquipped?.NotifyListeners(new Events.WeaponEvent
                     {
                         Weapon = Weapon
                     });
                     return;
                 }
 
-                OnWeaponRemoved?.NotifyListeners(new EventContext.WeaponEvent()
+                OnWeaponRemoved?.NotifyListeners(new Events.WeaponEvent()
                 {
                     Weapon = prevWeapon
                 });
@@ -61,21 +61,21 @@ namespace Player.Inventories
 
         private void Start()
         {
-            Inventory.OnItemDropped += ItemDroppedCallback;
+            Inventory.OnItemDropped.AddListener(ItemDroppedCallback);
         }
 
         private void OnDestroy()
         {
-            Inventory.OnItemDropped -= ItemDroppedCallback;
+            Inventory.OnItemDropped.RemoveListener(ItemDroppedCallback);
         }
 
         #endregion
 
         #region Methods
 
-        private void ItemDroppedCallback(IItem context)
+        private void ItemDroppedCallback(Events.ItemEvent context)
         {
-            if (context is IWeapon weapon)
+            if (context.Item is IWeapon weapon)
             {
                 CheckDroppedWeapon(weapon);
             }

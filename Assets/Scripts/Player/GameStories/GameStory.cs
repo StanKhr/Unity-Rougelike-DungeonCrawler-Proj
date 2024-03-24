@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Player.GameStories.Datas;
 using Player.GameStories.Interfaces;
 using Player.Interfaces;
@@ -19,13 +22,14 @@ namespace Player.GameStories
         
         #region Events
 
-        public event DelegateHolder.StringEvents OnStoryUpdated;
+        public IContextEvent<Events.StringEvent> OnStoryUpdated { get; } =
+            new ContextEvent<Events.StringEvent>();
 
         #endregion
 
         #region Fields
         
-        private readonly List<StoryEventData> _storyLines = new(MaxStoryLines);
+        private readonly List<StoryEpisodeData> _storyLines = new(MaxStoryLines);
         private readonly StringBuilder _stringBuilder = new();
 
         #endregion
@@ -34,21 +38,21 @@ namespace Player.GameStories
 
         private void Start()
         {
-            IStoryEvent.OnTriggered += StoryEventTriggeredCallback;
+            IStoryEpisode.OnTriggered.AddListener(StoryEpisodeTriggeredCallback);
         }
 
         private void OnDestroy()
         {
-            IStoryEvent.OnTriggered -= StoryEventTriggeredCallback;
+            IStoryEpisode.OnTriggered.RemoveListener(StoryEpisodeTriggeredCallback);
         }
 
         #endregion
 
         #region Methods
         
-        private void StoryEventTriggeredCallback(StoryEventData context)
+        private void StoryEpisodeTriggeredCallback(Events.StoryEpisodeDataEvent context)
         {
-            _storyLines.Add(context);
+            _storyLines.Add(context.StoryEpisodeData);
             while (_storyLines.Count > MaxStoryLines)
             {
                 _storyLines.RemoveAt(0);
@@ -56,7 +60,11 @@ namespace Player.GameStories
 
             if (_storyLines.Count == 0)
             {
-                OnStoryUpdated?.Invoke(string.Empty);
+                OnStoryUpdated?.NotifyListeners(new Events.StringEvent
+                {
+                    String = string.Empty
+                });
+                
                 return;
             }
 
@@ -71,9 +79,13 @@ namespace Player.GameStories
                 _stringBuilder.Append(NextLineSkip);
             }
             
-            OnStoryUpdated?.Invoke(_stringBuilder.ToString());
+            OnStoryUpdated?.NotifyListeners(new Events.StringEvent
+            {
+                String = _stringBuilder.ToString()
+            });
         }
 
         #endregion
+
     }
 }

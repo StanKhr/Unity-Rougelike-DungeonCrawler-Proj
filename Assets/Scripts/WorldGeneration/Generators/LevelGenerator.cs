@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,8 +28,8 @@ namespace WorldGeneration.Generators
 
         #region Events
 
-        public event Action OnGenerationStarted;
-        public event Action OnGenerationEnded;
+        public IEvent OnGenerationStarted { get; } = new CustomEvent();
+        public IEvent OnGenerationEnded { get; } = new CustomEvent();
 
         #endregion
 
@@ -93,7 +95,7 @@ namespace WorldGeneration.Generators
             
             Randomizer.SetSeed(seed);
 
-            OnGenerationStarted?.Invoke();
+            OnGenerationStarted?.NotifyListeners();
 
             GenerateLayout();
             SpawnTiles();
@@ -101,7 +103,7 @@ namespace WorldGeneration.Generators
             BakeNavigation();
             SpawnEnemies();
 
-            OnGenerationEnded?.Invoke();
+            OnGenerationEnded?.NotifyListeners();
         }
 
         public void Clear()

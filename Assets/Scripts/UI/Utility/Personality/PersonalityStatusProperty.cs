@@ -1,4 +1,6 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +17,8 @@ namespace UI.Utility.Personality
         
         #region Events
 
-        public static event DelegateHolder.StatusPropertyEvents OnStatusValueChanged;
+        public static IContextEvent<Events.PersonalityStatusPropertyEvent> OnStatusValueChanged { get; } =
+            new ContextEvent<Events.PersonalityStatusPropertyEvent>();
 
         #endregion
 
@@ -45,7 +48,11 @@ namespace UI.Utility.Personality
             private set
             {
                 _value = Mathf.Max(value, _minValue);
-                OnStatusValueChanged?.Invoke(this);
+                OnStatusValueChanged?.NotifyListeners(new Events.PersonalityStatusPropertyEvent
+                {
+                    PersonalityStatusProperty = this
+                });
+                
                 _valueText.text = Value.ToString();
             }
         }

@@ -1,4 +1,6 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Player.Inventories.Items;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,9 +18,12 @@ namespace UI.Presenters.Items
         
         #region Events
 
-        public static event DelegateHolder.InventorySlotPresenterEvents OnSlotSelected;
-        public static event DelegateHolder.InventorySlotPresenterEvents OnUseItemTriggered;
-        public static event DelegateHolder.InventorySlotPresenterEvents OnSlotDropped;
+        public static IContextEvent<Events.InventorySlotPresenterEvent> OnSlotSelected { get; } =
+            new ContextEvent<Events.InventorySlotPresenterEvent>();
+        public static IContextEvent<Events.InventorySlotPresenterEvent> OnUseItemTriggered { get; } =
+            new ContextEvent<Events.InventorySlotPresenterEvent>();
+        public static IContextEvent<Events.InventorySlotPresenterEvent> OnSlotDropped { get; } =
+            new ContextEvent<Events.InventorySlotPresenterEvent>();
 
         #endregion
         
@@ -45,6 +50,11 @@ namespace UI.Presenters.Items
 
         public int SlotIndex { get; set; } = DefaultSlotIndex;
 
+        private Events.InventorySlotPresenterEvent EventContext => new()
+        {
+            InventorySlotPresenter = this
+        };
+
         #endregion
 
         #region Unity Callbacks
@@ -56,7 +66,7 @@ namespace UI.Presenters.Items
                 return;
             }
             
-            OnSlotSelected?.Invoke(this);
+            OnSlotSelected?.NotifyListeners(EventContext);
         }
 
         #endregion
@@ -91,12 +101,12 @@ namespace UI.Presenters.Items
 
         public void OnSubmit(BaseEventData eventData)
         {
-            OnUseItemTriggered?.Invoke(this);
+            OnUseItemTriggered?.NotifyListeners(EventContext);
         }
 
         public void OnSelect(BaseEventData eventData)
         {
-            OnSlotSelected?.Invoke(this);
+            OnSlotSelected?.NotifyListeners(EventContext);
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -106,18 +116,18 @@ namespace UI.Presenters.Items
                 return;
             }
             
-            OnSlotSelected?.Invoke(this);
+            OnSlotSelected?.NotifyListeners(EventContext);
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-                OnSlotDropped?.Invoke(this);
+                OnSlotDropped?.NotifyListeners(EventContext);
                 return;
             }
 
-            OnUseItemTriggered?.Invoke(this);
+            OnUseItemTriggered?.NotifyListeners(EventContext);
         }
 
         #endregion

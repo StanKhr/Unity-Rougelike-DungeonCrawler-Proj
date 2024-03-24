@@ -1,4 +1,5 @@
-﻿using Player.GameStories;
+﻿using Miscellaneous.EventWrapper.Main;
+using Player.GameStories;
 using Player.Interfaces;
 using TMPro;
 using UI.Utility;
@@ -27,22 +28,22 @@ namespace UI.Presenters
 
         private void Start()
         {
-            StoryUpdatedCallback(string.Empty);
-            GameStory.OnStoryUpdated += StoryUpdatedCallback;
+            StoryUpdatedCallback(default);
+            GameStory.OnStoryUpdated.AddListener(StoryUpdatedCallback);
         }
 
         private void OnDestroy()
         {
-            GameStory.OnStoryUpdated -= StoryUpdatedCallback;
+            GameStory.OnStoryUpdated.RemoveListener(StoryUpdatedCallback);
         }
 
         #endregion
 
         #region Methods
         
-        private void StoryUpdatedCallback(string context)
+        private void StoryUpdatedCallback(Events.StringEvent context)
         {
-            _storyText.SetTextSmart(context);
+            _storyText.SetTextSmart(context.String);
         }
 
         #endregion

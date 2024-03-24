@@ -47,33 +47,33 @@ namespace UI.StateMachines.States
         {
             if (subscribe)
             {
-                InputProvider.Utility.OnInventory += callback;
+                InputProvider.Utility.OnInventory.AddListener(callback);
                 return;
             }
             
-            InputProvider.Utility.OnInventory -= callback;
+            InputProvider.Utility.OnInventory.RemoveListener(callback);
         }
 
         protected void SetPauseMenuCallback(Action callback, bool subscribe)
         {
             if (subscribe)
             {
-                InputProvider.Utility.OnPauseMenu += callback;
+                InputProvider.Utility.OnPauseMenu.AddListener(callback);
                 return;
             }
             
-            InputProvider.Utility.OnPauseMenu -= callback;
+            InputProvider.Utility.OnPauseMenu.RemoveListener(callback);
         }
 
         protected void SetDiscardButtonCallback(Action callback, bool subscribe)
         {
             if (subscribe)
             {
-                InputProvider.Utility.OnDiscardPressed += callback;
+                InputProvider.Utility.OnDiscardPressed.AddListener(callback);
                 return;
             }
             
-            InputProvider.Utility.OnDiscardPressed -= callback;
+            InputProvider.Utility.OnDiscardPressed.RemoveListener(callback);
         }
 
         #endregion

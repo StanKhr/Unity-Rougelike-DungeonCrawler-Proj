@@ -1,4 +1,4 @@
-﻿using Miscellaneous.CustomEvents.Contexts;
+﻿using Miscellaneous.EventWrapper.Main;
 using Player.Interfaces;
 using Player.Inventories;
 using UnityEngine;
@@ -84,7 +84,7 @@ namespace Player.Hands
         {
             if (Gear.WeaponEquipped)
             {
-                WeaponEquippedCallback(new EventContext.WeaponEvent()
+                WeaponEquippedCallback(new Events.WeaponEvent()
                 {
                     Weapon = Gear.Weapon
                 });
@@ -95,13 +95,13 @@ namespace Player.Hands
             _handRight.SpriteRenderer = _handRightEmpty;
         }
 
-        private void WeaponEquippedCallback(EventContext.WeaponEvent context)
+        private void WeaponEquippedCallback(Events.WeaponEvent context)
         {
             _handRight.SpriteRenderer = _handRightWeapon;
             _handRight.SpriteRenderer.sprite = context.Weapon.WeaponHandSprite;
         }
 
-        private void WeaponRemovedCallback(EventContext.WeaponEvent context)
+        private void WeaponRemovedCallback(Events.WeaponEvent context)
         {
             _handRight.SpriteRenderer = _handRightEmpty;
         }

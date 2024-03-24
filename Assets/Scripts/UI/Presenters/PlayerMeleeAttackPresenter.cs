@@ -1,4 +1,4 @@
-﻿using Miscellaneous.CustomEvents.Contexts;
+﻿using Miscellaneous.EventWrapper.Main;
 using Player.Attacks;
 using Player.Interfaces;
 using UI.Utility;
@@ -71,7 +71,7 @@ namespace UI.Presenters
             _sliderContainer.gameObject.SetActiveSmart(false);
         }
 
-        private void AttackChargeStartedCallback(EventContext.MeleeAttackEvent context)
+        private void AttackChargeStartedCallback(Events.MeleeAttackEvent context)
         {
             _sliderFillImage.fillAmount = 0f;
 
@@ -93,7 +93,7 @@ namespace UI.Presenters
             _sliderContainer.gameObject.SetActiveSmart(false);
         }
 
-        private void AttackReleasedCallback(EventContext.WeaponEvent context)
+        private void AttackReleasedCallback(Events.WeaponEvent context)
         {
             _sliderContainer.gameObject.SetActiveSmart(false);
         }

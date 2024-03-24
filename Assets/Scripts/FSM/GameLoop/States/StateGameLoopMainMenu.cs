@@ -18,16 +18,16 @@ namespace FSM.GameLoop.States
 
         public override void Enter()
         {
-            MainMenuPresenter.OnDungeonRunStarted += DungeonRunStartedCallback;
-            MainMenuPresenter.OnGameExited += GameExitedCallback;
+            MainMenuPresenter.OnDungeonRunStarted.AddListener(DungeonRunStartedCallback);
+            MainMenuPresenter.OnGameExited.AddListener(GameExitedCallback);
             
             StateMachine.LoadScene(GameSceneType.MainMenu);
         }
 
         public override void Exit()
         {
-            MainMenuPresenter.OnDungeonRunStarted -= DungeonRunStartedCallback;
-            MainMenuPresenter.OnGameExited -= GameExitedCallback;
+            MainMenuPresenter.OnDungeonRunStarted.RemoveListener(DungeonRunStartedCallback);
+            MainMenuPresenter.OnGameExited.RemoveListener(GameExitedCallback);
             
             StateMachine.UnloadScene(GameSceneType.MainMenu);
         }

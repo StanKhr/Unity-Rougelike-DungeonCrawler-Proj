@@ -2,7 +2,7 @@
 using Audio.ClipSelectors;
 using Audio.Interfaces;
 using Audio.Sources;
-using Miscellaneous.CustomEvents.Contexts;
+using Miscellaneous.EventWrapper.Main;
 using Miscellaneous.ObjectPooling;
 using Player.Attacks;
 using Player.Interfaces;
@@ -99,7 +99,7 @@ namespace Audio.Triggers
 
         #region Methods
         
-        private void SurfaceHitCallback(EventContext.GameObjectEvent context)
+        private void SurfaceHitCallback(Events.GameObjectEvent context)
         {
             if (!ObjectSurfaceTypeConverter.TryGetFromObject(context.GameObject, out var surfaceType))
             {

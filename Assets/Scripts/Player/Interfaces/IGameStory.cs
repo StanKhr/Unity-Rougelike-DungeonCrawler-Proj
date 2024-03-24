@@ -1,4 +1,6 @@
 ﻿using Miscellaneous;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 
 namespace Player.Interfaces
 {
@@ -6,7 +8,7 @@ namespace Player.Interfaces
     {
         #region Events
 
-        public event DelegateHolder.StringEvents OnStoryUpdated;
+        public IContextEvent<Events.StringEvent> OnStoryUpdated { get; }
 
         #endregion
     }

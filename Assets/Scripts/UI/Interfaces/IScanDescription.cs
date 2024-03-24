@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Interfaces;
 using UnityEngine;
 using UnityEngine.Localization;
 
@@ -8,7 +9,7 @@ namespace UI.Interfaces
     {
         #region Events
 
-        event Action OnObjectScanned;
+        IEvent OnObjectScanned { get; }
 
         #endregion
         

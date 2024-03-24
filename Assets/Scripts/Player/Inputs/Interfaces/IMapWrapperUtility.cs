@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Interfaces;
 
 namespace Player.Inputs.Interfaces
 {
@@ -6,9 +7,9 @@ namespace Player.Inputs.Interfaces
     {
         #region Events
 
-        event Action OnInventory;
-        event Action OnPauseMenu;
-        event Action OnDiscardPressed;
+        IEvent OnInventory { get; }
+        IEvent OnPauseMenu { get; }
+        IEvent OnDiscardPressed { get; }
 
         #endregion
     }

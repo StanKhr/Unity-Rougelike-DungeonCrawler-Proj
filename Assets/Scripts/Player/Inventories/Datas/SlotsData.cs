@@ -1,5 +1,7 @@
 ﻿using System.Collections;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
 
@@ -15,7 +17,7 @@ namespace Player.Inventories.Datas
 
         #region Events
 
-        public event DelegateHolder.IntEvents OnSlotUpdated;
+        public IContextEvent<Events.IntEvent> OnSlotUpdated { get; } = new ContextEvent<Events.IntEvent>();
 
         #endregion
 
@@ -46,7 +48,10 @@ namespace Player.Inventories.Datas
                 }
 
                 _slots[index] = value;
-                OnSlotUpdated?.Invoke(index);
+                OnSlotUpdated?.NotifyListeners(new Events.IntEvent
+                {
+                    Int = index
+                });
             }
         }
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using Statuses.Datas;
 using Statuses.Interfaces;
 
@@ -8,7 +10,7 @@ namespace Statuses.Main
     {
         #region Events
 
-        public event Action OnDamageAbsorbed;
+        public IEvent OnDamageAbsorbed { get; } = new CustomEvent();
 
         #endregion
         
@@ -20,7 +22,7 @@ namespace Statuses.Main
             {
                 remainingDamageValue = 0f;
                 
-                OnDamageAbsorbed?.Invoke();
+                OnDamageAbsorbed?.NotifyListeners();
                 return true;
             }
 

@@ -1,4 +1,5 @@
 ﻿using Miscellaneous;
+using Miscellaneous.EventWrapper.Main;
 
 namespace Statuses.Feedbacks.Damage
 {
@@ -6,9 +7,9 @@ namespace Statuses.Feedbacks.Damage
     {
         #region Methods
 
-        protected override void DamagedCallback(float context)
+        protected override void DamagedCallback(Events.FloatEvent context)
         {
-            LogWriter.DevelopmentLog($"{name} was damaged for: {context.ToString("F")}; remained health: {Health.CurrentValue.ToString("F")}/{Health.MaxValue.ToString("F")}");
+            LogWriter.DevelopmentLog($"{name} was damaged for: {context.Float.ToString("F")}; remained health: {Health.CurrentValue.ToString("F")}/{Health.MaxValue.ToString("F")}");
         }
 
         #endregion

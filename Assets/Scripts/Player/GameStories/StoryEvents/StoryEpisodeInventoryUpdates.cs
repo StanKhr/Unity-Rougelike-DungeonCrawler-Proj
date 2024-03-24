@@ -1,4 +1,5 @@
-﻿using Player.GameStories.Datas;
+﻿using Miscellaneous.EventWrapper.Main;
+using Player.GameStories.Datas;
 using Player.GameStories.Interfaces;
 using Player.Inventories;
 using Player.Inventories.Interfaces;
@@ -8,7 +9,7 @@ using UnityEngine.Localization.SmartFormat.PersistentVariables;
 
 namespace Player.GameStories.StoryEvents
 {
-    public class StoryEventInventoryUpdates : MonoBehaviour, IStoryEvent
+    public class StoryEpisodeInventoryUpdates : MonoBehaviour, IStoryEpisode
     {
         #region Constants
 
@@ -36,49 +37,44 @@ namespace Player.GameStories.StoryEvents
 
         private void Start()
         {
-            Inventory.OnItemAdded += ItemAddedCallback;
-            Inventory.OnItemDropped += ItemDroppedCallback;
-            Inventory.OnItemUsed += ItemUsedCallback;
+            Inventory.OnItemAdded.AddListener(ItemAddedCallback);
+            Inventory.OnItemDropped.AddListener(ItemDroppedCallback);
+            Inventory.OnItemUsed.AddListener(ItemUsedCallback);
         }
 
         private void OnDestroy()
         {
-            Inventory.OnItemAdded -= ItemAddedCallback;
-            Inventory.OnItemDropped -= ItemDroppedCallback;
-            Inventory.OnItemUsed -= ItemUsedCallback;
+            Inventory.OnItemAdded.RemoveListener(ItemAddedCallback);
+            Inventory.OnItemDropped.RemoveListener(ItemDroppedCallback);
+            Inventory.OnItemUsed.RemoveListener(ItemUsedCallback);
         }
 
         #endregion
 
         #region Methods
 
-        private void ItemAddedCallback(IItem context)
+        private void ItemAddedCallback(Events.ItemEvent context)
         {
-            CreateEvent(context, _localizedStringItemAdded);
+            CreateEpisode(context.Item, _localizedStringItemAdded);
         }
 
-        private void ItemDroppedCallback(IItem context)
+        private void ItemDroppedCallback(Events.ItemEvent context)
         {
-            CreateEvent(context, _localizedStringItemDropped);
+            CreateEpisode(context.Item, _localizedStringItemDropped);
         }
 
-        private void ItemUsedCallback(IItem context)
+        private void ItemUsedCallback(Events.ItemEvent context)
         {
-            CreateEvent(context, _localizedStringItemUsed);
+            CreateEpisode(context.Item, _localizedStringItemUsed);
         }
 
-        private void CreateEvent(IItem item, LocalizedString localizedString)
+        private void CreateEpisode(IItem item, LocalizedString localizedString)
         {
             var variable = (StringVariable) localizedString[VariableName];
             variable.Value = item.Name;
 
-            var storyEventData = new StoryEventData(localizedString.GetLocalizedString());
-            CallEvent(storyEventData);
-        }
-
-        private void CallEvent(StoryEventData storyEventData)
-        {
-            (this as IStoryEvent).TriggerEvent(storyEventData);
+            var storyEpisodeData = new StoryEpisodeData(localizedString.GetLocalizedString());
+            (this as IStoryEpisode).TriggerEvent(storyEpisodeData);
         }
 
         #endregion

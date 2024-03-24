@@ -1,5 +1,7 @@
 ﻿using Abilities.Triggers;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Player.Interfaces;
 using Player.Miscellaneous;
 using Props.Interfaces;
@@ -10,9 +12,10 @@ namespace Props.Projectiles
     public class ProjectileRigidbody : MonoBehaviour, IProjectile
     {
         #region Events
-        
-        public event DelegateHolder.GameObjectEvents OnVictimFound;
 
+        public IContextEvent<Events.GameObjectEvent> OnVictimFound { get; } =
+            new ContextEvent<Events.GameObjectEvent>();
+        
         #endregion
         
         #region Editor Fields
@@ -36,26 +39,16 @@ namespace Props.Projectiles
 
         private void OnEnable()
         {
-            _colliderTrigger.OnEntered += EnteredCallback;
+            _colliderTrigger.OnEntered.AddListener(EnteredCallback);
 
-            if (SelfDestroyTimer == null)
-            {
-                return;
-            }
-
-            SelfDestroyTimer.OnTimerStarted += SelfDestroyTimerStartedCallback;
+            SelfDestroyTimer?.OnTimerStarted.AddListener(SelfDestroyTimerStartedCallback);
         }
 
         private void OnDisable()
         {
-            _colliderTrigger.OnEntered -= EnteredCallback;
+            _colliderTrigger.OnEntered.RemoveListener(EnteredCallback);
 
-            if (SelfDestroyTimer == null)
-            {
-                return;
-            }
-
-            SelfDestroyTimer.OnTimerStarted -= SelfDestroyTimerStartedCallback;
+            SelfDestroyTimer?.OnTimerStarted.RemoveListener(SelfDestroyTimerStartedCallback);
         }
 
         #endregion
@@ -67,16 +60,19 @@ namespace Props.Projectiles
             _rigidbody.velocity = Vector3.zero;
         }
 
-        private void EnteredCallback(Collider context)
+        private void EnteredCallback(Events.ColliderEvent context)
         {
-            if (context.isTrigger)
+            if (context.Collider.isTrigger)
             {
                 return;
             }
 
             if (SelfDestroyTimer == null)
             {
-                OnVictimFound?.Invoke(context.gameObject);
+                OnVictimFound?.NotifyListeners(new Events.GameObjectEvent
+                {
+                    GameObject = context.Collider.gameObject
+                });
                 return;
             }
 
@@ -85,7 +81,10 @@ namespace Props.Projectiles
                 return;
             }
             
-            OnVictimFound?.Invoke(context.gameObject);
+            OnVictimFound?.NotifyListeners(new Events.GameObjectEvent
+            {
+                GameObject = context.Collider.gameObject
+            });
         }
 
         [ContextMenu("Test launch")]

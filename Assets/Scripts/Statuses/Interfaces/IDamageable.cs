@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Statuses.Datas;
 
 namespace Statuses.Interfaces
@@ -7,7 +8,7 @@ namespace Statuses.Interfaces
     {
         #region Events
 
-        event DelegateHolder.FloatEvents OnDamaged;
+        IContextEvent<Events.FloatEvent> OnDamaged { get; }
 
         #endregion
         

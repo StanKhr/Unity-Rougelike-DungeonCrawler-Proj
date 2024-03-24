@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Interfaces;
 
 namespace Player.Inputs.Interfaces
 {
@@ -6,8 +7,8 @@ namespace Player.Inputs.Interfaces
     {
         #region Events
 
-        event Action OnTestInputPressed;
-        event Action OnInteracted;
+        IEvent OnTestInputPressed { get; }
+        IEvent OnInteracted { get; }
 
         #endregion
 

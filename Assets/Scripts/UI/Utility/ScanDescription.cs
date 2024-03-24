@@ -1,4 +1,6 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using UI.Interfaces;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -15,8 +17,8 @@ namespace UI.Utility
         
         #region Events
 
-        public event Action OnObjectScanned;
-
+        public IEvent OnObjectScanned { get; } = new CustomEvent();
+        
         #endregion
         
         #region Editor Fields
@@ -27,7 +29,6 @@ namespace UI.Utility
         #endregion
 
         #region Properties
-
         public bool LocalizedStringExists => !_localizedString.IsEmpty;
         public string Name => LocalizedStringExists ? _localizedString.GetLocalizedString() : NonLocalizedNameText;
         public Color Color => _color;
@@ -38,7 +39,7 @@ namespace UI.Utility
 
         public void ValidateScan()
         {
-            OnObjectScanned?.Invoke();
+            OnObjectScanned?.NotifyListeners();
         }
 
         public void OverrideLocalizedString(LocalizedString localizedString)

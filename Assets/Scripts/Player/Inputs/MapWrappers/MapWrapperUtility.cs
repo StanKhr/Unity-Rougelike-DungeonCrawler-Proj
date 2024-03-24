@@ -1,4 +1,6 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using Player.Inputs.Interfaces;
 using Scripts.Player.Inputs;
 using UnityEngine.InputSystem;
@@ -19,9 +21,9 @@ namespace Player.Inputs.MapWrappers
 
         #region Events
 
-        public event Action OnInventory;
-        public event Action OnPauseMenu;
-        public event Action OnDiscardPressed;
+        public IEvent OnInventory { get; } = new CustomEvent();
+        public IEvent OnPauseMenu { get; } = new CustomEvent();
+        public IEvent OnDiscardPressed { get; } = new CustomEvent();
 
         #endregion
 
@@ -45,7 +47,7 @@ namespace Player.Inputs.MapWrappers
                 return;
             }
             
-            OnInventory?.Invoke();
+            OnInventory?.NotifyListeners();
         }
 
         void GameControlsAsset.IUtilityMapActions.OnPauseMenu(InputAction.CallbackContext context)
@@ -55,7 +57,7 @@ namespace Player.Inputs.MapWrappers
                 return;
             }
             
-            OnPauseMenu?.Invoke();
+            OnPauseMenu?.NotifyListeners();
         }
 
         void GameControlsAsset.IUtilityMapActions.OnDiscard(InputAction.CallbackContext context)
@@ -65,7 +67,7 @@ namespace Player.Inputs.MapWrappers
                 return;
             }
             
-            OnDiscardPressed?.Invoke();
+            OnDiscardPressed?.NotifyListeners();
         }
 
         #endregion

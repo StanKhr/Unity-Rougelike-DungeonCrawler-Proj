@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Interfaces;
 using UnityEngine;
 
 namespace Player.Inputs.Interfaces
@@ -7,7 +8,7 @@ namespace Player.Inputs.Interfaces
     {
         #region Events
 
-        event Action OnJump;
+        IEvent OnJump { get; }
 
         #endregion
         

@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Interfaces;
 
 namespace Player.Interfaces
 {
@@ -6,9 +7,9 @@ namespace Player.Interfaces
     {
         #region Events
 
-        event Action OnTimerStarted;
-        event Action OnTimerCancelled;
-        event Action OnTimerEnded;
+        IEvent OnTimerStarted { get; }
+        IEvent OnTimerCancelled { get; }
+        IEvent OnTimerEnded { get; }
 
         #endregion
 

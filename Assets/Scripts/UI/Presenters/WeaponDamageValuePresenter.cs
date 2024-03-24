@@ -1,4 +1,4 @@
-﻿using Miscellaneous.CustomEvents.Contexts;
+﻿using Miscellaneous.EventWrapper.Main;
 
 namespace UI.Presenters
 {
@@ -12,7 +12,7 @@ namespace UI.Presenters
         
         #region Methods
 
-        protected override void WeaponEquippedCallback(EventContext.WeaponEvent context)
+        protected override void WeaponEquippedCallback(Events.WeaponEvent context)
         {
             var averageDamage = context.Weapon.DamageValue;
             var maxDamage = averageDamage * context.Weapon.CritDamageMultiplier;
@@ -23,7 +23,7 @@ namespace UI.Presenters
             SetValue(damageString);
         }
 
-        protected override void WeaponRemovedCallback(EventContext.WeaponEvent context)
+        protected override void WeaponRemovedCallback(Events.WeaponEvent context)
         {
             SetValue(NoDamageString);
         }

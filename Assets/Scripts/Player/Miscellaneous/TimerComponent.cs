@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using Player.Interfaces;
 using UnityEngine;
 
@@ -9,10 +11,10 @@ namespace Player.Miscellaneous
     public class TimerComponent : MonoBehaviour, ITimer
     {
         #region Events
-        
-        public event Action OnTimerStarted;
-        public event Action OnTimerCancelled;
-        public event Action OnTimerEnded;
+
+        public IEvent OnTimerStarted { get; } = new CustomEvent();
+        public IEvent OnTimerCancelled { get; } = new CustomEvent();
+        public IEvent OnTimerEnded { get; } = new CustomEvent();
 
         #endregion
         
@@ -45,11 +47,11 @@ namespace Player.Miscellaneous
 
                 if (InProgress)
                 {
-                    OnTimerStarted?.Invoke();
+                    OnTimerStarted?.NotifyListeners();
                     return;
                 }
                 
-                OnTimerEnded?.Invoke();
+                OnTimerEnded?.NotifyListeners();
             }
         }
 
@@ -90,7 +92,7 @@ namespace Player.Miscellaneous
                 .SuppressCancellationThrow();
             if (cancelled)
             {
-                OnTimerCancelled?.Invoke();
+                OnTimerCancelled?.NotifyListeners();
                 return;
             }
 

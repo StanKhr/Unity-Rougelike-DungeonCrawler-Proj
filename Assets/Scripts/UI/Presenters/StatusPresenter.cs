@@ -58,16 +58,16 @@ namespace UI.Presenters
 
         private void Start()
         {
-            Status.OnCurrentValueChanged += CurrentValueChangedCallback;
-            Status.OnMaxValueChanged += MaxValueChangedCallback;
+            Status.OnCurrentValueChanged.AddListener(CurrentValueChangedCallback);
+            Status.OnMaxValueChanged.AddListener(MaxValueChangedCallback);
 
             SetDefaultValues();
         }
 
         private void OnDestroy()
         {
-            Status.OnCurrentValueChanged -= CurrentValueChangedCallback;
-            Status.OnMaxValueChanged -= MaxValueChangedCallback;
+            Status.OnCurrentValueChanged.RemoveListener(CurrentValueChangedCallback);
+            Status.OnMaxValueChanged.RemoveListener(MaxValueChangedCallback);
         }
 
         private void Update()

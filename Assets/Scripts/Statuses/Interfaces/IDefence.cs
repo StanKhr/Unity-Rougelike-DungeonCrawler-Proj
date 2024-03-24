@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Interfaces;
 using Statuses.Datas;
 
 namespace Statuses.Interfaces
@@ -7,7 +8,7 @@ namespace Statuses.Interfaces
     {
         #region Events
 
-        event Action OnDamageAbsorbed;
+        IEvent OnDamageAbsorbed { get; }
 
         #endregion
         

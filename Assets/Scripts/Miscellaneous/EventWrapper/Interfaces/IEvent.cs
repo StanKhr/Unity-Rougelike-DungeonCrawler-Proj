@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Miscellaneous.CustomEvents.Interfaces
+namespace Miscellaneous.EventWrapper.Interfaces
 {
     public interface IEvent
     {

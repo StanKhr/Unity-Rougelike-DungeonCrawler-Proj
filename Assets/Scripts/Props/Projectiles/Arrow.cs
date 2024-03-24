@@ -1,4 +1,5 @@
-﻿using Props.Interfaces;
+﻿using Miscellaneous.EventWrapper.Main;
+using Props.Interfaces;
 using Statuses.Datas;
 using Statuses.Interfaces;
 using Statuses.Main;
@@ -27,21 +28,21 @@ namespace Props.Projectiles
 
         private void OnEnable()
         {
-            Projectile.OnVictimFound += VictimFoundCallback;
+            Projectile.OnVictimFound.AddListener(VictimFoundCallback);
         }
 
         private void OnDisable()
         {
-            Projectile.OnVictimFound -= VictimFoundCallback;
+            Projectile.OnVictimFound.RemoveListener(VictimFoundCallback);
         }
 
         #endregion
 
         #region Methods
         
-        private void VictimFoundCallback(GameObject context)
+        private void VictimFoundCallback(Events.GameObjectEvent context)
         {
-            if (context.TryGetComponent<IDamageable>(out var damageable))
+            if (context.GameObject.TryGetComponent<IDamageable>(out var damageable))
             {
                 damageable.TryApplyDamage(_damage);
             }

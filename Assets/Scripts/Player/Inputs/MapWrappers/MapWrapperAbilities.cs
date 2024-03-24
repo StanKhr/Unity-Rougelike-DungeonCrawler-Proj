@@ -1,4 +1,6 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using Player.Inputs.Interfaces;
 using Scripts.Player.Inputs;
 using UnityEngine.InputSystem;
@@ -17,9 +19,9 @@ namespace Player.Inputs.MapWrappers
         #endregion
 
         #region Events
-        
-        public event Action OnTestInputPressed;
-        public event Action OnInteracted;
+
+        public IEvent OnTestInputPressed { get; } = new CustomEvent();
+        public IEvent OnInteracted { get; } = new CustomEvent();
 
         #endregion
 
@@ -49,7 +51,7 @@ namespace Player.Inputs.MapWrappers
                 return;
             }
             
-            OnInteracted?.Invoke();
+            OnInteracted?.NotifyListeners();
         }
 
         void GameControlsAsset.IAbilitiesMapActions.OnWeaponAttack(InputAction.CallbackContext context)
@@ -64,7 +66,7 @@ namespace Player.Inputs.MapWrappers
                 return;
             }
             
-            OnTestInputPressed?.Invoke();
+            OnTestInputPressed?.NotifyListeners();
         }
 
         #endregion

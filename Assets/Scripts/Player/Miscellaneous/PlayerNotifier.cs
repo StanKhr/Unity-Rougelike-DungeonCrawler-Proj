@@ -1,4 +1,6 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using UnityEngine;
 
 namespace Player.Miscellaneous
@@ -7,7 +9,8 @@ namespace Player.Miscellaneous
     {
         #region Events
 
-        public static event DelegateHolder.GameObjectEvents OnPlayerLoaded;
+        public static IContextEvent<Events.GameObjectEvent> OnPlayerLoaded { get; } =
+            new ContextEvent<Events.GameObjectEvent>();
 
         #endregion
 
@@ -15,7 +18,10 @@ namespace Player.Miscellaneous
 
         private void Start()
         {
-            OnPlayerLoaded?.Invoke(gameObject);
+            OnPlayerLoaded?.NotifyListeners(new Events.GameObjectEvent
+            {
+                GameObject = gameObject
+            });
         }
 
         #endregion

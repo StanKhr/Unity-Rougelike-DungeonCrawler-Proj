@@ -1,4 +1,4 @@
-﻿using Miscellaneous.CustomEvents.Contexts;
+﻿using Miscellaneous.EventWrapper.Main;
 using Player.Interfaces;
 using Player.Inventories;
 using UnityEngine;
@@ -40,12 +40,12 @@ namespace UI.Presenters
 
         #region Methods
         
-        protected virtual void WeaponEquippedCallback(EventContext.WeaponEvent context)
+        protected virtual void WeaponEquippedCallback(Events.WeaponEvent context)
         {
             SetValue(context.Weapon.Name);
         }
 
-        protected virtual void WeaponRemovedCallback(EventContext.WeaponEvent context)
+        protected virtual void WeaponRemovedCallback(Events.WeaponEvent context)
         {
             SetValue(string.Empty);
         }

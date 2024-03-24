@@ -1,6 +1,7 @@
 ﻿using Abilities.Interfaces;
 using FSM.GameLoop.Enums;
 using FSM.GameLoop.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Player.Miscellaneous;
 using Player.StateMachines.States;
 using Props.Common;
@@ -32,27 +33,27 @@ namespace FSM.GameLoop.States
 
         public override void Enter()
         {
-            ILevelGenerator.OnLevelGeneratorLoaded += LevelGeneratorStartedCallback;
-            StatePlayerDeath.OnPlayerDied += PlayerDiedCallback;
-            NextFloorLadder.OnNextFloorTriggered += NextFloorTriggeredCallback;
-            PlayerNotifier.OnPlayerLoaded += PlayerLoadedCallback;
+            ILevelGenerator.OnLevelGeneratorLoaded.AddListener(LevelGeneratorStartedCallback);
+            StatePlayerDeath.OnPlayerDied.AddListener(PlayerDiedCallback);
+            NextFloorLadder.OnNextFloorTriggered.AddListener(NextFloorTriggeredCallback);
+            PlayerNotifier.OnPlayerLoaded.AddListener(PlayerLoadedCallback);
             
             StateMachine.LoadScene(GameSceneType.Dungeon);
         }
 
         public override void Exit()
         {
-            ILevelGenerator.OnLevelGeneratorLoaded -= LevelGeneratorStartedCallback;
-            StatePlayerDeath.OnPlayerDied -= PlayerDiedCallback;
-            NextFloorLadder.OnNextFloorTriggered -= NextFloorTriggeredCallback;
-            PlayerNotifier.OnPlayerLoaded -= PlayerLoadedCallback;
+            ILevelGenerator.OnLevelGeneratorLoaded.RemoveListener(LevelGeneratorStartedCallback);
+            StatePlayerDeath.OnPlayerDied.RemoveListener(PlayerDiedCallback);
+            NextFloorLadder.OnNextFloorTriggered.RemoveListener(NextFloorTriggeredCallback);
+            PlayerNotifier.OnPlayerLoaded.RemoveListener(PlayerLoadedCallback);
             
             StateMachine.UnloadScene(GameSceneType.Dungeon);
         }
 
-        private void PlayerLoadedCallback(GameObject context)
+        private void PlayerLoadedCallback(Events.GameObjectEvent context)
         {
-            PlayerObject = context;
+            PlayerObject = context.GameObject;
         }
 
         private void NextFloorTriggeredCallback()
@@ -75,9 +76,9 @@ namespace FSM.GameLoop.States
             StateMachine.ToDeathState();
         }
 
-        private void LevelGeneratorStartedCallback(ILevelGenerator levelGenerator)
+        private void LevelGeneratorStartedCallback(Events.LevelGeneratorEvent context)
         {
-            LevelGenerator = levelGenerator;
+            LevelGenerator = context.LevelGenerator;
         }
 
         #endregion

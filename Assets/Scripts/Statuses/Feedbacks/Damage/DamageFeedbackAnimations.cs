@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Miscellaneous.EventWrapper.Main;
+using UnityEngine;
 
 namespace Statuses.Feedbacks.Damage
 {
@@ -20,7 +21,7 @@ namespace Statuses.Feedbacks.Damage
 
         #region Methods
         
-        protected override void DamagedCallback(float context)
+        protected override void DamagedCallback(Events.FloatEvent context)
         {
             _animator.Play(DamagedHash);
             

@@ -1,5 +1,7 @@
 ﻿using Abilities.Interfaces;
-using Miscellaneous;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using UnityEngine;
 
 namespace Abilities.Triggers
@@ -7,9 +9,9 @@ namespace Abilities.Triggers
     public class ColliderTrigger : MonoBehaviour, IColliderTrigger
     {
         #region Events
-        
-        public event DelegateHolder.ColliderEvents OnEntered;
-        public event DelegateHolder.ColliderEvents OnLeft;
+
+        public IContextEvent<Events.ColliderEvent> OnEntered { get; } = new ContextEvent<Events.ColliderEvent>();
+        public IContextEvent<Events.ColliderEvent> OnLeft { get; } = new ContextEvent<Events.ColliderEvent>();
 
         #endregion
         
@@ -17,12 +19,18 @@ namespace Abilities.Triggers
 
         private void OnTriggerEnter(Collider other)
         {
-            OnEntered?.Invoke(other);
+            OnEntered?.NotifyListeners(new Events.ColliderEvent
+            {
+                Collider = other
+            });
         }
 
         private void OnTriggerExit(Collider other)
         {
-            OnLeft?.Invoke(other);
+            OnLeft?.NotifyListeners(new Events.ColliderEvent
+            {
+                Collider = other
+            });
         }
 
         #endregion

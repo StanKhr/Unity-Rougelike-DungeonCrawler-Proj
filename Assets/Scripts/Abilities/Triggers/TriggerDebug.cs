@@ -16,10 +16,10 @@ namespace Abilities.Triggers
                 return;
             }
 
-            colliderTrigger.OnEntered += context =>
-                LogWriter.DevelopmentLog($"{context.name} enters trigger owned by {name}", LogType.Log, gameObject);
-            colliderTrigger.OnLeft += context =>
-                LogWriter.DevelopmentLog($"{context.name} leaves trigger owned by {name}", LogType.Log, gameObject);
+            colliderTrigger.OnEntered.AddListener(context =>
+                LogWriter.DevelopmentLog($"{context.Collider.name} enters trigger owned by {name}", LogType.Log, gameObject));
+            colliderTrigger.OnLeft.AddListener(context =>
+                LogWriter.DevelopmentLog($"{context.Collider.name} leaves trigger owned by {name}", LogType.Log, gameObject));
         }
 #endif
 

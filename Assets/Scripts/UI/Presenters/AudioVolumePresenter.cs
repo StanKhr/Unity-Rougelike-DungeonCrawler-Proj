@@ -1,5 +1,6 @@
 ﻿using Audio.Interfaces;
 using Audio.Settings;
+using Miscellaneous.EventWrapper.Main;
 using TMPro;
 using UI.Utility;
 using UnityEngine;
@@ -31,7 +32,7 @@ namespace UI.Presenters
 
         private void Start()
         {
-            AudioVolume.OnNewVolumeSet += NewVolumeSetCallback;
+            AudioVolume.OnNewVolumeSet.AddListener(NewVolumeSetCallback);
             
             _increaseButton.onClick.AddListener(IncreaseVolume);
             _decreaseButton.onClick.AddListener(DecreaseVolume);
@@ -41,7 +42,7 @@ namespace UI.Presenters
 
         private void OnDestroy()
         {
-            AudioVolume.OnNewVolumeSet -= NewVolumeSetCallback;
+            AudioVolume.OnNewVolumeSet.RemoveListener(NewVolumeSetCallback);
             
             _increaseButton.onClick.RemoveListener(IncreaseVolume);
             _decreaseButton.onClick.RemoveListener(DecreaseVolume);
@@ -51,9 +52,9 @@ namespace UI.Presenters
 
         #region Methods
 
-        private void NewVolumeSetCallback(float context)
+        private void NewVolumeSetCallback(Events.FloatEvent context)
         {
-            ValidateVolume(context);
+            ValidateVolume(context.Float);
         }
 
         private void ValidateVolume(float currentVolume)

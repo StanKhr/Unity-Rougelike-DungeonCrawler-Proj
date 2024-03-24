@@ -1,4 +1,6 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +10,8 @@ namespace UI.Presenters
     {
         #region Events
 
-        public static event Action OnNewTryTriggered;
-        public static event Action OnToMainMenuLeft;
+        public static IEvent OnNewTryTriggered { get; } = new CustomEvent();
+        public static IEvent OnToMainMenuLeft { get; } = new CustomEvent();
 
         #endregion
 
@@ -24,8 +26,8 @@ namespace UI.Presenters
 
         private void Start()
         {
-            _newTryButton.onClick.AddListener(() => OnNewTryTriggered?.Invoke());
-            _mainMenuButton.onClick.AddListener(() => OnToMainMenuLeft?.Invoke());
+            _newTryButton.onClick.AddListener(() => OnNewTryTriggered?.NotifyListeners());
+            _mainMenuButton.onClick.AddListener(() => OnToMainMenuLeft?.NotifyListeners());
         }
 
         #endregion

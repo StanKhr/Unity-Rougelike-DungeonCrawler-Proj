@@ -1,4 +1,5 @@
-﻿using Props.Interfaces;
+﻿using Miscellaneous.EventWrapper.Main;
+using Props.Interfaces;
 using UnityEngine;
 
 namespace Props.InteractionCallbacks
@@ -19,12 +20,12 @@ namespace Props.InteractionCallbacks
         {
             if (UseStartCallback)
             {
-                Interactable.OnInteractionStarted += InteractionStartedCallback;
+                Interactable.OnInteractionStarted.AddListener(InteractionStartedCallback);
             }
 
             if (UseEndCallback)
             {
-                Interactable.OnInteractionEnded += InteractionEndedCallback;
+                Interactable.OnInteractionEnded.AddListener(InteractionEndedCallback);
             }
         }
 
@@ -32,21 +33,21 @@ namespace Props.InteractionCallbacks
         {
             if (UseStartCallback)
             {
-                Interactable.OnInteractionStarted -= InteractionStartedCallback;
+                Interactable.OnInteractionStarted.RemoveListener(InteractionStartedCallback);
             }
 
             if (UseEndCallback)
             {
-                Interactable.OnInteractionEnded -= InteractionEndedCallback;
+                Interactable.OnInteractionEnded.RemoveListener(InteractionEndedCallback);
             }
         }
 
-        protected virtual void InteractionEndedCallback(GameObject context)
+        protected virtual void InteractionEndedCallback(Events.GameObjectEvent context)
         {
             
         }
 
-        protected virtual void InteractionStartedCallback(GameObject context)
+        protected virtual void InteractionStartedCallback(Events.GameObjectEvent context)
         {
             
         }

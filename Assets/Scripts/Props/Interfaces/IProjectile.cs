@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using UnityEngine;
 
 namespace Props.Interfaces
@@ -7,7 +8,7 @@ namespace Props.Interfaces
     {
         #region Events
 
-        event DelegateHolder.GameObjectEvents OnVictimFound;
+        IContextEvent<Events.GameObjectEvent> OnVictimFound { get; }
 
         #endregion
         

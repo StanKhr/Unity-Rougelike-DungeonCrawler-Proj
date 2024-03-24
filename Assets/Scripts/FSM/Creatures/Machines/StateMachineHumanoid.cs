@@ -2,6 +2,7 @@
 using Abilities.Locomotion;
 using FSM.Creatures.Interfaces;
 using FSM.Main;
+using Miscellaneous.EventWrapper.Main;
 using Statuses.Interfaces;
 using Statuses.Main;
 using UnityEngine;
@@ -30,19 +31,19 @@ namespace FSM.Creatures.Machines
 
         private void OnEnable()
         {
-            Damageable.OnDamaged += DamagedCallback;
+            Damageable.OnDamaged.AddListener(DamagedCallback);
         }
 
         private void OnDisable()
         {
-            Damageable.OnDamaged -= DamagedCallback;
+            Damageable.OnDamaged.RemoveListener(DamagedCallback);
         }
 
         #endregion
 
         #region Callbacks
         
-        private void DamagedCallback(float context)
+        private void DamagedCallback(Events.FloatEvent context)
         {
             if (Health.CurrentValue > 0f)
             {

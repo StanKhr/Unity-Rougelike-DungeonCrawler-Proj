@@ -1,4 +1,6 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using Statuses.Interfaces;
 using UnityEngine;
 
@@ -14,8 +16,8 @@ namespace Statuses.Main
         
         #region Events
 
-        public event Action OnMaxValueChanged;
-        public event Action OnCurrentValueChanged;
+        public IEvent OnMaxValueChanged { get; } = new CustomEvent();
+        public IEvent OnCurrentValueChanged { get; } = new CustomEvent();
 
         #endregion
         
@@ -52,7 +54,7 @@ namespace Statuses.Main
                     return;
                 }
                 
-                OnMaxValueChanged?.Invoke();
+                OnMaxValueChanged?.NotifyListeners();
             }
         }
 
@@ -68,7 +70,7 @@ namespace Statuses.Main
                     return;
                 }
                 
-                OnCurrentValueChanged?.Invoke();
+                OnCurrentValueChanged?.NotifyListeners();
             }
         }
 

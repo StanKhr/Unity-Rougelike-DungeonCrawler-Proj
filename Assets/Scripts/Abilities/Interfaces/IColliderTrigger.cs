@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 
 namespace Abilities.Interfaces
 {
@@ -6,8 +7,8 @@ namespace Abilities.Interfaces
     {
         #region Events
 
-        event DelegateHolder.ColliderEvents OnEntered;
-        event DelegateHolder.ColliderEvents OnLeft;
+        IContextEvent<Events.ColliderEvent> OnEntered { get; }
+        IContextEvent<Events.ColliderEvent> OnLeft { get; }
 
         #endregion
     }

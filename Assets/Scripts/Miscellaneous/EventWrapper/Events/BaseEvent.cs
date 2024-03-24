@@ -1,7 +1,7 @@
 ﻿using System;
-using Miscellaneous.CustomEvents.Interfaces;
+using Miscellaneous.EventWrapper.Interfaces;
 
-namespace Miscellaneous.CustomEvents.Events
+namespace Miscellaneous.EventWrapper.Events
 {
     public class BaseEvent : IEvent
     {

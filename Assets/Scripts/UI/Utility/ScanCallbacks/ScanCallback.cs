@@ -27,12 +27,12 @@ namespace UI.Utility.ScanCallbacks
 
         private void OnEnable()
         {
-            ScanDescription.OnObjectScanned += ObjectScannedCallback;
+            ScanDescription.OnObjectScanned.AddListener(ObjectScannedCallback);
         }
 
         private void OnDisable()
         {
-            ScanDescription.OnObjectScanned -= ObjectScannedCallback;
+            ScanDescription.OnObjectScanned.RemoveListener(ObjectScannedCallback);
         }
 
         #endregion

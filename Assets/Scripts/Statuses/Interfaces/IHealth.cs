@@ -1,4 +1,5 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Interfaces;
 
 namespace Statuses.Interfaces
 {
@@ -6,8 +7,8 @@ namespace Statuses.Interfaces
     {
         #region Events
 
-        event Action OnDied;
-        event Action OnResurrected;
+        IEvent OnDied { get; }
+        IEvent OnResurrected { get; }
 
         #endregion
         

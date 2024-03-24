@@ -1,5 +1,6 @@
 ﻿
 using Miscellaneous;
+using Miscellaneous.EventWrapper.Main;
 using Player.Inventories;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
@@ -35,22 +36,22 @@ namespace UI.Presenters.Items
         {
             InitializeSlots();
             
-            InventorySlotPresenter.OnSlotSelected += SlotSlotSelectedCallback;
-            InventorySlotPresenter.OnUseItemTriggered += SlotUseItemTriggeredCallback;
-            InventorySlotPresenter.OnSlotDropped += SlotDroppedCallback;
+            InventorySlotPresenter.OnSlotSelected.AddListener(SlotSlotSelectedCallback);
+            InventorySlotPresenter.OnUseItemTriggered.AddListener(SlotUseItemTriggeredCallback);
+            InventorySlotPresenter.OnSlotDropped.AddListener(SlotDroppedCallback);
             
-            Inventory.Slots.OnSlotUpdated += SlotUpdatedCallback;
-            Inventory.OnItemUsed += ItemUsedCallback;
+            Inventory.Slots.OnSlotUpdated.AddListener(SlotUpdatedCallback);
+            Inventory.OnItemUsed.AddListener(ItemUsedCallback);
         }
 
         private void OnDestroy()
         {
-            InventorySlotPresenter.OnSlotSelected -= SlotSlotSelectedCallback;
-            InventorySlotPresenter.OnUseItemTriggered -= SlotUseItemTriggeredCallback;
-            InventorySlotPresenter.OnSlotDropped -= SlotDroppedCallback;
+            InventorySlotPresenter.OnSlotSelected.RemoveListener(SlotSlotSelectedCallback);
+            InventorySlotPresenter.OnUseItemTriggered.RemoveListener(SlotUseItemTriggeredCallback);
+            InventorySlotPresenter.OnSlotDropped.RemoveListener(SlotDroppedCallback);
             
-            Inventory.Slots.OnSlotUpdated -= SlotUpdatedCallback;
-            Inventory.OnItemUsed -= ItemUsedCallback;
+            Inventory.Slots.OnSlotUpdated.RemoveListener(SlotUpdatedCallback);
+            Inventory.OnItemUsed.RemoveListener(ItemUsedCallback);
         }
 
         #endregion
@@ -99,16 +100,16 @@ namespace UI.Presenters.Items
             }
         }
 
-        private void SlotDroppedCallback(InventorySlotPresenter context)
+        private void SlotDroppedCallback(Events.InventorySlotPresenterEvent context)
         {
-            _selectedSlotPresenter = context;
+            _selectedSlotPresenter = context.InventorySlotPresenter;
             DropItem();
         }
         
-        private void SlotUpdatedCallback(int context)
+        private void SlotUpdatedCallback(Events.IntEvent context)
         {
-            var slot = Inventory.Slots[context];
-            FillSlotPresenter(context, slot);
+            var slot = Inventory.Slots[context.Int];
+            FillSlotPresenter(context.Int, slot);
         }
 
         private void FillSlotPresenter(int slotIndex, InventorySlot slot)
@@ -122,15 +123,15 @@ namespace UI.Presenters.Items
             _slots[slotIndex].TryUpdateCorrespondingSlot(slot);
         }
 
-        private void SlotSlotSelectedCallback(InventorySlotPresenter context)
+        private void SlotSlotSelectedCallback(Events.InventorySlotPresenterEvent context)
         {
-            _selectedSlotPresenter = context;
-            UpdateDescriptionPopup(context);
+            _selectedSlotPresenter = context.InventorySlotPresenter;
+            UpdateDescriptionPopup(context.InventorySlotPresenter);
         }
 
-        private void SlotUseItemTriggeredCallback(InventorySlotPresenter context)
+        private void SlotUseItemTriggeredCallback(Events.InventorySlotPresenterEvent context)
         {
-            Inventory.TryUse(context.SlotIndex);
+            Inventory.TryUse(context.InventorySlotPresenter.SlotIndex);
         }
 
         private void UpdateDescriptionPopup(InventorySlotPresenter slotPresenter)
@@ -139,7 +140,7 @@ namespace UI.Presenters.Items
             _itemDescriptionPopup.FillDescription(slot.Item);
         }
 
-        private void ItemUsedCallback(IItem context)
+        private void ItemUsedCallback(Events.ItemEvent context)
         {
             UpdateDescriptionPopup(_selectedSlotPresenter);
         }

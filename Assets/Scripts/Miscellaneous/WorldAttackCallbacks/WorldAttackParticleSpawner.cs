@@ -1,5 +1,6 @@
 ﻿using Audio.ClipSelectors;
 using Audio.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Miscellaneous.ObjectPooling;
 using NPCs.Components;
 using UnityEngine;
@@ -32,12 +33,12 @@ namespace Miscellaneous.WorldAttackCallbacks
         private void Start()
         {
             _particlesPool = new ObjectPoolWrapper(_attackParticle);
-            EnemyAttackMelee.OnAttackAtPointPerformed += AttackPerformedCallback;
+            EnemyAttackMelee.OnAttackAtPointPerformed.AddListener(AttackPerformedCallback);
         }
 
         private void OnDestroy()
         {
-            EnemyAttackMelee.OnAttackAtPointPerformed -= AttackPerformedCallback;
+            EnemyAttackMelee.OnAttackAtPointPerformed.RemoveListener(AttackPerformedCallback);
         }
 
         #endregion
@@ -45,10 +46,10 @@ namespace Miscellaneous.WorldAttackCallbacks
         #region Methods
 
 
-        private void AttackPerformedCallback(Vector3 context)
+        private void AttackPerformedCallback(Events.Vector3Event context)
         {
             var particle = (WorldAttackParticle)_particlesPool.Get();
-            particle.transform.position = context;
+            particle.transform.position = context.Vector3;
             particle.TriggerAudio(ClipSelector.SelectNext());
         }
 

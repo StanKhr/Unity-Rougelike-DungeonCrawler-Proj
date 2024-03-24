@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using Miscellaneous.EventWrapper.Main;
 using Player.Interfaces;
 using Player.Miscellaneous;
 using UI.Utility;
@@ -32,21 +33,21 @@ namespace Statuses.Feedbacks.Damage
         {
             base.OnEnable();
 
-            Timer.OnTimerEnded += TimerEndedCallback;
+            Timer.OnTimerEnded.AddListener(TimerEndedCallback);
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
 
-            Timer.OnTimerEnded -= TimerEndedCallback;
+            Timer.OnTimerEnded.RemoveListener(TimerEndedCallback);
         }
 
         #endregion
         
         #region Methods
 
-        protected override void DamagedCallback(float context)
+        protected override void DamagedCallback(Events.FloatEvent context)
         {
             if (Health.Alive)
             {

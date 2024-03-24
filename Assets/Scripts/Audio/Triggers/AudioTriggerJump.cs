@@ -28,14 +28,14 @@ namespace Audio.Triggers
 
         private void OnEnable()
         {
-            Locomotion.OnJumped += JumpCallback;
-            Locomotion.OnGroundLanded += GroundLandedCallback;
+            Locomotion.OnJumped.AddListener(JumpCallback);
+            Locomotion.OnGroundLanded.AddListener(GroundLandedCallback);
         }
 
         private void OnDisable()
         {
-            Locomotion.OnJumped -= JumpCallback;
-            Locomotion.OnGroundLanded -= GroundLandedCallback;
+            Locomotion.OnJumped.RemoveListener(JumpCallback);
+            Locomotion.OnGroundLanded.RemoveListener(GroundLandedCallback);
         }
 
         #endregion

@@ -1,4 +1,6 @@
 ﻿using System;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using Player.Inputs.Interfaces;
 using Scripts.Player.Inputs;
 using UnityEngine;
@@ -24,8 +26,8 @@ namespace Player.Inputs.MapWrappers
         #endregion
 
         #region Events
-        
-        public event Action OnJump;
+
+        public IEvent OnJump { get; } = new CustomEvent();
 
         #endregion
 
@@ -64,7 +66,7 @@ namespace Player.Inputs.MapWrappers
                 return;
             }
             
-            OnJump?.Invoke();
+            OnJump?.NotifyListeners();
         }
 
         void GameControlsAsset.IMovementMapActions.OnCrouch(InputAction.CallbackContext context)

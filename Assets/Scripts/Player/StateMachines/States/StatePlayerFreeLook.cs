@@ -28,8 +28,8 @@ namespace Player.StateMachines.States
         {
             var inputProvider = StateMachinePlayer.InputProvider;
             
-            inputProvider.Movement.OnJump += JumpCallback;
-            inputProvider.Abilities.OnInteracted += InteractedCallback;
+            inputProvider.Movement.OnJump.AddListener(JumpCallback);
+            inputProvider.Abilities.OnInteracted.AddListener(InteractedCallback);
             
             var cameraWrapper = StateMachinePlayer.CameraWrapper;
             cameraWrapper.SetActiveCamera(ActiveCameraType.FreeLook);
@@ -48,8 +48,8 @@ namespace Player.StateMachines.States
             var inventory = StateMachinePlayer.Inventory;
             inventory.ItemManipulationsEnabled = false;
             
-            inputProvider.Movement.OnJump -= JumpCallback;
-            inputProvider.Abilities.OnInteracted -= InteractedCallback;
+            inputProvider.Movement.OnJump.RemoveListener(JumpCallback);
+            inputProvider.Abilities.OnInteracted.RemoveListener(InteractedCallback);
         }
 
         public override void Tick(float deltaTime)

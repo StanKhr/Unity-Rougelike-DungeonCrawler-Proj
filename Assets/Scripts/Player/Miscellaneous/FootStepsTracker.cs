@@ -1,5 +1,7 @@
 ﻿using System;
 using Abilities.Interfaces;
+using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
 using Player.Cameras.Interfaces;
 using UnityEngine;
 
@@ -9,7 +11,7 @@ namespace Player.Miscellaneous
     {
         #region Events
 
-        public event Action OnStepMade;
+        public IEvent OnStepMade { get; } = new CustomEvent();
 
         #endregion
 
@@ -40,7 +42,7 @@ namespace Player.Miscellaneous
                 if (value >= _minStepMagnitude)
                 {
                     _stepDistance = 0f;
-                    OnStepMade?.Invoke();
+                    OnStepMade?.NotifyListeners();
                     
                     return;
                 }

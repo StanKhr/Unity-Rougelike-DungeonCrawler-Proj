@@ -21,12 +21,12 @@ namespace Statuses.Feedbacks.Defence
 
         private void OnEnable()
         {
-            Defence.OnDamageAbsorbed += DamageAbsorbedCallback;
+            Defence.OnDamageAbsorbed.AddListener(DamageAbsorbedCallback);
         }
 
         private void OnDisable()
         {
-            Defence.OnDamageAbsorbed -= DamageAbsorbedCallback;
+            Defence.OnDamageAbsorbed.RemoveListener(DamageAbsorbedCallback);
         }
 
         #endregion

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Miscellaneous.CustomEvents.Interfaces;
+using Miscellaneous.EventWrapper.Interfaces;
 
-namespace Miscellaneous.CustomEvents.Events
+namespace Miscellaneous.EventWrapper.Events
 {
-    public class ValueEvent<T> : IValueEvent<T> where T : struct
+    public class ContextEvent<T> : IContextEvent<T> where T : struct
     {
         #region Constructors
 
-        public ValueEvent()
+        public ContextEvent()
         {
             
         }
@@ -41,6 +41,11 @@ namespace Miscellaneous.CustomEvents.Events
 
         public void NotifyListeners(T context)
         {
+            if (Listeners.Count <= 0)
+            {
+                return;
+            }
+
             var listenersList = Listeners.ToList();
             foreach (var listener in listenersList)
             {

@@ -1,4 +1,6 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.EventWrapper.Events;
+using Miscellaneous.EventWrapper.Interfaces;
+using Miscellaneous.EventWrapper.Main;
 using Player.Inventories.Interfaces;
 using Player.Inventories.LootTables;
 using Props.Interfaces;
@@ -9,9 +11,11 @@ namespace Props.Common
     public class Chest : Usable, IInteractable
     {
         #region Events
-        
-        public event DelegateHolder.GameObjectEvents OnInteractionStarted;
-        public event DelegateHolder.GameObjectEvents OnInteractionEnded;
+
+        public IContextEvent<Events.GameObjectEvent> OnInteractionStarted { get; } =
+            new ContextEvent<Events.GameObjectEvent>();
+        public IContextEvent<Events.GameObjectEvent> OnInteractionEnded { get; } =
+            new ContextEvent<Events.GameObjectEvent>();
 
         #endregion
         
@@ -42,11 +46,17 @@ namespace Props.Common
 
             if (_opened)
             {
-                OnInteractionStarted?.Invoke(user);
+                OnInteractionStarted?.NotifyListeners(new Events.GameObjectEvent
+                {
+                    GameObject = user
+                });
             }
             else
             {
-                OnInteractionEnded?.Invoke(user);
+                OnInteractionEnded?.NotifyListeners(new Events.GameObjectEvent
+                {
+                    GameObject = user
+                });
             }
             
             if (_looted)

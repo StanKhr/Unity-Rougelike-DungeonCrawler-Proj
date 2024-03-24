@@ -1,5 +1,6 @@
 ﻿using System;
 using Abilities.Interfaces;
+using Miscellaneous.EventWrapper.Interfaces;
 
 namespace Player.Cameras.Interfaces
 {
@@ -7,7 +8,7 @@ namespace Player.Cameras.Interfaces
     {
         #region Events
 
-        event Action OnStepMade;
+        IEvent OnStepMade { get; }
 
         #endregion
 
