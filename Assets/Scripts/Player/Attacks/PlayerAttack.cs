@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Miscellaneous;
+using Miscellaneous.CustomEvents.Contexts;
+using Miscellaneous.CustomEvents.Events;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
 using Statuses.Datas;
@@ -22,10 +24,10 @@ namespace Player.Attacks
 
         #region Events
 
-        public event Action<GameEvents.MeleeAttackEvent> OnAttackChargeStarted;
-        public event DelegateHolder.WeaponEvents OnAttackReleased;
-        public event DelegateHolder.GameObjectEvents OnSurfaceHit;
-        public event Action OnAttackEnded;
+        public ValueEvent<EventContext.MeleeAttackEvent> OnAttackChargeStarted { get; } = new ();
+        public ValueEvent<EventContext.GameObjectEvent> OnSurfaceHit { get; } = new ();
+        public ValueEvent<EventContext.WeaponEvent> OnAttackReleased { get; } = new ();
+        public SimpleEvent OnAttackEnded { get; } = new();
 
         #endregion
 
@@ -116,7 +118,10 @@ namespace Player.Attacks
                 TryApplyDamage(damageable);
             }
 
-            OnSurfaceHit?.Invoke(other.gameObject);
+            OnSurfaceHit?.Invoke(new EventContext.GameObjectEvent
+            {
+                GameObject = other.gameObject
+            });
         }
 
         private void TryApplyDamage(IDamageable damageable)
@@ -128,7 +133,7 @@ namespace Player.Attacks
 
             var damage = new Damage(_calculatedDamage, UsedWeapon.DamageType, _ownerHealth.gameObject,
                 _applyCriticalDamage);
-            
+
             damageable.TryApplyDamage(damage);
         }
 
@@ -152,7 +157,7 @@ namespace Player.Attacks
             var critMaxPercent = 1 - halvedBounds;
 
             _critChargePercent = Randomizer.RangeFloat(critMinPercent, critMaxPercent);
-            var attackData = new GameEvents.MeleeAttackEvent
+            var attackData = new EventContext.MeleeAttackEvent
             {
                 Weapon = UsedWeapon,
                 CritChargePercent = _critChargePercent,
@@ -199,7 +204,10 @@ namespace Player.Attacks
                 _critChargePercent, UsedWeapon.CritPercentBounds);
             _calculatedDamage = CalculateDamageValue(UsedWeapon, ChargeTimer, _applyCriticalDamage);
 
-            OnAttackReleased?.Invoke(UsedWeapon);
+            OnAttackReleased?.Invoke(new EventContext.WeaponEvent
+            {
+                Weapon = UsedWeapon
+            });
 
             _affectedTargets.Clear();
             _attackCollider.enabled = true;

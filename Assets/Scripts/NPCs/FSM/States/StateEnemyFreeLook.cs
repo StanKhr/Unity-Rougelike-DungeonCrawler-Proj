@@ -1,6 +1,4 @@
-﻿using FSM.Main;
-using Miscellaneous;
-using NPCs.FSM.Interfaces;
+﻿using NPCs.FSM.Interfaces;
 using UnityEngine;
 
 namespace NPCs.FSM.States

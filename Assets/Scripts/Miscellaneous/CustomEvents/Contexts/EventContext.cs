@@ -1,17 +1,20 @@
 ﻿using Player.Inventories.Interfaces;
+using UnityEngine;
 
-namespace Miscellaneous
+namespace Miscellaneous.CustomEvents.Contexts
 {
-    public static class GameEvents
+    public static class EventContext
     {
         #region Types
-
-        public class Event<T>
+        
+        public struct GameObjectEvent
         {
-            public Event(T value)
-            {
-                
-            }
+            public GameObject GameObject { get; set; }
+        }
+        
+        public struct WeaponEvent
+        {
+            public IWeapon Weapon { get; set; }
         }
         
         public struct MeleeAttackEvent

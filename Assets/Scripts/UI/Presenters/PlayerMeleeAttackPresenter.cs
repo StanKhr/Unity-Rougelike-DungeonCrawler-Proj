@@ -1,7 +1,6 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.CustomEvents.Contexts;
 using Player.Attacks;
 using Player.Interfaces;
-using Player.Inventories.Interfaces;
 using UI.Utility;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,17 +37,17 @@ namespace UI.Presenters
         private void Start()
         {
             Init();
-            
-            PlayerAttack.OnAttackChargeStarted += AttackChargeStartedCallback;
-            PlayerAttack.OnAttackReleased += AttackReleasedCallback;
-            PlayerAttack.OnAttackEnded += AttackEndedCallback;
+
+            PlayerAttack.OnAttackChargeStarted.AddCallback(AttackChargeStartedCallback);
+            PlayerAttack.OnAttackReleased.AddCallback(AttackReleasedCallback);
+            PlayerAttack.OnAttackEnded.AddCallback(AttackEndedCallback);
         }
 
         private void OnDestroy()
         {
-            PlayerAttack.OnAttackChargeStarted -= AttackChargeStartedCallback;
-            PlayerAttack.OnAttackReleased -= AttackReleasedCallback;
-            PlayerAttack.OnAttackEnded -= AttackEndedCallback;
+            PlayerAttack.OnAttackChargeStarted.RemoveCallback(AttackChargeStartedCallback);
+            PlayerAttack.OnAttackReleased.RemoveCallback(AttackReleasedCallback);
+            PlayerAttack.OnAttackEnded.RemoveCallback(AttackEndedCallback);
         }
 
         private void Update()
@@ -72,7 +71,7 @@ namespace UI.Presenters
             _sliderContainer.gameObject.SetActiveSmart(false);
         }
 
-        private void AttackChargeStartedCallback(GameEvents.MeleeAttackEvent context)
+        private void AttackChargeStartedCallback(EventContext.MeleeAttackEvent context)
         {
             _sliderFillImage.fillAmount = 0f;
 
@@ -94,7 +93,7 @@ namespace UI.Presenters
             _sliderContainer.gameObject.SetActiveSmart(false);
         }
 
-        private void AttackReleasedCallback(IWeapon context)
+        private void AttackReleasedCallback(EventContext.WeaponEvent context)
         {
             _sliderContainer.gameObject.SetActiveSmart(false);
         }

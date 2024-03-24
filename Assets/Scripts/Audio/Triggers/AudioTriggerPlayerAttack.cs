@@ -1,7 +1,6 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.CustomEvents.Contexts;
 using Player.Attacks;
 using Player.Interfaces;
-using Player.Inventories.Interfaces;
 using UnityEngine;
 
 namespace Audio.Triggers
@@ -24,27 +23,27 @@ namespace Audio.Triggers
 
         private void OnEnable()
         {
-            PlayerAttack.OnAttackChargeStarted += AttackChargeStartedCallback;
-            PlayerAttack.OnAttackReleased += AttackReleasedCallback;
+            PlayerAttack.OnAttackChargeStarted.AddCallback(AttackChargeStartedCallback);
+            PlayerAttack.OnAttackReleased.AddCallback(AttackReleasedCallback);
         }
 
         private void OnDisable()
         {
-            PlayerAttack.OnAttackChargeStarted -= AttackChargeStartedCallback;
-            PlayerAttack.OnAttackReleased -= AttackReleasedCallback;
+            PlayerAttack.OnAttackChargeStarted.RemoveCallback(AttackChargeStartedCallback);
+            PlayerAttack.OnAttackReleased.RemoveCallback(AttackReleasedCallback);
         }
 
         #endregion
 
         #region Methods
 
-        private void AttackReleasedCallback(IWeapon context)
+        private void AttackReleasedCallback(EventContext.WeaponEvent context)
         {
-            var clipSelector = context.ClipSelectorAttackRelease;
+            var clipSelector = context.Weapon.ClipSelectorAttackRelease;
             clipSelector.TryOneShotOnAudioSource(AudioSource);
         }
 
-        private void AttackChargeStartedCallback(GameEvents.MeleeAttackEvent context)
+        private void AttackChargeStartedCallback(EventContext.MeleeAttackEvent context)
         {
             var clipSelector = context.Weapon.ClipSelectorAttackCharge;
             clipSelector.TryOneShotOnAudioSource(AudioSource);

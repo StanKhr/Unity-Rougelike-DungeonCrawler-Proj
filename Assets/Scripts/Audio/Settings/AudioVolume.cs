@@ -4,7 +4,6 @@ using Cysharp.Threading.Tasks;
 using Miscellaneous;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
 
 namespace Audio.Settings
 {

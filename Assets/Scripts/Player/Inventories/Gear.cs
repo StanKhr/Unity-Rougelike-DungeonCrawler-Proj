@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.CustomEvents.Contexts;
+using Miscellaneous.CustomEvents.Events;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
 using UnityEngine;
@@ -15,8 +16,9 @@ namespace Player.Inventories
 
         #region Events
 
-        public event DelegateHolder.WeaponEvents OnWeaponEquipped;
-        public event DelegateHolder.WeaponEvents OnWeaponRemoved;
+        public ValueEvent<EventContext.WeaponEvent> OnWeaponEquipped { get; } = new ();
+
+        public ValueEvent<EventContext.WeaponEvent> OnWeaponRemoved { get; } = new ();
 
         #endregion
 
@@ -39,11 +41,17 @@ namespace Player.Inventories
 
                 if (Weapon != null)
                 {
-                    OnWeaponEquipped?.Invoke(Weapon);
+                    OnWeaponEquipped?.Invoke(new EventContext.WeaponEvent
+                    {
+                        Weapon = Weapon
+                    });
                     return;
                 }
 
-                OnWeaponRemoved?.Invoke(prevWeapon);
+                OnWeaponRemoved?.Invoke(new EventContext.WeaponEvent()
+                {
+                    Weapon = prevWeapon
+                });
             }
         }
 

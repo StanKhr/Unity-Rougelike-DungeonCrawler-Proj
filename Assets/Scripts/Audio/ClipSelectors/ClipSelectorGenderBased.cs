@@ -1,5 +1,4 @@
-﻿using System;
-using Player.Enums;
+﻿using Player.Enums;
 using Player.Interfaces;
 using UnityEngine;
 

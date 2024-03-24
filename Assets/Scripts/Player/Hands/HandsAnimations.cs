@@ -1,6 +1,6 @@
-﻿using Player.Interfaces;
+﻿using Miscellaneous.CustomEvents.Contexts;
+using Player.Interfaces;
 using Player.Inventories;
-using Player.Inventories.Interfaces;
 using UnityEngine;
 
 namespace Player.Hands
@@ -66,14 +66,14 @@ namespace Player.Hands
         {
             ValidateHands();
             
-            Gear.OnWeaponEquipped += WeaponEquippedCallback;
-            Gear.OnWeaponRemoved += WeaponRemovedCallback;
+            Gear.OnWeaponEquipped.AddCallback(WeaponEquippedCallback);
+            Gear.OnWeaponRemoved.AddCallback(WeaponRemovedCallback);
         }
 
         private void OnDestroy()
         {
-            Gear.OnWeaponEquipped -= WeaponEquippedCallback;
-            Gear.OnWeaponRemoved -= WeaponRemovedCallback;
+            Gear.OnWeaponEquipped.RemoveCallback(WeaponEquippedCallback);
+            Gear.OnWeaponRemoved.RemoveCallback(WeaponRemovedCallback);
         }
 
         #endregion
@@ -84,23 +84,28 @@ namespace Player.Hands
         {
             if (Gear.WeaponEquipped)
             {
-                WeaponEquippedCallback(Gear.Weapon);
+                WeaponEquippedCallback(new EventContext.WeaponEvent()
+                {
+                    Weapon = Gear.Weapon
+                });
+                
                 return;
             }
             
-            WeaponRemovedCallback(null);
+            _handRight.SpriteRenderer = _handRightEmpty;
         }
 
-        private void WeaponEquippedCallback(IWeapon context)
+        private void WeaponEquippedCallback(EventContext.WeaponEvent context)
         {
             _handRight.SpriteRenderer = _handRightWeapon;
-            _handRight.SpriteRenderer.sprite = context.WeaponHandSprite;
+            _handRight.SpriteRenderer.sprite = context.Weapon.WeaponHandSprite;
         }
 
-        private void WeaponRemovedCallback(IWeapon context)
+        private void WeaponRemovedCallback(EventContext.WeaponEvent context)
         {
             _handRight.SpriteRenderer = _handRightEmpty;
         }
+        
 
         #endregion
     }

@@ -1,7 +1,5 @@
-﻿using System;
-using Miscellaneous.ObjectPooling;
+﻿using Miscellaneous.ObjectPooling;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace Audio.Sources
 {

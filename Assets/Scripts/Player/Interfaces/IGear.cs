@@ -1,14 +1,15 @@
-﻿using Miscellaneous;
+﻿using Miscellaneous.CustomEvents.Contexts;
+using Miscellaneous.CustomEvents.Events;
 using Player.Inventories.Interfaces;
 
 namespace Player.Interfaces
 {
     public interface IGear
     {
-        #region MyRegion
+        #region Events
 
-        event DelegateHolder.WeaponEvents OnWeaponEquipped;
-        event DelegateHolder.WeaponEvents OnWeaponRemoved;
+        ValueEvent<EventContext.WeaponEvent> OnWeaponEquipped { get; }
+        ValueEvent<EventContext.WeaponEvent> OnWeaponRemoved { get; }
 
         #endregion
         

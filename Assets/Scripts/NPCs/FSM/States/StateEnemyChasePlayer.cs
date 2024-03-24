@@ -1,5 +1,4 @@
-﻿using System;
-using NPCs.FSM.Interfaces;
+﻿using NPCs.FSM.Interfaces;
 using UnityEngine;
 
 namespace NPCs.FSM.States

@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using FSM.GameLoop.Enums;
 using FSM.GameLoop.Interfaces;
 using FSM.GameLoop.States;
 using FSM.Main;
 using Miscellaneous;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
 namespace FSM.GameLoop.Machines

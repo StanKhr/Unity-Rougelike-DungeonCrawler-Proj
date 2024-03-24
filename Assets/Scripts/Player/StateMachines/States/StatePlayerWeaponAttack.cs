@@ -1,6 +1,5 @@
 ﻿using FSM.Main;
-using Miscellaneous;
-using Player.Attacks;
+using Miscellaneous.CustomEvents.Contexts;
 using Player.Inventories.Interfaces;
 using Player.StateMachines.Interfaces;
 
@@ -42,9 +41,9 @@ namespace Player.StateMachines.States
             }
             
             var playerAttack = StateMachinePlayer.PlayerAttack;
-            playerAttack.OnAttackChargeStarted += AttackChargeStartedCallback;
-            playerAttack.OnAttackEnded += AttackEndedCallback;
-            playerAttack.OnAttackReleased += AttackReleasedCallback;
+            playerAttack.OnAttackChargeStarted.AddCallback(AttackChargeStartedCallback);
+            playerAttack.OnAttackEnded.AddCallback(AttackEndedCallback);
+            playerAttack.OnAttackReleased.AddCallback(AttackReleasedCallback);
             
             playerAttack.ChargeAttack(Weapon);
         }
@@ -52,10 +51,10 @@ namespace Player.StateMachines.States
         public override void Exit()
         {
             var playerAttack = StateMachinePlayer.PlayerAttack;
-            
-            playerAttack.OnAttackChargeStarted -= AttackChargeStartedCallback;
-            playerAttack.OnAttackEnded -= AttackEndedCallback;
-            playerAttack.OnAttackReleased -= AttackReleasedCallback;
+
+            playerAttack.OnAttackChargeStarted.RemoveCallback(AttackChargeStartedCallback);
+            playerAttack.OnAttackEnded.RemoveCallback(AttackEndedCallback);
+            playerAttack.OnAttackReleased.RemoveCallback(AttackReleasedCallback);
             
             playerAttack.InterruptAttack();
         }
@@ -84,7 +83,7 @@ namespace Player.StateMachines.States
             playerMeleeAttack.ReleaseAttack();
         }
 
-        private void AttackReleasedCallback(IWeapon weapon)
+        private void AttackReleasedCallback(EventContext.WeaponEvent context)
         {
             var stamina = StateMachinePlayer.Stamina;
             if (!stamina.TryDecrease(Weapon.AttackEnergyCost))
@@ -102,7 +101,7 @@ namespace Player.StateMachines.States
             StateMachinePlayer.ToFreeLookState();
         }
 
-        private void AttackChargeStartedCallback(GameEvents.MeleeAttackEvent context)
+        private void AttackChargeStartedCallback(EventContext.MeleeAttackEvent context)
         {
             var playerAnimations = StateMachinePlayer.PlayerAnimations;
             playerAnimations.PlayWeaponAttackCharge(Weapon.CalculateChargeTimeSeconds());

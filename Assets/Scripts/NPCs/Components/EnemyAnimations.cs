@@ -1,5 +1,4 @@
-﻿using System;
-using NPCs.Interfaces;
+﻿using NPCs.Interfaces;
 using UnityEngine;
 
 namespace NPCs.Components

@@ -1,7 +1,5 @@
-﻿using System;
-using Audio.ClipSelectors;
+﻿using Audio.ClipSelectors;
 using Audio.Interfaces;
-using Player.Interfaces;
 using UnityEngine;
 
 namespace Audio.Triggers

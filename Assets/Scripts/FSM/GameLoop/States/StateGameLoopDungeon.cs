@@ -1,5 +1,4 @@
-﻿using System;
-using Abilities.Interfaces;
+﻿using Abilities.Interfaces;
 using FSM.GameLoop.Enums;
 using FSM.GameLoop.Interfaces;
 using Player.Miscellaneous;

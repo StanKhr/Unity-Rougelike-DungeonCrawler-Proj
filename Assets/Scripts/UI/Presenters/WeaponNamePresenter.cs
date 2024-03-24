@@ -1,6 +1,6 @@
-﻿using Player.Interfaces;
+﻿using Miscellaneous.CustomEvents.Contexts;
+using Player.Interfaces;
 using Player.Inventories;
-using Player.Inventories.Interfaces;
 using UnityEngine;
 
 namespace UI.Presenters
@@ -24,35 +24,28 @@ namespace UI.Presenters
         private void Start()
         {
             var weapon = Gear.Weapon;
-            if (weapon != null)
-            {
-                WeaponEquippedCallback(weapon);
-            }
-            else
-            {
-                WeaponRemovedCallback(null);
-            }
-            
-            Gear.OnWeaponEquipped += WeaponEquippedCallback;
-            Gear.OnWeaponRemoved += WeaponRemovedCallback;
+            SetValue(weapon != null ? weapon.Name : string.Empty);
+
+            Gear.OnWeaponEquipped.AddCallback(WeaponEquippedCallback);
+            Gear.OnWeaponRemoved.AddCallback(WeaponRemovedCallback);
         }
 
         private void OnDestroy()
         {
-            Gear.OnWeaponEquipped -= WeaponEquippedCallback;
-            Gear.OnWeaponRemoved -= WeaponRemovedCallback;
+            Gear.OnWeaponEquipped.RemoveCallback(WeaponEquippedCallback);
+            Gear.OnWeaponRemoved.RemoveCallback(WeaponRemovedCallback);
         }
 
         #endregion
 
         #region Methods
         
-        protected virtual void WeaponEquippedCallback(IWeapon context)
+        protected virtual void WeaponEquippedCallback(EventContext.WeaponEvent context)
         {
-            SetValue(context.Name);
+            SetValue(context.Weapon.Name);
         }
 
-        protected virtual void WeaponRemovedCallback(IWeapon context)
+        protected virtual void WeaponRemovedCallback(EventContext.WeaponEvent context)
         {
             SetValue(string.Empty);
         }

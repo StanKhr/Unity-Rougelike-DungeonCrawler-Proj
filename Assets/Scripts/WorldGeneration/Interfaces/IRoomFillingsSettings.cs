@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using WorldGeneration.Utility;
 
 namespace WorldGeneration.Interfaces

@@ -1,4 +1,4 @@
-﻿using Player.Inventories.Interfaces;
+﻿using Miscellaneous.CustomEvents.Contexts;
 
 namespace UI.Presenters
 {
@@ -12,10 +12,10 @@ namespace UI.Presenters
         
         #region Methods
 
-        protected override void WeaponEquippedCallback(IWeapon context)
+        protected override void WeaponEquippedCallback(EventContext.WeaponEvent context)
         {
-            var averageDamage = context.DamageValue;
-            var maxDamage = averageDamage * context.CritDamageMultiplier;
+            var averageDamage = context.Weapon.DamageValue;
+            var maxDamage = averageDamage * context.Weapon.CritDamageMultiplier;
 
             var damageString = $"{averageDamage.ToString("F1")}-{maxDamage.ToString("F1")}";
             damageString = damageString.Replace(',', '.');
@@ -23,7 +23,7 @@ namespace UI.Presenters
             SetValue(damageString);
         }
 
-        protected override void WeaponRemovedCallback(IWeapon context)
+        protected override void WeaponRemovedCallback(EventContext.WeaponEvent context)
         {
             SetValue(NoDamageString);
         }

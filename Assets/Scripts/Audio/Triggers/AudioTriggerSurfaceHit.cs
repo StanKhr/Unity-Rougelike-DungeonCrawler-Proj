@@ -2,6 +2,7 @@
 using Audio.ClipSelectors;
 using Audio.Interfaces;
 using Audio.Sources;
+using Miscellaneous.CustomEvents.Contexts;
 using Miscellaneous.ObjectPooling;
 using Player.Attacks;
 using Player.Interfaces;
@@ -86,21 +87,21 @@ namespace Audio.Triggers
 
         private void OnEnable()
         {
-            PlayerAttack.OnSurfaceHit += SurfaceHitCallback;
+            PlayerAttack.OnSurfaceHit.AddCallback(SurfaceHitCallback);
         }
 
         private void OnDisable()
         {
-            PlayerAttack.OnSurfaceHit -= SurfaceHitCallback;
+            PlayerAttack.OnSurfaceHit.RemoveCallback(SurfaceHitCallback);
         }
 
         #endregion
 
         #region Methods
         
-        private void SurfaceHitCallback(GameObject context)
+        private void SurfaceHitCallback(EventContext.GameObjectEvent context)
         {
-            if (!ObjectSurfaceTypeConverter.TryGetFromObject(context, out var surfaceType))
+            if (!ObjectSurfaceTypeConverter.TryGetFromObject(context.GameObject, out var surfaceType))
             {
                 // LogWriter.DevelopmentLog($"{context}: surface type not found");
                 return;
@@ -115,7 +116,7 @@ namespace Audio.Triggers
             }
             
             var audioSourcePooled = (AudioSourcePooled) PoolWrapper.Get();
-            audioSourcePooled.transform.position = context.transform.position;
+            audioSourcePooled.transform.position = context.GameObject.transform.position;
             
             clipSelector.TryOneShotOnAudioSource(audioSourcePooled.Source, _sfxVolume);
         }
