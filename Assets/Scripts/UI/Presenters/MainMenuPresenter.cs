@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Miscellaneous.EventWrapper.Events;
-using Miscellaneous.EventWrapper.Interfaces;
 using Player.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Events;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using TMPro;
 using UI.Utility;
 using UI.Utility.Personality;

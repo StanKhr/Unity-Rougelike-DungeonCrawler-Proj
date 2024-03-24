@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Miscellaneous.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 
-namespace Miscellaneous.EventWrapper.Events
+namespace Plugins.StanKhrEssentials.EventWrapper.Events
 {
     public class CustomEvent : IEvent
     {

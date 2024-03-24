@@ -1,6 +1,6 @@
 ﻿using System;
 using Abilities.Interfaces;
-using Miscellaneous.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 
 namespace Player.Cameras.Interfaces
 {

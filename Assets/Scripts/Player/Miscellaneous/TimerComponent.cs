@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Miscellaneous.EventWrapper.Events;
-using Miscellaneous.EventWrapper.Interfaces;
 using Player.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Events;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using UnityEngine;
 
 namespace Player.Miscellaneous

@@ -1,9 +1,9 @@
 ﻿
 using Miscellaneous;
-using Miscellaneous.EventWrapper.Main;
 using Player.Inventories;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace UI.Presenters.Items

@@ -5,7 +5,7 @@ using UI.Utility.Personality;
 using UnityEngine;
 using WorldGeneration.Interfaces;
 
-namespace Miscellaneous.EventWrapper.Main
+namespace Miscellaneous
 {
     public static class Events
     {

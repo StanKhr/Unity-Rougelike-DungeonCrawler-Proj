@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Miscellaneous;
-using Miscellaneous.EventWrapper.Events;
-using Miscellaneous.EventWrapper.Interfaces;
-using Miscellaneous.EventWrapper.Main;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Events;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Datas;
 using Statuses.Interfaces;
 using Statuses.Main;

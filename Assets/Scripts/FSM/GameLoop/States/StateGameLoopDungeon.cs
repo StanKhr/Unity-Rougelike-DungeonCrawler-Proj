@@ -1,9 +1,10 @@
 ﻿using Abilities.Interfaces;
 using FSM.GameLoop.Enums;
 using FSM.GameLoop.Interfaces;
-using Miscellaneous.EventWrapper.Main;
+using Miscellaneous;
 using Player.Miscellaneous;
 using Player.StateMachines.States;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Common;
 using Statuses.Interfaces;
 using UnityEngine;

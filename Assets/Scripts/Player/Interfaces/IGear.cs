@@ -1,6 +1,7 @@
-﻿using Miscellaneous.EventWrapper.Events;
-using Miscellaneous.EventWrapper.Main;
+﻿using Miscellaneous;
 using Player.Inventories.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Events;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Player.Interfaces
 {

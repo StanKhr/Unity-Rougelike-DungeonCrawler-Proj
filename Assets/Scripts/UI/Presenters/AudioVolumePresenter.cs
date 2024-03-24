@@ -1,6 +1,7 @@
 ﻿using Audio.Interfaces;
 using Audio.Settings;
-using Miscellaneous.EventWrapper.Main;
+using Miscellaneous;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using TMPro;
 using UI.Utility;
 using UnityEngine;

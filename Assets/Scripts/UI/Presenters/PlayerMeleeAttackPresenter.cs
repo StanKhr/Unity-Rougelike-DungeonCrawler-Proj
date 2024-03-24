@@ -1,6 +1,7 @@
-﻿using Miscellaneous.EventWrapper.Main;
+﻿using Miscellaneous;
 using Player.Attacks;
 using Player.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UI.Utility;
 using UnityEngine;
 using UnityEngine.UI;

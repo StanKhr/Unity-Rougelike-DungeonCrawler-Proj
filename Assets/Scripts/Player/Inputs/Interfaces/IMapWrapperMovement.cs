@@ -1,5 +1,5 @@
 ﻿using System;
-using Miscellaneous.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using UnityEngine;
 
 namespace Player.Inputs.Interfaces

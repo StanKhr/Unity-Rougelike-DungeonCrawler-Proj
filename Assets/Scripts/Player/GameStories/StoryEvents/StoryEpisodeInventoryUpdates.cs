@@ -1,8 +1,9 @@
-﻿using Miscellaneous.EventWrapper.Main;
+﻿using Miscellaneous;
 using Player.GameStories.Datas;
 using Player.GameStories.Interfaces;
 using Player.Inventories;
 using Player.Inventories.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;

@@ -1,7 +1,8 @@
 ﻿using FSM.Main;
-using Miscellaneous.EventWrapper.Main;
+using Miscellaneous;
 using Player.Inventories.Interfaces;
 using Player.StateMachines.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Player.StateMachines.States
 {

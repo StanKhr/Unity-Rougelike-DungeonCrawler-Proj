@@ -1,7 +1,8 @@
 ﻿using System.Threading;
-using Miscellaneous.EventWrapper.Main;
+using Miscellaneous;
 using Player.Interfaces;
 using Player.Miscellaneous;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UI.Utility;
 using UnityEngine;
 

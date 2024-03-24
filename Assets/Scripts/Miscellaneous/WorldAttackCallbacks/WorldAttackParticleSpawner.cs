@@ -1,8 +1,8 @@
 ﻿using Audio.ClipSelectors;
 using Audio.Interfaces;
-using Miscellaneous.EventWrapper.Main;
 using Miscellaneous.ObjectPooling;
 using NPCs.Components;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace Miscellaneous.WorldAttackCallbacks

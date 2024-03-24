@@ -1,5 +1,6 @@
-﻿using Miscellaneous.EventWrapper.Interfaces;
-using Miscellaneous.EventWrapper.Main;
+﻿using Miscellaneous;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace Props.Interfaces

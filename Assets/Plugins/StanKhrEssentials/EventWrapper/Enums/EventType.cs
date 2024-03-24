@@ -1,4 +1,4 @@
-﻿namespace Miscellaneous.EventWrapper.Enums
+﻿namespace Plugins.StanKhrEssentials.EventWrapper.Enums
 {
     public enum EventType
     {

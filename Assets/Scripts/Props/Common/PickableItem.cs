@@ -1,8 +1,9 @@
-﻿using Miscellaneous.EventWrapper.Events;
-using Miscellaneous.EventWrapper.Interfaces;
-using Miscellaneous.EventWrapper.Main;
+﻿using Miscellaneous;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
+using Plugins.StanKhrEssentials.EventWrapper.Events;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Interfaces;
 using UI.Interfaces;
 using UI.Utility;

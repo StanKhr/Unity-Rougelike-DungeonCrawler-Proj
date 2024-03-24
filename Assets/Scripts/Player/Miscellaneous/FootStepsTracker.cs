@@ -1,8 +1,8 @@
 ﻿using System;
 using Abilities.Interfaces;
-using Miscellaneous.EventWrapper.Events;
-using Miscellaneous.EventWrapper.Interfaces;
 using Player.Cameras.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Events;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using UnityEngine;
 
 namespace Player.Miscellaneous

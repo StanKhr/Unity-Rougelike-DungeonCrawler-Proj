@@ -1,8 +1,8 @@
 ﻿using Miscellaneous;
-using Miscellaneous.EventWrapper.Events;
-using Miscellaneous.EventWrapper.Interfaces;
-using Miscellaneous.EventWrapper.Main;
 using Player.GameStories.Datas;
+using Plugins.StanKhrEssentials.EventWrapper.Events;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Player.GameStories.Interfaces
 {

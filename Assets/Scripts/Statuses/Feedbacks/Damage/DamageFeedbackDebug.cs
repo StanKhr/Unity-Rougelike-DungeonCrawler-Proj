@@ -1,5 +1,5 @@
 ﻿using Miscellaneous;
-using Miscellaneous.EventWrapper.Main;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 
 namespace Statuses.Feedbacks.Damage
 {

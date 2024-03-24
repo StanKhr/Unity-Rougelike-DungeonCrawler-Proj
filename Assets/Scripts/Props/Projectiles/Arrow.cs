@@ -1,4 +1,5 @@
-﻿using Miscellaneous.EventWrapper.Main;
+﻿using Miscellaneous;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Interfaces;
 using Statuses.Datas;
 using Statuses.Interfaces;

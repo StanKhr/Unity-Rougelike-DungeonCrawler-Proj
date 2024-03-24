@@ -2,10 +2,11 @@
 using Audio.ClipSelectors;
 using Audio.Interfaces;
 using Audio.Sources;
-using Miscellaneous.EventWrapper.Main;
+using Miscellaneous;
 using Miscellaneous.ObjectPooling;
 using Player.Attacks;
 using Player.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Enums;
 using Statuses.Extras;
 using UnityEngine;

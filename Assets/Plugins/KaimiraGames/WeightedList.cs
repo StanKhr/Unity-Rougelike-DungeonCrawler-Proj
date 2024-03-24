@@ -1,13 +1,13 @@
 // License: MIT
 // Source, Docs, Issues: https://github.com/cdanek/kaimira-weighted-list/
 
-using System.Text;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using static KaimiraGames.WeightErrorHandlingType;
+using System.Text;
+using static Plugins.KaimiraGames.WeightErrorHandlingType;
 
-namespace KaimiraGames
+namespace Plugins.KaimiraGames
 {
     /// <summary>
     /// This implements an algorithm for sampling from a discrete probability distribution via a generic list

@@ -1,7 +1,8 @@
 ﻿using System;
 using Audio.ClipSelectors;
 using Audio.Interfaces;
-using Miscellaneous.EventWrapper.Main;
+using Miscellaneous;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.InteractionCallbacks;
 using Props.Interfaces;
 using UnityEngine;

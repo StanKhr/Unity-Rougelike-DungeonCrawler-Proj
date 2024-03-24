@@ -2,7 +2,8 @@
 using Abilities.Locomotion;
 using FSM.Creatures.Interfaces;
 using FSM.Main;
-using Miscellaneous.EventWrapper.Main;
+using Miscellaneous;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Interfaces;
 using Statuses.Main;
 using UnityEngine;

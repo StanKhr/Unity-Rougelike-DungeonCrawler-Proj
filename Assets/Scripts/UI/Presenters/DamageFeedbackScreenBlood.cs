@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
-using Miscellaneous.EventWrapper.Main;
+using Miscellaneous;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Statuses.Feedbacks.Damage;
 using Statuses.Interfaces;
 using Statuses.Main;

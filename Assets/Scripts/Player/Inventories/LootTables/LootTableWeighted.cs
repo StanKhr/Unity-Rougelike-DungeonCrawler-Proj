@@ -1,7 +1,7 @@
 ﻿using System;
-using KaimiraGames;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
+using Plugins.KaimiraGames;
 using UnityEngine;
 
 namespace Player.Inventories.LootTables

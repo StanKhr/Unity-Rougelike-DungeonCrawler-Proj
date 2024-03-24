@@ -1,6 +1,6 @@
 ﻿using System;
-using Miscellaneous.EventWrapper.Events;
-using Miscellaneous.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Events;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using UI.Interfaces;
 using UnityEngine;
 using UnityEngine.Localization;

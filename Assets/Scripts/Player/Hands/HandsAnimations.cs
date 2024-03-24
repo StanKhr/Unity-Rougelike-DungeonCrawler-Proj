@@ -1,6 +1,7 @@
-﻿using Miscellaneous.EventWrapper.Main;
+﻿using Miscellaneous;
 using Player.Interfaces;
 using Player.Inventories;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using UnityEngine;
 
 namespace Player.Hands

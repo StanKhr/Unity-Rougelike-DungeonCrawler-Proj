@@ -1,5 +1,6 @@
-﻿using Miscellaneous.EventWrapper.Main;
+﻿using Miscellaneous;
 using Player.Miscellaneous;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using TMPro;
 using UI.Enums;
 using UI.Interfaces;

@@ -1,4 +1,5 @@
-﻿using Miscellaneous.EventWrapper.Main;
+﻿using Miscellaneous;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Common;
 using Props.Interfaces;
 using Props.Projectiles;

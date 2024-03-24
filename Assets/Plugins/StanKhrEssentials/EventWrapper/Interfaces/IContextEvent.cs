@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Miscellaneous.EventWrapper.Interfaces
+namespace Plugins.StanKhrEssentials.EventWrapper.Interfaces
 {
     public interface IContextEvent<T> where T : struct
     {

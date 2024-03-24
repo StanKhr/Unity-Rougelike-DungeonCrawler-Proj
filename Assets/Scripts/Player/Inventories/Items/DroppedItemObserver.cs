@@ -1,6 +1,7 @@
-﻿using Miscellaneous.EventWrapper.Main;
+﻿using Miscellaneous;
 using Miscellaneous.Interfaces;
 using Player.Inventories.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Main;
 using Props.Common;
 using UnityEngine;
 

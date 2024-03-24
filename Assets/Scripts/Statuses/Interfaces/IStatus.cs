@@ -1,5 +1,5 @@
 ﻿using System;
-using Miscellaneous.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 
 namespace Statuses.Interfaces
 {

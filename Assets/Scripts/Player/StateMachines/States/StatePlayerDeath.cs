@@ -1,9 +1,9 @@
 ﻿using System;
 using FSM.Main;
-using Miscellaneous.EventWrapper.Events;
-using Miscellaneous.EventWrapper.Interfaces;
 using Player.Cameras.Enums;
 using Player.StateMachines.Interfaces;
+using Plugins.StanKhrEssentials.EventWrapper.Events;
+using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
 using UnityEngine;
 
 namespace Player.StateMachines.States
