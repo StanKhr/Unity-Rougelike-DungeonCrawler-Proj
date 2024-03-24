@@ -19,35 +19,30 @@ namespace Miscellaneous.CustomEvents.Events
 
         #region Properties
 
-        private HashSet<Action> Callbacks { get; } = new();
+        private HashSet<Action> Listeners { get; } = new();
 
         #endregion
         
         #region Methods
 
-        public bool AddCallback(Action callback)
+        public bool AddListener(Action listener)
         {
-            return Callbacks.Add(callback);
+            return Listeners.Add(listener);
         }
 
-        public bool RemoveCallback(Action callback)
+        public bool RemoveListener(Action listener)
         {
-            return Callbacks.Remove(callback);
+            return Listeners.Remove(listener);
         }
 
-        public bool HasCallback(Action callback)
+        public void ClearListeners()
         {
-            return Callbacks.Contains(callback);
+            Listeners.Clear();
         }
 
-        public void ClearCallbacks()
+        public void NotifyListeners()
         {
-            Callbacks.Clear();
-        }
-
-        public void Invoke()
-        {
-            var callbacksList = Callbacks.ToList();
+            var callbacksList = Listeners.ToList();
             foreach (var callback in callbacksList)
             {
                 callback.Invoke();
@@ -56,22 +51,22 @@ namespace Miscellaneous.CustomEvents.Events
 
         #endregion
 
-        #region Operators
-
-        public static CustomEvent operator +(CustomEvent evn, Action callback)
-        {
-            evn.AddCallback(callback);
-
-            return evn;
-        }
-
-        public static CustomEvent operator -(CustomEvent evn, Action callback)
-        {
-            evn.RemoveCallback(callback);
-
-            return evn;
-        }
-
-        #endregion
+        // #region Operators
+        //
+        // public static CustomEvent operator +(CustomEvent evn, Action callback)
+        // {
+        //     evn.AddListener(callback);
+        //
+        //     return evn;
+        // }
+        //
+        // public static CustomEvent operator -(CustomEvent evn, Action callback)
+        // {
+        //     evn.RemoveListener(callback);
+        //
+        //     return evn;
+        // }
+        //
+        // #endregion
     }
 }

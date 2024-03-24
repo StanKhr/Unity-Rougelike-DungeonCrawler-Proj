@@ -38,16 +38,16 @@ namespace UI.Presenters
         {
             Init();
 
-            PlayerAttack.OnAttackChargeStarted.AddCallback(AttackChargeStartedCallback);
-            PlayerAttack.OnAttackReleased.AddCallback(AttackReleasedCallback);
-            PlayerAttack.OnAttackEnded.AddCallback(AttackEndedCallback);
+            PlayerAttack.OnAttackChargeStarted.AddListener(AttackChargeStartedCallback);
+            PlayerAttack.OnAttackReleased.AddListener(AttackReleasedCallback);
+            PlayerAttack.OnAttackEnded.AddListener(AttackEndedCallback);
         }
 
         private void OnDestroy()
         {
-            PlayerAttack.OnAttackChargeStarted.RemoveCallback(AttackChargeStartedCallback);
-            PlayerAttack.OnAttackReleased.RemoveCallback(AttackReleasedCallback);
-            PlayerAttack.OnAttackEnded.RemoveCallback(AttackEndedCallback);
+            PlayerAttack.OnAttackChargeStarted.RemoveListener(AttackChargeStartedCallback);
+            PlayerAttack.OnAttackReleased.RemoveListener(AttackReleasedCallback);
+            PlayerAttack.OnAttackEnded.RemoveListener(AttackEndedCallback);
         }
 
         private void Update()

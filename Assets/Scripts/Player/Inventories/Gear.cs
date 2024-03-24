@@ -41,14 +41,14 @@ namespace Player.Inventories
 
                 if (Weapon != null)
                 {
-                    OnWeaponEquipped?.Invoke(new EventContext.WeaponEvent
+                    OnWeaponEquipped?.NotifyListeners(new EventContext.WeaponEvent
                     {
                         Weapon = Weapon
                     });
                     return;
                 }
 
-                OnWeaponRemoved?.Invoke(new EventContext.WeaponEvent()
+                OnWeaponRemoved?.NotifyListeners(new EventContext.WeaponEvent()
                 {
                     Weapon = prevWeapon
                 });

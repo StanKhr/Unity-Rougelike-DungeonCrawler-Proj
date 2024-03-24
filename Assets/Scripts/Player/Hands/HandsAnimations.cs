@@ -66,14 +66,14 @@ namespace Player.Hands
         {
             ValidateHands();
             
-            Gear.OnWeaponEquipped.AddCallback(WeaponEquippedCallback);
-            Gear.OnWeaponRemoved.AddCallback(WeaponRemovedCallback);
+            Gear.OnWeaponEquipped.AddListener(WeaponEquippedCallback);
+            Gear.OnWeaponRemoved.AddListener(WeaponRemovedCallback);
         }
 
         private void OnDestroy()
         {
-            Gear.OnWeaponEquipped.RemoveCallback(WeaponEquippedCallback);
-            Gear.OnWeaponRemoved.RemoveCallback(WeaponRemovedCallback);
+            Gear.OnWeaponEquipped.RemoveListener(WeaponEquippedCallback);
+            Gear.OnWeaponRemoved.RemoveListener(WeaponRemovedCallback);
         }
 
         #endregion

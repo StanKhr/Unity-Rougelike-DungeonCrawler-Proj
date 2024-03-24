@@ -41,9 +41,9 @@ namespace Player.StateMachines.States
             }
             
             var playerAttack = StateMachinePlayer.PlayerAttack;
-            playerAttack.OnAttackChargeStarted.AddCallback(AttackChargeStartedCallback);
-            playerAttack.OnAttackEnded.AddCallback(AttackEndedCallback);
-            playerAttack.OnAttackReleased.AddCallback(AttackReleasedCallback);
+            playerAttack.OnAttackChargeStarted.AddListener(AttackChargeStartedCallback);
+            playerAttack.OnAttackEnded.AddListener(AttackEndedCallback);
+            playerAttack.OnAttackReleased.AddListener(AttackReleasedCallback);
             
             playerAttack.ChargeAttack(Weapon);
         }
@@ -52,9 +52,9 @@ namespace Player.StateMachines.States
         {
             var playerAttack = StateMachinePlayer.PlayerAttack;
 
-            playerAttack.OnAttackChargeStarted.RemoveCallback(AttackChargeStartedCallback);
-            playerAttack.OnAttackEnded.RemoveCallback(AttackEndedCallback);
-            playerAttack.OnAttackReleased.RemoveCallback(AttackReleasedCallback);
+            playerAttack.OnAttackChargeStarted.RemoveListener(AttackChargeStartedCallback);
+            playerAttack.OnAttackEnded.RemoveListener(AttackEndedCallback);
+            playerAttack.OnAttackReleased.RemoveListener(AttackReleasedCallback);
             
             playerAttack.InterruptAttack();
         }

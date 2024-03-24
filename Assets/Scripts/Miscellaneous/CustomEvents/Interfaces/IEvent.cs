@@ -6,10 +6,10 @@ namespace Miscellaneous.CustomEvents.Interfaces
     {
         #region Methods
 
-        public bool AddCallback(Action callback);
-        public bool RemoveCallback(Action callback);
-        public void ClearCallbacks();
-        public void Invoke();
+        public bool AddListener(Action listener);
+        public bool RemoveListener(Action listener);
+        public void ClearListeners();
+        public void NotifyListeners();
 
         #endregion
     }

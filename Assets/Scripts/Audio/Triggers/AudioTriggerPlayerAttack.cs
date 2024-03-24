@@ -23,14 +23,14 @@ namespace Audio.Triggers
 
         private void OnEnable()
         {
-            PlayerAttack.OnAttackChargeStarted.AddCallback(AttackChargeStartedCallback);
-            PlayerAttack.OnAttackReleased.AddCallback(AttackReleasedCallback);
+            PlayerAttack.OnAttackChargeStarted.AddListener(AttackChargeStartedCallback);
+            PlayerAttack.OnAttackReleased.AddListener(AttackReleasedCallback);
         }
 
         private void OnDisable()
         {
-            PlayerAttack.OnAttackChargeStarted.RemoveCallback(AttackChargeStartedCallback);
-            PlayerAttack.OnAttackReleased.RemoveCallback(AttackReleasedCallback);
+            PlayerAttack.OnAttackChargeStarted.RemoveListener(AttackChargeStartedCallback);
+            PlayerAttack.OnAttackReleased.RemoveListener(AttackReleasedCallback);
         }
 
         #endregion

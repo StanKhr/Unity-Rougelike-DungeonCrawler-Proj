@@ -13,24 +13,24 @@ namespace Miscellaneous.CustomEvents.Events
         
         #region Methods
 
-        public bool AddCallback(Action callback)
+        public bool AddListener(Action listener)
         {
-            OnTriggered += callback;
+            OnTriggered += listener;
             return true;
         }
 
-        public bool RemoveCallback(Action callback)
+        public bool RemoveListener(Action listener)
         {
-            OnTriggered -= callback;
+            OnTriggered -= listener;
             return true;
         }
 
-        public void ClearCallbacks()
+        public void ClearListeners()
         {
             OnTriggered = null;
         }
 
-        public void Invoke()
+        public void NotifyListeners()
         {
             OnTriggered?.Invoke();
         }

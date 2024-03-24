@@ -119,7 +119,7 @@ namespace Player.Attacks
                 TryApplyDamage(damageable);
             }
 
-            OnSurfaceHit?.Invoke(new EventContext.GameObjectEvent
+            OnSurfaceHit?.NotifyListeners(new EventContext.GameObjectEvent
             {
                 GameObject = other.gameObject
             });
@@ -165,7 +165,7 @@ namespace Player.Attacks
                 CritApplied = false
             };
 
-            OnAttackChargeStarted?.Invoke(attackData);
+            OnAttackChargeStarted?.NotifyListeners(attackData);
         }
 
         public void Tick(float deltaTime)
@@ -205,7 +205,7 @@ namespace Player.Attacks
                 _critChargePercent, UsedWeapon.CritPercentBounds);
             _calculatedDamage = CalculateDamageValue(UsedWeapon, ChargeTimer, _applyCriticalDamage);
 
-            OnAttackReleased?.Invoke(new EventContext.WeaponEvent
+            OnAttackReleased?.NotifyListeners(new EventContext.WeaponEvent
             {
                 Weapon = UsedWeapon
             });
@@ -219,7 +219,7 @@ namespace Player.Attacks
             ChargingAttack = false;
             _attackDuration = 0f;
 
-            OnAttackEnded?.Invoke();
+            OnAttackEnded?.NotifyListeners();
 
             _attackCollider.enabled = false;
         }

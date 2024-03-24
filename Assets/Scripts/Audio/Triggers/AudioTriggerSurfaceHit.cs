@@ -87,12 +87,12 @@ namespace Audio.Triggers
 
         private void OnEnable()
         {
-            PlayerAttack.OnSurfaceHit.AddCallback(SurfaceHitCallback);
+            PlayerAttack.OnSurfaceHit.AddListener(SurfaceHitCallback);
         }
 
         private void OnDisable()
         {
-            PlayerAttack.OnSurfaceHit.RemoveCallback(SurfaceHitCallback);
+            PlayerAttack.OnSurfaceHit.RemoveListener(SurfaceHitCallback);
         }
 
         #endregion

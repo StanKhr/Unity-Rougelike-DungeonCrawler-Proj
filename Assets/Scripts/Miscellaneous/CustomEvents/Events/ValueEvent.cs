@@ -18,59 +18,54 @@ namespace Miscellaneous.CustomEvents.Events
         
         #region Properties
 
-        private HashSet<Action<T>> Callbacks { get; } = new HashSet<Action<T>>();
+        private HashSet<Action<T>> Listeners { get; } = new HashSet<Action<T>>();
 
         #endregion
 
         #region Methods
 
-        public bool AddCallback(Action<T> callback)
+        public bool AddListener(Action<T> listener)
         {
-            return Callbacks.Add(callback);
+            return Listeners.Add(listener);
         }
 
-        public bool RemoveCallback(Action<T> callback)
+        public bool RemoveListener(Action<T> listener)
         {
-            return Callbacks.Remove(callback);
+            return Listeners.Remove(listener);
         }
 
-        public bool HasCallback(Action<T> callback)
+        public void ClearListeners()
         {
-            return Callbacks.Contains(callback);
+            Listeners.Clear();
         }
 
-        public void ClearCallbacks()
+        public void NotifyListeners(T context)
         {
-            Callbacks.Clear();
-        }
-
-        public void Invoke(T context)
-        {
-            var callbacksList = Callbacks.ToList();
-            foreach (var callback in callbacksList)
+            var listenersList = Listeners.ToList();
+            foreach (var listener in listenersList)
             {
-                callback.Invoke(context);
+                listener.Invoke(context);
             }
         }
 
         #endregion
 
-        #region Operators
-
-        public static ValueEvent<T> operator +(ValueEvent<T> evn, Action<T> callback)
-        {
-            evn.AddCallback(callback);
-
-            return evn;
-        }
-
-        public static ValueEvent<T> operator -(ValueEvent<T> evn, Action<T> callback)
-        {
-            evn.RemoveCallback(callback);
-
-            return evn;
-        }
-
-        #endregion
+        // #region Operators
+        //
+        // public static ValueEvent<T> operator +(ValueEvent<T> evn, Action<T> listener)
+        // {
+        //     evn.AddListener(listener);
+        //
+        //     return evn;
+        // }
+        //
+        // public static ValueEvent<T> operator -(ValueEvent<T> evn, Action<T> listener)
+        // {
+        //     evn.RemoveListener(listener);
+        //
+        //     return evn;
+        // }
+        //
+        // #endregion
     }
 }
