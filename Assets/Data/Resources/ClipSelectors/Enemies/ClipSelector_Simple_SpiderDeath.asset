@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce100f2996e40cd9d7f533e4280a974, type: 3}
   m_Name: ClipSelector_Simple_SpiderDeath
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 1b6cb4963c6ce1a44adeb5afc09231a9, type: 3}
+  _clip: {fileID: 8300000, guid: 53ccc28cdc3ac9147a1e2a604288d31d, type: 3}

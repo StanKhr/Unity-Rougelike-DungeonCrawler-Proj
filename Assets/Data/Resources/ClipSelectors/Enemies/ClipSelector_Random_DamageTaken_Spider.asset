@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ClipSelector_Random_DamageTaken_Spider
   m_EditorClassIdentifier: 
   _clips:
-  - {fileID: 8300000, guid: c1580d2a45647af46acff5dc6004bf9c, type: 3}
-  - {fileID: 8300000, guid: 3a657de7e228ed343a9e78c5042cd0e8, type: 3}
-  - {fileID: 8300000, guid: 3c0f0f9bad333814eb362d2eb80849c1, type: 3}
+  - {fileID: 8300000, guid: e8ccf89cbe9cf0f43b7cb2802a40ef2a, type: 3}
+  - {fileID: 8300000, guid: 5f03ec29a9219054388178cbc87c1336, type: 3}
+  - {fileID: 8300000, guid: 499304fe085579840b95e63bd723d396, type: 3}

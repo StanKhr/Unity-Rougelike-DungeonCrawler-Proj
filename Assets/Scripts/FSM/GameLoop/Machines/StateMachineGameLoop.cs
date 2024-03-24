@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using FSM.GameLoop.Enums;
 using FSM.GameLoop.Interfaces;
 using FSM.GameLoop.States;
 using FSM.Main;
 using Miscellaneous;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
 namespace FSM.GameLoop.Machines
@@ -20,11 +23,16 @@ namespace FSM.GameLoop.Machines
         
         #region Unity Callbacks
 
-        protected override void Start()
+        protected override async void Start()
         {
             base.Start();
             
             DontDestroyOnLoad(gameObject);
+
+            // while (LocalizationSettings.InitializationOperation.Status != AsyncOperationStatus.Succeeded)
+            // {
+            //     await UniTask.Yield();
+            // }
             
             ToMainMenuState();
         }

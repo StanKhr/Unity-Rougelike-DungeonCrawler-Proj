@@ -8,9 +8,9 @@ namespace Player.Interfaces
     {
         #region Events
 
-        event DelegateHolder.MeleeAttackDataEvents OnAttackChargeStarted;
+        // GameEvents.Event<GameEvents.MeleeAttackEvent>
+        event Action<GameEvents.MeleeAttackEvent> OnAttackChargeStarted;
         event DelegateHolder.WeaponEvents OnAttackReleased;
-        event DelegateHolder.MeleeAttackDataEvents OnAttackApplied;
         event DelegateHolder.GameObjectEvents OnSurfaceHit;
         event Action OnAttackEnded;
 

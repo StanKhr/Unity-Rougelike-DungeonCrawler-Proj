@@ -22,9 +22,8 @@ namespace Player.Attacks
 
         #region Events
 
-        public event DelegateHolder.MeleeAttackDataEvents OnAttackChargeStarted;
+        public event Action<GameEvents.MeleeAttackEvent> OnAttackChargeStarted;
         public event DelegateHolder.WeaponEvents OnAttackReleased;
-        public event DelegateHolder.MeleeAttackDataEvents OnAttackApplied;
         public event DelegateHolder.GameObjectEvents OnSurfaceHit;
         public event Action OnAttackEnded;
 
@@ -127,20 +126,10 @@ namespace Player.Attacks
                 return;
             }
 
-            var damage = new Damage()
-            {
-                Value = _calculatedDamage,
-                DamageType = UsedWeapon.DamageType,
-                Source = _ownerHealth.gameObject
-            };
-
-            if (!damageable.TryApplyDamage(damage))
-            {
-                return;
-            }
-
-            var attackData = new MeleeAttackData(UsedWeapon, 0f, _applyCriticalDamage);
-            OnAttackApplied?.Invoke(attackData);
+            var damage = new Damage(_calculatedDamage, UsedWeapon.DamageType, _ownerHealth.gameObject,
+                _applyCriticalDamage);
+            
+            damageable.TryApplyDamage(damage);
         }
 
         #endregion
@@ -161,9 +150,14 @@ namespace Player.Attacks
             var halvedBounds = UsedWeapon.CritPercentBounds * 0.5f;
             var critMinPercent = CritMinimumChargePercent + halvedBounds;
             var critMaxPercent = 1 - halvedBounds;
-            
+
             _critChargePercent = Randomizer.RangeFloat(critMinPercent, critMaxPercent);
-            var attackData = new MeleeAttackData(UsedWeapon, _critChargePercent, false);
+            var attackData = new GameEvents.MeleeAttackEvent
+            {
+                Weapon = UsedWeapon,
+                CritChargePercent = _critChargePercent,
+                CritApplied = false
+            };
 
             OnAttackChargeStarted?.Invoke(attackData);
         }
@@ -201,7 +195,7 @@ namespace Player.Attacks
             ChargingAttack = false;
 
             var chargePercent = ChargeTimer / _maxChargeTimeSeconds;
-            _applyCriticalDamage =CheckCritCharge(chargePercent, 
+            _applyCriticalDamage = CheckCritCharge(chargePercent,
                 _critChargePercent, UsedWeapon.CritPercentBounds);
             _calculatedDamage = CalculateDamageValue(UsedWeapon, ChargeTimer, _applyCriticalDamage);
 

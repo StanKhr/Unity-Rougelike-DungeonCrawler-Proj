@@ -1,4 +1,5 @@
-﻿using Player.Attacks;
+﻿using Miscellaneous;
+using Player.Attacks;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
 using UnityEngine;
@@ -43,7 +44,7 @@ namespace Audio.Triggers
             clipSelector.TryOneShotOnAudioSource(AudioSource);
         }
 
-        private void AttackChargeStartedCallback(MeleeAttackData context)
+        private void AttackChargeStartedCallback(GameEvents.MeleeAttackEvent context)
         {
             var clipSelector = context.Weapon.ClipSelectorAttackCharge;
             clipSelector.TryOneShotOnAudioSource(AudioSource);

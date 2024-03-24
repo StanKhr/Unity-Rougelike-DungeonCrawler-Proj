@@ -1,4 +1,5 @@
-﻿using Player.Attacks;
+﻿using Miscellaneous;
+using Player.Attacks;
 using Player.Interfaces;
 using Player.Inventories.Interfaces;
 using UI.Utility;
@@ -71,7 +72,7 @@ namespace UI.Presenters
             _sliderContainer.gameObject.SetActiveSmart(false);
         }
 
-        private void AttackChargeStartedCallback(MeleeAttackData context)
+        private void AttackChargeStartedCallback(GameEvents.MeleeAttackEvent context)
         {
             _sliderFillImage.fillAmount = 0f;
 

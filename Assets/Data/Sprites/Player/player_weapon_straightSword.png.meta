@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_hand_sword_right
+      name: player_hand_straightSword
       rect:
         serializedVersion: 2
         x: 26
@@ -241,7 +241,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_weapon_zweihaender
+      name: player_hand_zweihaender
       rect:
         serializedVersion: 2
         x: 74
@@ -262,7 +262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_weapon_hammer
+      name: player_hand_hammer
       rect:
         serializedVersion: 2
         x: 0
@@ -283,7 +283,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_weapon_brokenSpear
+      name: player_hand_brokenSpear
       rect:
         serializedVersion: 2
         x: 42
@@ -315,15 +315,15 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       player_hand_battleAxe: -258688113
+      player_hand_brokenSpear: 1968758596
       player_hand_cutlass: -291838530
       player_hand_empty_left: -1124656734
       player_hand_empty_left_2: -1640501419
+      player_hand_hammer: 771101555
       player_hand_interact_left: 661063311
-      player_hand_sword_right: -1388549182
+      player_hand_straightSword: -1388549182
       player_hand_yellowDagger: -136386006
-      player_weapon_brokenSpear: 1968758596
-      player_weapon_hammer: 771101555
-      player_weapon_zweihaender: -1986463232
+      player_hand_zweihaender: -1986463232
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

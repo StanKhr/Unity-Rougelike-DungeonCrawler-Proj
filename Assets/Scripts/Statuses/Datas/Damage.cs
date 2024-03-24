@@ -9,11 +9,12 @@ namespace Statuses.Datas
     {
         #region Constructors
 
-        public Damage(float value, DamageType damageType, GameObject source = null)
+        public Damage(float value, DamageType damageType, GameObject source = null, bool critApplied = false)
         {
             Value = value;
             DamageType = damageType;
             Source = source;
+            CritApplied = critApplied;
         }
 
         #endregion
@@ -23,6 +24,7 @@ namespace Statuses.Datas
         [field: SerializeField] public float Value { get; set; }
         [field: SerializeField] public DamageType DamageType { get; set; }
         [field: SerializeField] public GameObject Source { get; set; }
+        [field: SerializeField] public bool CritApplied { get; set; }
 
         #endregion
     }
