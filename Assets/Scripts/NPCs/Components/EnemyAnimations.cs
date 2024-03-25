@@ -30,14 +30,9 @@ namespace NPCs.Components
         
         #region Methods
 
-        public void PlayIdle()
+        public void SetLocomotionVelocity(float velocity)
         {
-            _animator.SetFloat(VelocityHash, MinVelocity);
-        }
-
-        public void PlayMovement()
-        {
-            _animator.SetFloat(VelocityHash, MaxVelocity);
+            _animator.SetFloat(VelocityHash, Mathf.Clamp(velocity, MinVelocity, MaxVelocity));
         }
 
         public void PlayAttack()

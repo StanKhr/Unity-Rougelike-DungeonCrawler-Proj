@@ -1,6 +1,7 @@
 ﻿using FSM.GameLoop.Enums;
 using FSM.GameLoop.Interfaces;
 using UI.Presenters;
+using UI.Views;
 
 namespace FSM.GameLoop.States
 {
@@ -18,16 +19,16 @@ namespace FSM.GameLoop.States
 
         public override void Enter()
         {
-            MainMenuPresenter.OnDungeonRunStarted.AddListener(DungeonRunStartedCallback);
-            MainMenuPresenter.OnGameExited.AddListener(GameExitedCallback);
+            MainMenu.OnDungeonRunStarted.AddListener(DungeonRunStartedCallback);
+            MainMenu.OnGameExited.AddListener(GameExitedCallback);
             
             StateMachine.LoadScene(GameSceneType.MainMenu);
         }
 
         public override void Exit()
         {
-            MainMenuPresenter.OnDungeonRunStarted.RemoveListener(DungeonRunStartedCallback);
-            MainMenuPresenter.OnGameExited.RemoveListener(GameExitedCallback);
+            MainMenu.OnDungeonRunStarted.RemoveListener(DungeonRunStartedCallback);
+            MainMenu.OnGameExited.RemoveListener(GameExitedCallback);
             
             StateMachine.UnloadScene(GameSceneType.MainMenu);
         }

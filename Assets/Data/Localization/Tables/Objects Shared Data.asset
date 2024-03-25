@@ -109,6 +109,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 6755321913601687564
+  - m_Id: 22
+    m_Key: STAT_health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23
+    m_Key: STAT_stamina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24
+    m_Key: STAT_mana
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

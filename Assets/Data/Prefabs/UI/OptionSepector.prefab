@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 894793956942901598}
-  - component: {fileID: 897471428617302060}
+  - component: {fileID: 7852371843272908251}
   m_Layer: 5
-  m_Name: StatusHealth
+  m_Name: OptionSepector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &897471428617302060
+--- !u!114 &7852371843272908251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,14 +49,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 138600841333370341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74bd7709a8ae4c6f95714ebcadbbc952, type: 3}
+  m_Script: {fileID: 11500000, guid: ac039acc06654dd1928c4ca8227cf481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minValue: 20
-  _step: 5
-  _increaseButton: {fileID: 6390441046890320621}
-  _decreaseButton: {fileID: 8171381696876001385}
-  _valueText: {fileID: 4523760138239619553}
+  <InitializationEnabled>k__BackingField: 0
+  <UpdateOutputText>k__BackingField: 1
+  <NotifyListeners>k__BackingField: 1
+  <Options>k__BackingField: []
+  <ButtonPrevious>k__BackingField: {fileID: 8171381696876001385}
+  <ButtonNext>k__BackingField: {fileID: 6390441046890320621}
+  <OutputText>k__BackingField: {fileID: 4523760138239619553}
 --- !u!1 &1487539680235298424
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4360068348040258721, guid: 0c82a18458852e147aa6cfb265da2c1a, type: 3}
       propertyPath: m_Name
-      value: IncreaseButton
+      value: MoveNext
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -601,7 +603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4360068348040258721, guid: 0c82a18458852e147aa6cfb265da2c1a, type: 3}
       propertyPath: m_Name
-      value: DecreaseButton
+      value: MovePrevious
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

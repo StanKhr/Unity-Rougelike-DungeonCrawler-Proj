@@ -4,7 +4,7 @@
     "Components": [
         {
             "$type": "Unity.Build.Common.GeneralSettings, Unity.Build",
-            "ProductName": "Kingdom of Mortreon",
+            "ProductName": "Dungeons of Mortreon",
             "CompanyName": "Lmncf",
             "Version": "0.3"
         },

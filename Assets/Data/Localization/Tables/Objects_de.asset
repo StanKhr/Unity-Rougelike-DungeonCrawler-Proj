@@ -102,6 +102,18 @@ MonoBehaviour:
     m_Localized: Bodenfalle
     m_Metadata:
       m_Items: []
+  - m_Id: 22
+    m_Localized: Leben
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23
+    m_Localized: Ausdauer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24
+    m_Localized: Mana
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -22,9 +22,6 @@ namespace NPCs.FSM.States
 
             var locomotion = StateMachineEnemy.Locomotion;
             navMeshAgentWrapper.TeleportAgent(locomotion.BodyVelocity);
-
-            var enemyAnimations = StateMachineEnemy.EnemyAnimations;
-            enemyAnimations.PlayMovement();
         }
 
         public override void Exit()
@@ -74,6 +71,9 @@ namespace NPCs.FSM.States
             locomotion.TickMotion(deltaTime);
             
             navMeshAgentWrapper.Velocity = locomotion.BodyVelocity;
+
+            var enemyAnimations = StateMachineEnemy.EnemyAnimations;
+            enemyAnimations.SetLocomotionVelocity(locomotion.BodyVelocity.magnitude);
         }
 
         #endregion

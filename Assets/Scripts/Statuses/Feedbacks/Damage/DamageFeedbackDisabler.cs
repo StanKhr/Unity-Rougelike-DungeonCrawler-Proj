@@ -11,19 +11,15 @@ namespace Statuses.Feedbacks.Damage
     {
         #region Editor Fields
 
+        [SerializeField] private GameObject _specificTarget;
         [SerializeField] private TimerComponent _timer;
-
-        #endregion
-
-        #region Fields
-
-        private CancellationTokenSource _cancellationTokenSource;
 
         #endregion
 
         #region Properties
 
         private ITimer Timer => _timer;
+        protected GameObject Target => _specificTarget ? _specificTarget : gameObject;
 
         #endregion
 
@@ -33,14 +29,14 @@ namespace Statuses.Feedbacks.Damage
         {
             base.OnEnable();
 
-            Timer.OnTimerEnded.AddListener(TimerEndedCallback);
+            Timer?.OnTimerEnded.AddListener(TimerEndedCallback);
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
 
-            Timer.OnTimerEnded.RemoveListener(TimerEndedCallback);
+            Timer?.OnTimerEnded.RemoveListener(TimerEndedCallback);
         }
 
         #endregion
@@ -54,15 +50,26 @@ namespace Statuses.Feedbacks.Damage
                 return;
             }
 
+            if (Timer == null)
+            {
+                ApplyDeathEffect();
+                return;
+            }
+
             if (!Timer.TryStart())
             {
-                gameObject.SetActiveSmart(false);
+                ApplyDeathEffect();
             }
         }
 
-        protected virtual void TimerEndedCallback()
+        private void TimerEndedCallback()
         {
-            gameObject.SetActiveSmart(false);
+            ApplyDeathEffect();
+        }
+
+        protected virtual void ApplyDeathEffect()
+        {
+            Target.SetActiveSmart(false);
         }
 
         #endregion

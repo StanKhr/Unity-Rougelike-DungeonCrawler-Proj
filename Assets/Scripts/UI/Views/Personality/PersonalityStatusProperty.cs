@@ -1,12 +1,14 @@
-﻿using Miscellaneous;
+﻿using System;
+using Miscellaneous;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Utility.Personality
+namespace UI.Views.Personality
 {
+    [Obsolete]
     public class PersonalityStatusProperty : MonoBehaviour
     {
         #region Constants

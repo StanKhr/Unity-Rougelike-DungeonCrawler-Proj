@@ -4,8 +4,7 @@
     {
         #region Methods
 
-        void PlayIdle();
-        void PlayMovement();
+        void SetLocomotionVelocity(float velocity);
         void PlayAttack();
         void PlayDeath();
 

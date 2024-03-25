@@ -1,4 +1,5 @@
 ﻿using NPCs.FSM.Interfaces;
+using UnityEngine;
 
 namespace NPCs.FSM.States
 {
@@ -25,6 +26,9 @@ namespace NPCs.FSM.States
 
         public override void Enter()
         {
+            var locomotion = StateMachineEnemy.Locomotion;
+            locomotion.SetTargetMotion(Vector3.zero);
+            
             var enemyAttack = StateMachineEnemy.EnemyAttack;
             _attackChargeTimer = enemyAttack.AttackChargeTime;
             _attackReleaseTimer = enemyAttack.AttackReleaseTime;
@@ -40,6 +44,8 @@ namespace NPCs.FSM.States
 
         public override void Tick(float deltaTime)
         {
+            UpdateVelocity(deltaTime);
+            
             if (_attackChargeTimer > 0f)
             {
                 _attackChargeTimer -= deltaTime;
@@ -63,6 +69,15 @@ namespace NPCs.FSM.States
             var enemyAttack = StateMachineEnemy.EnemyAttack;
             var playerFinder = StateMachineEnemy.PlayerFinder;
             enemyAttack.PerformAttack(playerFinder.PlayerPosition);
+        }
+
+        private void UpdateVelocity(float deltaTime)
+        {
+            var locomotion = StateMachineEnemy.Locomotion;
+            locomotion.TickMotion(deltaTime);
+
+            var enemyAnimations = StateMachineEnemy.EnemyAnimations;
+            enemyAnimations.SetLocomotionVelocity(locomotion.BodyVelocity.magnitude);
         }
 
         #endregion

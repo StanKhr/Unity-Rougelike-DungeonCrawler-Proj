@@ -7,8 +7,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Utility.Personality
+namespace UI.Views.Personality
 {
+    [Obsolete]
     public class PersonalityCreator : MonoBehaviour
     {
         #region Constants

@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
-using Player.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
+using UI.Presenters;
 using UI.Utility;
-using UI.Utility.Personality;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UI.Presenters
+namespace UI.Views
 {
-    public class MainMenuPresenter : MonoBehaviour
+    public class MainMenu : MonoBehaviour
     {
         #region Constants
 
@@ -27,11 +26,13 @@ namespace UI.Presenters
 
         #region Editor Fields
 
-        [SerializeField] private PersonalityCreator _personalityCreator;
-
+        [Header("Presenters")]
+        [SerializeField] private PersonalityBuilderPresenter _personalityBuilderPresenter;
+        
         [Header("Views")]
-        [SerializeField] private Button _createPersonalityButton;
-        [SerializeField] private Button _startRunButton;
+        [SerializeField] private Button _beginAdventureButton;
+        [SerializeField] private Button _personalityConfirmButton;
+        [SerializeField] private Button _personalityBackButton;
         [SerializeField] private Button _exitGameButton;
         [SerializeField] private Button _loreButton;
         [SerializeField] private Button _inputsButton;
@@ -40,7 +41,6 @@ namespace UI.Presenters
         [SerializeField] private Button _loreHideButton;        
         [SerializeField] private Button _inputsHideButton;
         [SerializeField] private Button _settingsHideButton;
-        [SerializeField] private Button _createPersonalityHideButton;
 
         [Header("Windows")]
         [SerializeField] private RectTransform _personalityRect;
@@ -62,7 +62,7 @@ namespace UI.Presenters
         {
             _buttons = new List<Button>()
             {
-                _createPersonalityButton,
+                _beginAdventureButton,
                 _exitGameButton,
                 _loreButton,
                 _inputsButton,
@@ -75,12 +75,13 @@ namespace UI.Presenters
             ShowInputs(false);
             ShowSettings(false);
             
-            _startRunButton.onClick.AddListener(TryStartRun);
             _exitGameButton.onClick.AddListener(() => OnGameExited?.NotifyListeners());
             _creditsButton.onClick.AddListener(() => Application.OpenURL(ItchLink));
             
-            _createPersonalityButton.onClick.AddListener(() => ShowPersonalityCreator(true));
-            _createPersonalityHideButton.onClick.AddListener(() => ShowPersonalityCreator(false));
+            _beginAdventureButton.onClick.AddListener(() => ShowPersonalityCreator(true));
+            
+            _personalityBackButton.onClick.AddListener(() => ShowPersonalityCreator(false));
+            _personalityConfirmButton.onClick.AddListener(TryStartRun);
             
             _loreButton.onClick.AddListener(() => ShowLore(true));
             _loreHideButton.onClick.AddListener(() => ShowLore(false));
@@ -91,7 +92,7 @@ namespace UI.Presenters
             _settingsButton.onClick.AddListener(() => ShowSettings(true));
             _settingsHideButton.onClick.AddListener(() => ShowSettings(false));
             
-            SelectButton(_createPersonalityButton);
+            SelectButton(_beginAdventureButton);
         }
 
         #endregion
@@ -100,13 +101,10 @@ namespace UI.Presenters
 
         private void TryStartRun()
         {
-            if (!_personalityCreator.StatusPointsAllocated)
+            if (!_personalityBuilderPresenter.TryConfirmPersonality())
             {
                 return;
             }
-
-            var personality = _personalityCreator.GeneratePersonality();
-            Personality.Active = personality;
             
             OnDungeonRunStarted?.NotifyListeners();
         }
@@ -115,7 +113,7 @@ namespace UI.Presenters
         {
             _personalityRect.gameObject.SetActiveSmart(show);
             ShowMainButtons(!show);
-            SelectButton(show ? _createPersonalityHideButton : _createPersonalityButton);
+            SelectButton(show ? _personalityBackButton : _beginAdventureButton);
         }
         
         private void ShowLore(bool show)

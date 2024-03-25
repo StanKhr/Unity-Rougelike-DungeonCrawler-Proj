@@ -4,9 +4,9 @@
     {
         #region Methods
 
-        protected override void TimerEndedCallback()
+        protected override void ApplyDeathEffect()
         {
-            Destroy(gameObject);
+            Destroy(Target);
         }
 
         #endregion

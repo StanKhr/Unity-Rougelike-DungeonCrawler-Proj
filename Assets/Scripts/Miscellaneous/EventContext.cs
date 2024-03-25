@@ -1,7 +1,7 @@
 ﻿using Player.GameStories.Datas;
 using Player.Inventories.Interfaces;
 using UI.Presenters.Items;
-using UI.Utility.Personality;
+using UI.Views.Personality;
 using UnityEngine;
 using WorldGeneration.Interfaces;
 
