@@ -1,6 +1,5 @@
 ﻿using FSM.GameLoop.Enums;
 using FSM.GameLoop.Interfaces;
-using UI.Presenters;
 using UI.Views;
 
 namespace FSM.GameLoop.States

@@ -5,7 +5,7 @@ using FSM.GameLoop.Enums;
 using FSM.GameLoop.Interfaces;
 using FSM.GameLoop.States;
 using FSM.Main;
-using Miscellaneous;
+using Plugins.StanKhrEssentials.Scripts.Utility;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;

@@ -1,8 +1,8 @@
-﻿
-using Miscellaneous;
+﻿using Miscellaneous;
 using Player.Inventories;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
+using Plugins.StanKhrEssentials.Scripts.Utility;
 using UnityEngine;
 
 namespace UI.Presenters.Items

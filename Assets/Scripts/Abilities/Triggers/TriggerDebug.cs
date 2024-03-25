@@ -1,5 +1,5 @@
 ﻿using Abilities.Interfaces;
-using Miscellaneous;
+using Plugins.StanKhrEssentials.Scripts.Utility;
 using UnityEngine;
 
 namespace Abilities.Triggers

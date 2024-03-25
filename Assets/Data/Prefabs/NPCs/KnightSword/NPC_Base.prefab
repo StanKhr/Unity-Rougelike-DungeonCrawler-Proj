@@ -521,6 +521,7 @@ GameObject:
   - component: {fileID: 8069418663691102756}
   - component: {fileID: 4525650589994647203}
   - component: {fileID: 8941689125398344400}
+  - component: {fileID: 7246598772324373749}
   m_Layer: 7
   m_Name: NPC_Base
   m_TagString: Plate
@@ -839,6 +840,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _specificTarget: {fileID: 7797952296619355365}
+  _timer: {fileID: 0}
+--- !u!114 &7246598772324373749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853018127330601841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbc584a2eac44336bba563b5696a800b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _specificTarget: {fileID: 432312207745225274}
   _timer: {fileID: 0}
 --- !u!1 &6854518714594591606
 GameObject:

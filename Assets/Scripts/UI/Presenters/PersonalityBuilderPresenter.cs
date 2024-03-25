@@ -1,5 +1,4 @@
-﻿using System;
-using Plugins.StanKhrEssentials.Scripts.UI.Views;
+﻿using Plugins.StanKhrEssentials.Scripts.UI.Views;
 using UnityEngine;
 using UnityEngine.Localization;
 

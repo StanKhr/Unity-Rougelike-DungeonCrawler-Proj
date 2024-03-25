@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Miscellaneous;
+using Plugins.StanKhrEssentials.Scripts.Utility;
 using UnityEngine;
 
 namespace Player.Miscellaneous
