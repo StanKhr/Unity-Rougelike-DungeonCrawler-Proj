@@ -21,6 +21,8 @@ namespace Player.Interfaces
         #region Methods
 
         bool TryStart();
+        bool TryStartCustomTime(float time);
+        bool TryInterrupt();
 
         #endregion
     }

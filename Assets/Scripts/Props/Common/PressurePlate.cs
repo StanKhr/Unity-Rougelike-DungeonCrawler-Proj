@@ -56,7 +56,7 @@ namespace Props.Common
 
         #region Methods
         
-        private void EnteredCallback(EventContext.ColliderEvent context)
+        private void EnteredCallback(EventContext.TriggerEnterEvent context)
         {
             if (_singleUse && _wasUsed)
             {
@@ -70,7 +70,7 @@ namespace Props.Common
             });
         }
 
-        private void LeftCallback(EventContext.ColliderEvent context)
+        private void LeftCallback(EventContext.TriggerEnterEvent context)
         {
             OnInteractionEnded?.NotifyListeners(new EventContext.GameObjectEvent
             {

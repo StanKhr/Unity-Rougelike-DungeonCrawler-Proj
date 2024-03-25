@@ -29,7 +29,7 @@ namespace Player.Miscellaneous
             return _cancellationTokenSource.Token;
         }
 
-        private void CancelToken()
+        protected void CancelToken()
         {
             _cancellationTokenSource?.Cancel();
         }

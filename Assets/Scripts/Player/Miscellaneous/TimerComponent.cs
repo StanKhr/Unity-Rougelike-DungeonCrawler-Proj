@@ -35,10 +35,10 @@ namespace Player.Miscellaneous
             get => _inProgress;
             private set
             {
-                if (InProgress == value)
-                {
-                    return;
-                }
+                // if (InProgress == value)
+                // {
+                //     return;
+                // }
 
                 _inProgress = value;
 
@@ -59,22 +59,39 @@ namespace Player.Miscellaneous
 
         public bool TryStart()
         {
-            if (_seconds <= 0f)
+            return TryStartCustomTime(_seconds);
+        }
+
+        public bool TryStartCustomTime(float time)
+        {
+            if (time <= 0f)
             {
                 return false;
             }
 
-            StartTimer();
+            StartTimer(time);
             return true;
         }
 
-        private async void StartTimer()
+        public bool TryInterrupt()
+        {
+            if (!InProgress)
+            {
+                return false;
+            }
+            
+            CancelToken();
+
+            return true;
+        }
+
+        private async void StartTimer(float timeSeconds)
         {
             var token = RecreateToken();
             
             InProgress = true;
 
-            var delayMS = Mathf.RoundToInt(_seconds * 1000f);
+            var delayMS = Mathf.RoundToInt(timeSeconds * 1000f);
             var cancelled = await UniTask.Delay(delayMS, cancellationToken: token)
                 .SuppressCancellationThrow();
             if (cancelled)

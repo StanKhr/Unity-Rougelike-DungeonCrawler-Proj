@@ -1,4 +1,5 @@
 ﻿using Miscellaneous;
+using Player.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
 using UnityEngine;
 
@@ -9,6 +10,12 @@ namespace Props.Interfaces
         #region Events
 
         IContextEvent<EventContext.GameObjectEvent> OnVictimFound { get; }
+
+        #endregion
+
+        #region Properties
+
+        ITimer SelfDestroyTimer { get; }
 
         #endregion
         

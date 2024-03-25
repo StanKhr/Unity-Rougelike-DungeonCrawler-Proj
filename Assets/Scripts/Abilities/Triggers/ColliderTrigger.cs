@@ -10,10 +10,10 @@ namespace Abilities.Triggers
     {
         #region Events
 
-        public IContextEvent<EventContext.ColliderEvent> OnEntered { get; } =
-            EventFactory.CreateContextEvent<EventContext.ColliderEvent>();
-        public IContextEvent<EventContext.ColliderEvent> OnLeft { get; } =
-            EventFactory.CreateContextEvent<EventContext.ColliderEvent>();
+        public IContextEvent<EventContext.TriggerEnterEvent> OnEntered { get; } =
+            EventFactory.CreateContextEvent<EventContext.TriggerEnterEvent>();
+        public IContextEvent<EventContext.TriggerEnterEvent> OnLeft { get; } =
+            EventFactory.CreateContextEvent<EventContext.TriggerEnterEvent>();
 
         #endregion
         
@@ -21,17 +21,19 @@ namespace Abilities.Triggers
 
         private void OnTriggerEnter(Collider other)
         {
-            OnEntered?.NotifyListeners(new EventContext.ColliderEvent
+            OnEntered?.NotifyListeners(new EventContext.TriggerEnterEvent()
             {
-                Collider = other
+                Collider = other,
+                HitPoint = other.ClosestPoint(transform.position)
             });
         }
 
         private void OnTriggerExit(Collider other)
         {
-            OnLeft?.NotifyListeners(new EventContext.ColliderEvent
+            OnLeft?.NotifyListeners(new EventContext.TriggerEnterEvent()
             {
-                Collider = other
+                Collider = other,
+                HitPoint = other.ClosestPoint(transform.position)
             });
         }
 

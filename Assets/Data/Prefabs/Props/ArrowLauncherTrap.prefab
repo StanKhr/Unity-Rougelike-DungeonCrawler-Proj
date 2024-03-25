@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a525c05b69e24191b64c0a505254cb0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 7958510333785005800, guid: 2201c0d3abe2d04459650b09a12f389d, type: 3}
+  _projectile: {fileID: 4842450754141897988, guid: 6708d43ce73bff948940c50152369af6, type: 3}
   _pressurePlate: {fileID: 5236188921888943623}
   _launchDummy: {fileID: 2146561508215004391}
 --- !u!1001 &5380679437069255937

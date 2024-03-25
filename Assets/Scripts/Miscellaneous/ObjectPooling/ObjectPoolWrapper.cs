@@ -6,12 +6,21 @@ namespace Miscellaneous.ObjectPooling
 {
     public class ObjectPoolWrapper
     {
+        #region Constants
+
+        private const int DefaultCapacityValue = 10;
+        private const int MaxSizeValue = 1000;
+
+        #endregion
+
         #region Constructors
 
-        public ObjectPoolWrapper(PooledObject prefabReference)
+        public ObjectPoolWrapper(PooledObject prefabReference, int capacity = DefaultCapacityValue,
+            int maxSize = MaxSizeValue)
         {
             _prefabReference = prefabReference;
-            _pool = new ObjectPool<PooledObject>(CreateInstance, OnGet, OnRelease, OnDestroy);
+            _pool = new ObjectPool<PooledObject>(CreateInstance, OnGet, OnRelease, OnDestroy, defaultCapacity: capacity,
+                maxSize: maxSize);
         }
 
         #endregion
@@ -39,7 +48,7 @@ namespace Miscellaneous.ObjectPooling
         #endregion
 
         #region Methods
-        
+
         protected virtual PooledObject CreateInstance()
         {
             var newInstance = Object.Instantiate(_prefabReference);

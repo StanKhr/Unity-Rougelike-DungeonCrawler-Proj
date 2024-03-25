@@ -1,5 +1,4 @@
-﻿using System;
-using Player.Interfaces;
+﻿using Player.Interfaces;
 using Player.Miscellaneous;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -17,7 +16,7 @@ namespace Miscellaneous.ObjectPooling
         #region Properties
 
         public IObjectPool<PooledObject> Pool { private get; set; } 
-        protected ITimer SelfDestroyTimer => _selfDestroyTimer;
+        public ITimer SelfDestroyTimer => _selfDestroyTimer;
 
         #endregion
         

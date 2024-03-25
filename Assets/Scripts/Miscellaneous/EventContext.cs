@@ -31,11 +31,6 @@ namespace Miscellaneous
             public GameObject GameObject { get; set; }
         }
         
-        public struct ColliderEvent
-        {
-            public Collider Collider { get; set; }
-        }
-        
         public struct Vector3Event
         {
             public Vector3 Vector3 { get; set; }
@@ -54,6 +49,12 @@ namespace Miscellaneous
         public struct StoryEpisodeDataEvent
         {
             public StoryEpisodeData StoryEpisodeData { get; set; }
+        }
+
+        public struct TriggerEnterEvent
+        {
+            public Collider Collider { get; set; }
+            public Vector3 HitPoint { get; set; }
         }
         
         public struct MeleeAttackEvent

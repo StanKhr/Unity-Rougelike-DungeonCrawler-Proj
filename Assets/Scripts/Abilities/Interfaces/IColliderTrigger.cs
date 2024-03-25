@@ -7,8 +7,8 @@ namespace Abilities.Interfaces
     {
         #region Events
 
-        IContextEvent<EventContext.ColliderEvent> OnEntered { get; }
-        IContextEvent<EventContext.ColliderEvent> OnLeft { get; }
+        IContextEvent<EventContext.TriggerEnterEvent> OnEntered { get; }
+        IContextEvent<EventContext.TriggerEnterEvent> OnLeft { get; }
 
         #endregion
     }

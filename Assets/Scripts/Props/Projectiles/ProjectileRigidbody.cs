@@ -1,8 +1,7 @@
 ﻿using Abilities.Triggers;
+using Cinemachine;
 using Miscellaneous;
 using Miscellaneous.ObjectPooling;
-using Player.Interfaces;
-using Player.Miscellaneous;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using Props.Interfaces;
@@ -33,60 +32,37 @@ namespace Props.Projectiles
 
         protected override void OnEnable()
         {
-            base.OnEnable();
+            ResetVelocity();
             
             _colliderTrigger.OnEntered.AddListener(EnteredCallback);
-            SelfDestroyTimer?.OnTimerStarted.AddListener(SelfDestroyTimerStartedCallback);
+            
+            base.OnEnable();
         }
 
         protected override void OnDisable()
         {
-            base.OnDisable();
-            
             _colliderTrigger.OnEntered.RemoveListener(EnteredCallback);
-            SelfDestroyTimer?.OnTimerStarted.RemoveListener(SelfDestroyTimerStartedCallback);
+            
+            base.OnDisable();
         }
 
         #endregion
         
         #region Methods
-
-        private void SelfDestroyTimerStartedCallback()
-        {
-            _rigidbody.velocity = Vector3.zero;
-        }
-
-        private void EnteredCallback(EventContext.ColliderEvent context)
+        
+        private void EnteredCallback(EventContext.TriggerEnterEvent context)
         {
             if (context.Collider.isTrigger)
             {
                 return;
             }
 
-            if (SelfDestroyTimer == null)
-            {
-                OnVictimFound?.NotifyListeners(new EventContext.GameObjectEvent
-                {
-                    GameObject = context.Collider.gameObject
-                });
-                return;
-            }
-
-            if (SelfDestroyTimer.InProgress)
-            {
-                return;
-            }
-            
             OnVictimFound?.NotifyListeners(new EventContext.GameObjectEvent
             {
                 GameObject = context.Collider.gameObject
             });
-        }
-
-        [ContextMenu("Test launch")]
-        private void Test()
-        {
-            Launch(_rigidbody.position, -Vector3.forward);
+            
+            ResetVelocity();
         }
 
         public void Launch()
@@ -113,6 +89,11 @@ namespace Props.Projectiles
             }
             
             _rigidbody.AddForce(direction.normalized * _speed, ForceMode.Acceleration);
+        }
+
+        private void ResetVelocity()
+        {
+            _rigidbody.velocity = Vector3.zero;
         }
 
         #endregion

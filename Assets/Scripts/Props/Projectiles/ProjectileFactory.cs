@@ -1,4 +1,6 @@
-﻿using Props.Interfaces;
+﻿using System.Collections.Generic;
+using Miscellaneous.ObjectPooling;
+using Props.Interfaces;
 using UnityEngine;
 
 namespace Props.Projectiles
@@ -18,6 +20,8 @@ namespace Props.Projectiles
 
         private static ProjectileFactory _instance;
 
+        private readonly Dictionary<IProjectile, ObjectPoolWrapper> _poolWrappersDictionary = new();
+
         #endregion
 
         #region Properties
@@ -32,14 +36,29 @@ namespace Props.Projectiles
 
         #region Methods
 
-        private IProjectile GetProjectileInstance(IProjectile projectilePrefab, Vector3 position, Quaternion rotation)
+        private PooledObject GetProjectileInstance(IProjectile projectilePrefab)
         {
-            if (projectilePrefab is not MonoBehaviour monoBehaviour)
+            if (projectilePrefab is not MonoBehaviour)
             {
                 return null;
             }
 
-            return Object.Instantiate(monoBehaviour, position, rotation) as IProjectile;
+            if (_poolWrappersDictionary.TryGetValue(projectilePrefab, out var pool))
+            {
+                return pool.Get();
+            }
+
+            if (projectilePrefab is not PooledObject pooledObject)
+            {
+                return null;
+            }
+            
+            var newPool = new ObjectPoolWrapper(pooledObject);
+            _poolWrappersDictionary.Add(projectilePrefab, newPool);
+
+            return newPool.Get();
+            
+            // return Object.Instantiate(monoBehaviour, position, rotation) as IProjectile;
         }
 
         #endregion
@@ -53,7 +72,13 @@ namespace Props.Projectiles
         
         public static IProjectile SpawnProjectile(IProjectile projectilePrefab, Vector3 position, Quaternion rotation)
         {
-            return Instance.GetProjectileInstance(projectilePrefab, position, rotation);
+            var projectile = Instance.GetProjectileInstance(projectilePrefab);
+            
+            var transform = projectile.transform;
+            transform.position = position;
+            transform.rotation = rotation;
+            
+            return projectile as IProjectile;
         }
 
         #endregion
