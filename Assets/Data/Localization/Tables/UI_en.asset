@@ -225,6 +225,22 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 8722672589656817683
+  - m_Id: 35
+    m_Localized: Pause Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

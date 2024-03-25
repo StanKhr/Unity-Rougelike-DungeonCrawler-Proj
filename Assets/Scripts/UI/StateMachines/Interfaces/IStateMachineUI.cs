@@ -1,5 +1,6 @@
 ﻿using Player.Inputs.Interfaces;
 using UI.Presenters.Items;
+using UI.Views;
 
 namespace UI.StateMachines.Interfaces
 {
@@ -9,12 +10,14 @@ namespace UI.StateMachines.Interfaces
 
         IInputProvider InputProvider { get; }
         InventoryPresenter InventoryPresenter { get; }
+        PauseMenu PauseMenu { get; }
 
         #endregion
         
         #region Methods
 
         void ToGameplayState();
+        void ToPauseMenuState();
         void ToInventoryState();
 
         #endregion

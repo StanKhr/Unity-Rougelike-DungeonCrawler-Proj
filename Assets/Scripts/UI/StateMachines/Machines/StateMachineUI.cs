@@ -4,6 +4,7 @@ using Player.Inputs.Interfaces;
 using UI.Presenters.Items;
 using UI.StateMachines.Interfaces;
 using UI.StateMachines.States;
+using UI.Views;
 using UnityEngine;
 
 namespace UI.StateMachines.Machines
@@ -14,6 +15,7 @@ namespace UI.StateMachines.Machines
 
         [SerializeField] private InputProvider _inputProvider;
         [SerializeField] private InventoryPresenter _inventoryPresenter;
+        [SerializeField] private PauseMenu _pauseMenu;
 
         #endregion
 
@@ -21,6 +23,7 @@ namespace UI.StateMachines.Machines
 
         public IInputProvider InputProvider => _inputProvider;
         public InventoryPresenter InventoryPresenter => _inventoryPresenter;
+        public PauseMenu PauseMenu => _pauseMenu;
 
         #endregion
 
@@ -40,6 +43,11 @@ namespace UI.StateMachines.Machines
         public void ToGameplayState()
         {
             SwitchState(new StateUIGameplay(this));
+        }
+
+        public void ToPauseMenuState()
+        {
+            SwitchState(new StateUIPauseMenu(this));
         }
 
         public void ToInventoryState()

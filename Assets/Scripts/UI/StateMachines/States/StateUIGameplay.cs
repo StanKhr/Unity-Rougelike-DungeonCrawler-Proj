@@ -18,20 +18,27 @@ namespace UI.StateMachines.States
         public override void Enter()
         {
             EnableGameplayInputs(true);
-            SetInventoryCallback(InventoryInputCallback, true);
             EnableCursor(false);
+            SetInventoryCallback(OpenInventory, true);
+            SetPauseMenuCallback(PauseGame, true);
         }
 
         public override void Exit()
         {
             EnableGameplayInputs(false);
-            SetInventoryCallback(InventoryInputCallback, false);
             EnableCursor(true);
+            SetInventoryCallback(OpenInventory, false);
+            SetPauseMenuCallback(PauseGame, false);
         }
 
-        private void InventoryInputCallback()
+        private void OpenInventory()
         {
             StateMachineUI.ToInventoryState();
+        }
+
+        private void PauseGame()
+        {
+            StateMachineUI.ToPauseMenuState();
         }
 
         #endregion
