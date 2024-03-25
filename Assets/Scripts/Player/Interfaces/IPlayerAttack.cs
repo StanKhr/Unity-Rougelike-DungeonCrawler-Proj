@@ -9,7 +9,7 @@ namespace Player.Interfaces
         #region Events
 
         IContextEvent<EventContext.MeleeAttackEvent> OnAttackChargeStarted { get; }
-        IContextEvent<EventContext.GameObjectEvent> OnSurfaceHit { get; }
+        IContextEvent<EventContext.TriggerEnterEvent> OnSurfaceHit { get; }
         IContextEvent<EventContext.WeaponEvent> OnAttackReleased { get; }
         IEvent OnAttackEnded { get; }
 

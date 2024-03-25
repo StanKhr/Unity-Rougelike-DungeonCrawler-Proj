@@ -1,22 +1,13 @@
 ﻿using Miscellaneous;
-using Player.GameStories.Datas;
-using Player.GameStories.Interfaces;
 using Player.Inventories;
 using Player.Inventories.Interfaces;
 using UnityEngine;
 using UnityEngine.Localization;
-using UnityEngine.Localization.SmartFormat.PersistentVariables;
 
 namespace Player.GameStories.StoryEvents
 {
-    public class StoryEpisodeInventoryUpdates : MonoBehaviour, IStoryEpisode
+    public class StoryEpisodeInventory : StoryEpisode
     {
-        #region Constants
-
-        private const string VariableName = "value";
-
-        #endregion
-
         #region Editor Fields
 
         [SerializeField] private Inventory _inventory;
@@ -55,26 +46,17 @@ namespace Player.GameStories.StoryEvents
 
         private void ItemAddedCallback(EventContext.ItemEvent context)
         {
-            CreateEpisode(context.Item, _localizedStringItemAdded);
+            CreateGenericEpisode(context.Item.Name, _localizedStringItemAdded);
         }
 
         private void ItemDroppedCallback(EventContext.ItemEvent context)
         {
-            CreateEpisode(context.Item, _localizedStringItemDropped);
+            CreateGenericEpisode(context.Item.Name, _localizedStringItemDropped);
         }
 
         private void ItemUsedCallback(EventContext.ItemEvent context)
         {
-            CreateEpisode(context.Item, _localizedStringItemUsed);
-        }
-
-        private void CreateEpisode(IItem item, LocalizedString localizedString)
-        {
-            var variable = (StringVariable) localizedString[VariableName];
-            variable.Value = item.Name;
-
-            var storyEpisodeData = new StoryEpisodeData(localizedString.GetLocalizedString());
-            (this as IStoryEpisode).TriggerEvent(storyEpisodeData);
+            CreateGenericEpisode(context.Item.Name, _localizedStringItemUsed);
         }
 
         #endregion

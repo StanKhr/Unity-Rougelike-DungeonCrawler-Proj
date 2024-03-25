@@ -99,15 +99,12 @@ namespace Audio.Triggers
 
         #region Methods
         
-        private void SurfaceHitCallback(EventContext.GameObjectEvent context)
+        private void SurfaceHitCallback(EventContext.TriggerEnterEvent context)
         {
-            if (!ObjectSurfaceTypeConverter.TryGetFromObject(context.GameObject, out var surfaceType))
+            if (!ObjectSurfaceTypeConverter.TryGetFromObject(context.Collider.gameObject, out var surfaceType))
             {
-                // LogWriter.DevelopmentLog($"{context}: surface type not found");
                 return;
             }
-            
-            // LogWriter.DevelopmentLog($"{context}: surface type found: {surfaceType.ToString()}");
 
             var clipSelector = GetClipSelectorFromPropType(surfaceType);
             if (clipSelector == null)
@@ -116,7 +113,7 @@ namespace Audio.Triggers
             }
             
             var audioSourcePooled = (AudioSourcePooled) PoolWrapper.Get();
-            audioSourcePooled.transform.position = context.GameObject.transform.position;
+            audioSourcePooled.transform.position = context.HitPoint;
             
             clipSelector.TryOneShotOnAudioSource(audioSourcePooled.Source, _sfxVolume);
         }

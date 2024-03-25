@@ -44,7 +44,7 @@ MonoBehaviour:
       m_Items:
       - rid: 8722672589656817678
   - m_Id: 7
-    m_Key: UI_gear_equipment
+    m_Key: UI_gear_equipped
     m_Metadata:
       m_Items: []
   - m_Id: 8
@@ -133,6 +133,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 29
     m_Key: UI_label_language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30
+    m_Key: UI_gear_unequipped
     m_Metadata:
       m_Items: []
   m_Metadata:

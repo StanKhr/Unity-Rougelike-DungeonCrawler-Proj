@@ -26,8 +26,8 @@ namespace Player.Attacks
 
         public IContextEvent<EventContext.MeleeAttackEvent> OnAttackChargeStarted { get; } =
             EventFactory.CreateContextEvent<EventContext.MeleeAttackEvent>();
-        public IContextEvent<EventContext.GameObjectEvent> OnSurfaceHit { get; } =
-            EventFactory.CreateContextEvent<EventContext.GameObjectEvent>();
+        public IContextEvent<EventContext.TriggerEnterEvent> OnSurfaceHit { get; } =
+            EventFactory.CreateContextEvent<EventContext.TriggerEnterEvent>();
         public IContextEvent<EventContext.WeaponEvent> OnAttackReleased { get; } =
             EventFactory.CreateContextEvent<EventContext.WeaponEvent>();
         public IEvent OnAttackEnded { get; } = EventFactory.CreateEvent();
@@ -121,9 +121,10 @@ namespace Player.Attacks
                 TryApplyDamage(damageable);
             }
 
-            OnSurfaceHit?.NotifyListeners(new EventContext.GameObjectEvent
+            OnSurfaceHit?.NotifyListeners(new EventContext.TriggerEnterEvent
             {
-                GameObject = other.gameObject
+                Collider = other,
+                HitPoint = other.ClosestPoint(transform.position)
             });
         }
 

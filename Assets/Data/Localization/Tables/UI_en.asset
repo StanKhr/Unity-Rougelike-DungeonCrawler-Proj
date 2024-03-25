@@ -62,7 +62,8 @@ MonoBehaviour:
   - m_Id: 8
     m_Localized: 'You use: {value}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8722672589656817683
   - m_Id: 9
     m_Localized: Begin Your Adventure
     m_Metadata:
@@ -199,10 +200,15 @@ MonoBehaviour:
     m_Localized: Language
     m_Metadata:
       m_Items: []
+  - m_Id: 30
+    m_Localized: 'Unequipped: {value}'
+    m_Metadata:
+      m_Items:
+      - rid: 8722672589656817683
   references:
     version: 2
     RefIds:
     - rid: 8722672589656817683
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 05000000000000000100000000000000020000000000000003000000000000000400000000000000060000000000000000e06f2a787902000700000000000000
+        m_Entries: 05000000000000000100000000000000020000000000000003000000000000000400000000000000060000000000000000e06f2a78790200070000000000000008000000000000001e00000000000000
