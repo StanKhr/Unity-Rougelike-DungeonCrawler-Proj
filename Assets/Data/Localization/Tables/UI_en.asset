@@ -205,10 +205,30 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 8722672589656817683
+  - m_Id: 31
+    m_Localized: 'You take {value} damage. Source: {source}'
+    m_Metadata:
+      m_Items:
+      - rid: 8722672589656817683
+  - m_Id: 32
+    m_Localized: 'You take {value} damage and die. Source: {source}'
+    m_Metadata:
+      m_Items:
+      - rid: 8722672589656817683
+  - m_Id: 33
+    m_Localized: '{victim} takes {value} damage from you.'
+    m_Metadata:
+      m_Items:
+      - rid: 8722672589656817683
+  - m_Id: 34
+    m_Localized: '{value} dies.'
+    m_Metadata:
+      m_Items:
+      - rid: 8722672589656817683
   references:
     version: 2
     RefIds:
     - rid: 8722672589656817683
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 05000000000000000100000000000000020000000000000003000000000000000400000000000000060000000000000000e06f2a78790200070000000000000008000000000000001e00000000000000
+        m_Entries: 05000000000000000100000000000000020000000000000003000000000000000400000000000000060000000000000000e06f2a78790200070000000000000008000000000000001e000000000000002200000000000000210000000000000020000000000000001f00000000000000

@@ -134,6 +134,100 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &361861684959437038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5369287947481133830}
+  - component: {fileID: 8030000997550065100}
+  m_Layer: 0
+  m_Name: StoryEpisodeDamaged
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5369287947481133830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361861684959437038}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3310903148438655886}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8030000997550065100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361861684959437038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57969ebb7e6c4ce6ac4d115f0f6ebb69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerHealth: {fileID: 1502697430210199912}
+  _damagedLocalizedString:
+    m_TableReference:
+      m_TableCollectionName: GUID:95fa3f8fe8988a844861787fe429db57
+    m_TableEntryReference:
+      m_KeyId: 31
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: value
+      variable:
+        rid: 6755321958865043460
+    - name: source
+      variable:
+        rid: 6755321958865043461
+  _lethallyDamagedLocalizedString:
+    m_TableReference:
+      m_TableCollectionName: GUID:95fa3f8fe8988a844861787fe429db57
+    m_TableEntryReference:
+      m_KeyId: 32
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: value
+      variable:
+        rid: 6755321958865043462
+    - name: source
+      variable:
+        rid: 6755321958865043463
+  references:
+    version: 2
+    RefIds:
+    - rid: 6755321958865043460
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 
+    - rid: 6755321958865043461
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 
+    - rid: 6755321958865043462
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 
+    - rid: 6755321958865043463
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 
 --- !u!1 &392474286465913596
 GameObject:
   m_ObjectHideFlags: 0
@@ -4282,6 +4376,7 @@ Transform:
   m_Children:
   - {fileID: 2691635501510012708}
   - {fileID: 7537962801359173208}
+  - {fileID: 5369287947481133830}
   m_Father: {fileID: 4053477788910944646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6162563256254554484
@@ -4959,7 +5054,7 @@ Transform:
   m_GameObject: {fileID: 6242391721125187609}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 1}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

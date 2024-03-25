@@ -139,6 +139,22 @@ MonoBehaviour:
     m_Key: UI_gear_unequipped
     m_Metadata:
       m_Items: []
+  - m_Id: 31
+    m_Key: UI_label_damagedTaken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32
+    m_Key: UI_label_damagedTakenLethal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33
+    m_Key: UI_label_damageDealt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34
+    m_Key: UI_label_dies
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
