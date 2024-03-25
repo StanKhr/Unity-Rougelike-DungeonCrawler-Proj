@@ -1165,8 +1165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AudioSource>k__BackingField: {fileID: 1436484150}
-  _selectedAudio: {fileID: 11400000, guid: dc1f99b237354d6479548f972d2c5501, type: 2}
-  _submittedAudio: {fileID: 11400000, guid: fc71da29e8d9f0d4583c49482d93b844, type: 2}
+  _selectedAudio: {fileID: 11400000, guid: fc71da29e8d9f0d4583c49482d93b844, type: 2}
+  _submittedAudio: {fileID: 11400000, guid: dc1f99b237354d6479548f972d2c5501, type: 2}
 --- !u!1 &217112114
 GameObject:
   m_ObjectHideFlags: 0
@@ -2145,8 +2145,6 @@ MonoBehaviour:
   _inputsButton: {fileID: 1813143260}
   _settingsButton: {fileID: 2104057319}
   _creditsButton: {fileID: 1566816422}
-  _gameTitleText: {fileID: 150483656}
-  _versionText: {fileID: 1256890223}
   _loreHideButton: {fileID: 1613947704}
   _inputsHideButton: {fileID: 1645585554}
   _settingsHideButton: {fileID: 1465033692}
@@ -3123,6 +3121,7 @@ GameObject:
   - component: {fileID: 1256890222}
   - component: {fileID: 1256890224}
   - component: {fileID: 1256890223}
+  - component: {fileID: 1256890225}
   m_Layer: 5
   m_Name: VersionText
   m_TagString: Untagged
@@ -3246,6 +3245,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256890221}
   m_CullTransparentMesh: 1
+--- !u!114 &1256890225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256890221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4566eca6e7e242b99edf5037b969818b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 1256890223}
 --- !u!1 &1307721952
 GameObject:
   m_ObjectHideFlags: 0
@@ -7774,6 +7786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac039acc06654dd1928c4ca8227cf481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <InitializationEnabled>k__BackingField: 0
   <UpdateOutputText>k__BackingField: 1
   <NotifyListeners>k__BackingField: 1
   <Options>k__BackingField: []

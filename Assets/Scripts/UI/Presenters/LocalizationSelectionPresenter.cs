@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Collections.Generic;
 using Plugins.StanKhrEssentials.Scripts.UI.Views;
 using Settings.Localization;
 using UnityEngine;
@@ -38,7 +36,7 @@ namespace UI.Presenters
             var selectedLocaleIndex = options.IndexOf(selectedLocale);
             
             _optionSelector.NotifyListeners = false;
-            _optionSelector.SelectByIndex(selectedLocaleIndex);
+            _optionSelector.SelectOption(selectedLocaleIndex);
             _optionSelector.NotifyListeners = true;
 
             _optionSelector.OnSelectedOptionUpdated.AddListener(SelectedOptionUpdatedCallback);

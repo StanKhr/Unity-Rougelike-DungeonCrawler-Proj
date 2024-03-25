@@ -1,24 +1,35 @@
-﻿using Audio.Interfaces;
-using Miscellaneous;
+﻿using System;
+using System.Collections.Generic;
+using Audio.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.UI.Views;
 using Settings.Audio;
-using TMPro;
-using UI.Utility;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI.Presenters
 {
     public class AudioVolumePresenter : MonoBehaviour
     {
+        #region Constants
+
+        private const float MinVolumeValue = 0.0f;
+        private const float MaxVolumeValue = 1.0f;
+        private const int InvalidOptionValue = -1;
+
+        #endregion
+        
         #region Editor Fields
 
         [SerializeField] private AudioVolume _audioVolume;
         [SerializeField, Range(0f, 1f)] private float _changeValueStep = 0.05f;
-        
+
         [Header("Views")]
-        [SerializeField] private Button _increaseButton;
-        [SerializeField] private Button _decreaseButton;
-        [SerializeField] private TextMeshProUGUI _volumeText;
+        [SerializeField] private OptionSelector _optionSelector;
+
+        #endregion
+
+        #region Fields
+
+        private readonly Dictionary<int, float> _volumeOptionsDictionary = new();
 
         #endregion
 
@@ -32,44 +43,60 @@ namespace UI.Presenters
 
         private void Start()
         {
-            AudioVolume.OnNewVolumeSet.AddListener(NewVolumeSetCallback);
+            var optionsCount = Mathf.RoundToInt(1 / _changeValueStep) + 1;
+            var selectorOptions = new string[optionsCount];
             
-            _increaseButton.onClick.AddListener(IncreaseVolume);
-            _decreaseButton.onClick.AddListener(DecreaseVolume);
+            var currentVolume = AudioVolume.Volume;
+            var currentlySelectedOption = InvalidOptionValue;
+            
+            for (int i = 0; i < optionsCount; i++)
+            {
+                float volumeValue;
+                if (i > 0 && i < optionsCount + 1)
+                {
+                    volumeValue = _changeValueStep * i;
+                }
+                else
+                {
+                    volumeValue = i == 0 ? MinVolumeValue : MaxVolumeValue;
+                }
 
-            ValidateVolume(AudioVolume.Volume);
+                if (Math.Abs(currentVolume - volumeValue) <= 0f)
+                {
+                    currentlySelectedOption = i;
+                }
+                
+                _volumeOptionsDictionary.TryAdd(i, volumeValue);
+                selectorOptions[i] = volumeValue.ToString("P0");
+            }
+            
+            _optionSelector.OverrideOptions(selectorOptions);
+
+            _optionSelector.NotifyListeners = false;
+            _optionSelector.SelectOption(currentlySelectedOption != InvalidOptionValue ? currentlySelectedOption : 0);
+            _optionSelector.NotifyListeners = true;
+
+            _optionSelector.OnSelectedOptionUpdated.AddListener(SelectedOptionUpdatedCallback);
         }
 
         private void OnDestroy()
         {
-            AudioVolume.OnNewVolumeSet.RemoveListener(NewVolumeSetCallback);
-            
-            _increaseButton.onClick.RemoveListener(IncreaseVolume);
-            _decreaseButton.onClick.RemoveListener(DecreaseVolume);
+            _optionSelector.OnSelectedOptionUpdated.RemoveListener(SelectedOptionUpdatedCallback);
         }
 
         #endregion
 
         #region Methods
 
-        private void NewVolumeSetCallback(EventContext.FloatEvent context)
+        private void SelectedOptionUpdatedCallback()
         {
-            ValidateVolume(context.Float);
-        }
-
-        private void ValidateVolume(float currentVolume)
-        {
-            _volumeText.SetTextSmart($"{currentVolume.ToString("P0")}");
-        }
-
-        private void IncreaseVolume()
-        {
-            AudioVolume.Volume += _changeValueStep;
-        }
-
-        private void DecreaseVolume()
-        {
-            AudioVolume.Volume -= _changeValueStep;
+            var selectedOptionIndex = _optionSelector.SelectedOptionIndex;
+            if (!_volumeOptionsDictionary.TryGetValue(selectedOptionIndex, out var volumeValue))
+            {
+                return;
+            }
+            
+            AudioVolume.Volume = volumeValue;
         }
 
         #endregion

@@ -1,8 +1,8 @@
 ﻿using System;
+using Plugins.StanKhrEssentials.Scripts.UI;
 using Statuses.Interfaces;
 using Statuses.Main;
 using TMPro;
-using UI.Utility;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using TMPro;
@@ -21,7 +22,7 @@ namespace Plugins.StanKhrEssentials.Scripts.UI.Views
         [field: SerializeField] public bool InitializationEnabled { get; set; } = false;
         [field: SerializeField] public bool UpdateOutputText { get; set; } = true;
         [field: SerializeField] public bool NotifyListeners { get; set; } = true;
-        [field: SerializeField] public List<string> Options { get; private set; }
+        [field: SerializeField] public string[] Options { get; private set; }
         [field: SerializeField, Header("Views")] public Button ButtonPrevious { get; private set; }
         [field: SerializeField] public Button ButtonNext { get; private set; }
         [field: SerializeField] public TextMeshProUGUI OutputText { get; private set; }
@@ -41,7 +42,7 @@ namespace Plugins.StanKhrEssentials.Scripts.UI.Views
             get => _selectedOptionIndex;
             private set
             {
-                var maxValue = Options.Count - 1;
+                var maxValue = Options.Length - 1;
                 int newIndex;
                 if (maxValue >= 0)
                 {
@@ -77,7 +78,7 @@ namespace Plugins.StanKhrEssentials.Scripts.UI.Views
         {
             get
             {
-                if (SelectedOptionIndex >= 0 && SelectedOptionIndex < Options.Count)
+                if (SelectedOptionIndex >= 0 && SelectedOptionIndex < Options.Length)
                 {
                     return Options[SelectedOptionIndex];
                 }
@@ -134,12 +135,10 @@ namespace Plugins.StanKhrEssentials.Scripts.UI.Views
 
         public void OverrideOptions(IEnumerable<string> options)
         {
-            Options.Clear();
-            Options.AddRange(options);
-            SelectedOptionIndex = 0;
+            Options = options.ToArray();
         }
 
-        public void SelectByIndex(int index)
+        public void SelectOption(int index)
         {
             SelectedOptionIndex = index;
         }

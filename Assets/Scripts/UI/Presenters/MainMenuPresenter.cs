@@ -2,7 +2,6 @@
 using Player.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
-using TMPro;
 using UI.Utility;
 using UI.Utility.Personality;
 using UnityEngine;
@@ -38,8 +37,6 @@ namespace UI.Presenters
         [SerializeField] private Button _inputsButton;
         [SerializeField] private Button _settingsButton;
         [SerializeField] private Button _creditsButton;
-        [SerializeField] private TextMeshProUGUI _gameTitleText;
-        [SerializeField] private TextMeshProUGUI _versionText;
         [SerializeField] private Button _loreHideButton;        
         [SerializeField] private Button _inputsHideButton;
         [SerializeField] private Button _settingsHideButton;
@@ -63,9 +60,6 @@ namespace UI.Presenters
 
         private void Start()
         {
-            _gameTitleText.text = Application.productName;
-            _versionText.text = $"Build {Application.version}";
-
             _buttons = new List<Button>()
             {
                 _createPersonalityButton,

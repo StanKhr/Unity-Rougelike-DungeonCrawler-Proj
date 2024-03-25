@@ -1,8 +1,8 @@
 ﻿using System.Text;
 using Player.Interfaces;
 using Player.Miscellaneous;
+using Plugins.StanKhrEssentials.Scripts.UI;
 using TMPro;
-using UI.Utility;
 using UnityEngine;
 
 namespace UI.Presenters

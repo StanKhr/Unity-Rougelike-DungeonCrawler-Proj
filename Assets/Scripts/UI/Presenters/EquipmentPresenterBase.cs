@@ -1,5 +1,5 @@
-﻿using TMPro;
-using UI.Utility;
+﻿using Plugins.StanKhrEssentials.Scripts.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6644225987106429729}
   - component: {fileID: 4944948234315254873}
+  - component: {fileID: 9222288301800264874}
   m_Layer: 5
   m_Name: VolumePresenterMusic
   m_TagString: Untagged
@@ -54,9 +55,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioVolume: {fileID: 0}
   _changeValueStep: 0.05
-  _increaseButton: {fileID: 3852394528465439313}
-  _decreaseButton: {fileID: 7471350299156483250}
-  _volumeText: {fileID: 6204016044453838867}
+  _optionSelector: {fileID: 9222288301800264874}
+--- !u!114 &9222288301800264874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906396357716571812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac039acc06654dd1928c4ca8227cf481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <InitializationEnabled>k__BackingField: 0
+  <UpdateOutputText>k__BackingField: 1
+  <NotifyListeners>k__BackingField: 1
+  <Options>k__BackingField: []
+  <ButtonPrevious>k__BackingField: {fileID: 7471350299156483250}
+  <ButtonNext>k__BackingField: {fileID: 3852394528465439313}
+  <OutputText>k__BackingField: {fileID: 6204016044453838867}
 --- !u!1 &8536198412104092285
 GameObject:
   m_ObjectHideFlags: 0

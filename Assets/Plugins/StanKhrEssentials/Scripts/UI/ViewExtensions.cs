@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using UnityEngine;
 
 namespace Plugins.StanKhrEssentials.Scripts.UI
 {
@@ -14,6 +15,16 @@ namespace Plugins.StanKhrEssentials.Scripts.UI
             }
 
             textMeshProUGUI.text = text ?? string.Empty;
+        }
+        
+        public static void SetColorSmart(this TextMeshProUGUI textMeshProUGUI, Color color)
+        {
+            if (textMeshProUGUI.color.Equals(color))
+            {
+                return;
+            }
+
+            textMeshProUGUI.color = color;
         }
 
         #endregion

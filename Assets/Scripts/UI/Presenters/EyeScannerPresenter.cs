@@ -1,5 +1,6 @@
 ﻿using Miscellaneous;
 using Player.Miscellaneous;
+using Plugins.StanKhrEssentials.Scripts.UI;
 using TMPro;
 using UI.Enums;
 using UI.Interfaces;

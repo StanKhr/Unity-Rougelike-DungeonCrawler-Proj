@@ -51,7 +51,7 @@ namespace Settings.Audio
                 {
                     newVolume = value;
                 }
-                else if (value <= 0)
+                else if (value < 0)
                 {
                     newVolume = MaxVolume;
                 }

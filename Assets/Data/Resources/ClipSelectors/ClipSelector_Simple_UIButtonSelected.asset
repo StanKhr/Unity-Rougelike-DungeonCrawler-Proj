@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce100f2996e40cd9d7f533e4280a974, type: 3}
   m_Name: ClipSelector_Simple_UIButtonSelected
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: f4e36aae81a48cc4e8a93e493226fe4e, type: 3}
+  _clip: {fileID: 8300000, guid: 412bbd4782bde5f43a28e4b202e70450, type: 3}

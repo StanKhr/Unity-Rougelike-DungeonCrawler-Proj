@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Miscellaneous;
 using Player.Enums;
+using Plugins.StanKhrEssentials.Scripts.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

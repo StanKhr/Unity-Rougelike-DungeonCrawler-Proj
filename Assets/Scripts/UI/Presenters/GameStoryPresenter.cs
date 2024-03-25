@@ -1,8 +1,8 @@
 ﻿using Miscellaneous;
 using Player.GameStories;
 using Player.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.UI;
 using TMPro;
-using UI.Utility;
 using UnityEngine;
 
 namespace UI.Presenters
