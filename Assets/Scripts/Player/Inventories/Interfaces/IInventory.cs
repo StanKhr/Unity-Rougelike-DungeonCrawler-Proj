@@ -1,7 +1,7 @@
 ﻿using System;
 using Miscellaneous;
 using Player.Inventories.Datas;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
 
 namespace Player.Inventories.Interfaces
 {

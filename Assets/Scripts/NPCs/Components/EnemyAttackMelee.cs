@@ -1,8 +1,8 @@
 ﻿using System;
 using Miscellaneous;
 using NPCs.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using Statuses.Datas;
 using Statuses.Enums;
 using Statuses.Interfaces;

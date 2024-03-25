@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;

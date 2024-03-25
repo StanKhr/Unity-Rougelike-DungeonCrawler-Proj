@@ -2,8 +2,8 @@
 using Miscellaneous;
 using Player.Inventories.Datas;
 using Player.Inventories.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using Props.Interfaces;
 using UnityEngine;
 

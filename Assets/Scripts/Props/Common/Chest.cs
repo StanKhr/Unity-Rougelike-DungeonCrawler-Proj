@@ -1,8 +1,8 @@
 ﻿using Miscellaneous;
 using Player.Inventories.Interfaces;
 using Player.Inventories.LootTables;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using Props.Interfaces;
 using UnityEngine;
 

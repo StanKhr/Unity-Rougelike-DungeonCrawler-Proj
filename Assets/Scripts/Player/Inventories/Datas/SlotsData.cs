@@ -2,8 +2,8 @@
 using Miscellaneous;
 using Player.Inventories.Interfaces;
 using Player.Inventories.Items;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 
 namespace Player.Inventories.Datas
 {

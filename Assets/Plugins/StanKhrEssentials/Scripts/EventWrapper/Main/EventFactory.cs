@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Plugins.StanKhrEssentials.EventWrapper.Enums;
-using Plugins.StanKhrEssentials.EventWrapper.Events;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Enums;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
 
-namespace Plugins.StanKhrEssentials.EventWrapper.Main
+namespace Plugins.StanKhrEssentials.Scripts.EventWrapper.Main
 {
     public static class EventFactory
     {

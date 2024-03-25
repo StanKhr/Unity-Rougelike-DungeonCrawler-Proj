@@ -2,8 +2,8 @@
 using Audio.Interfaces;
 using Cysharp.Threading.Tasks;
 using Miscellaneous;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using UnityEngine;
 using UnityEngine.Audio;
 

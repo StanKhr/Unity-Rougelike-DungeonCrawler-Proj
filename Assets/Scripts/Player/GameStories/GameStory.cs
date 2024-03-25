@@ -4,8 +4,8 @@ using Miscellaneous;
 using Player.GameStories.Datas;
 using Player.GameStories.Interfaces;
 using Player.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Interfaces;
-using Plugins.StanKhrEssentials.EventWrapper.Main;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using UnityEngine;
 
 namespace Player.GameStories
