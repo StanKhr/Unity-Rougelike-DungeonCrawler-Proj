@@ -178,7 +178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: item_icons_potionRed
+      name: item_icons_potionRed0
       rect:
         serializedVersion: 2
         x: 32
@@ -199,7 +199,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: item_icons_potionBlue
+      name: item_icons_potionRed1
       rect:
         serializedVersion: 2
         x: 48
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: item_icons_potionYellow
+      name: item_icons_potionRed2
       rect:
         serializedVersion: 2
         x: 64
@@ -404,9 +404,9 @@ TextureImporter:
       item_icons_cutlass: 1001108863
       item_icons_dagger: 2078025303
       item_icons_hammer: 1638002858
-      item_icons_potionBlue: 740649679
-      item_icons_potionRed: 599424118
-      item_icons_potionYellow: 1881466219
+      item_icons_potionRed0: 599424118
+      item_icons_potionRed1: 740649679
+      item_icons_potionRed2: 1881466219
       item_icons_shield: -1929995423
       item_icons_spear: -590029149
       item_icons_sword: 319474089

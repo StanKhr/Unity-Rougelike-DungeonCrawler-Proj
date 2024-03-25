@@ -14,7 +14,7 @@ namespace Props.InteractionCallbacks
 
         protected override void InteractionStartedCallback(EventContext.GameObjectEvent context)
         {
-            Destroy(context.GameObject);
+            Destroy(gameObject);
         }
 
         #endregion

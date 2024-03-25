@@ -38,7 +38,7 @@ MonoBehaviour:
   <AttackDuration>k__BackingField: 0.5
   <CritPercentBounds>k__BackingField: 0.15
   <CritDamageMultiplier>k__BackingField: 1.5
-  <AttackEnergyCost>k__BackingField: 10
+  <AttackEnergyCost>k__BackingField: 20
   <ScaleStrength>k__BackingField: 2
   <ScaleDexterity>k__BackingField: 3
   <ScaleIntellect>k__BackingField: -1
