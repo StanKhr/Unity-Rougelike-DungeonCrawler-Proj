@@ -131,6 +131,10 @@ MonoBehaviour:
     m_Key: UI_label_gameTitle
     m_Metadata:
       m_Items: []
+  - m_Id: 29
+    m_Key: UI_label_language
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using FSM.GameLoop.Enums;
 using FSM.GameLoop.Interfaces;
 using FSM.GameLoop.States;
 using FSM.Main;
 using Miscellaneous;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 
 namespace FSM.GameLoop.Machines
@@ -26,10 +28,7 @@ namespace FSM.GameLoop.Machines
             
             DontDestroyOnLoad(gameObject);
 
-            // while (LocalizationSettings.InitializationOperation.Status != AsyncOperationStatus.Succeeded)
-            // {
-            //     await UniTask.Yield();
-            // }
+            await LocalizationSettings.InitializationOperation;
             
             ToMainMenuState();
         }

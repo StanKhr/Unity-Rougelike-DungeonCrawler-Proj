@@ -1,6 +1,6 @@
 ﻿using Audio.Interfaces;
-using Audio.Settings;
 using Miscellaneous;
+using Settings.Audio;
 using TMPro;
 using UI.Utility;
 using UnityEngine;

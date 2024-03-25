@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
+using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +12,7 @@ namespace Plugins.StanKhrEssentials.Scripts.UI.Views
     {
         #region Events
 
-        public Action OnSelectedOptionUpdated;
+        public IEvent OnSelectedOptionUpdated { get; } = EventFactory.CreateEvent();
 
         #endregion
         
@@ -58,7 +60,7 @@ namespace Plugins.StanKhrEssentials.Scripts.UI.Views
 
                 if (UpdateOutputText)
                 {
-                    OutputText.text = SelectedOptionValue;
+                    OutputText.SetTextSmart(SelectedOptionValue);
                 }
 
                 if (!NotifyListeners)
@@ -66,7 +68,7 @@ namespace Plugins.StanKhrEssentials.Scripts.UI.Views
                     return;
                 }
                 
-                OnSelectedOptionUpdated?.Invoke();
+                OnSelectedOptionUpdated?.NotifyListeners();
             }
         }
 

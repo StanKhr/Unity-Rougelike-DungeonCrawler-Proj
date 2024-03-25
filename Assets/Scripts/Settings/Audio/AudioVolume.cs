@@ -7,7 +7,7 @@ using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Audio.Settings
+namespace Settings.Audio
 {
     public class AudioVolume : MonoBehaviour, IAudioVolume
     {

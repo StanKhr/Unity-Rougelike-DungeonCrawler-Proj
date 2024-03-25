@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using Player.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
@@ -7,7 +6,7 @@ using UnityEngine;
 
 namespace Player.Miscellaneous
 {
-    public class TimerComponent : MonoBehaviour, ITimer
+    public class TimerComponent : CancellationTokenMonoComponent, ITimer
     {
         #region Events
 
@@ -25,7 +24,6 @@ namespace Player.Miscellaneous
 
         #region Fields
 
-        private CancellationTokenSource _cancellationTokenSource;
         private bool _inProgress;
 
         #endregion
@@ -56,15 +54,6 @@ namespace Player.Miscellaneous
 
         #endregion
 
-        #region Unity Callbacks
-
-        private void OnDestroy()
-        {
-            _cancellationTokenSource?.Cancel();
-        }
-
-        #endregion
-
         #region Methods
 
 
@@ -81,13 +70,12 @@ namespace Player.Miscellaneous
 
         private async void StartTimer()
         {
-            _cancellationTokenSource?.Cancel();
-            _cancellationTokenSource = new CancellationTokenSource();
-
+            var token = RecreateToken();
+            
             InProgress = true;
 
             var delayMS = Mathf.RoundToInt(_seconds * 1000f);
-            var cancelled = await UniTask.Delay(delayMS, cancellationToken: _cancellationTokenSource.Token)
+            var cancelled = await UniTask.Delay(delayMS, cancellationToken: token)
                 .SuppressCancellationThrow();
             if (cancelled)
             {
