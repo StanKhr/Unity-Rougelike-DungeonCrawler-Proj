@@ -14,7 +14,7 @@ namespace UI.Utility
                 return;
             }
 
-            textMeshProUGUI.text = text;
+            textMeshProUGUI.text = text ?? string.Empty;
         }
 
         public static void SetColorSmart(this TextMeshProUGUI textMeshProUGUI, Color color)

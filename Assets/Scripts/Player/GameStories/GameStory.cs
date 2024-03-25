@@ -59,10 +59,7 @@ namespace Player.GameStories
 
             if (_storyLines.Count == 0)
             {
-                OnStoryUpdated?.NotifyListeners(new EventContext.StringEvent
-                {
-                    String = string.Empty
-                });
+                OnStoryUpdated?.NotifyListeners(default);
                 
                 return;
             }
