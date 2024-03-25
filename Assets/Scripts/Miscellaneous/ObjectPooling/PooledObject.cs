@@ -1,43 +1,45 @@
-﻿using UnityEngine;
+﻿using System;
+using Player.Interfaces;
+using Player.Miscellaneous;
+using UnityEngine;
 using UnityEngine.Pool;
 
 namespace Miscellaneous.ObjectPooling
 {
-    public class PooledObject : MonoBehaviour
+    public abstract class PooledObject : MonoBehaviour
     {
         #region Editor Fields
 
-        [SerializeField] private float _lifetime = 2f;
-
-        #endregion
-
-        #region Fields
-
-        private float _releaseTimer = 0f;
+        [SerializeField] private TimerComponent _selfDestroyTimer;
 
         #endregion
 
         #region Properties
 
         public IObjectPool<PooledObject> Pool { private get; set; } 
+        protected ITimer SelfDestroyTimer => _selfDestroyTimer;
 
         #endregion
         
         #region Unity Callbacks
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
-            _releaseTimer = _lifetime;
+            SelfDestroyTimer.OnTimerEnded.AddListener(TimerEndedCallback);
+            SelfDestroyTimer.TryStart();
         }
 
-        private void Update()
+        protected virtual void OnDisable()
         {
-            if (_releaseTimer > 0f)
-            {
-                _releaseTimer -= Time.deltaTime;
-                return;
-            }
-            
+            SelfDestroyTimer.OnTimerEnded.RemoveListener(TimerEndedCallback);
+        }
+
+        #endregion
+
+        #region Methods
+        
+        private void TimerEndedCallback()
+        {
             if (Pool == null)
             {
                 Destroy(gameObject);

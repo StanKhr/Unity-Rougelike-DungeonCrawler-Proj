@@ -48,7 +48,8 @@ namespace Props.InteractionCallbacks
 
         private void InteractionStartedCallback(EventContext.GameObjectEvent context)
         {
-            var projectileInstance = Instantiate(_projectile, _launchDummy.position, _launchDummy.rotation);
+            var projectileInstance =
+                ProjectileFactory.SpawnProjectile(_projectile, _launchDummy.position, _launchDummy.rotation);
             projectileInstance.Launch();
         }
 

@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 4262420480465426302}
   - component: {fileID: 1504196610636411711}
   - component: {fileID: 1420195800631058996}
+  - component: {fileID: -7877554085285433562}
   m_Layer: 0
   m_Name: WorldAttackParticle
   m_TagString: Untagged
@@ -196,8 +197,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b974ff4ee5a64ef89a0fe32b13b91a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifetime: 1
+  _selfDestroyTimer: {fileID: -7877554085285433562}
   _audioSource: {fileID: 6435904824361051285}
+--- !u!114 &-7877554085285433562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7601147515611749038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba34ebf947bc413f84ce29a7b2678db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seconds: 2
 --- !u!1 &8148907451131882560
 GameObject:
   m_ObjectHideFlags: 0

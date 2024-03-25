@@ -5,6 +5,7 @@ using Miscellaneous;
 using Player.Miscellaneous;
 using Player.StateMachines.States;
 using Props.Common;
+using Props.Projectiles;
 using Statuses.Interfaces;
 using UnityEngine;
 using WorldGeneration.Interfaces;
@@ -37,6 +38,8 @@ namespace FSM.GameLoop.States
             StatePlayerDeath.OnPlayerDied.AddListener(PlayerDiedCallback);
             NextFloorLadder.OnNextFloorTriggered.AddListener(NextFloorTriggeredCallback);
             PlayerNotifier.OnPlayerLoaded.AddListener(PlayerLoadedCallback);
+            
+            ProjectileFactory.ResetFactory();
             
             StateMachine.LoadScene(GameSceneType.Dungeon);
         }

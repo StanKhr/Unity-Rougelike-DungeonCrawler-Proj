@@ -1,5 +1,6 @@
 ﻿using Abilities.Triggers;
 using Miscellaneous;
+using Miscellaneous.ObjectPooling;
 using Player.Interfaces;
 using Player.Miscellaneous;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
@@ -9,7 +10,7 @@ using UnityEngine;
 
 namespace Props.Projectiles
 {
-    public class ProjectileRigidbody : MonoBehaviour, IProjectile
+    public class ProjectileRigidbody : PooledObject, IProjectile
     {
         #region Events
 
@@ -22,32 +23,27 @@ namespace Props.Projectiles
 
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private ColliderTrigger _colliderTrigger;
-        [SerializeField] private TimerComponent _selfDestroyTimer;
         
         [Header("Settings")]
         [SerializeField] private float _speed;
 
         #endregion
 
-        #region Properties
-
-        private ITimer SelfDestroyTimer => _selfDestroyTimer;
-
-        #endregion
-
         #region Unity Callbacks
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
+            
             _colliderTrigger.OnEntered.AddListener(EnteredCallback);
-
             SelfDestroyTimer?.OnTimerStarted.AddListener(SelfDestroyTimerStartedCallback);
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
+            
             _colliderTrigger.OnEntered.RemoveListener(EnteredCallback);
-
             SelfDestroyTimer?.OnTimerStarted.RemoveListener(SelfDestroyTimerStartedCallback);
         }
 

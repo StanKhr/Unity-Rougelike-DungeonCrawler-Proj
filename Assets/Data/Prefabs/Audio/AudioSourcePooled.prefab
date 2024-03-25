@@ -138,6 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4386780427030392762}
   - component: {fileID: 3963088782126740919}
+  - component: {fileID: -244062302591538195}
   m_Layer: 0
   m_Name: AudioSourcePooled
   m_TagString: Untagged
@@ -173,5 +174,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2cef88e7734df8b77f1f97e0379f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selfDestroyTimer: {fileID: -244062302591538195}
   _audioSource: {fileID: 3371231635607183652}
-  _maxLifeTime: 2
+--- !u!114 &-244062302591538195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8328332336904747589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba34ebf947bc413f84ce29a7b2678db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seconds: 2
