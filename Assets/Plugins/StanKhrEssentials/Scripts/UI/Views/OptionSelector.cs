@@ -18,6 +18,7 @@ namespace Plugins.StanKhrEssentials.Scripts.UI.Views
         
         #region Editor Fields
 
+        [field: SerializeField] public bool InitializationEnabled { get; set; } = false;
         [field: SerializeField] public bool UpdateOutputText { get; set; } = true;
         [field: SerializeField] public bool NotifyListeners { get; set; } = true;
         [field: SerializeField] public List<string> Options { get; private set; }
@@ -109,6 +110,11 @@ namespace Plugins.StanKhrEssentials.Scripts.UI.Views
 
         private void Initialize()
         {
+            if (!InitializationEnabled)
+            {
+                return;
+            }
+            
             SelectedOptionIndex = 0;
         }
 
@@ -131,6 +137,11 @@ namespace Plugins.StanKhrEssentials.Scripts.UI.Views
             Options.Clear();
             Options.AddRange(options);
             SelectedOptionIndex = 0;
+        }
+
+        public void SelectByIndex(int index)
+        {
+            SelectedOptionIndex = index;
         }
 
         #endregion

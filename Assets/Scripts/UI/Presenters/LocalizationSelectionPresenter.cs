@@ -31,8 +31,15 @@ namespace UI.Presenters
             {
                 options.Add(locales[i].LocaleName);
             }
-            
+
             _optionSelector.OverrideOptions(options);
+            
+            var selectedLocale = LocalizationSettings.SelectedLocale.LocaleName;
+            var selectedLocaleIndex = options.IndexOf(selectedLocale);
+            
+            _optionSelector.NotifyListeners = false;
+            _optionSelector.SelectByIndex(selectedLocaleIndex);
+            _optionSelector.NotifyListeners = true;
 
             _optionSelector.OnSelectedOptionUpdated.AddListener(SelectedOptionUpdatedCallback);
         }
