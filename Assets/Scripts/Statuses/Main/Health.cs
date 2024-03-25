@@ -64,14 +64,6 @@ namespace Statuses.Main
 
         #region Methods
 
-#if UNITY_EDITOR
-        [ContextMenu("Test Add Health (20)")]
-        private void TestAddHealth()
-        {
-            CurrentValue += 20;
-        }
-#endif
-
         public bool TryApplyDamage(Damage damage)
         {
             if (!(this as IHealth).Alive)

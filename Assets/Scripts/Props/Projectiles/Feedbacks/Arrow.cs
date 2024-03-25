@@ -1,4 +1,5 @@
 ﻿using Miscellaneous;
+using Props.Projectiles.Components;
 using Statuses.Datas;
 using Statuses.Enums;
 using Statuses.Interfaces;
@@ -6,17 +7,18 @@ using UnityEngine;
 
 namespace Props.Projectiles.Feedbacks
 {
-    public class Arrow : ProjectileVictimFeedback
+    public class Arrow : ProjectileEventsListener
     {
         #region Editor Fields
 
-        [SerializeField] private bool _damageOnce = true;
         [SerializeField] private Damage _damage = new()
         {
             Value = 15f,
             CritApplied = false,
             DamageType = DamageType.Arrow,
         };
+        
+        [SerializeField] private ProjectileSimpleDamageable _projectileSimpleDamageable;
 
         #endregion
 
@@ -26,12 +28,27 @@ namespace Props.Projectiles.Feedbacks
 
         #endregion
 
+        #region Properties
+
+        protected override bool ListenVictimFoundEvent { get; } = true;
+        private IDamageable Damageable => _projectileSimpleDamageable;
+
+        #endregion
+
         #region Unity Callbacks
 
         protected override void OnEnable()
         {
             base.OnEnable();
+            Damageable.OnDamaged.AddListener(DamagedCallback);
+            
             _damageApplied = false;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            Damageable.OnDamaged.RemoveListener(DamagedCallback);
         }
 
         #endregion
@@ -40,20 +57,28 @@ namespace Props.Projectiles.Feedbacks
 
         protected override void VictimFoundCallback(EventContext.GameObjectEvent context)
         {
-            if (_damageOnce && _damageApplied)
+            if (_damageApplied)
             {
                 return;
             }
             
-            if (!context.GameObject.TryGetComponent<IDamageable>(out var damageable))
+            if (context.GameObject.TryGetComponent<IDamageable>(out var damageable))
             {
-                return;
+                damageable.TryApplyDamage(_damage);
             }
+            
+            DestroyArrow();
+        }
 
+        private void DamagedCallback(EventContext.FloatEvent obj)
+        {
+            DestroyArrow();
+        }
+
+        private void DestroyArrow()
+        {
             _damageApplied = true;
-
-            _damage.Source = gameObject;
-            damageable.TryApplyDamage(_damage);
+            Projectile.Destroy();
         }
 
         #endregion

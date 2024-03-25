@@ -10,6 +10,7 @@ namespace Props.Interfaces
         #region Events
 
         IContextEvent<EventContext.GameObjectEvent> OnVictimFound { get; }
+        IEvent OnDestroyed { get; }
 
         #endregion
 
@@ -24,6 +25,7 @@ namespace Props.Interfaces
         void Launch();
         void Launch(Vector3 direction);
         void Launch(Vector3 position, Vector3 direction);
+        void Destroy();
 
         #endregion
     }

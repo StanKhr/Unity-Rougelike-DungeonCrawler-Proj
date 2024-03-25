@@ -15,6 +15,7 @@ namespace Props.Projectiles
 
         public IContextEvent<EventContext.GameObjectEvent> OnVictimFound { get; } =
             EventFactory.CreateContextEvent<EventContext.GameObjectEvent>();
+        public IEvent OnDestroyed { get; } = EventFactory.CreateEvent();
         
         #endregion
         
@@ -61,8 +62,6 @@ namespace Props.Projectiles
             {
                 GameObject = context.Collider.gameObject
             });
-            
-            ResetVelocity();
         }
 
         public void Launch()
@@ -89,6 +88,12 @@ namespace Props.Projectiles
             }
             
             _rigidbody.AddForce(direction.normalized * _speed, ForceMode.Acceleration);
+        }
+
+        public void Destroy()
+        {
+            OnDestroyed?.NotifyListeners();
+            ResetVelocity();
         }
 
         private void ResetVelocity()

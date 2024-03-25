@@ -1,4 +1,5 @@
-﻿using Miscellaneous;
+﻿using System;
+using Miscellaneous;
 using Statuses.Interfaces;
 using UnityEngine;
 
@@ -6,18 +7,10 @@ namespace Statuses.Feedbacks.Damage
 {
     public abstract class DamageFeedback : MonoBehaviour
     {
-        #region Fields
-
-        private IDamageable _damageable;
-        private IHealth _health;
-
-        #endregion
-        
         #region Properties
 
-        protected virtual IDamageable Damageable => _damageable ??= GetComponent<IDamageable>();
-        protected virtual IHealth Health => _health ??= GetComponent<IHealth>();
-        
+        protected virtual IDamageable Damageable { get; private set; }
+        protected virtual IHealth Health { get; private set; }
         protected virtual bool ObserveDamage { get; } = true;
         protected virtual bool ObserveDeath { get; } = false;
 
@@ -25,16 +18,22 @@ namespace Statuses.Feedbacks.Damage
 
         #region Unity Callbacks
 
+        private void Awake()
+        {
+            Damageable = GetComponent<IDamageable>();
+            Health = GetComponent<IHealth>();
+        }
+
         protected virtual void OnEnable()
         {
             if (ObserveDamage)
             {
-                Damageable.OnDamaged.AddListener(DamagedCallback);
+                Damageable?.OnDamaged.AddListener(DamagedCallback);
             }
             
             if (ObserveDeath)
             {
-                Health.OnDied.AddListener(DiedCallback);
+                Health?.OnDied.AddListener(DiedCallback);
             }
         }
 
@@ -42,12 +41,12 @@ namespace Statuses.Feedbacks.Damage
         {
             if (ObserveDamage)
             {
-                Damageable.OnDamaged.RemoveListener(DamagedCallback);
+                Damageable?.OnDamaged.RemoveListener(DamagedCallback);
             }
             
             if (ObserveDeath)
             {
-                Health.OnDied.RemoveListener(DiedCallback);
+                Health?.OnDied.RemoveListener(DiedCallback);
             }
         }
 
@@ -55,7 +54,10 @@ namespace Statuses.Feedbacks.Damage
         
         #region Methods
 
-        protected abstract void DamagedCallback(EventContext.FloatEvent context);
+        protected virtual void DamagedCallback(EventContext.FloatEvent context)
+        {
+            
+        }
         protected virtual void DiedCallback()
         {
             
