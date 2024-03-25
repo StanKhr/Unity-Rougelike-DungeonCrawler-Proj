@@ -450,6 +450,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: sprites_ui_pack_ladder
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a933c5c9b666a04aa36e4f8fc4326b6
+      internalID: 1534501267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites_ui_pack_wall
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a436cbcc78b3cb42bfc10cfbecab14b
+      internalID: 1950277529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -473,9 +515,11 @@ TextureImporter:
       sprites_ui_pack_chest: -1211500407
       sprites_ui_pack_inventorySlot_base: -1351238824
       sprites_ui_pack_inventorySlot_selected: -2060990983
+      sprites_ui_pack_ladder: 1534501267
       sprites_ui_pack_pixelCircle: -1823188906
       sprites_ui_pack_skullBig: 48313534
       sprites_ui_pack_skullSmall: -1782502512
+      sprites_ui_pack_wall: 1950277529
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

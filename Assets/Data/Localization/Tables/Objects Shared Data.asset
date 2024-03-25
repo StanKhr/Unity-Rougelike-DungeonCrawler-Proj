@@ -121,6 +121,10 @@ MonoBehaviour:
     m_Key: STAT_mana
     m_Metadata:
       m_Items: []
+  - m_Id: 25
+    m_Key: OBJ_nextLevelLadder
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
