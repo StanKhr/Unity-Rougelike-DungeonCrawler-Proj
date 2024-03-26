@@ -33,6 +33,11 @@ namespace UI.StateMachines.States
             Time.timeScale = TimeScalePaused;
             
             var pauseMenu = StateMachineUI.PauseMenu;
+
+            pauseMenu.OnResumed.AddListener(ResumedCallback);
+            pauseMenu.OnToMainMenuDirected.AddListener(ToMainMenuDirectedCallback);
+            pauseMenu.OnRestarted.AddListener(RestartedCallback);
+            
             pauseMenu.gameObject.SetActiveSmart(true);
         }
 
@@ -45,7 +50,26 @@ namespace UI.StateMachines.States
             Time.timeScale = TimeScaleNormal;
             
             var pauseMenu = StateMachineUI.PauseMenu;
+            pauseMenu.OnResumed.RemoveListener(ResumedCallback);
+            pauseMenu.OnToMainMenuDirected.RemoveListener(ToMainMenuDirectedCallback);
+            pauseMenu.OnRestarted.RemoveListener(RestartedCallback);
+
             pauseMenu.gameObject.SetActiveSmart(false);
+        }
+
+        private void ResumedCallback()
+        {
+            StateMachineUI.ToGameplayState();
+        }
+
+        private void ToMainMenuDirectedCallback()
+        {
+            
+        }
+
+        private void RestartedCallback()
+        {
+            
         }
 
         private void ReturnToGame()

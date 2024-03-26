@@ -61,6 +61,21 @@ namespace FSM.GameLoop.States
 
         private void NextFloorTriggeredCallback()
         {
+            RegenerateLevel();
+        }
+
+        private void PlayerDiedCallback()
+        {
+            StateMachine.ToDeathState();
+        }
+
+        private void LevelGeneratorStartedCallback(EventContext.LevelGeneratorEvent context)
+        {
+            LevelGenerator = context.LevelGenerator;
+        }
+
+        private void RegenerateLevel()
+        {
             if (PlayerObject.TryGetComponent<IHealth>(out var health))
             {
                 health.Resurrect();
@@ -72,16 +87,6 @@ namespace FSM.GameLoop.States
             }
             
             LevelGenerator.GenerateNew();
-        }
-
-        private void PlayerDiedCallback()
-        {
-            StateMachine.ToDeathState();
-        }
-
-        private void LevelGeneratorStartedCallback(EventContext.LevelGeneratorEvent context)
-        {
-            LevelGenerator = context.LevelGenerator;
         }
 
         #endregion
