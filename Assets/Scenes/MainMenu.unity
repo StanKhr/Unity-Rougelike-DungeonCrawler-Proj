@@ -984,6 +984,8 @@ MonoBehaviour:
   <AudioSource>k__BackingField: {fileID: 1436484150}
   _selectedAudio: {fileID: 11400000, guid: fc71da29e8d9f0d4583c49482d93b844, type: 2}
   _submittedAudio: {fileID: 11400000, guid: dc1f99b237354d6479548f972d2c5501, type: 2}
+  _windowOpened: {fileID: 0}
+  _windowClosed: {fileID: 0}
 --- !u!1 &217112114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,8 +1134,9 @@ MonoBehaviour:
     m_LocalVariables: []
   _genderSelector: {fileID: 28471744}
   _healthSelector: {fileID: 1101348576}
-  _energySelector: {fileID: 1476418227}
+  _staminaSelector: {fileID: 1476418227}
   _manaSelector: {fileID: 455752067}
+  _statusesDifferenceText: {fileID: 743458158}
   references:
     version: 2
     RefIds: []
