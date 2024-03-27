@@ -3267,10 +3267,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6864512758528916961}
-  - component: {fileID: 6946765417218894953}
   - component: {fileID: 1434175756033094430}
   m_Layer: 0
-  m_Name: WeaponPresenter
+  m_Name: WeaponDamageValuePresenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3291,48 +3290,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8460193079336818509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6946765417218894953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3739230641095250464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e20311ab70d9425a96cd4dd98a3b4453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _textMeshProUGUI: {fileID: 962488473269656732}
-  _localizedStringValue:
-    m_TableReference:
-      m_TableCollectionName: GUID:95fa3f8fe8988a844861787fe429db57
-    m_TableEntryReference:
-      m_KeyId: 5
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables:
-    - name: value
-      variable:
-        rid: 8722672589656817686
-  _localeEmpty:
-    m_TableReference:
-      m_TableCollectionName: GUID:77543326267eca4498b80a366ea8594e
-    m_TableEntryReference:
-      m_KeyId: 20
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _gear: {fileID: 4417830919691353321}
-  references:
-    version: 2
-    RefIds:
-    - rid: 8722672589656817686
-      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
-      data:
-        m_Value: 
 --- !u!114 &1434175756033094430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3345,29 +3302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a788aeb6a004cd091521f72fc99f498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textMeshProUGUI: {fileID: 8486336214202705296}
-  _localizedStringValue:
-    m_TableReference:
-      m_TableCollectionName: 
-    m_TableEntryReference:
-      m_KeyId: 0
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _localeEmpty:
-    m_TableReference:
-      m_TableCollectionName: 
-    m_TableEntryReference:
-      m_KeyId: 0
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
   _gear: {fileID: 4417830919691353321}
-  references:
-    version: 2
-    RefIds: []
+  _text: {fileID: 8486336214202705296}
 --- !u!1 &4019728030646582875
 GameObject:
   m_ObjectHideFlags: 0
@@ -5320,6 +5256,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6864512758528916961}
+  - {fileID: 6109418520684055815}
   m_Father: {fileID: 1054377291128277440}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5945624081907936471
@@ -5484,7 +5421,7 @@ Transform:
   m_GameObject: {fileID: 6242391721125187609}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6230,6 +6167,80 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &7425454715568839242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6109418520684055815}
+  - component: {fileID: 433066079517273422}
+  m_Layer: 0
+  m_Name: WeaponNamePresenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6109418520684055815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425454715568839242}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8460193079336818509}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &433066079517273422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425454715568839242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b495fb4940047cda5619a3843159c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gear: {fileID: 4417830919691353321}
+  _localizedStringValue:
+    m_TableReference:
+      m_TableCollectionName: GUID:95fa3f8fe8988a844861787fe429db57
+    m_TableEntryReference:
+      m_KeyId: 5
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: value
+      variable:
+        rid: 6755322008736628739
+  _localeEmpty:
+    m_TableReference:
+      m_TableCollectionName: GUID:77543326267eca4498b80a366ea8594e
+    m_TableEntryReference:
+      m_KeyId: 19
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _text: {fileID: 962488473269656732}
+  references:
+    version: 2
+    RefIds:
+    - rid: 6755322008736628739
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 
 --- !u!1 &7444322161673181327
 GameObject:
   m_ObjectHideFlags: 0
