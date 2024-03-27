@@ -24,6 +24,16 @@ namespace WorldGeneration.Utility
 
         #region Methods
 
+        public bool CellIsWalkable(Vector2Int position)
+        {
+            if (!Cells.TryGetValue(position, out var cell))
+            {
+                return false;
+            }
+
+            return cell == CellType.RoomFloor || cell == CellType.Hallway;
+        }
+
         public CellType GetCellByAxis(Vector2Int position)
         {
             return Cells.GetValueOrDefault(position, CellType.Empty);
@@ -34,17 +44,31 @@ namespace WorldGeneration.Utility
             SetCell(new Vector2Int(x, y), type);
         }
         
-        public void SetCell(Vector2Int position, CellType type)
+        public void SetCell(Vector2Int position, CellType cellType)
         {
-            if (Cells.TryGetValue(position, out var cell))
+            if (!Cells.TryGetValue(position, out var existingCell))
             {
-                if (cell == CellType.Floor)
-                {
-                    return;
-                }
+                Cells[position] = cellType;
+                return;
             }
             
-            Cells[position] = type;
+            if (existingCell == cellType)
+            {
+                return;
+            }
+
+            if (existingCell == CellType.Hallway && cellType == CellType.RoomFloor)
+            {
+                Cells[position] = cellType;
+                return;
+            }
+
+            if (CellIsWalkable(position))
+            {
+                return;
+            }
+
+            Cells[position] = cellType;
         }
 
         public void ClearCell(int x, int y)
@@ -74,7 +98,7 @@ namespace WorldGeneration.Utility
                     var cellPosition = new Vector2Int(x + roomData.GridCenterPosition.x,
                         y + roomData.GridCenterPosition.y);
                     
-                    if (GetCellByAxis(cellPosition) == CellType.Floor)
+                    if (GetCellByAxis(cellPosition) == CellType.RoomFloor)
                     {
                         continue;
                     }
@@ -86,7 +110,7 @@ namespace WorldGeneration.Utility
                     }
                     else
                     {
-                        usedType = CellType.Floor;
+                        usedType = CellType.RoomFloor;
                     }
                     
                     SetCell(cellPosition, usedType); 

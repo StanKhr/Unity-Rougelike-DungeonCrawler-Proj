@@ -3,8 +3,8 @@
     public enum CellType : byte
     {
         Empty = 0,
-        Floor,
+        RoomFloor,
         Wall,
-        Door
+        Hallway
     }
 }

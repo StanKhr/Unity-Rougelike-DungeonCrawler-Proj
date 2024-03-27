@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Miscellaneous;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
@@ -48,7 +49,6 @@ namespace WorldGeneration.Generators
         #region Fields
 
         private readonly DungeonGrid _dungeonGrid = new();
-        private readonly HashSet<Vector2Int> _corridorTiles = new();
         private readonly List<RoomData> _rooms = new();
         private readonly Dictionary<WalkDirectionType, Vector2Int> _sortedWalkDirections = new()
         {
@@ -114,7 +114,6 @@ namespace WorldGeneration.Generators
                 Destroy(child.gameObject);
             }
             
-            _corridorTiles.Clear();
             _rooms.Clear();
             _dungeonGrid.Clear();
         }
@@ -166,19 +165,14 @@ namespace WorldGeneration.Generators
                 {
                     roomSpawnPosition += direction;
 
-                    if (_dungeonGrid.GetCellByAxis(roomSpawnPosition) == CellType.Floor)
+                    if (_dungeonGrid.CellIsWalkable(roomSpawnPosition))
                     {
                         continue;
                     }
 
-                    if (!bossRoom)
-                    {
-                        _corridorTiles.Add(roomSpawnPosition);
-                    }
-
                     corridorSteps--;
 
-                    _dungeonGrid.SetCell(roomSpawnPosition, CellType.Floor);
+                    _dungeonGrid.SetCell(roomSpawnPosition, CellType.Hallway);
                     _dungeonGrid.SetCell(roomSpawnPosition + sideDirection, CellType.Wall);
                     _dungeonGrid.SetCell(roomSpawnPosition - sideDirection, CellType.Wall);
                 }
@@ -218,14 +212,13 @@ namespace WorldGeneration.Generators
                 {
                     case CellType.Empty:
                         break;
-                    case CellType.Floor:
+                    case CellType.Hallway:
+                    case CellType.RoomFloor:
                         PlaceTilePrefab(cellPosition, LevelTiles.GetFloor());
                         break;
                     case CellType.Wall:
                         var wallInstance = PlaceTilePrefab(cellPosition, LevelTiles.GetWall());
                         TryUpdateWallTile(cellPosition, wallInstance);
-                        break;
-                    case CellType.Door:
                         break;
                 }
             }
@@ -317,7 +310,19 @@ namespace WorldGeneration.Generators
                 }
             }
 
-            foreach (var tile in _corridorTiles)
+            var cellsKeys = _dungeonGrid.Cells.Keys.ToList();
+            var hallwayTilePositions = new HashSet<Vector2>();
+            for (int i = 0; i < cellsKeys.Count; i++)
+            {
+                if (_dungeonGrid.Cells[cellsKeys[i]] != CellType.Hallway)
+                {
+                    continue;
+                }
+
+                hallwayTilePositions.Add(cellsKeys[i]);
+            }
+            
+            foreach (var tile in hallwayTilePositions)
             {
                 var trashPrefab = RoomFillingsSettings.GetCorridorTrash();
                 if (!trashPrefab)
@@ -386,7 +391,7 @@ namespace WorldGeneration.Generators
             foreach (var key in _sortedWalkDirections.Keys)
             {
                 var checkPosition = cellPosition + _sortedWalkDirections[key];
-                wallTile.SetTile(key, _dungeonGrid.GetCellByAxis(checkPosition) == CellType.Floor);
+                wallTile.SetTile(key, _dungeonGrid.CellIsWalkable(checkPosition));
             }
         }
 
