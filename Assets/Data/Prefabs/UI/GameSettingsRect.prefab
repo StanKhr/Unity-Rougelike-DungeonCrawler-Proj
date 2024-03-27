@@ -395,7 +395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fcded1b57240e8b4537a6ef74be109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localizationSelection: {fileID: 0}
   _optionSelector: {fileID: 5520412892487091507}
 --- !u!114 &5520412892487091507
 MonoBehaviour:
@@ -2212,6 +2211,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 5371649248720073076}
+    - target: {fileID: 4944948234315254873, guid: 268228025c9ecb7458e3694cd1e49c61, type: 3}
+      propertyPath: _audioChannelType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5906396357716571812, guid: 268228025c9ecb7458e3694cd1e49c61, type: 3}
       propertyPath: m_Name
       value: VolumePresenterEffects
@@ -2368,6 +2371,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 3378692528784586959}
+    - target: {fileID: 4944948234315254873, guid: 268228025c9ecb7458e3694cd1e49c61, type: 3}
+      propertyPath: _audioChannelType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5906396357716571812, guid: 268228025c9ecb7458e3694cd1e49c61, type: 3}
       propertyPath: m_Name
       value: VolumePresenterAmbient

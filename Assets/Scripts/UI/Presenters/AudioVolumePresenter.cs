@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using Audio.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.UI.Views;
+using Settings;
 using Settings.Audio;
+using Settings.Enums;
 using UnityEngine;
 
 namespace UI.Presenters
@@ -19,7 +21,7 @@ namespace UI.Presenters
         
         #region Editor Fields
 
-        [SerializeField] private AudioVolume _audioVolume;
+        [SerializeField] private AudioChannelType _audioChannelType;
         [SerializeField, Range(0f, 1f)] private float _changeValueStep = 0.05f;
 
         [Header("Views")]
@@ -35,7 +37,7 @@ namespace UI.Presenters
 
         #region Properties
 
-        private IAudioVolume AudioVolume => _audioVolume;
+        private IAudioVolume AudioVolume => GameSettings.Instance.GetVolumeFromChannelType(_audioChannelType);
 
         #endregion
 

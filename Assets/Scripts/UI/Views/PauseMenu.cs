@@ -22,9 +22,11 @@ namespace UI.Views
         #region Editor Fields
 
         [SerializeField] private Button _resumeButton;
-        [SerializeField] private Button _settingsButton;
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _toMainMenuButton;
+        
+        [SerializeField] private Button _settingsButton;
+        [SerializeField] private Button _closeSettingsButton;
 
         [Header("Windows")]
         [SerializeField] private RectTransform _gameSettingsRect;
@@ -39,7 +41,7 @@ namespace UI.Views
 
         #region Unity Callbacks
 
-        private void OnEnable()
+        private void Start()
         {
             SelectButton(_resumeButton);
             
@@ -47,31 +49,44 @@ namespace UI.Views
             _restartButton.onClick.AddListener(OnRestarted.NotifyListeners);
             _toMainMenuButton.onClick.AddListener(OnToMainMenuDirected.NotifyListeners);
             
-            _settingsButton.onClick.AddListener(ToggleSettings);
+            _settingsButton.onClick.AddListener(SettingsButtonClickedCallback);
+            _closeSettingsButton.onClick.AddListener(CloseSettingsButtonClickedCallback);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _resumeButton.onClick.RemoveListener(OnResumed.NotifyListeners);
             _restartButton.onClick.RemoveListener(OnRestarted.NotifyListeners);
             _toMainMenuButton.onClick.RemoveListener(OnToMainMenuDirected.NotifyListeners);
+            
+            _settingsButton.onClick.RemoveListener(SettingsButtonClickedCallback);
+            _closeSettingsButton.onClick.RemoveListener(CloseSettingsButtonClickedCallback);
+        }
+
+        private void OnDisable()
+        {
+            ToggleSettings(false);
         }
 
         #endregion
 
         #region Methods
-        
-        private void SelectButton(Button button)
+
+        private void SettingsButtonClickedCallback()
         {
-            EventSystem.current.SetSelectedGameObject(button.gameObject);
+            ToggleSettings(true);
         }
 
-        private void ToggleSettings()
+        private void CloseSettingsButtonClickedCallback()
         {
-            var show = !_gameSettingsRect.gameObject.activeSelf;
+            ToggleSettings(false);
+        }
+
+        private void ToggleSettings(bool show)
+        {
             _gameSettingsRect.gameObject.SetActiveSmart(show);
             ShowButtons(!show);
-            // SelectButton(_settingsButton);
+            SelectButton(show ? _closeSettingsButton : _settingsButton);
         }
 
         private void ShowButtons(bool show)
@@ -91,6 +106,11 @@ namespace UI.Views
             {
                 _buttons[i].gameObject.SetActiveSmart(show);
             }
+        }
+        
+        private void SelectButton(Button button)
+        {
+            EventSystem.current.SetSelectedGameObject(button.gameObject);
         }
 
         #endregion

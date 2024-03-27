@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Plugins.StanKhrEssentials.Scripts.UI.Views;
+using Settings;
 using Settings.Localization;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -9,8 +10,6 @@ namespace UI.Presenters
     public class LocalizationSelectionPresenter : MonoBehaviour
     {
         #region Editor Fields
-
-        [SerializeField] private LocalizationSelection _localizationSelection;
         
         [Header("Views")]
         [SerializeField] private OptionSelector _optionSelector;
@@ -54,7 +53,7 @@ namespace UI.Presenters
         private void SelectedOptionUpdatedCallback()
         {
             var selectedOptionIndex = _optionSelector.SelectedOptionIndex;
-            _localizationSelection.SelectLocale(selectedOptionIndex);
+            GameSettings.Instance.LocalizationSelection.SelectLocale(selectedOptionIndex);
         }
 
         #endregion

@@ -3,6 +3,7 @@ using Player.Inventories.Interfaces;
 using UI.Presenters.Items;
 using UI.Views.Personality;
 using UnityEngine;
+using UnityEngine.UI;
 using WorldGeneration.Interfaces;
 
 namespace Miscellaneous
@@ -62,6 +63,11 @@ namespace Miscellaneous
             public IWeapon Weapon { get; set; }
             public float CritChargePercent { get; set; }
             public bool CritApplied { get; set; }
+        }
+        
+        public struct UIButtonEvent
+        {
+            public Button Button { get; set; }
         }
         
         public struct InventorySlotPresenterEvent
