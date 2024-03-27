@@ -53,6 +53,12 @@ namespace UI.Views
             _closeSettingsButton.onClick.AddListener(CloseSettingsButtonClickedCallback);
         }
 
+        private void OnEnable()
+        {
+            ToggleSettings(false);
+            SelectButton(_resumeButton);
+        }
+
         private void OnDestroy()
         {
             _resumeButton.onClick.RemoveListener(OnResumed.NotifyListeners);
@@ -63,11 +69,6 @@ namespace UI.Views
             _closeSettingsButton.onClick.RemoveListener(CloseSettingsButtonClickedCallback);
         }
 
-        private void OnDisable()
-        {
-            ToggleSettings(false);
-        }
-
         #endregion
 
         #region Methods
@@ -75,18 +76,19 @@ namespace UI.Views
         private void SettingsButtonClickedCallback()
         {
             ToggleSettings(true);
+            SelectButton(_closeSettingsButton);
         }
 
         private void CloseSettingsButtonClickedCallback()
         {
             ToggleSettings(false);
+            SelectButton(_settingsButton);
         }
 
         private void ToggleSettings(bool show)
         {
             _gameSettingsRect.gameObject.SetActiveSmart(show);
             ShowButtons(!show);
-            SelectButton(show ? _closeSettingsButton : _settingsButton);
         }
 
         private void ShowButtons(bool show)
