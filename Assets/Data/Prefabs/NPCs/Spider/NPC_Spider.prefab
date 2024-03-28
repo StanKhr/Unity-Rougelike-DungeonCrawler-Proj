@@ -148,6 +148,14 @@ PrefabInstance:
       propertyPath: _clipSelector
       value: 
       objectReference: {fileID: 11400000, guid: d7cd8f39b3d419645aad8feca282d34c, type: 2}
+    - target: {fileID: 8400732948184991334, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: _attack._clipSelector
+      value: 
+      objectReference: {fileID: 11400000, guid: ebad2c9fd3833564fa96c233c40e80ea, type: 2}
+    - target: {fileID: 8400732948184991334, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: _footSteps._clipSelector
+      value: 
+      objectReference: {fileID: 11400000, guid: dcca4c93032daf446b61a2a6202d1fde, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

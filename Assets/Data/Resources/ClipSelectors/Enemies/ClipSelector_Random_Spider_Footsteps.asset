@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c2c4837cfc042feb3050193a684e144, type: 3}
+  m_Name: ClipSelector_Random_Spider_Footsteps
+  m_EditorClassIdentifier: 
+  _clips:
+  - {fileID: 8300000, guid: 97ff14b7b0c6a034cb46fe784f1805f9, type: 3}
+  - {fileID: 8300000, guid: e9424fe66d7138449961413cc8318c2b, type: 3}
+  - {fileID: 8300000, guid: 4400a0d668926834b862522dea5deb89, type: 3}
+  - {fileID: 8300000, guid: 6850750a360a6b245842be8eaed1ad29, type: 3}

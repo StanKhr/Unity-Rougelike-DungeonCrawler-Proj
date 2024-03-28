@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c2c4837cfc042feb3050193a684e144, type: 3}
-  m_Name: ClipSelector_Random_Footsteps_Spider
+  m_Name: ClipSelector_Random_Spider_Attack
   m_EditorClassIdentifier: 
   _clips:
-  - {fileID: 8300000, guid: 97ff14b7b0c6a034cb46fe784f1805f9, type: 3}
-  - {fileID: 8300000, guid: e9424fe66d7138449961413cc8318c2b, type: 3}
-  - {fileID: 8300000, guid: 4400a0d668926834b862522dea5deb89, type: 3}
-  - {fileID: 8300000, guid: 6850750a360a6b245842be8eaed1ad29, type: 3}
+  - {fileID: 8300000, guid: 3b6d707bb13759340bca5a53e1591cbd, type: 3}
+  - {fileID: 8300000, guid: 043d64571f841944da7b2790a7a218b4, type: 3}
+  - {fileID: 8300000, guid: 5344c9fab12cb314abe30888a00bf3e7, type: 3}
