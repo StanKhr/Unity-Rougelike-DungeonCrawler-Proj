@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Audio.Triggers
 {
-    public class AudioTriggerFootSteps : AudioTrigger
+    public class AudioTriggerFootStepsPlayer : AudioTrigger
     {
         #region Editor Fields
 
