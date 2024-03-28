@@ -106,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6853018127330601841, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: m_Name
-      value: NPC_Spider Variant
+      value: NPC_Spider
       objectReference: {fileID: 0}
     - target: {fileID: 7177525359821227806, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
       propertyPath: _nonTranslatedName
@@ -144,6 +144,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8400732948184991334, guid: 0eb0a65bfefb3544c84d68dba0ef03b0, type: 3}
+      propertyPath: _clipSelector
+      value: 
+      objectReference: {fileID: 11400000, guid: d7cd8f39b3d419645aad8feca282d34c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

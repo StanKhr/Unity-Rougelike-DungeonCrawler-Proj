@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Player.Inputs;
+using Player.Inputs.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Interfaces;
 using Plugins.StanKhrEssentials.Scripts.EventWrapper.Main;
 using UI.Presenters;
@@ -28,7 +30,7 @@ namespace UI.Views
 
         [Header("Presenters")]
         [SerializeField] private PersonalityBuilderPresenter _personalityBuilderPresenter;
-        
+
         [Header("Views")]
         [SerializeField] private Button _beginAdventureButton;
         [SerializeField] private Button _personalityConfirmButton;
@@ -56,10 +58,18 @@ namespace UI.Views
 
         #endregion
 
+        #region Properties
+
+        private ICursorVisibility CursorVisibility { get; } = new CursorVisibility();
+
+        #endregion
+
         #region Unity Callbacks
 
         private void Start()
         {
+            CursorVisibility.SetVisibility(true);
+            
             _buttons = new List<Button>()
             {
                 _beginAdventureButton,
